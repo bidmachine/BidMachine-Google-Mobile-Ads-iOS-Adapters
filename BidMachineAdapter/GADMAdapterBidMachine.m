@@ -7,13 +7,14 @@
 //
 
 #import "GADMAdapterBidMachine.h"
+#import "GADMBidMachineBannerAd.h"
+#import "GADBidMachineNetworkExtras.h"
 #import <BidMachine/BidMachine.h>
 
-@interface GADMAdapterBidMachine() {
+@interface GADMAdapterBidMachine()
     
-__weak id<GADMAdNetworkConnector> _connector;
-    
-}
+@property (nonatomic, weak) id<GADMAdNetworkConnector> connector;
+@property (nonatomic, strong) GADMBidMachineBannerAd *banner;
 
 @end
 
@@ -23,12 +24,8 @@ __weak id<GADMAdNetworkConnector> _connector;
     return @"1.0.3.0";
 }
 
-- (void)getBannerWithSize:(GADAdSize)adSize {
-    <#code#>
-}
-
-- (void)getInterstitial {
-    <#code#>
++ (Class<GADAdNetworkExtras>)networkExtrasClass {
+    return GADBidMachineNetworkExtras.class;
 }
 
 - (instancetype)initWithGADMAdNetworkConnector:(id<GADMAdNetworkConnector>)connector {
@@ -38,20 +35,25 @@ __weak id<GADMAdNetworkConnector> _connector;
     self = [super init];
     if (self) {
         _connector = connector;
+        _banner = [[GADMBidMachineBannerAd alloc] initWithConnector:connector adapter:self];
     }
     return self;
 }
 
-+ (Class<GADAdNetworkExtras>)networkExtrasClass {
-    <#code#>
+- (void)getBannerWithSize:(GADAdSize)adSize {
+    [self.banner getBannerWithSize:adSize];
+}
+
+- (void)getInterstitial {
+    
 }
 
 - (void)presentInterstitialFromRootViewController:(UIViewController *)rootViewController {
-    <#code#>
+    
 }
 
 - (void)stopBeingDelegate {
-    <#code#>
+    
 }
 
 @end

@@ -11,15 +11,19 @@
 @implementation GADMediationAdapterBidMachine
 
 + (GADVersionNumber)adSDKVersion { 
-    <#code#>
+    
 }
 
 + (nullable Class<GADAdNetworkExtras>)networkExtrasClass { 
-    <#code#>
+    
 }
 
 + (GADVersionNumber)version { 
-    <#code#>
+    
+}
+
++ (void)setUpWithConfiguration:(GADMediationServerConfiguration *)configuration completionHandler:(GADMediationAdapterSetUpCompletionBlock)completionHandler {
+    
 }
 
 @end

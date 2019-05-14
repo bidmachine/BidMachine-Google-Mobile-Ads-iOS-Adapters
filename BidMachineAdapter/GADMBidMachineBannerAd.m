@@ -7,7 +7,7 @@
 //
 
 #import "GADMBidMachineBannerAd.h"
-#import "GADBidMachineUtils.h"
+#import "GADBidMachineUtils+Request.h"
 
 @interface GADMBidMachineBannerAd()
 
@@ -29,7 +29,12 @@
     return self;
 }
 - (void)getBannerWithSize:(GADAdSize)adSize {
-    
+    id<GADMAdNetworkConnector> connector = _connector;
+    BDMBannerAdSize size = [[GADBidMachineUtils sharedUtils] getBannerAdSizeFrom:adSize];
+    BDMBannerRequest *request = [[GADBidMachineUtils sharedUtils] setupBannerRequestWithSize:size
+                                                                                   connector:connector];
+    [self.bannerView setFrame:CGRectMake(0, 0, size.width, size.height)];
+    [self.bannerView populateWithRequest:request];
 }
 
 #pragma mark - Lazy

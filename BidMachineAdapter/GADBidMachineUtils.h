@@ -12,8 +12,10 @@
 
 @interface GADBidMachineUtils : NSObject
 
-+ (BDMBannerAdSize)getBannerAdSizeFrom:(GADAdSize)size;
-+ (BDMTargeting *)setupTargetingWithExtraInfo:(NSDictionary *)extraInfo andLocation:(CLLocation *)location
-+ (NSArray<BDMPriceFloor *> *)makePriceFloorsWithPriceFloors:(NSArray *)priceFloors;
++ (instancetype)sharedUtils;
+- (BDMBannerAdSize)getBannerAdSizeFrom:(GADAdSize)size;
+- (NSDictionary *)getRequestInfoFromConnector:(id<GADMAdNetworkConnector>)connector;
+- (BDMTargeting *)setupTargetingWithRequestInfo:(NSDictionary *)requestInfo andLocation:(CLLocation *)location;
+- (NSArray<BDMPriceFloor *> *)makePriceFloorsWithPriceFloors:(NSArray *)priceFloors;
 
 @end
