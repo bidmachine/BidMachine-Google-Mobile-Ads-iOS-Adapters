@@ -13,6 +13,7 @@
 @interface GADBidMachineUtils : NSObject
 
 + (instancetype)sharedUtils;
+- (CGSize)getCGSizeFrom:(GADAdSize)size;
 - (BDMBannerAdSize)getBannerAdSizeFrom:(GADAdSize)size;
 - (NSDictionary *)getRequestInfoFromConnector:(id<GADMAdNetworkConnector>)connector;
 - (BDMTargeting *)setupTargetingWithRequestInfo:(NSDictionary *)requestInfo andLocation:(CLLocation *)location;

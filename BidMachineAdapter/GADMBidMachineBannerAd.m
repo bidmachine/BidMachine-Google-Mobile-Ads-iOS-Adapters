@@ -31,9 +31,10 @@
 - (void)getBannerWithSize:(GADAdSize)adSize {
     id<GADMAdNetworkConnector> connector = _connector;
     BDMBannerAdSize size = [[GADBidMachineUtils sharedUtils] getBannerAdSizeFrom:adSize];
+    CGSize cgSize = CGSizeFromBDMSize(size);
     BDMBannerRequest *request = [[GADBidMachineUtils sharedUtils] setupBannerRequestWithSize:size
                                                                                    connector:connector];
-    [self.bannerView setFrame:CGRectMake(0, 0, size.width, size.height)];
+    [self.bannerView setFrame:CGRectMake(0, 0, cgSize.width, cgSize.height)];
     [self.bannerView populateWithRequest:request];
 }
 

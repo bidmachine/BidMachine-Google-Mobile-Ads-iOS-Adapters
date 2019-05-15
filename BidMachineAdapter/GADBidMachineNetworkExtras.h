@@ -27,5 +27,7 @@
 @property (nonatomic, strong) NSURL *storeURL;
 @property (nonatomic, strong) NSString *storeId;
 @property (nonatomic, assign) BOOL paid;
+@property (nonatomic, assign) BOOL coppa;
+@property (nonatomic, strong) NSArray *priceFloors;
 
 @end

@@ -20,6 +20,17 @@
     return _sharedUtils;
 }
 
+- (GADVersionNumber)getSDKVersionFrom:(NSString *)version {
+    GADVersionNumber gadVersion = {0};
+    NSArray<NSString *> *components = [version componentsSeparatedByString:@"."];
+    if (components.count == 3) {
+        gadVersion.majorVersion = components[0].integerValue;
+        gadVersion.minorVersion = components[1].integerValue;
+        gadVersion.patchVersion = components[2].integerValue;
+    }
+    return gadVersion;
+}
+
 - (BDMBannerAdSize)getBannerAdSizeFrom:(GADAdSize)gadAdSize {
     BDMBannerAdSize adSize;
     CGSize transformedSize = CGSizeFromGADAdSize(gadAdSize);
@@ -51,15 +62,17 @@
     requestInfo[@"logging_enabled"] = @(networkExtras.loggingEnabled);
     requestInfo[@"userId"] = networkExtras.userId;
     requestInfo[@"keywords"] = networkExtras.keywords;
-    requestInfo[@"bcat"] = [networkExtras.blockedCategories componentsJoinedByString:@", "];
-    requestInfo[@"badv"] = [networkExtras.blockedAdvertisers componentsJoinedByString:@", "];
-    requestInfo[@"bapps"] = [networkExtras.blockedApps componentsJoinedByString:@", "];
+    requestInfo[@"bcat"] = [networkExtras.blockedCategories componentsJoinedByString:@","];
+    requestInfo[@"badv"] = [networkExtras.blockedAdvertisers componentsJoinedByString:@","];
+    requestInfo[@"bapps"] = [networkExtras.blockedApps componentsJoinedByString:@","];
     requestInfo[@"country"] = networkExtras.country;
     requestInfo[@"city"] = networkExtras.city;
     requestInfo[@"zip"] = networkExtras.zip;
     requestInfo[@"sturl"] = networkExtras.storeURL.absoluteString;
     requestInfo[@"stid"] = networkExtras.storeId;
     requestInfo[@"paid"] = @(networkExtras.paid);
+    requestInfo[@"coppa"] = @(networkExtras.coppa);
+    requestInfo[@"priceFloors"] = networkExtras.priceFloors;
     return requestInfo;
 }
 

@@ -20,7 +20,7 @@
     [request setAdSize:size];
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithRequestInfo:requestInfo]];
     [request setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
-    [request setPriceFloors:[self makePriceFloorsWithPriceFloors:priceFloors]];
+    [request setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[@"priceFloors"]]];
     return request;
 }
 
@@ -30,8 +30,8 @@
     CLLocation *location = [[CLLocation alloc] initWithLatitude:connector.userLatitude longitude:connector.userLongitude];
     [request setType:[self setupInterstitialAdType:requestInfo[@"ad_content_type"]]];
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithRequestInfo:requestInfo]];
-    [request setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithExtraInfo:extraInfo andLocation:location]];
-    [request setPriceFloors:[self makePriceFloorsWithPriceFloors:priceFloors]];
+    [request setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
+    [request setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[@"priceFloors"]]];
     return request;
 }
 
@@ -40,8 +40,8 @@
     NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFromConnector:connector];
     CLLocation *location = [[CLLocation alloc] initWithLatitude:connector.userLatitude longitude:connector.userLongitude];
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithRequestInfo:requestInfo]];
-    [request setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithExtraInfo:extraInfo andLocation:location]];
-    [request setPriceFloors:[self makePriceFloorsWithPriceFloors:priceFloors]];
+    [request setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
+    [request setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[@"priceFloors"]]];
     return request;
 }
 
@@ -49,8 +49,8 @@
     BDMUserRestrictions *restrictions = [BDMUserRestrictions new];
     [restrictions setHasConsent:[[MoPub sharedInstance] canCollectPersonalInfo]];
     [restrictions setSubjectToGDPR:[[MoPub sharedInstance] isGDPRApplicable]];
-    [restrictions setCoppa:[extras[@"coppa"] boolValue]];
-    [[BDMSdk sharedSdk] setEnableLogging:[extras[@"logging_enabled"] boolValue]];
+    [restrictions setCoppa:[requestInfo[@"coppa"] boolValue]];
+    [[BDMSdk sharedSdk] setEnableLogging:[requestInfo[@"logging_enabled"] boolValue]];
     return restrictions;
 }
 
