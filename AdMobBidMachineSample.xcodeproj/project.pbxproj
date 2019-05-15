@@ -15,11 +15,13 @@
 		D912967B228AA8D2002A8C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D912967A228AA8D2002A8C51 /* Assets.xcassets */; };
 		D912967E228AA8D2002A8C51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D912967C228AA8D2002A8C51 /* LaunchScreen.storyboard */; };
 		D9129681228AA8D2002A8C51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9129680228AA8D2002A8C51 /* main.m */; };
-		D912968F228AAB01002A8C51 /* GADMAdapterBidMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = D912968E228AAB01002A8C51 /* GADMAdapterBidMachine.m */; };
-		D9129690228AAB01002A8C51 /* GADMAdapterBidMachine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D912968D228AAB01002A8C51 /* GADMAdapterBidMachine.h */; };
-		D9129696228AB5F1002A8C51 /* GADMediationAdapterBidMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = D9129695228AB5F1002A8C51 /* GADMediationAdapterBidMachine.m */; };
 		D9129699228ABE49002A8C51 /* GADMBidMachineBannerAd.m in Sources */ = {isa = PBXBuildFile; fileRef = D9129698228ABE49002A8C51 /* GADMBidMachineBannerAd.m */; };
 		D912969C228ABFFD002A8C51 /* GADBidMachineUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D912969B228ABFFD002A8C51 /* GADBidMachineUtils.m */; };
+		D912969F228ADCBB002A8C51 /* GADBidMachineUtils+Request.m in Sources */ = {isa = PBXBuildFile; fileRef = D912969E228ADCBB002A8C51 /* GADBidMachineUtils+Request.m */; };
+		D91296A2228AEE7C002A8C51 /* GADBidMachineNetworkExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = D91296A1228AEE7C002A8C51 /* GADBidMachineNetworkExtras.m */; };
+		D91296A6228BF769002A8C51 /* GADMBidMachineInterstitialAd.m in Sources */ = {isa = PBXBuildFile; fileRef = D91296A5228BF769002A8C51 /* GADMBidMachineInterstitialAd.m */; };
+		D91296A9228BF782002A8C51 /* GADMBidMachineRewardedAd.m in Sources */ = {isa = PBXBuildFile; fileRef = D91296A8228BF782002A8C51 /* GADMBidMachineRewardedAd.m */; };
+		D9FB5644228C3FD600D84AF7 /* libBidMachineAdapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D912968B228AAB01002A8C51 /* libBidMachineAdapter.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,7 +31,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				D9129690228AAB01002A8C51 /* GADMAdapterBidMachine.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,14 +53,18 @@
 		D912967F228AA8D2002A8C51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9129680228AA8D2002A8C51 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D912968B228AAB01002A8C51 /* libBidMachineAdapter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBidMachineAdapter.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D912968D228AAB01002A8C51 /* GADMAdapterBidMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMAdapterBidMachine.h; sourceTree = "<group>"; };
-		D912968E228AAB01002A8C51 /* GADMAdapterBidMachine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADMAdapterBidMachine.m; sourceTree = "<group>"; };
-		D9129694228AB5F1002A8C51 /* GADMediationAdapterBidMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMediationAdapterBidMachine.h; sourceTree = "<group>"; };
-		D9129695228AB5F1002A8C51 /* GADMediationAdapterBidMachine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADMediationAdapterBidMachine.m; sourceTree = "<group>"; };
 		D9129697228ABE49002A8C51 /* GADMBidMachineBannerAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMBidMachineBannerAd.h; sourceTree = "<group>"; };
 		D9129698228ABE49002A8C51 /* GADMBidMachineBannerAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADMBidMachineBannerAd.m; sourceTree = "<group>"; };
 		D912969A228ABFFD002A8C51 /* GADBidMachineUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADBidMachineUtils.h; sourceTree = "<group>"; };
 		D912969B228ABFFD002A8C51 /* GADBidMachineUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADBidMachineUtils.m; sourceTree = "<group>"; };
+		D912969D228ADCBB002A8C51 /* GADBidMachineUtils+Request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GADBidMachineUtils+Request.h"; sourceTree = "<group>"; };
+		D912969E228ADCBB002A8C51 /* GADBidMachineUtils+Request.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GADBidMachineUtils+Request.m"; sourceTree = "<group>"; };
+		D91296A0228AEE7C002A8C51 /* GADBidMachineNetworkExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADBidMachineNetworkExtras.h; sourceTree = "<group>"; };
+		D91296A1228AEE7C002A8C51 /* GADBidMachineNetworkExtras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADBidMachineNetworkExtras.m; sourceTree = "<group>"; };
+		D91296A4228BF769002A8C51 /* GADMBidMachineInterstitialAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMBidMachineInterstitialAd.h; sourceTree = "<group>"; };
+		D91296A5228BF769002A8C51 /* GADMBidMachineInterstitialAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADMBidMachineInterstitialAd.m; sourceTree = "<group>"; };
+		D91296A7228BF782002A8C51 /* GADMBidMachineRewardedAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMBidMachineRewardedAd.h; sourceTree = "<group>"; };
+		D91296A8228BF782002A8C51 /* GADMBidMachineRewardedAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADMBidMachineRewardedAd.m; sourceTree = "<group>"; };
 		EE23AE142768802690EC2630 /* libPods-BidMachineAdapter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BidMachineAdapter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -68,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9FB5644228C3FD600D84AF7 /* libBidMachineAdapter.a in Frameworks */,
 				AF1F086CF84CD32DECF3A9F0 /* libPods-AdMobBidMachineSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,14 +139,18 @@
 		D912968C228AAB01002A8C51 /* BidMachineAdapter */ = {
 			isa = PBXGroup;
 			children = (
-				D912968D228AAB01002A8C51 /* GADMAdapterBidMachine.h */,
-				D912968E228AAB01002A8C51 /* GADMAdapterBidMachine.m */,
 				D9129697228ABE49002A8C51 /* GADMBidMachineBannerAd.h */,
 				D9129698228ABE49002A8C51 /* GADMBidMachineBannerAd.m */,
-				D9129694228AB5F1002A8C51 /* GADMediationAdapterBidMachine.h */,
-				D9129695228AB5F1002A8C51 /* GADMediationAdapterBidMachine.m */,
+				D91296A4228BF769002A8C51 /* GADMBidMachineInterstitialAd.h */,
+				D91296A5228BF769002A8C51 /* GADMBidMachineInterstitialAd.m */,
+				D91296A7228BF782002A8C51 /* GADMBidMachineRewardedAd.h */,
+				D91296A8228BF782002A8C51 /* GADMBidMachineRewardedAd.m */,
+				D91296A0228AEE7C002A8C51 /* GADBidMachineNetworkExtras.h */,
+				D91296A1228AEE7C002A8C51 /* GADBidMachineNetworkExtras.m */,
 				D912969A228ABFFD002A8C51 /* GADBidMachineUtils.h */,
 				D912969B228ABFFD002A8C51 /* GADBidMachineUtils.m */,
+				D912969D228ADCBB002A8C51 /* GADBidMachineUtils+Request.h */,
+				D912969E228ADCBB002A8C51 /* GADBidMachineUtils+Request.m */,
 			);
 			path = BidMachineAdapter;
 			sourceTree = "<group>";
@@ -165,6 +175,7 @@
 				D912966A228AA8D1002A8C51 /* Sources */,
 				D912966B228AA8D1002A8C51 /* Frameworks */,
 				D912966C228AA8D1002A8C51 /* Resources */,
+				EF3EA567330EBEBB6B9AD43B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -287,6 +298,34 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EF3EA567330EBEBB6B9AD43B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AdMobBidMachineSample/Pods-AdMobBidMachineSample-resources.sh",
+				"${PODS_ROOT}/GoogleMobileAdsMediationTestSuite/Resources/GoogleMobileAdsMediationTestSuite.bundle",
+				"${PODS_ROOT}/MaterialComponents/components/Dialogs/src/MaterialDialogs.bundle",
+				"${PODS_ROOT}/MaterialComponents/components/Tabs/src/MaterialTabs.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/MaterialComponents/MaterialIcons_ic_check_circle.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMobileAdsMediationTestSuite.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialDialogs.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialTabs.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons_ic_check_circle.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AdMobBidMachineSample/Pods-AdMobBidMachineSample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -304,10 +343,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D91296A6228BF769002A8C51 /* GADMBidMachineInterstitialAd.m in Sources */,
+				D91296A2228AEE7C002A8C51 /* GADBidMachineNetworkExtras.m in Sources */,
 				D912969C228ABFFD002A8C51 /* GADBidMachineUtils.m in Sources */,
-				D912968F228AAB01002A8C51 /* GADMAdapterBidMachine.m in Sources */,
+				D912969F228ADCBB002A8C51 /* GADBidMachineUtils+Request.m in Sources */,
+				D91296A9228BF782002A8C51 /* GADMBidMachineRewardedAd.m in Sources */,
 				D9129699228ABE49002A8C51 /* GADMBidMachineBannerAd.m in Sources */,
-				D9129696228AB5F1002A8C51 /* GADMediationAdapterBidMachine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +528,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WG4VFF78ZM;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -500,7 +541,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WG4VFF78ZM;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

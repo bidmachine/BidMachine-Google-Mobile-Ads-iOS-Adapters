@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
 @interface AppDelegate ()
 
@@ -16,7 +17,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus * _Nonnull status) {
+        NSDictionary *statuses = status.adapterStatusesByClassName;
+        NSDictionary *new = [NSDictionary new];
+        NSLog(@"%@", [statuses.allKeys componentsJoinedByString:@","]);
+    }];
     return YES;
 }
 
