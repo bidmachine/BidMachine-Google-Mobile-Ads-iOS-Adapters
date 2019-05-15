@@ -7,14 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <BidMachine/BidMachine.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
+@interface GADMBidMachineBannerAd : NSObject<GADCustomEventBanner>
 
-@interface GADMBidMachineBannerAd : NSObject
-
-- (instancetype)initWithConnector:(id<GADMAdNetworkConnector>)connector adapter:(id<GADMAdNetworkAdapter>)adapter;
-- (void)getBannerWithSize:(GADAdSize)adSize;
+@property (nonatomic, weak) id<GADCustomEventBannerDelegate> delegate;
 
 @end
 

@@ -6,12 +6,12 @@
 //  Copyright © 2019 bidmachine. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
 @interface GADMBidMachineRewardedAd : NSObject
 
+- (instancetype)initWithConnector:(id<GADMAdNetworkConnector>)connector adapter:(id<GADMAdNetworkAdapter>)adapter;
+- (void)getInterstitial;
+
 @end
 
-NS_ASSUME_NONNULL_END

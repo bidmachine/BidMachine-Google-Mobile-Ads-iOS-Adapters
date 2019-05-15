@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSString *sellerId;
 @property (nonatomic, assign) BOOL testMode;
 @property (nonatomic, assign) BOOL loggingEnabled;
+@property (nonatomic, assign) BOOL isUnderGDPR;
+@property (nonatomic, assign) BOOL hasUserConsent;
 @property (nonatomic, assign) NSString *userId;
 @property (nonatomic, strong) NSString *keywords;
 @property (nonatomic, strong) NSArray <NSString *> *blockedCategories;

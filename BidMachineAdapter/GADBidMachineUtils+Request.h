@@ -11,7 +11,10 @@
 
 @interface GADBidMachineUtils (Request)
 - (BDMBannerRequest *)setupBannerRequestWithSize:(BDMBannerAdSize)size
-                                       connector:(id<GADMAdNetworkConnector>)connector;
-- (BDMInterstitialRequest *)interstitialRequestWithConnector:(id<GADMAdNetworkConnector>)connector;
-- (BDMRewardedRequest *)rewardedRequestWithConnector:(id<GADMAdNetworkConnector>)connector;
+                                 serverParameter:(NSString *)serverParameter
+                                         request:(GADCustomEventRequest *)request;
+- (BDMInterstitialRequest *)interstitialRequestWithServerParameter:(NSString *)serverParameter
+                                                           request:(GADCustomEventRequest *)request;
+- (BDMRewardedRequest *)rewardedRequestWithServerParameter:(NSString *)serverParameter
+                                                   request:(GADCustomEventRequest *)request;
 @end

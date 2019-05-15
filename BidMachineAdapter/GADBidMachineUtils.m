@@ -20,6 +20,30 @@
     return _sharedUtils;
 }
 
+
+- (NSDictionary *)getRequestInfoFrom:(NSString *)string
+                             request:(GADCustomEventRequest *)request{
+    NSMutableDictionary *requestInfo = [[self getRequestInfoFrom:string] mutableCopy];
+    if (request.additionalParameters) {
+        [requestInfo addEntriesFromDictionary:request.additionalParameters];
+    }
+    if (request.userHasLocation) {
+        requestInfo[@"lat"] = @(request.userLatitude);
+        requestInfo[@"lon"] = @(request.userLongitude);
+    }
+    return requestInfo;
+}
+
+- (NSDictionary *)getRequestInfoFrom:(NSString *)string {
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error = nil;
+    NSDictionary *requestInfo = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+    if (error) {
+        NSLog(@"%@", error.localizedDescription);
+    }
+    return requestInfo;
+}
+
 - (GADVersionNumber)getSDKVersionFrom:(NSString *)version {
     GADVersionNumber gadVersion = {0};
     NSArray<NSString *> *components = [version componentsSeparatedByString:@"."];
@@ -45,9 +69,15 @@
 
 - (NSDictionary *)getRequestInfoFromConnector:(id<GADMAdNetworkConnector>)connector {
     NSMutableDictionary *requestInfo = [NSMutableDictionary new];
+    if (connector.testMode) {
+        requestInfo[@"test_mode"] = @YES;
+    }
+    if (connector.childDirectedTreatment) {
+        requestInfo[@"coppa"] = @YES;
+    }
     if (connector.networkExtras) {
         NSDictionary *networkExtras = [self getRequestInfoFromNetworkExtras:connector.networkExtras];
-        requestInfo = [[NSMutableDictionary alloc] initWithDictionary:networkExtras];
+        [requestInfo addEntriesFromDictionary:networkExtras];
     }
     if (connector.credentials) {
         [requestInfo addEntriesFromDictionary:connector.credentials];
@@ -71,7 +101,11 @@
     requestInfo[@"sturl"] = networkExtras.storeURL.absoluteString;
     requestInfo[@"stid"] = networkExtras.storeId;
     requestInfo[@"paid"] = @(networkExtras.paid);
-    requestInfo[@"coppa"] = @(networkExtras.coppa);
+    requestInfo[@"gdpr"] = @(networkExtras.isUnderGDPR);
+    requestInfo[@"consent"] = @(networkExtras.hasUserConsent);
+    if (networkExtras.coppa) {
+        requestInfo[@"coppa"] = @YES;
+    }
     requestInfo[@"priceFloors"] = networkExtras.priceFloors;
     return requestInfo;
 }

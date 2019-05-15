@@ -13,42 +13,45 @@
 @implementation GADBidMachineUtils (Request)
 
 - (BDMBannerRequest *)setupBannerRequestWithSize:(BDMBannerAdSize)size
-                                       connector:(id<GADMAdNetworkConnector>)connector{
-    BDMBannerRequest *request = [BDMBannerRequest new];
-    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFromConnector:connector];
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:connector.userLatitude longitude:connector.userLongitude];
-    [request setAdSize:size];
+                                 serverParameter:(NSString *)serverParameter
+                                         request:(GADCustomEventRequest *)request{
+    BDMBannerRequest *bannerRequest = [BDMBannerRequest new];
+    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFrom:serverParameter request:request];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[requestInfo[@"lat"] doubleValue] longitude:[requestInfo[@"lon"] doubleValue]];
+    [bannerRequest setAdSize:size];
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithRequestInfo:requestInfo]];
-    [request setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
-    [request setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[@"priceFloors"]]];
-    return request;
+    [bannerRequest setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
+    [bannerRequest setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[@"priceFloors"]]];
+    return bannerRequest;
 }
 
-- (BDMInterstitialRequest *)interstitialRequestWithConnector:(id<GADMAdNetworkConnector>)connector {
-    BDMInterstitialRequest *request = [BDMInterstitialRequest new];
-    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFromConnector:connector];
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:connector.userLatitude longitude:connector.userLongitude];
-    [request setType:[self setupInterstitialAdType:requestInfo[@"ad_content_type"]]];
+- (BDMInterstitialRequest *)interstitialRequestWithServerParameter:(NSString *)serverParameter
+                                                           request:(GADCustomEventRequest *)request {
+    BDMInterstitialRequest *interstitialRequest = [BDMInterstitialRequest new];
+    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFrom:serverParameter request:request];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[requestInfo[@"lat"] doubleValue] longitude:[requestInfo[@"lon"] doubleValue]];
+    [interstitialRequest setType:[self setupInterstitialAdType:requestInfo[@"ad_content_type"]]];
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithRequestInfo:requestInfo]];
-    [request setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
-    [request setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[@"priceFloors"]]];
-    return request;
+    [interstitialRequest setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
+    [interstitialRequest setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[@"priceFloors"]]];
+    return interstitialRequest;
 }
 
-- (BDMRewardedRequest *)rewardedRequestWithConnector:(id<GADMAdNetworkConnector>)connector {
-    BDMRewardedRequest *request = [BDMRewardedRequest new];
-    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFromConnector:connector];
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:connector.userLatitude longitude:connector.userLongitude];
+- (BDMRewardedRequest *)rewardedRequestWithServerParameter:(NSString *)serverParameter
+                                                   request:(GADCustomEventRequest *)request {
+    BDMRewardedRequest *rewardedRequest = [BDMRewardedRequest new];
+    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFrom:serverParameter request:request];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[requestInfo[@"lat"] doubleValue] longitude:[requestInfo[@"lon"] doubleValue]];
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithRequestInfo:requestInfo]];
-    [request setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
-    [request setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[@"priceFloors"]]];
-    return request;
+    [rewardedRequest setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
+    [rewardedRequest setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[@"priceFloors"]]];
+    return rewardedRequest;
 }
 
 - (BDMUserRestrictions *)setupUserRestrictionsWithRequestInfo:(NSDictionary *)requestInfo {
     BDMUserRestrictions *restrictions = [BDMUserRestrictions new];
-    [restrictions setHasConsent:[[MoPub sharedInstance] canCollectPersonalInfo]];
-    [restrictions setSubjectToGDPR:[[MoPub sharedInstance] isGDPRApplicable]];
+    [restrictions setHasConsent:[requestInfo[@"consent"] boolValue]];
+    [restrictions setSubjectToGDPR:[requestInfo[@"gdpr"] boolValue]];
     [restrictions setCoppa:[requestInfo[@"coppa"] boolValue]];
     [[BDMSdk sharedSdk] setEnableLogging:[requestInfo[@"logging_enabled"] boolValue]];
     return restrictions;

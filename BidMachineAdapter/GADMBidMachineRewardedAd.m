@@ -7,7 +7,15 @@
 //
 
 #import "GADMBidMachineRewardedAd.h"
+#import "GADBidMachineUtils+Request.h"
+#import <BidMachine/BidMachine.h>
+
+@interface GADMBidMachineRewardedAd()
+
+@end
 
 @implementation GADMBidMachineRewardedAd
+
+
 
 @end
