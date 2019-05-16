@@ -8,10 +8,7 @@
 
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
-@interface GADMBidMachineRewardedAd : NSObject
-
-- (instancetype)initWithConnector:(id<GADMAdNetworkConnector>)connector adapter:(id<GADMAdNetworkAdapter>)adapter;
-- (void)getInterstitial;
+@interface GADMBidMachineRewardedAd : NSObject <GADMRewardBasedVideoAdNetworkAdapter>
 
 @end
 
