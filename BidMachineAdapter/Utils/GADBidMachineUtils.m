@@ -33,6 +33,8 @@
         [[BDMSdk sharedSdk] startSessionWithSellerID:sellerId configuration:config completion:^{
             NSLog(@"BidMachine SDK was successfully initialized!");
         }];
+    } else {
+        NSLog(@"BidMachine's initialization skipped. The sellerId is empty or has an incorrect type.");
     }
 }
 
@@ -112,6 +114,8 @@
     requestInfo[kBidMachineConsentString] = networkExtras.consentString;
     requestInfo[kBidMachineUserId] = networkExtras.userId;
     requestInfo[kBidMachineKeywords] = networkExtras.keywords;
+    requestInfo[kBidMachineGender] = networkExtras.gender;
+    requestInfo[kBidMachineYearOfBirth] = networkExtras.yearOfBirth;
     requestInfo[kBidMachineBlockedCategories] = [networkExtras.blockedCategories componentsJoinedByString:@","];
     requestInfo[kBidMachineBlockedAdvertisers] = [networkExtras.blockedAdvertisers componentsJoinedByString:@","];
     requestInfo[kBidMachineBlockedApps] = [networkExtras.blockedApps componentsJoinedByString:@","];
@@ -121,7 +125,8 @@
     requestInfo[kBidMachineStoreURL] = networkExtras.storeURL.absoluteString;
     requestInfo[kBidMachineStoreId] = networkExtras.storeId;
     requestInfo[kBidMachinePaid] = @(networkExtras.paid);
-    
+    requestInfo[kBidMachineLatitude] = @(networkExtras.userLatitude);
+    requestInfo[kBidMachineLongitude] = @(networkExtras.userLongitude);
     if (networkExtras.coppa) {
         requestInfo[kBidMachineCoppa] = @YES;
     }

@@ -57,7 +57,7 @@
 }
 
 - (void)interstitial:(nonnull BDMInterstitial *)interstitial failedToPresentWithError:(nonnull NSError *)error {
-    
+    NSLog(@"Interstitial failed to present!");
 }
 
 - (void)interstitialDidDismiss:(nonnull BDMInterstitial *)interstitial {

@@ -55,7 +55,7 @@
             [self.rewardedAdConnector adapterDidSetUpRewardBasedVideoAd:self];
         }];
     } else {
-        NSString *description = @"Invalid seller ID!";
+        NSString *description = @"BidMachine's initialization skipped. The sellerId is empty or has an incorrect type.";
         NSDictionary *userInfo = @{NSLocalizedDescriptionKey : description,
                                    NSLocalizedFailureReasonErrorKey : description};
         NSError *error = [NSError errorWithDomain:@"com.google.mediation.bidmachine" code:0 userInfo:userInfo];
@@ -101,7 +101,7 @@
 }
 
 - (void)rewarded:(nonnull BDMRewarded *)rewarded failedToPresentWithError:(nonnull NSError *)error {
-    
+    NSLog(@"Rewarded failed to present!");
 }
 
 - (void)rewardedWillPresent:(nonnull BDMRewarded *)rewarded {
