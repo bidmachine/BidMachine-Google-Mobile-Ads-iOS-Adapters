@@ -19,7 +19,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus * _Nonnull status) {
         NSDictionary *statuses = status.adapterStatusesByClassName;
-        NSDictionary *new = [NSDictionary new];
         NSLog(@"%@", [statuses.allKeys componentsJoinedByString:@","]);
     }];
     return YES;

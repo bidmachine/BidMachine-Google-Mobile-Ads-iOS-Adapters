@@ -7,13 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "GADBidMachineNetworkExtras.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
 @import GoogleMobileAdsMediationTestSuite;
 
 @interface ViewController () <GADBannerViewDelegate>
 
-@property(nonatomic, strong) GADBannerView *bannerView;
+@property (nonatomic, strong) GADBannerView *bannerView;
 
 @end
 
@@ -23,11 +24,16 @@
     [super viewDidLoad];
     
     self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    self.bannerView.delegate = self;
     
     [self addBannerViewToView:self.bannerView];
     self.bannerView.adUnitID = @"ca-app-pub-1405929557079197/7727940578";
     self.bannerView.rootViewController = self;
-    [self.bannerView loadRequest:[GADRequest request]];
+    GADRequest *request = [GADRequest request];
+    GADBidMachineNetworkExtras *extras = [request adNetworkExtrasFor:GADBidMachineNetworkExtras.class];
+    [extras setCoppa:YES];
+    [request registerAdNetworkExtras:extras];
+    [self.bannerView loadRequest:request];
     
 }
 
@@ -58,6 +64,10 @@
                                                             multiplier:1
                                                               constant:0]
                                 ]];
+}
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    NSString *className = bannerView.adNetworkClassName;
 }
 
 

@@ -15,13 +15,14 @@
 		D912967B228AA8D2002A8C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D912967A228AA8D2002A8C51 /* Assets.xcassets */; };
 		D912967E228AA8D2002A8C51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D912967C228AA8D2002A8C51 /* LaunchScreen.storyboard */; };
 		D9129681228AA8D2002A8C51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9129680228AA8D2002A8C51 /* main.m */; };
-		D9129699228ABE49002A8C51 /* GADMBidMachineBannerAd.m in Sources */ = {isa = PBXBuildFile; fileRef = D9129698228ABE49002A8C51 /* GADMBidMachineBannerAd.m */; };
+		D9129699228ABE49002A8C51 /* BidMachineCustomEventBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = D9129698228ABE49002A8C51 /* BidMachineCustomEventBanner.m */; };
 		D912969C228ABFFD002A8C51 /* GADBidMachineUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D912969B228ABFFD002A8C51 /* GADBidMachineUtils.m */; };
 		D912969F228ADCBB002A8C51 /* GADBidMachineUtils+Request.m in Sources */ = {isa = PBXBuildFile; fileRef = D912969E228ADCBB002A8C51 /* GADBidMachineUtils+Request.m */; };
 		D91296A2228AEE7C002A8C51 /* GADBidMachineNetworkExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = D91296A1228AEE7C002A8C51 /* GADBidMachineNetworkExtras.m */; };
-		D91296A6228BF769002A8C51 /* GADMBidMachineInterstitialAd.m in Sources */ = {isa = PBXBuildFile; fileRef = D91296A5228BF769002A8C51 /* GADMBidMachineInterstitialAd.m */; };
+		D91296A6228BF769002A8C51 /* BidMachineCustomEventInterstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = D91296A5228BF769002A8C51 /* BidMachineCustomEventInterstitial.m */; };
 		D91296A9228BF782002A8C51 /* GADMBidMachineRewardedAd.m in Sources */ = {isa = PBXBuildFile; fileRef = D91296A8228BF782002A8C51 /* GADMBidMachineRewardedAd.m */; };
 		D9FB5644228C3FD600D84AF7 /* libBidMachineAdapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D912968B228AAB01002A8C51 /* libBidMachineAdapter.a */; };
+		D9FB5650228DAB4000D84AF7 /* GADMAdapterBidMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FB564E228DAB4000D84AF7 /* GADMAdapterBidMachine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,18 +54,21 @@
 		D912967F228AA8D2002A8C51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9129680228AA8D2002A8C51 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D912968B228AAB01002A8C51 /* libBidMachineAdapter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBidMachineAdapter.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9129697228ABE49002A8C51 /* GADMBidMachineBannerAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMBidMachineBannerAd.h; sourceTree = "<group>"; };
-		D9129698228ABE49002A8C51 /* GADMBidMachineBannerAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADMBidMachineBannerAd.m; sourceTree = "<group>"; };
+		D9129697228ABE49002A8C51 /* BidMachineCustomEventBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineCustomEventBanner.h; sourceTree = "<group>"; };
+		D9129698228ABE49002A8C51 /* BidMachineCustomEventBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineCustomEventBanner.m; sourceTree = "<group>"; };
 		D912969A228ABFFD002A8C51 /* GADBidMachineUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADBidMachineUtils.h; sourceTree = "<group>"; };
 		D912969B228ABFFD002A8C51 /* GADBidMachineUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADBidMachineUtils.m; sourceTree = "<group>"; };
 		D912969D228ADCBB002A8C51 /* GADBidMachineUtils+Request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GADBidMachineUtils+Request.h"; sourceTree = "<group>"; };
 		D912969E228ADCBB002A8C51 /* GADBidMachineUtils+Request.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GADBidMachineUtils+Request.m"; sourceTree = "<group>"; };
 		D91296A0228AEE7C002A8C51 /* GADBidMachineNetworkExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADBidMachineNetworkExtras.h; sourceTree = "<group>"; };
 		D91296A1228AEE7C002A8C51 /* GADBidMachineNetworkExtras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADBidMachineNetworkExtras.m; sourceTree = "<group>"; };
-		D91296A4228BF769002A8C51 /* GADMBidMachineInterstitialAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMBidMachineInterstitialAd.h; sourceTree = "<group>"; };
-		D91296A5228BF769002A8C51 /* GADMBidMachineInterstitialAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADMBidMachineInterstitialAd.m; sourceTree = "<group>"; };
+		D91296A4228BF769002A8C51 /* BidMachineCustomEventInterstitial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineCustomEventInterstitial.h; sourceTree = "<group>"; };
+		D91296A5228BF769002A8C51 /* BidMachineCustomEventInterstitial.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineCustomEventInterstitial.m; sourceTree = "<group>"; };
 		D91296A7228BF782002A8C51 /* GADMBidMachineRewardedAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMBidMachineRewardedAd.h; sourceTree = "<group>"; };
 		D91296A8228BF782002A8C51 /* GADMBidMachineRewardedAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADMBidMachineRewardedAd.m; sourceTree = "<group>"; };
+		D9FB564A228D8F1E00D84AF7 /* GADMAdapterBidMachineConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMAdapterBidMachineConstants.h; sourceTree = "<group>"; };
+		D9FB564D228DAB4000D84AF7 /* GADMAdapterBidMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMAdapterBidMachine.h; sourceTree = "<group>"; };
+		D9FB564E228DAB4000D84AF7 /* GADMAdapterBidMachine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADMAdapterBidMachine.m; sourceTree = "<group>"; };
 		EE23AE142768802690EC2630 /* libPods-BidMachineAdapter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BidMachineAdapter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -139,20 +143,31 @@
 		D912968C228AAB01002A8C51 /* BidMachineAdapter */ = {
 			isa = PBXGroup;
 			children = (
-				D9129697228ABE49002A8C51 /* GADMBidMachineBannerAd.h */,
-				D9129698228ABE49002A8C51 /* GADMBidMachineBannerAd.m */,
-				D91296A4228BF769002A8C51 /* GADMBidMachineInterstitialAd.h */,
-				D91296A5228BF769002A8C51 /* GADMBidMachineInterstitialAd.m */,
+				D9FB5649228D85AD00D84AF7 /* Utils */,
+				D9129697228ABE49002A8C51 /* BidMachineCustomEventBanner.h */,
+				D9129698228ABE49002A8C51 /* BidMachineCustomEventBanner.m */,
+				D91296A4228BF769002A8C51 /* BidMachineCustomEventInterstitial.h */,
+				D91296A5228BF769002A8C51 /* BidMachineCustomEventInterstitial.m */,
 				D91296A7228BF782002A8C51 /* GADMBidMachineRewardedAd.h */,
 				D91296A8228BF782002A8C51 /* GADMBidMachineRewardedAd.m */,
 				D91296A0228AEE7C002A8C51 /* GADBidMachineNetworkExtras.h */,
 				D91296A1228AEE7C002A8C51 /* GADBidMachineNetworkExtras.m */,
+			);
+			path = BidMachineAdapter;
+			sourceTree = "<group>";
+		};
+		D9FB5649228D85AD00D84AF7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
 				D912969A228ABFFD002A8C51 /* GADBidMachineUtils.h */,
 				D912969B228ABFFD002A8C51 /* GADBidMachineUtils.m */,
 				D912969D228ADCBB002A8C51 /* GADBidMachineUtils+Request.h */,
 				D912969E228ADCBB002A8C51 /* GADBidMachineUtils+Request.m */,
+				D9FB564A228D8F1E00D84AF7 /* GADMAdapterBidMachineConstants.h */,
+				D9FB564D228DAB4000D84AF7 /* GADMAdapterBidMachine.h */,
+				D9FB564E228DAB4000D84AF7 /* GADMAdapterBidMachine.m */,
 			);
-			path = BidMachineAdapter;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		FD3F1480F05461479993D4B1 /* Frameworks */ = {
@@ -343,12 +358,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D91296A6228BF769002A8C51 /* GADMBidMachineInterstitialAd.m in Sources */,
+				D91296A6228BF769002A8C51 /* BidMachineCustomEventInterstitial.m in Sources */,
 				D91296A2228AEE7C002A8C51 /* GADBidMachineNetworkExtras.m in Sources */,
 				D912969C228ABFFD002A8C51 /* GADBidMachineUtils.m in Sources */,
+				D9FB5650228DAB4000D84AF7 /* GADMAdapterBidMachine.m in Sources */,
 				D912969F228ADCBB002A8C51 /* GADBidMachineUtils+Request.m in Sources */,
 				D91296A9228BF782002A8C51 /* GADMBidMachineRewardedAd.m in Sources */,
-				D9129699228ABE49002A8C51 /* GADMBidMachineBannerAd.m in Sources */,
+				D9129699228ABE49002A8C51 /* BidMachineCustomEventBanner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
