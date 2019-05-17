@@ -7,6 +7,7 @@
 //
 
 #import "GADBidMachineUtils+Request.h"
+#import "GADMAdapterBidMachineConstants.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import <BidMachine/BidMachine.h>
 
@@ -17,11 +18,11 @@
                                          request:(GADCustomEventRequest *)request{
     BDMBannerRequest *bannerRequest = [BDMBannerRequest new];
     NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFrom:serverParameter request:request];
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:[requestInfo[@"lat"] doubleValue] longitude:[requestInfo[@"lon"] doubleValue]];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[requestInfo[kBidMachineLatitude] doubleValue] longitude:[requestInfo[kBidMachineLongitude] doubleValue]];
     [bannerRequest setAdSize:size];
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithRequestInfo:requestInfo]];
     [bannerRequest setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
-    [bannerRequest setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[@"priceFloors"]]];
+    [bannerRequest setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[kBidMachinePriceFloors]]];
     return bannerRequest;
 }
 
@@ -29,11 +30,11 @@
                                                            request:(GADCustomEventRequest *)request {
     BDMInterstitialRequest *interstitialRequest = [BDMInterstitialRequest new];
     NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFrom:serverParameter request:request];
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:[requestInfo[@"lat"] doubleValue] longitude:[requestInfo[@"lon"] doubleValue]];
-    [interstitialRequest setType:[self setupInterstitialAdType:requestInfo[@"ad_content_type"]]];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[requestInfo[kBidMachineLatitude] doubleValue] longitude:[requestInfo[kBidMachineLongitude] doubleValue]];
+    [interstitialRequest setType:[self setupInterstitialAdType:requestInfo[kBidMachineAdContentType]]];
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithRequestInfo:requestInfo]];
     [interstitialRequest setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
-    [interstitialRequest setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[@"priceFloors"]]];
+    [interstitialRequest setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[kBidMachinePriceFloors]]];
     return interstitialRequest;
 }
 
@@ -44,20 +45,21 @@
     if (rewardedAdConnector.userHasLocation) {
         location = [[CLLocation alloc] initWithLatitude:rewardedAdConnector.userLatitude longitude:rewardedAdConnector.userLongitude];
     } else {
-        location = [[CLLocation alloc] initWithLatitude:[requestInfo[@"lat"] doubleValue] longitude:[requestInfo[@"lon"] doubleValue]];
+        location = [[CLLocation alloc] initWithLatitude:[requestInfo[kBidMachineLatitude] doubleValue] longitude:[requestInfo[kBidMachineLongitude] doubleValue]];
     }
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithRequestInfo:requestInfo]];
     [rewardedRequest setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
-    [rewardedRequest setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[@"priceFloors"]]];
+    [rewardedRequest setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[kBidMachinePriceFloors]]];
     return rewardedRequest;
 }
 
 - (BDMUserRestrictions *)setupUserRestrictionsWithRequestInfo:(NSDictionary *)requestInfo {
     BDMUserRestrictions *restrictions = [BDMUserRestrictions new];
-    [restrictions setHasConsent:[requestInfo[@"consent"] boolValue]];
-    [restrictions setSubjectToGDPR:[requestInfo[@"gdpr"] boolValue]];
-    [restrictions setCoppa:[requestInfo[@"coppa"] boolValue]];
-    [[BDMSdk sharedSdk] setEnableLogging:[requestInfo[@"logging_enabled"] boolValue]];
+    [restrictions setHasConsent:[requestInfo[kBidMachineHasConsent] boolValue]];
+    [restrictions setSubjectToGDPR:[requestInfo[kBidMachineSubjectToGDPR] boolValue]];
+    [restrictions setCoppa:[requestInfo[kBidMachineCoppa] boolValue]];
+    [restrictions setConsentString:requestInfo[kBidMachineConsentString]];
+    [[BDMSdk sharedSdk] setEnableLogging:[requestInfo[kBidMachineLoggingEnabled] boolValue]];
     return restrictions;
 }
 

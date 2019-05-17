@@ -7,6 +7,7 @@
 //
 
 #import "GADMBidMachineRewardedAd.h"
+#import "GADMAdapterBidMachineConstants.h"
 #import "GADBidMachineNetworkExtras.h"
 #import "GADBidMachineUtils+Request.h"
 #import <BidMachine/BidMachine.h>
@@ -42,9 +43,9 @@
 - (void)setUp {
     id<GADMRewardBasedVideoAdNetworkConnector> strongConnector = self.rewardedAdConnector;
     NSDictionary *serverInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFromConnector:strongConnector];
-    NSString *sellerId = [serverInfo[@"seller_id"] stringValue];
-    BOOL testModeEnabled = [serverInfo[@"test_mode"] boolValue];
-    BOOL loggingEnabled = [serverInfo[@"logging_enabled"] boolValue];
+    NSString *sellerId = [serverInfo[kBidMachineSellerId] stringValue];
+    BOOL testModeEnabled = [serverInfo[kBidMachineTestMode] boolValue];
+    BOOL loggingEnabled = [serverInfo[kBidMachineLoggingEnabled] boolValue];
     if (sellerId) {
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
         [config setTestMode:testModeEnabled];
@@ -53,6 +54,12 @@
             NSLog(@"BidMachine SDK was successfully initialized!");
             [self.rewardedAdConnector adapterDidSetUpRewardBasedVideoAd:self];
         }];
+    } else {
+        NSString *description = @"Invalid seller ID!";
+        NSDictionary *userInfo = @{NSLocalizedDescriptionKey : description,
+                                   NSLocalizedFailureReasonErrorKey : description};
+        NSError *error = [NSError errorWithDomain:@"com.google.mediation.bidmachine" code:0 userInfo:userInfo];
+        [self.rewardedAdConnector adapter:self didFailToSetUpRewardBasedVideoAdWithError:error];
     }
 }
 

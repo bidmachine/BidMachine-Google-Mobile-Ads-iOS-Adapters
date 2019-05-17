@@ -7,6 +7,7 @@
 //
 
 #import "GADBidMachineUtils.h"
+#import "GADMAdapterBidMachineConstants.h"
 #import "GADBidMachineNetworkExtras.h"
 
 @implementation GADBidMachineUtils
@@ -22,9 +23,9 @@
 
 - (void)initializeBidMachineWith:(nullable NSString *)serverParameter request:(nonnull GADCustomEventRequest *)request {
     NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFrom:serverParameter request:request];
-    NSString *sellerId = [requestInfo[@"seller_id"] stringValue];
-    BOOL testModeEnabled = [requestInfo[@"test_mode"] boolValue];
-    BOOL loggingEnabled = [requestInfo[@"logging_enabled"] boolValue];
+    NSString *sellerId = [requestInfo[kBidMachineSellerId] stringValue];
+    BOOL testModeEnabled = [requestInfo[kBidMachineTestMode] boolValue];
+    BOOL loggingEnabled = [requestInfo[kBidMachineLoggingEnabled] boolValue];
     if (sellerId) {
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
         [config setTestMode:testModeEnabled];
@@ -42,8 +43,8 @@
         [requestInfo addEntriesFromDictionary:request.additionalParameters];
     }
     if (request.userHasLocation) {
-        requestInfo[@"lat"] = @(request.userLatitude);
-        requestInfo[@"lon"] = @(request.userLongitude);
+        requestInfo[kBidMachineLatitude] = @(request.userLatitude);
+        requestInfo[kBidMachineLongitude] = @(request.userLongitude);
     }
     return requestInfo;
 }
@@ -85,10 +86,10 @@
     NSMutableDictionary *requestInfo = [NSMutableDictionary new];
     NSString *parameters = [connector.credentials valueForKey:@"parameter"];
     if (connector.testMode) {
-        requestInfo[@"test_mode"] = @YES;
+        requestInfo[kBidMachineTestMode] = @YES;
     }
     if (connector.childDirectedTreatment) {
-        requestInfo[@"coppa"] = @YES;
+        requestInfo[kBidMachineCoppa] = @YES;
     }
     if (connector.networkExtras) {
         NSDictionary *networkExtras = [self getRequestInfoFromNetworkExtras:connector.networkExtras];
@@ -103,26 +104,28 @@
 
 - (NSDictionary *)getRequestInfoFromNetworkExtras:(GADBidMachineNetworkExtras *)networkExtras {
     NSMutableDictionary *requestInfo = [NSMutableDictionary new];
-    requestInfo[@"seller_id"] = networkExtras.sellerId;
-    requestInfo[@"test_mode"] = @(networkExtras.testMode);
-    requestInfo[@"logging_enabled"] = @(networkExtras.loggingEnabled);
-    requestInfo[@"userId"] = networkExtras.userId;
-    requestInfo[@"keywords"] = networkExtras.keywords;
-    requestInfo[@"bcat"] = [networkExtras.blockedCategories componentsJoinedByString:@","];
-    requestInfo[@"badv"] = [networkExtras.blockedAdvertisers componentsJoinedByString:@","];
-    requestInfo[@"bapps"] = [networkExtras.blockedApps componentsJoinedByString:@","];
-    requestInfo[@"country"] = networkExtras.country;
-    requestInfo[@"city"] = networkExtras.city;
-    requestInfo[@"zip"] = networkExtras.zip;
-    requestInfo[@"sturl"] = networkExtras.storeURL.absoluteString;
-    requestInfo[@"stid"] = networkExtras.storeId;
-    requestInfo[@"paid"] = @(networkExtras.paid);
-    requestInfo[@"gdpr"] = @(networkExtras.isUnderGDPR);
-    requestInfo[@"consent"] = @(networkExtras.hasUserConsent);
+    requestInfo[kBidMachineSellerId] = networkExtras.sellerId;
+    requestInfo[kBidMachineTestMode] = @(networkExtras.testMode);
+    requestInfo[kBidMachineLoggingEnabled] = @(networkExtras.loggingEnabled);
+    requestInfo[kBidMachineSubjectToGDPR] = @(networkExtras.isUnderGDPR);
+    requestInfo[kBidMachineHasConsent] = @(networkExtras.hasUserConsent);
+    requestInfo[kBidMachineConsentString] = networkExtras.consentString;
+    requestInfo[kBidMachineUserId] = networkExtras.userId;
+    requestInfo[kBidMachineKeywords] = networkExtras.keywords;
+    requestInfo[kBidMachineBlockedCategories] = [networkExtras.blockedCategories componentsJoinedByString:@","];
+    requestInfo[kBidMachineBlockedAdvertisers] = [networkExtras.blockedAdvertisers componentsJoinedByString:@","];
+    requestInfo[kBidMachineBlockedApps] = [networkExtras.blockedApps componentsJoinedByString:@","];
+    requestInfo[kBidMachineCountry] = networkExtras.country;
+    requestInfo[kBidMachineCity] = networkExtras.city;
+    requestInfo[kBidMachineZip] = networkExtras.zip;
+    requestInfo[kBidMachineStoreURL] = networkExtras.storeURL.absoluteString;
+    requestInfo[kBidMachineStoreId] = networkExtras.storeId;
+    requestInfo[kBidMachinePaid] = @(networkExtras.paid);
+    
     if (networkExtras.coppa) {
-        requestInfo[@"coppa"] = @YES;
+        requestInfo[kBidMachineCoppa] = @YES;
     }
-    requestInfo[@"priceFloors"] = networkExtras.priceFloors;
+    requestInfo[kBidMachinePriceFloors] = networkExtras.priceFloors;
     return requestInfo;
 }
 
@@ -132,17 +135,19 @@
         [targeting setDeviceLocation:location];
     }
     if (requestInfo) {
-        (!requestInfo[@"userId"]) ?: [targeting setUserId:(NSString *)requestInfo[@"userId"]];
-        (!requestInfo[@"keywords"]) ?: [targeting setKeywords:requestInfo[@"keywords"]];
-        (!requestInfo[@"bcat"]) ?: [targeting setBlockedCategories:[requestInfo[@"bcat"] componentsSeparatedByString:@","]];
-        (!requestInfo[@"badv"]) ?: [targeting setBlockedAdvertisers:[requestInfo[@"badv"] componentsSeparatedByString:@","]];
-        (!requestInfo[@"bapps"]) ?: [targeting setBlockedApps:[requestInfo[@"bapps"] componentsSeparatedByString:@","]];
-        (!requestInfo[@"country"]) ?: [targeting setCountry:requestInfo[@"country"]];
-        (!requestInfo[@"city"]) ?: [targeting setCity:requestInfo[@"city"]];
-        (!requestInfo[@"zip"]) ?: [targeting setZip:requestInfo[@"zip"]];
-        (!requestInfo[@"sturl"]) ?: [targeting setStoreURL:[NSURL URLWithString:requestInfo[@"sturl"]]];
-        (!requestInfo[@"stid"]) ?: [targeting setStoreId:requestInfo[@"stid"]];
-        (!requestInfo[@"paid"]) ?: [targeting setPaid:[requestInfo[@"paid"] boolValue]];
+        (!requestInfo[kBidMachineUserId]) ?: [targeting setUserId:(NSString *)requestInfo[kBidMachineUserId]];
+        (!requestInfo[kBidMachineGender]) ?: [targeting setGender:[self userGenderSetting:requestInfo[kBidMachineGender]]];
+        (!requestInfo[kBidMachineYearOfBirth]) ?: [targeting setYearOfBirth:requestInfo[kBidMachineYearOfBirth]];
+        (!requestInfo[kBidMachineKeywords]) ?: [targeting setKeywords:requestInfo[kBidMachineKeywords]];
+        (!requestInfo[kBidMachineBlockedCategories]) ?: [targeting setBlockedCategories:[requestInfo[kBidMachineBlockedCategories] componentsSeparatedByString:@","]];
+        (!requestInfo[kBidMachineBlockedAdvertisers]) ?: [targeting setBlockedAdvertisers:[requestInfo[kBidMachineBlockedAdvertisers] componentsSeparatedByString:@","]];
+        (!requestInfo[kBidMachineBlockedApps]) ?: [targeting setBlockedApps:[requestInfo[kBidMachineBlockedApps] componentsSeparatedByString:@","]];
+        (!requestInfo[kBidMachineCountry]) ?: [targeting setCountry:requestInfo[kBidMachineCountry]];
+        (!requestInfo[kBidMachineCity]) ?: [targeting setCity:requestInfo[kBidMachineCity]];
+        (!requestInfo[kBidMachineZip]) ?: [targeting setZip:requestInfo[kBidMachineZip]];
+        (!requestInfo[kBidMachineStoreURL]) ?: [targeting setStoreURL:[NSURL URLWithString:requestInfo[kBidMachineStoreURL]]];
+        (!requestInfo[kBidMachineStoreId]) ?: [targeting setStoreId:requestInfo[kBidMachineStoreId]];
+        (!requestInfo[kBidMachinePaid]) ?: [targeting setPaid:[requestInfo[kBidMachinePaid] boolValue]];
     }
     return targeting;
 }
@@ -168,6 +173,18 @@
         }
     }];
     return priceFloorsArr;
+}
+
+- (BDMUserGender *)userGenderSetting:(NSString *)gender {
+    BDMUserGender *userGender;
+    if ([gender isEqualToString:@"F"]) {
+        userGender = kBDMUserGenderFemale;
+    } else if ([gender isEqualToString:@"M"]) {
+        userGender = kBDMUserGenderMale;
+    } else if ([gender isEqualToString:@"O"]) {
+        userGender = kBDMUserGenderUnknown;
+    }
+    return userGender;
 }
 
 @end

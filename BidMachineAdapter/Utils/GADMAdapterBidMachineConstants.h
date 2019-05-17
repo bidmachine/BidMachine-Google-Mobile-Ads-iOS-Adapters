@@ -1,0 +1,32 @@
+//
+//  GADMAdapterBidMachineConstants.h
+//  AdMobBidMachineSample
+//
+//  Created by Yaroslav Skachkov on 5/16/19.
+//  Copyright © 2019 bidmachine. All rights reserved.
+//
+
+static NSString * const kBidMachineSellerId = @"seller_id";
+static NSString * const kBidMachineTestMode = @"test_mode";
+static NSString * const kBidMachineLoggingEnabled = @"logging_enabled";
+static NSString * const kBidMachineCoppa = @"coppa";
+static NSString * const kBidMachineAdContentType = @"ad_content_type";
+static NSString * const kBidMachineSubjectToGDPR = @"subject_to_gdpr";
+static NSString * const kBidMachineHasConsent = @"has_consent";
+static NSString * const kBidMachineConsentString = @"consent_string";
+static NSString * const kBidMachineUserId = @"user_id";
+static NSString * const kBidMachineGender = @"gender";
+static NSString * const kBidMachineYearOfBirth = @"yob";
+static NSString * const kBidMachineKeywords = @"keywords";
+static NSString * const kBidMachineCountry = @"country";
+static NSString * const kBidMachineCity = @"city";
+static NSString * const kBidMachineZip = @"zip";
+static NSString * const kBidMachineStoreURL = @"sturl";
+static NSString * const kBidMachineStoreId = @"stid";
+static NSString * const kBidMachinePaid = @"paid";
+static NSString * const kBidMachineBlockedCategories = @"bcat";
+static NSString * const kBidMachineBlockedAdvertisers = @"badv";
+static NSString * const kBidMachineBlockedApps = @"bapps";
+static NSString * const kBidMachinePriceFloors = @"price_floors";
+static NSString * const kBidMachineLatitude = @"lat";
+static NSString * const kBidMachineLongitude = @"lon";
