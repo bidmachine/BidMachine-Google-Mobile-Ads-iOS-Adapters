@@ -82,8 +82,8 @@
                                 [NSLayoutConstraint constraintWithItem:bannerView
                                                              attribute:NSLayoutAttributeBottom
                                                              relatedBy:NSLayoutRelationEqual
-                                                                toItem:self.bottomLayoutGuide
-                                                             attribute:NSLayoutAttributeTop
+                                                                toItem:self.view.safeAreaLayoutGuide
+                                                             attribute:NSLayoutAttributeBottom
                                                             multiplier:1
                                                               constant:0],
                                 [NSLayoutConstraint constraintWithItem:bannerView
@@ -154,11 +154,7 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
 
 - (void)rewardBasedVideoAd:(GADRewardBasedVideoAd *)rewardBasedVideoAd
    didRewardUserWithReward:(GADAdReward *)reward {
-    NSString *rewardMessage =
-    [NSString stringWithFormat:@"Reward received with currency %@ , amount %lf",
-     reward.type,
-     [reward.amount doubleValue]];
-    NSLog(rewardMessage);
+    NSLog(@"Reward received with currency %@ , amount %lf", reward.type, [reward.amount doubleValue]);
 }
 
 - (void)rewardBasedVideoAdDidReceiveAd:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
