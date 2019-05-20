@@ -44,7 +44,7 @@
     id<GADMRewardBasedVideoAdNetworkConnector> strongConnector = self.rewardedAdConnector;
     NSDictionary *serverInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFromConnector:strongConnector];
     NSString *sellerID = serverInfo[kBidMachineSellerId];
-    if ([sellerID isKindOfClass:NSString.class]) {
+    if (sellerID) {
         BOOL testModeEnabled = [serverInfo[kBidMachineTestMode] boolValue];
         BOOL loggingEnabled = [serverInfo[kBidMachineLoggingEnabled] boolValue];
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];

@@ -31,8 +31,8 @@
                          request:(GADCustomEventRequest *)request
                       completion:(void(^)(void))completion {
     NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFrom:serverParameter request:request];
-    NSString *sellerID = requestInfo[kBidMachineSellerId];
-    if ([sellerID isKindOfClass:NSString.class] &&
+    NSString *sellerID = [self transfromSellerID:requestInfo[kBidMachineSellerId]];
+    if (sellerID &&
         ![self.currentSellerId isEqualToString:sellerID]) {
         self.currentSellerId = sellerID;
         BOOL testModeEnabled = [requestInfo[kBidMachineTestMode] boolValue];
@@ -116,6 +116,7 @@
         NSDictionary *params = [self getRequestInfoFrom:parameters];
         [requestInfo addEntriesFromDictionary:params];
     }
+    requestInfo[kBidMachineSellerId] = [self transfromSellerID:requestInfo[kBidMachineSellerId]];
     return requestInfo;
 }
 
@@ -205,6 +206,16 @@
         userGender = kBDMUserGenderUnknown;
     }
     return userGender;
+}
+
+- (NSString *)transfromSellerID:(id)sellerId {
+    NSString *stringSellerId;
+    if ([sellerId isKindOfClass:NSString.class] && [sellerId integerValue]) {
+        stringSellerId = sellerId;
+    } else if ([sellerId isKindOfClass:NSNumber.class]) {
+        stringSellerId = [sellerId stringValue];
+    }
+    return stringSellerId;
 }
 
 @end
