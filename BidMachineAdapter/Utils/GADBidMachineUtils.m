@@ -31,7 +31,7 @@
                          request:(GADCustomEventRequest *)request
                       completion:(void(^)(void))completion {
     NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFrom:serverParameter request:request];
-    NSString *sellerID = [requestInfo[kBidMachineSellerId] stringValue];
+    NSString *sellerID = requestInfo[kBidMachineSellerId];
     if ([sellerID isKindOfClass:NSString.class] &&
         ![self.currentSellerId isEqualToString:sellerID]) {
         self.currentSellerId = sellerID;
@@ -54,10 +54,11 @@
 
 - (NSDictionary *)getRequestInfoFrom:(NSString *)string
                              request:(GADCustomEventRequest *)request{
-    NSMutableDictionary *requestInfo = [[self getRequestInfoFrom:string] mutableCopy];
+    NSMutableDictionary *requestInfo = [NSMutableDictionary new];
     if (request.additionalParameters) {
         [requestInfo addEntriesFromDictionary:request.additionalParameters];
     }
+    [requestInfo addEntriesFromDictionary:[self getRequestInfoFrom:string]];
     if (request.userHasLocation) {
         requestInfo[kBidMachineLatitude] = @(request.userLatitude);
         requestInfo[kBidMachineLongitude] = @(request.userLongitude);

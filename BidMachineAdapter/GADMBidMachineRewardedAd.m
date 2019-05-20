@@ -43,7 +43,7 @@
 - (void)setUp {
     id<GADMRewardBasedVideoAdNetworkConnector> strongConnector = self.rewardedAdConnector;
     NSDictionary *serverInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFromConnector:strongConnector];
-    NSString *sellerID = [serverInfo[kBidMachineSellerId] stringValue];
+    NSString *sellerID = serverInfo[kBidMachineSellerId];
     if ([sellerID isKindOfClass:NSString.class]) {
         BOOL testModeEnabled = [serverInfo[kBidMachineTestMode] boolValue];
         BOOL loggingEnabled = [serverInfo[kBidMachineLoggingEnabled] boolValue];
