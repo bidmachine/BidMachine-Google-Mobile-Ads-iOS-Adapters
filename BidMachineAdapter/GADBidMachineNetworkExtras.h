@@ -13,7 +13,7 @@
 /**
  Your publisher id registered in exchange dashboard
  */
-@property (nonatomic, strong) NSString *sellerId;
+@property (nonatomic, copy) NSString *sellerId;
 /**
  Enable/disable test mode
  */
@@ -37,27 +37,27 @@
 /**
  * The consent string for sending the GDPR consent.
  */
-@property (nonatomic, strong) NSString *consentString;
+@property (nonatomic, copy) NSString *consentString;
 /**
  Vendor-specific ID for the user
  */
-@property (nonatomic, assign) NSString *userId;
+@property (nonatomic, copy) NSString *userId;
 /**
  Comma separated list of keywords about the app
  */
-@property (nonatomic, strong) NSString *keywords;
+@property (nonatomic, copy) NSString *keywords;
 /**
  Blocked advertiser categories using the IAB content categories. Refer to List 5.1
  */
-@property (nonatomic, strong) NSArray <NSString *> *blockedCategories;
+@property (nonatomic, copy) NSArray <NSString *> *blockedCategories;
 /**
  Block list of advertisers by their domains (e.g., “ford.com”).
  */
-@property (nonatomic, strong) NSArray <NSString *> *blockedAdvertisers;
+@property (nonatomic, copy) NSArray <NSString *> *blockedAdvertisers;
 /**
  Block list of applications by their platform-specific exchange- independent application identifiers. These are numeric IDs.
  */
-@property (nonatomic, strong) NSArray <NSString *> *blockedApps;
+@property (nonatomic, copy) NSArray <NSString *> *blockedApps;
 /**
  Current latitude of user device.
  */
@@ -69,31 +69,31 @@
 /**
  User yob refer to OpenRTB 2.5 spec
  */
-@property (nonatomic, strong) NSNumber *yearOfBirth;
+@property (nonatomic, copy) NSNumber *yearOfBirth;
 /**
  User gender refer to OpenRTB 2.5 spec.
  */
-@property (nonatomic, strong) NSString *gender;
+@property (nonatomic, copy) NSString *gender;
 /**
  User country.
  */
-@property (nonatomic, strong) NSString *country;
+@property (nonatomic, copy) NSString *country;
 /**
  User city.
  */
-@property (nonatomic, strong) NSString *city;
+@property (nonatomic, copy) NSString *city;
 /**
  User zip code.
  */
-@property (nonatomic, strong) NSString *zip;
+@property (nonatomic, copy) NSString *zip;
 /**
  Store URL.
  */
-@property (nonatomic, strong) NSURL *storeURL;
+@property (nonatomic, copy) NSURL *storeURL;
 /**
  Numeric store id identifier.
  */
-@property (nonatomic, strong) NSString *storeId;
+@property (nonatomic, copy) NSString *storeId;
 /**
  Paid version of app.
  */
@@ -101,7 +101,7 @@
 /**
  Bids configuration for current request.
  */
-@property (nonatomic, strong) NSArray *priceFloors;
+@property (nonatomic, copy) NSArray *priceFloors;
 
 
 @end

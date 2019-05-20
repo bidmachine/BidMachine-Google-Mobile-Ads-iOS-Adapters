@@ -101,6 +101,7 @@
 }
 
 - (void)rewarded:(nonnull BDMRewarded *)rewarded failedToPresentWithError:(nonnull NSError *)error {
+    // The Google Mobile Ads SDK does not have an equivalent callback.
     NSLog(@"Rewarded failed to present!");
 }
 
@@ -113,7 +114,8 @@
 }
 
 - (void)rewardedFinishRewardAction:(nonnull BDMRewarded *)rewarded {
-    
+    GADAdReward *reward = [[GADAdReward alloc] initWithRewardType:@"" rewardAmount:[NSDecimalNumber one]];
+    [self.rewardedAdConnector adapter:self didRewardUserWithReward:reward];
 }
 
 @end

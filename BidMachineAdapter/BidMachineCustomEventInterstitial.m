@@ -59,6 +59,7 @@
 }
 
 - (void)interstitial:(nonnull BDMInterstitial *)interstitial failedToPresentWithError:(nonnull NSError *)error {
+    // The Google Mobile Ads SDK does not have an equivalent callback.
     NSLog(@"Interstitial failed to present!");
 }
 
