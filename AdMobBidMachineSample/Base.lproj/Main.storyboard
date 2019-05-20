@@ -25,11 +25,56 @@
                                     <action selector="openTestSuite:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MQf-vZ-rdv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrp-gV-GtG">
+                                <rect key="frame" x="164" y="582.5" width="86" height="30"/>
+                                <state key="normal" title="Load banner"/>
+                                <connections>
+                                    <action selector="loadBanner:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mwH-6W-Uue"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8p-Re-yea">
+                                <rect key="frame" x="51" y="632" width="105" height="30"/>
+                                <state key="normal" title="Load interstitial"/>
+                                <connections>
+                                    <action selector="loadInterstitial:" destination="BYZ-38-t0r" eventType="touchUpInside" id="98Y-nO-ceq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PkA-oP-xKb">
+                                <rect key="frame" x="52.5" y="682" width="102" height="30"/>
+                                <state key="normal" title="Load rewarded"/>
+                                <connections>
+                                    <action selector="loadRewarded:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ufh-eX-exa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ooF-XQ-3HM">
+                                <rect key="frame" x="257" y="682" width="107" height="30"/>
+                                <state key="normal" title="Show rewarded"/>
+                                <connections>
+                                    <action selector="showRewarded:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y4Z-i8-azc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZX-9N-rD5">
+                                <rect key="frame" x="256" y="632" width="109" height="30"/>
+                                <state key="normal" title="Show interstitial"/>
+                                <connections>
+                                    <action selector="showInterstitial:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gr9-cN-IIH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ooF-XQ-3HM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="3/2" id="0tL-2b-UEt"/>
+                            <constraint firstItem="PkA-oP-xKb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1/2" id="1f5-OS-Zue"/>
+                            <constraint firstItem="rrp-gV-GtG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7m5-3H-XLT"/>
                             <constraint firstItem="Dk8-MJ-SKV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JeM-Hy-dHN"/>
                             <constraint firstItem="Dk8-MJ-SKV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MpG-AX-9JP"/>
+                            <constraint firstItem="ooF-XQ-3HM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="14/9" id="V5C-92-tKH"/>
+                            <constraint firstItem="K8p-Re-yea" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1/2" id="asf-E8-iK6"/>
+                            <constraint firstItem="K8p-Re-yea" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="13/9" id="h2p-3i-FDj"/>
+                            <constraint firstItem="PkA-oP-xKb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="14/9" id="iWa-wJ-f1R"/>
+                            <constraint firstItem="rrp-gV-GtG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="4/3" id="oK8-3Y-Qmk"/>
+                            <constraint firstItem="DZX-9N-rD5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="3/2" id="peC-0C-4Ts"/>
+                            <constraint firstItem="DZX-9N-rD5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="13/9" id="pqG-9H-kmT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

@@ -22,7 +22,6 @@
 		D91296A6228BF769002A8C51 /* BidMachineCustomEventInterstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = D91296A5228BF769002A8C51 /* BidMachineCustomEventInterstitial.m */; };
 		D91296A9228BF782002A8C51 /* GADMBidMachineRewardedAd.m in Sources */ = {isa = PBXBuildFile; fileRef = D91296A8228BF782002A8C51 /* GADMBidMachineRewardedAd.m */; };
 		D9FB5644228C3FD600D84AF7 /* libBidMachineAdapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D912968B228AAB01002A8C51 /* libBidMachineAdapter.a */; };
-		D9FB5650228DAB4000D84AF7 /* GADMAdapterBidMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FB564E228DAB4000D84AF7 /* GADMAdapterBidMachine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,8 +66,6 @@
 		D91296A7228BF782002A8C51 /* GADMBidMachineRewardedAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMBidMachineRewardedAd.h; sourceTree = "<group>"; };
 		D91296A8228BF782002A8C51 /* GADMBidMachineRewardedAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADMBidMachineRewardedAd.m; sourceTree = "<group>"; };
 		D9FB564A228D8F1E00D84AF7 /* GADMAdapterBidMachineConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMAdapterBidMachineConstants.h; sourceTree = "<group>"; };
-		D9FB564D228DAB4000D84AF7 /* GADMAdapterBidMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMAdapterBidMachine.h; sourceTree = "<group>"; };
-		D9FB564E228DAB4000D84AF7 /* GADMAdapterBidMachine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADMAdapterBidMachine.m; sourceTree = "<group>"; };
 		EE23AE142768802690EC2630 /* libPods-BidMachineAdapter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BidMachineAdapter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -164,8 +161,6 @@
 				D912969D228ADCBB002A8C51 /* GADBidMachineUtils+Request.h */,
 				D912969E228ADCBB002A8C51 /* GADBidMachineUtils+Request.m */,
 				D9FB564A228D8F1E00D84AF7 /* GADMAdapterBidMachineConstants.h */,
-				D9FB564D228DAB4000D84AF7 /* GADMAdapterBidMachine.h */,
-				D9FB564E228DAB4000D84AF7 /* GADMAdapterBidMachine.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -361,7 +356,6 @@
 				D91296A6228BF769002A8C51 /* BidMachineCustomEventInterstitial.m in Sources */,
 				D91296A2228AEE7C002A8C51 /* GADBidMachineNetworkExtras.m in Sources */,
 				D912969C228ABFFD002A8C51 /* GADBidMachineUtils.m in Sources */,
-				D9FB5650228DAB4000D84AF7 /* GADMAdapterBidMachine.m in Sources */,
 				D912969F228ADCBB002A8C51 /* GADBidMachineUtils+Request.m in Sources */,
 				D91296A9228BF782002A8C51 /* GADMBidMachineRewardedAd.m in Sources */,
 				D9129699228ABE49002A8C51 /* BidMachineCustomEventBanner.m in Sources */,

@@ -8,13 +8,16 @@
 
 #import "ViewController.h"
 #import "GADBidMachineNetworkExtras.h"
+#import <BidMachine/BidMachine.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
 @import GoogleMobileAdsMediationTestSuite;
 
-@interface ViewController () <GADBannerViewDelegate>
+@interface ViewController () <GADBannerViewDelegate, GADRewardBasedVideoAdDelegate, GADInterstitialDelegate>
 
 @property (nonatomic, strong) GADBannerView *bannerView;
+@property (nonatomic, strong) GADRewardBasedVideoAd *rewarded;
+@property (nonatomic, strong) GADInterstitial *interstitial;
 
 @end
 
@@ -24,26 +27,53 @@
     [super viewDidLoad];
     
     self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    self.rewarded = [[GADRewardBasedVideoAd alloc] init];
+    // You can use test ad unit id - @"ca-app-pub-1405929557079197/8789988225" - to test interstitial ad.
+    self.interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"YOUR_AD_UNIT_ID"];
+    
     self.bannerView.delegate = self;
+    self.rewarded.delegate = self;
+    self.interstitial.delegate = self;
     
     [self addBannerViewToView:self.bannerView];
-    self.bannerView.adUnitID = @"ca-app-pub-1405929557079197/7727940578";
+    // You can use test ad unit id - @"ca-app-pub-1405929557079197/7727940578" - to test banner ad.
+    self.bannerView.adUnitID = @"YOUR_AD_UNIT_ID";
     self.bannerView.rootViewController = self;
-    GADRequest *request = [GADRequest request];
-    GADBidMachineNetworkExtras *extras = [request adNetworkExtrasFor:GADBidMachineNetworkExtras.class];
-    [extras setCoppa:YES];
-    [request registerAdNetworkExtras:extras];
-    [self.bannerView loadRequest:request];
-    
+
 }
 
 - (IBAction)openTestSuite:(UIButton *)sender {
-    NSString *appID = @"ca-app-pub-1405929557079197~9998880699"; //- My
-//    NSString *appID = @"ca-app-pub-3940256099942544~1458002511";
+    // You can use test application id - @"ca-app-pub-1405929557079197~9998880699" - to test ad.
+    NSString *appID = @"YOUR_APPLICATION_ID";
     [GoogleMobileAdsMediationTestSuite presentWithAppID:appID
                                        onViewController:self
                                                delegate:nil];
 }
+
+- (IBAction)loadBanner:(id)sender {
+    GADRequest *request = [GADRequest request];
+    [self.bannerView loadRequest:request];
+}
+
+- (IBAction)loadInterstitial:(id)sender {
+    GADRequest *request = [GADRequest request];
+    [self.interstitial loadRequest:request];
+}
+
+- (IBAction)showInterstitial:(id)sender {
+    [self.interstitial presentFromRootViewController:self];
+}
+
+- (IBAction)loadRewarded:(id)sender {
+    GADRequest *request = [GADRequest request];
+    // You can use test ad unit id - @"ca-app-pub-1405929557079197/1031272924" - to test rewarded ad.
+    [self.rewarded loadRequest:request withAdUnitID:@"YOUR_AD_UNIT_ID"];
+}
+
+- (IBAction)showRewarded:(id)sender {
+    [self.rewarded presentFromRootViewController:self];
+}
+
 
 - (void)addBannerViewToView:(UIView *)bannerView {
     bannerView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -66,9 +96,98 @@
                                 ]];
 }
 
+#pragma mark - BannerView delegate
+
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
-    NSString *className = bannerView.adNetworkClassName;
+    NSLog(@"adViewDidReceiveAdWithNetworkClassName: %@", bannerView.adNetworkClassName);
 }
 
+- (void)adView:(GADBannerView *)adView
+didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError: %@", [error localizedDescription]);
+}
+
+- (void)adViewWillPresentScreen:(GADBannerView *)adView {
+    NSLog(@"adViewWillPresentScreen");
+}
+
+- (void)adViewWillDismissScreen:(GADBannerView *)adView {
+    NSLog(@"adViewWillDismissScreen");
+}
+
+- (void)adViewDidDismissScreen:(GADBannerView *)adView {
+    NSLog(@"adViewDidDismissScreen");
+}
+
+- (void)adViewWillLeaveApplication:(GADBannerView *)adView {
+    NSLog(@"adViewWillLeaveApplication");
+}
+
+#pragma mark - Interstitial delegate
+
+- (void)interstitialDidReceiveAd:(GADInterstitial *)ad {
+    NSLog(@"interstitialDidReceiveAdWithNetworkClassName: %@", ad.adNetworkClassName);
+}
+
+- (void)interstitial:(GADInterstitial *)ad
+didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"interstitial:didFailToReceiveAdWithError: %@", [error localizedDescription]);
+}
+
+- (void)interstitialWillPresentScreen:(GADInterstitial *)ad {
+    NSLog(@"interstitialWillPresentScreen");
+}
+
+- (void)interstitialWillDismissScreen:(GADInterstitial *)ad {
+    NSLog(@"interstitialWillDismissScreen");
+}
+
+- (void)interstitialDidDismissScreen:(GADInterstitial *)ad {
+    NSLog(@"interstitialDidDismissScreen");
+}
+
+- (void)interstitialWillLeaveApplication:(GADInterstitial *)ad {
+    NSLog(@"interstitialWillLeaveApplication");
+}
+
+#pragma mark - Rewarded Video delegate
+
+- (void)rewardBasedVideoAd:(GADRewardBasedVideoAd *)rewardBasedVideoAd
+   didRewardUserWithReward:(GADAdReward *)reward {
+    NSString *rewardMessage =
+    [NSString stringWithFormat:@"Reward received with currency %@ , amount %lf",
+     reward.type,
+     [reward.amount doubleValue]];
+    NSLog(rewardMessage);
+}
+
+- (void)rewardBasedVideoAdDidReceiveAd:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
+    NSLog(@"Reward based video ad is received with network class name: %@.", rewardBasedVideoAd.adNetworkClassName);
+}
+
+- (void)rewardBasedVideoAdDidOpen:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
+    NSLog(@"Opened reward based video ad.");
+}
+
+- (void)rewardBasedVideoAdDidStartPlaying:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
+    NSLog(@"Reward based video ad started playing.");
+}
+
+- (void)rewardBasedVideoAdDidCompletePlaying:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
+    NSLog(@"Reward based video ad has completed.");
+}
+
+- (void)rewardBasedVideoAdDidClose:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
+    NSLog(@"Reward based video ad is closed.");
+}
+
+- (void)rewardBasedVideoAdWillLeaveApplication:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
+    NSLog(@"Reward based video ad will leave application.");
+}
+
+- (void)rewardBasedVideoAd:(GADRewardBasedVideoAd *)rewardBasedVideoAd
+    didFailToLoadWithError:(NSError *)error {
+    NSLog(@"Reward based video ad failed to load.");
+}
 
 @end
