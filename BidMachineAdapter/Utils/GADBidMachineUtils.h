@@ -13,7 +13,7 @@
 @interface GADBidMachineUtils : NSObject
 
 + (instancetype)sharedUtils;
-- (void)initializeBidMachineWith:(nullable NSString *)serverParameter request:(nonnull GADCustomEventRequest *)request;
+- (void)initializeBidMachineWith:(NSString *)serverParameter request:(GADCustomEventRequest *)request completion:(void(^)(void))completion;
 - (NSDictionary *)getRequestInfoFrom:(NSString *)string request:(GADCustomEventRequest *)request;
 - (GADVersionNumber)getSDKVersionFrom:(NSString *)version;
 - (BDMBannerAdSize)getBannerAdSizeFrom:(GADAdSize)size;

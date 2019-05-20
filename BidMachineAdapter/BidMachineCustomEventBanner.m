@@ -22,13 +22,14 @@
               parameter:(nullable NSString *)serverParameter
                   label:(nullable NSString *)serverLabel
                 request:(nonnull GADCustomEventRequest *)request {
-    BDMSdk.sharedSdk.enableLogging = YES;
-    [[GADBidMachineUtils sharedUtils] initializeBidMachineWith:serverParameter request:request];
-    BDMBannerAdSize size = [[GADBidMachineUtils sharedUtils] getBannerAdSizeFrom:adSize];
-    BDMBannerRequest *bannerRequest = [[GADBidMachineUtils sharedUtils] setupBannerRequestWithSize:size serverParameter:serverParameter request:request];
-    [self.bannerView setFrame:CGRectMake(0, 0, adSize.size.width, adSize.size.height)];
-    [self.bannerView populateWithRequest:bannerRequest];
-    self.bannerView.delegate = self;
+    __weak typeof(self) weakSelf = self;
+    [[GADBidMachineUtils sharedUtils] initializeBidMachineWith:serverParameter request:request completion:^{
+        BDMBannerAdSize size = [[GADBidMachineUtils sharedUtils] getBannerAdSizeFrom:adSize];
+        BDMBannerRequest *bannerRequest = [[GADBidMachineUtils sharedUtils] setupBannerRequestWithSize:size serverParameter:serverParameter request:request];
+        weakSelf.bannerView.delegate = weakSelf;
+        [weakSelf.bannerView setFrame:CGRectMake(0, 0, adSize.size.width, adSize.size.height)];
+        [weakSelf.bannerView populateWithRequest:bannerRequest];
+    }];
 }
 
 #pragma mark - Lazy

@@ -10,6 +10,12 @@
 #import "GADMAdapterBidMachineConstants.h"
 #import "GADBidMachineNetworkExtras.h"
 
+@interface GADBidMachineUtils()
+
+@property (nonatomic, copy) NSString *currentSellerId;
+
+@end
+
 @implementation GADBidMachineUtils
 
 + (instancetype)sharedUtils {
@@ -21,19 +27,27 @@
     return _sharedUtils;
 }
 
-- (void)initializeBidMachineWith:(nullable NSString *)serverParameter request:(nonnull GADCustomEventRequest *)request {
+- (void)initializeBidMachineWith:(NSString *)serverParameter
+                         request:(GADCustomEventRequest *)request
+                      completion:(void(^)(void))completion {
     NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFrom:serverParameter request:request];
-    NSString *sellerId = [requestInfo[kBidMachineSellerId] stringValue];
-    BOOL testModeEnabled = [requestInfo[kBidMachineTestMode] boolValue];
-    BOOL loggingEnabled = [requestInfo[kBidMachineLoggingEnabled] boolValue];
-    if (sellerId) {
+    NSString *sellerID = [requestInfo[kBidMachineSellerId] stringValue];
+    if ([sellerID isKindOfClass:NSString.class] &&
+        ![self.currentSellerId isEqualToString:sellerID]) {
+        self.currentSellerId = sellerID;
+        BOOL testModeEnabled = [requestInfo[kBidMachineTestMode] boolValue];
+        BOOL loggingEnabled = [requestInfo[kBidMachineLoggingEnabled] boolValue];
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
         [config setTestMode:testModeEnabled];
         [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
-        [[BDMSdk sharedSdk] startSessionWithSellerID:sellerId configuration:config completion:^{
-            NSLog(@"BidMachine SDK was successfully initialized!");
-        }];
+        [[BDMSdk sharedSdk] startSessionWithSellerID:self.currentSellerId
+                                       configuration:config
+                                          completion:^{
+                                              NSLog(@"BidMachine SDK was successfully initialized!");
+                                              completion();
+                                          }];
     } else {
+        completion ? completion() : nil;
         NSLog(@"BidMachine's initialization skipped. The sellerId is empty or has an incorrect type.");
     }
 }

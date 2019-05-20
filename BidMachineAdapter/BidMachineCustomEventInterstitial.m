@@ -21,10 +21,12 @@
 - (void)requestInterstitialAdWithParameter:(nullable NSString *)serverParameter
                                      label:(nullable NSString *)serverLabel
                                    request:(nonnull GADCustomEventRequest *)request {
-    [[GADBidMachineUtils sharedUtils] initializeBidMachineWith:serverParameter request:request];
-    self.interstitial.delegate = self;
-    BDMInterstitialRequest *interstitialRequest = [[GADBidMachineUtils sharedUtils] interstitialRequestWithServerParameter:serverParameter request:request];
-    [self.interstitial populateWithRequest:interstitialRequest];
+    __weak typeof(self) weakSelf = self;
+    [[GADBidMachineUtils sharedUtils] initializeBidMachineWith:serverParameter request:request completion:^{
+        weakSelf.interstitial.delegate = weakSelf;
+        BDMInterstitialRequest *interstitialRequest = [[GADBidMachineUtils sharedUtils] interstitialRequestWithServerParameter:serverParameter request:request];
+        [weakSelf.interstitial populateWithRequest:interstitialRequest];
+    }];
 }
 
 - (void)presentFromRootViewController:(nonnull UIViewController *)rootViewController {

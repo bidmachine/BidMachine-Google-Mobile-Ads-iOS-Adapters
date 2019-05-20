@@ -43,14 +43,14 @@
 - (void)setUp {
     id<GADMRewardBasedVideoAdNetworkConnector> strongConnector = self.rewardedAdConnector;
     NSDictionary *serverInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFromConnector:strongConnector];
-    NSString *sellerId = [serverInfo[kBidMachineSellerId] stringValue];
-    BOOL testModeEnabled = [serverInfo[kBidMachineTestMode] boolValue];
-    BOOL loggingEnabled = [serverInfo[kBidMachineLoggingEnabled] boolValue];
-    if (sellerId) {
+    NSString *sellerID = [serverInfo[kBidMachineSellerId] stringValue];
+    if ([sellerID isKindOfClass:NSString.class]) {
+        BOOL testModeEnabled = [serverInfo[kBidMachineTestMode] boolValue];
+        BOOL loggingEnabled = [serverInfo[kBidMachineLoggingEnabled] boolValue];
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
         [config setTestMode:testModeEnabled];
         [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
-        [[BDMSdk sharedSdk] startSessionWithSellerID:sellerId configuration:config completion:^{
+        [[BDMSdk sharedSdk] startSessionWithSellerID:sellerID configuration:config completion:^{
             NSLog(@"BidMachine SDK was successfully initialized!");
             [self.rewardedAdConnector adapterDidSetUpRewardBasedVideoAd:self];
         }];
