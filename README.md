@@ -100,19 +100,24 @@ Also you can transfer user location via extras. You can ad two more keys:
 In the snippet below you can see transfering of local extra data:
 
 ```
-self.adView = [[MPAdView alloc] initWithAdUnitId:@"AD_UNIT_ID"
-                                                size:MOPUB_BANNER_SIZE];
-    self.adView.delegate = self;
-    self.adView.frame = CGRectMake((self.view.bounds.size.width - MOPUB_BANNER_SIZE.width) / 2,
-                                   self.view.bounds.size.height - MOPUB_BANNER_SIZE.height,
-                                   MOPUB_BANNER_SIZE.width, MOPUB_BANNER_SIZE.height);
-    [self.view addSubview:self.adView];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self addBannerViewToView:self.bannerView];
+    // You can use test ad unit id - @"ca-app-pub-1405929557079197/7727940578" - to test banner ad.
+    self.bannerView.delegate = self;
+    self.bannerView.adUnitID = @"YOUR_AD_UNIT_ID";
+    self.bannerView.rootViewController = self;
+
+}
+
+- (IBAction)loadBanner:(id)sender {
+    GADRequest *request = [GADRequest request];
+    GADCustomEventExtras *extras = [GADCustomEventExtras new];
     NSDictionary *localExtras = @{
-                                  @"seller_id": @"YOUR_SELLER_ID",
+                                  @"seller_id": @"1",
                                   @"coppa": @"true",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
-                                  @"banner_width": @"320",
                                   @"userId": @"user123",
                                   @"gender": @"F",
                                   @"yob": @"2000",
@@ -134,13 +139,40 @@ self.adView = [[MPAdView alloc] initWithAdUnitId:@"AD_UNIT_ID"
                                                     @1002
                                                     ]
                                   };
-    [self.adView setLocalExtras:localExtras];
-    [self.adView loadAd];
+    [extras setExtras:localExtras forLabel: @"BannerLabel"];
+    [self.bannerView loadRequest:request];
+}
 ```
 
-But also you can receive extra data from server. It will be sent in (NSDictionary *)***info*** of requests methods and may look like this:
+But also you can receive extra data from server. It will be sent in (NSString *)***serverParameter*** may look like this:
 
 ```
+{
+  "seller_id": "1",
+  "coppa": "true",
+  "logging_enabled": "true",
+  "test_mode": "true",
+  "userId": "user123",
+  "gender": "F",
+  "yob": "2000",
+  "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
+  "country": "USA",
+  "city": "Los Angeles",
+  "zip": "90001–90084",
+  "sturl": "https://store_url.com",
+  "paid": "true",
+  "bcat": "IAB-1,IAB-3,IAB-5",
+  "badv": "https://domain_1.com,https://domain_2.org",
+  "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
+  "priceFloors": [{
+                    "id_1": 300.06
+                   }, {
+                        "id_2": 1000
+                       },
+                          302.006,
+                          1002
+                    ]
+}
 
 ```
 
@@ -149,13 +181,79 @@ But also you can receive extra data from server. It will be sent in (NSDictionar
 With local extra data:
 
 ```
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // You can use test ad unit id - @"ca-app-pub-1405929557079197/8789988225" - to test interstitial ad.
+    self.interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"YOUR_AD_UNIT_ID"];
+    self.interstitial.delegate = self;
+}
+
+- (IBAction)loadInterstitial:(id)sender {
+    GADRequest *request = [GADRequest request];
+    GADCustomEventExtras *extras = [GADCustomEventExtras new];
+    NSDictionary *localExtras = @{
+                                  @"seller_id": @"1",
+                                  @"coppa": @"true",
+                                  @"logging_enabled": @"true",
+                                  @"test_mode": @"true",
+                                  @"ad_content_type": @"All",
+                                  @"userId": @"user123",
+                                  @"gender": @"F",
+                                  @"yob": @"2000",
+                                  @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
+                                  @"country": @"USA",
+                                  @"city": @"Los Angeles",
+                                  @"zip": @"90001–90084",
+                                  @"sturl": @"https://store_url.com",
+                                  @"paid": @"true",
+                                  @"bcat": @"IAB-1,IAB-3,IAB-5",
+                                  @"badv": @"https://domain_1.com,https://domain_2.org",
+                                  @"bapps": @"com.test.application_1,com.test.application_2,com.test.application_3",
+                                  @"priceFloors": @[@{
+                                                        @"id_1": @300.06
+                                                        }, @{
+                                                        @"id_2": @1000
+                                                        },
+                                                    @302.006,
+                                                    @1002
+                                                    ]
+                                  };
+    [extras setExtras:localExtras forLabel: @"InterstitialLabel"];
+    [self.interstitial loadRequest:request];
+}
     
 ```
 
 Servers extra data:
 
 ```
-
+{
+  "seller_id": "1",
+  "coppa": "true",
+  "logging_enabled": "true",
+  "test_mode": "true",
+  "ad_content_type": "All",
+  "userId": "user123",
+  "gender": "F",
+  "yob": "2000",
+  "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
+  "country": "USA",
+  "city": "Los Angeles",
+  "zip": "90001–90084",
+  "sturl": "https://store_url.com",
+  "paid": "true",
+  "bcat": "IAB-1,IAB-3,IAB-5",
+  "badv": "https://domain_1.com,https://domain_2.org",
+  "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
+  "priceFloors": [{
+                    "id_1": 300.06
+                   }, {
+                        "id_2": 1000
+                       },
+                          302.006,
+                          1002
+                    ]
+}
 ```
 
 ### Rewarded implementation
@@ -163,11 +261,76 @@ Servers extra data:
 With local extra data:
 
 ```
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.rewarded = [[GADRewardBasedVideoAd alloc] init];
+    self.rewarded.delegate = self;
+}
+
+- (IBAction)loadRewarded:(id)sender {
+    GADRequest *request = [GADRequest request];
+    GADCustomEventExtras *extras = [GADCustomEventExtras new];
+    NSDictionary *localExtras = @{
+                                  @"seller_id": @"1",
+                                  @"coppa": @"true",
+                                  @"logging_enabled": @"true",
+                                  @"test_mode": @"true",
+                                  @"userId": @"user123",
+                                  @"gender": @"F",
+                                  @"yob": @"2000",
+                                  @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
+                                  @"country": @"USA",
+                                  @"city": @"Los Angeles",
+                                  @"zip": @"90001–90084",
+                                  @"sturl": @"https://store_url.com",
+                                  @"paid": @"true",
+                                  @"bcat": @"IAB-1,IAB-3,IAB-5",
+                                  @"badv": @"https://domain_1.com,https://domain_2.org",
+                                  @"bapps": @"com.test.application_1,com.test.application_2,com.test.application_3",
+                                  @"priceFloors": @[@{
+                                                        @"id_1": @300.06
+                                                        }, @{
+                                                        @"id_2": @1000
+                                                        },
+                                                    @302.006,
+                                                    @1002
+                                                    ]
+                                  };
+    [extras setExtras:localExtras forLabel: @"RewardedLabel"];
+
+    // You can use test ad unit id - @"ca-app-pub-1405929557079197/1031272924" - to test rewarded ad.
+    [self.rewarded loadRequest:request withAdUnitID:@"YOUR_AD_UNIT_ID"];
+}
 
 ```
 
 Extra data from server:
 
 ```
-
+{
+  "seller_id": "1",
+  "coppa": "true",
+  "logging_enabled": "true",
+  "test_mode": "true",
+  "userId": "user123",
+  "gender": "F",
+  "yob": "2000",
+  "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
+  "country": "USA",
+  "city": "Los Angeles",
+  "zip": "90001–90084",
+  "sturl": "https://store_url.com",
+  "paid": "true",
+  "bcat": "IAB-1,IAB-3,IAB-5",
+  "badv": "https://domain_1.com,https://domain_2.org",
+  "bapps": "com.test.application_1,com.test.application_2,com.test.application_3",
+  "priceFloors": [{
+                    "id_1": 300.06
+                   }, {
+                        "id_2": 1000
+                       },
+                          302.006,
+                          1002
+                    ]
+}
 ```
