@@ -27,10 +27,8 @@
     return _sharedUtils;
 }
 
-- (void)initializeBidMachineWith:(NSString *)serverParameter
-                         request:(GADCustomEventRequest *)request
-                      completion:(void(^)(NSError * __Nullable))completion {
-    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFrom:serverParameter request:request];
+- (void)initializeBidMachineWithRequestInfo:(NSDictionary *)requestInfo
+                      completion:(void(^)(NSError *))completion {
     NSString *sellerID = transfromSellerID(requestInfo[kBidMachineSellerId]);
     if (sellerID &&
         ![self.currentSellerId isEqualToString:sellerID]) {

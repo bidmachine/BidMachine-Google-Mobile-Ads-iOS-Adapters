@@ -93,12 +93,31 @@ static inline NSArray<BDMPriceFloor *> * makePriceFloorsWithPriceFloors(NSArray 
     return priceFloorsArr;
 }
 
+
+static inline BDMFullscreenAdType setupInterstitialAdType(NSString *string) {
+    BDMFullscreenAdType type;
+    NSString *lowercasedString = [string lowercaseString];
+    if ([lowercasedString isEqualToString:@"all"]) {
+        type = BDMFullscreenAdTypeAll;
+    } else if ([lowercasedString isEqualToString:@"video"]) {
+        type = BDMFullscreenAdTypeVideo;
+    } else if ([lowercasedString isEqualToString:@"static"]) {
+        type = BDMFullsreenAdTypeBanner;
+    } else {
+        type = BDMFullscreenAdTypeAll;
+    }
+    return type;
+}
+
 @interface GADBidMachineUtils : NSObject
 
 + (instancetype)sharedUtils;
-- (void)initializeBidMachineWith:(NSString *)serverParameter request:(GADCustomEventRequest *)request completion:(void(^)(NSError * __Nullable))completion;
-- (NSDictionary *)requestInfoFrom:(NSString *)string request:(GADCustomEventRequest *)request;
+- (void)initializeBidMachineWithRequestInfo:(NSDictionary *)requestInfo
+                                 completion:(void(^)(NSError *))completion;
+- (NSDictionary *)requestInfoFrom:(NSString *)string
+                          request:(GADCustomEventRequest *)request;
 - (NSDictionary *)requestInfoFromConnector:(id<GADMRewardBasedVideoAdNetworkConnector>)connector;
-- (BDMTargeting *)setupTargetingWithRequestInfo:(NSDictionary *)requestInfo andLocation:(CLLocation *)location;
+- (BDMTargeting *)setupTargetingWithRequestInfo:(NSDictionary *)requestInfo
+                                    andLocation:(CLLocation *)location;
 
 @end

@@ -14,42 +14,32 @@
 @implementation GADBidMachineUtils (Request)
 
 - (BDMBannerRequest *)setupBannerRequestWithSize:(BDMBannerAdSize)size
-                                 serverParameter:(NSString *)serverParameter
-                                         request:(GADCustomEventRequest *)request{
+                                     requestInfo:(NSDictionary *)requestInfo {
     BDMBannerRequest *bannerRequest = [BDMBannerRequest new];
-    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFrom:serverParameter request:request];
     CLLocation *location = [[CLLocation alloc] initWithLatitude:[requestInfo[kBidMachineLatitude] doubleValue] longitude:[requestInfo[kBidMachineLongitude] doubleValue]];
     [bannerRequest setAdSize:size];
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithRequestInfo:requestInfo]];
     [bannerRequest setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
-    [bannerRequest setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[kBidMachinePriceFloors]]];
+    [bannerRequest setPriceFloors:makePriceFloorsWithPriceFloors(requestInfo[kBidMachinePriceFloors])];
     return bannerRequest;
 }
 
-- (BDMInterstitialRequest *)interstitialRequestWithServerParameter:(NSString *)serverParameter
-                                                           request:(GADCustomEventRequest *)request {
+- (BDMInterstitialRequest *)interstitialRequestWithRequestInfo:(NSDictionary *)requestInfo {
     BDMInterstitialRequest *interstitialRequest = [BDMInterstitialRequest new];
-    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFrom:serverParameter request:request];
     CLLocation *location = [[CLLocation alloc] initWithLatitude:[requestInfo[kBidMachineLatitude] doubleValue] longitude:[requestInfo[kBidMachineLongitude] doubleValue]];
-    [interstitialRequest setType:[self setupInterstitialAdType:requestInfo[kBidMachineAdContentType]]];
+    [interstitialRequest setType:setupInterstitialAdType(requestInfo[kBidMachineAdContentType])];
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithRequestInfo:requestInfo]];
     [interstitialRequest setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
-    [interstitialRequest setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[kBidMachinePriceFloors]]];
+    [interstitialRequest setPriceFloors:makePriceFloorsWithPriceFloors(requestInfo[kBidMachinePriceFloors])];
     return interstitialRequest;
 }
 
-- (BDMRewardedRequest *)rewardedRequestWithConnector:(id<GADMRewardBasedVideoAdNetworkConnector>)rewardedAdConnector {
+- (BDMRewardedRequest *)rewardedRequestWithRequestInfo:(NSDictionary *)requestInfo {
     BDMRewardedRequest *rewardedRequest = [BDMRewardedRequest new];
-    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFromConnector:rewardedAdConnector];
-    CLLocation *location;
-    if (rewardedAdConnector.userHasLocation) {
-        location = [[CLLocation alloc] initWithLatitude:rewardedAdConnector.userLatitude longitude:rewardedAdConnector.userLongitude];
-    } else {
-        location = [[CLLocation alloc] initWithLatitude:[requestInfo[kBidMachineLatitude] doubleValue] longitude:[requestInfo[kBidMachineLongitude] doubleValue]];
-    }
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[requestInfo[kBidMachineLatitude] doubleValue] longitude:[requestInfo[kBidMachineLongitude] doubleValue]];
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithRequestInfo:requestInfo]];
     [rewardedRequest setTargeting:[[GADBidMachineUtils sharedUtils] setupTargetingWithRequestInfo:requestInfo andLocation:location]];
-    [rewardedRequest setPriceFloors:[self makePriceFloorsWithPriceFloors:requestInfo[kBidMachinePriceFloors]]];
+    [rewardedRequest setPriceFloors:makePriceFloorsWithPriceFloors(requestInfo[kBidMachinePriceFloors])];
     return rewardedRequest;
 }
 
@@ -61,21 +51,6 @@
     [restrictions setConsentString:requestInfo[kBidMachineConsentString]];
     [[BDMSdk sharedSdk] setEnableLogging:[requestInfo[kBidMachineLoggingEnabled] boolValue]];
     return restrictions;
-}
-
-- (BDMFullscreenAdType)setupInterstitialAdType:(NSString *)string {
-    BDMFullscreenAdType type;
-    NSString *lowercasedString = [string lowercaseString];
-    if ([lowercasedString isEqualToString:@"all"]) {
-        type = BDMFullscreenAdTypeAll;
-    } else if ([lowercasedString isEqualToString:@"video"]) {
-        type = BDMFullscreenAdTypeVideo;
-    } else if ([lowercasedString isEqualToString:@"static"]) {
-        type = BDMFullsreenAdTypeBanner;
-    } else {
-        type = BDMFullscreenAdTypeAll;
-    }
-    return type;
 }
 
 @end

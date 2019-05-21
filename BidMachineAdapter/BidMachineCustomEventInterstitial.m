@@ -22,9 +22,10 @@
                                      label:(nullable NSString *)serverLabel
                                    request:(nonnull GADCustomEventRequest *)request {
     __weak typeof(self) weakSelf = self;
-    [[GADBidMachineUtils sharedUtils] initializeBidMachineWith:serverParameter request:request completion:^{
+    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] requestInfoFrom:serverParameter request:request];
+    [[GADBidMachineUtils sharedUtils] initializeBidMachineWithRequestInfo:requestInfo completion:^(NSError *error) {
         weakSelf.interstitial.delegate = weakSelf;
-        BDMInterstitialRequest *interstitialRequest = [[GADBidMachineUtils sharedUtils] interstitialRequestWithServerParameter:serverParameter request:request];
+        BDMInterstitialRequest *interstitialRequest = [[GADBidMachineUtils sharedUtils] interstitialRequestWithRequestInfo:requestInfo];
         [weakSelf.interstitial populateWithRequest:interstitialRequest];
     }];
 }

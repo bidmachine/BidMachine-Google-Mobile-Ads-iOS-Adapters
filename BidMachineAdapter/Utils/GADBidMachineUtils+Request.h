@@ -11,9 +11,7 @@
 
 @interface GADBidMachineUtils (Request)
 - (BDMBannerRequest *)setupBannerRequestWithSize:(BDMBannerAdSize)size
-                                 serverParameter:(NSString *)serverParameter
-                                         request:(GADCustomEventRequest *)request;
-- (BDMInterstitialRequest *)interstitialRequestWithServerParameter:(NSString *)serverParameter
-                                                           request:(GADCustomEventRequest *)request;
-- (BDMRewardedRequest *)rewardedRequestWithConnector:(id<GADMRewardBasedVideoAdNetworkConnector>)rewardedAdConnector;
+                               requestInfo:(NSDictionary *)requestInfo;
+- (BDMInterstitialRequest *)interstitialRequestWithRequestInfo:(NSDictionary *)requestInfo;
+- (BDMRewardedRequest *)rewardedRequestWithRequestInfo:(NSDictionary *)requestInfo;
 @end

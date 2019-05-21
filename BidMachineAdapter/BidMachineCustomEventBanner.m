@@ -23,9 +23,10 @@
                   label:(nullable NSString *)serverLabel
                 request:(nonnull GADCustomEventRequest *)request {
     __weak typeof(self) weakSelf = self;
-    [[GADBidMachineUtils sharedUtils] initializeBidMachineWith:serverParameter request:request completion:^{
-        BDMBannerAdSize size = [[GADBidMachineUtils sharedUtils] getBannerAdSizeFrom:adSize];
-        BDMBannerRequest *bannerRequest = [[GADBidMachineUtils sharedUtils] setupBannerRequestWithSize:size serverParameter:serverParameter request:request];
+    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] requestInfoFrom:serverParameter request:request];
+    [[GADBidMachineUtils sharedUtils] initializeBidMachineWithRequestInfo:requestInfo completion:^(NSError *error) {
+        BDMBannerAdSize size = bannerAdSizeFrom(adSize);
+        BDMBannerRequest *bannerRequest = [[GADBidMachineUtils sharedUtils] setupBannerRequestWithSize:size requestInfo:requestInfo];
         weakSelf.bannerView.delegate = weakSelf;
         [weakSelf.bannerView setFrame:CGRectMake(0, 0, adSize.size.width, adSize.size.height)];
         [weakSelf.bannerView populateWithRequest:bannerRequest];

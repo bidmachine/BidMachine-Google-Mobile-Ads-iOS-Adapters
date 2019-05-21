@@ -42,30 +42,22 @@
 
 - (void)setUp {
     id<GADMRewardBasedVideoAdNetworkConnector> strongConnector = self.rewardedAdConnector;
-    NSDictionary *serverInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFromConnector:strongConnector];
-    NSString *sellerID = serverInfo[kBidMachineSellerId];
-    if (sellerID) {
-        BOOL testModeEnabled = [serverInfo[kBidMachineTestMode] boolValue];
-        BOOL loggingEnabled = [serverInfo[kBidMachineLoggingEnabled] boolValue];
-        BDMSdkConfiguration *config = [BDMSdkConfiguration new];
-        [config setTestMode:testModeEnabled];
-        [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
-        [[BDMSdk sharedSdk] startSessionWithSellerID:sellerID configuration:config completion:^{
+    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] requestInfoFromConnector:strongConnector];
+    [[GADBidMachineUtils sharedUtils] initializeBidMachineWithRequestInfo:requestInfo completion:^(NSError *error) {
+        if (!error) {
             NSLog(@"BidMachine SDK was successfully initialized!");
             [self.rewardedAdConnector adapterDidSetUpRewardBasedVideoAd:self];
-        }];
-    } else {
-        NSString *description = @"BidMachine's initialization skipped. The sellerId is empty or has an incorrect type.";
-        NSDictionary *userInfo = @{NSLocalizedDescriptionKey : description,
-                                   NSLocalizedFailureReasonErrorKey : description};
-        NSError *error = [NSError errorWithDomain:@"com.google.mediation.bidmachine" code:0 userInfo:userInfo];
-        [self.rewardedAdConnector adapter:self didFailToSetUpRewardBasedVideoAdWithError:error];
-    }
+        } else {
+            [self.rewardedAdConnector adapter:self didFailToSetUpRewardBasedVideoAdWithError:error];
+        }
+    }];
 }
 
 - (void)requestRewardBasedVideoAd {
+    id<GADMRewardBasedVideoAdNetworkConnector> strongConnector = self.rewardedAdConnector;
+    NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] requestInfoFromConnector:strongConnector];
     self.rewardedAd.delegate = self;
-    BDMRewardedRequest *request = [[GADBidMachineUtils sharedUtils] rewardedRequestWithConnector:self.rewardedAdConnector];
+    BDMRewardedRequest *request = [[GADBidMachineUtils sharedUtils] rewardedRequestWithRequestInfo:requestInfo];
     [self.rewardedAd populateWithRequest:request];
 }
 
