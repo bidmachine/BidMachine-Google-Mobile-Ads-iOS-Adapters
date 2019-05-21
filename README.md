@@ -269,42 +269,44 @@ With local extra data:
 
 - (IBAction)loadRewarded:(id)sender {
     GADRequest *request = [GADRequest request];
-    GADCustomEventExtras *extras = [GADCustomEventExtras new];
-    NSDictionary *localExtras = @{
-                                  @"seller_id": @"1",
-                                  @"coppa": @"true",
-                                  @"logging_enabled": @"true",
-                                  @"test_mode": @"true",
-                                  @"userId": @"user123",
-                                  @"gender": @"F",
-                                  @"yob": @"2000",
-                                  @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-                                  @"country": @"USA",
-                                  @"city": @"Los Angeles",
-                                  @"zip": @"90001–90084",
-                                  @"sturl": @"https://store_url.com",
-                                  @"paid": @"true",
-                                  @"bcat": @"IAB-1,IAB-3,IAB-5",
-                                  @"badv": @"https://domain_1.com,https://domain_2.org",
-                                  @"bapps": @"com.test.application_1,com.test.application_2,com.test.application_3",
-                                  @"priceFloors": @[@{
-                                                        @"id_1": @300.06
-                                                        }, @{
-                                                        @"id_2": @1000
-                                                        },
-                                                    @302.006,
-                                                    @1002
-                                                    ]
-                                  };
-    [extras setExtras:localExtras forLabel: @"RewardedLabel"];
-
+    GADBidMachineNetworkExtras *extra = [GADBidMachineNetworkExtras new];
+    [extra setSellerId:@"1"];
+    [extra setCoppa:NO];
+    [extra setLoggingEnabled:YES];
+    [extra setTestMode:YES];
+    [extra setHasUserConsent:YES];
+    [extra setConsentString:@"some_consent_string"];
+    [extra setIsUnderGDPR:NO];
+    [extra setUserLatitude:12.34];
+    [extra setUserLongitude:56.78];
+    [extra setUserId:@"some_user_id"];
+    [extra setGender:@"F"];
+    [extra setYearOfBirth:@1996];
+    [extra setKeywords:@"Keyword_1,Keyword_2,Keyword_3,Keyword_4"];
+    [extra setCountry:@"USA"];
+    [extra setCity:@"Los Angeles"];
+    [extra setZip:@"90001–90084"];
+    [extra setStoreURL:[NSURL URLWithString:@"https://store_url.com"]];
+    [extra setStoreId:@"123123"];
+    [extra setPaid:NO];
+    [extra setPriceFloors:@[@{
+                                @"id_1": @300.06
+                                }, @{
+                                @"id_2": @1000
+                                },
+                            @302.006,
+                            @1002
+                            ]];
+    [extra setBlockedCategories:@[@"IAB-1", @"IAB-3", @"IAB-5"]];
+    [extra setBlockedAdvertisers:@[@"https://domain_1.com", @"https://domain_2.org"]];
+    [extra setBlockedApps:@[@"com.test.application_1", @"com.test.application_2", @"com.test.application_3"]];
+    [request registerAdNetworkExtras:extra];
     // You can use test ad unit id - @"ca-app-pub-1405929557079197/1031272924" - to test rewarded ad.
     [self.rewarded loadRequest:request withAdUnitID:@"YOUR_AD_UNIT_ID"];
 }
 
 ```
-
-Extra data from server:
+Servers extra data:
 
 ```
 {
