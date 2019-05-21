@@ -29,9 +29,9 @@
 
 - (void)initializeBidMachineWith:(NSString *)serverParameter
                          request:(GADCustomEventRequest *)request
-                      completion:(void(^)(void))completion {
+                      completion:(void(^)(NSError * __Nullable))completion {
     NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] getRequestInfoFrom:serverParameter request:request];
-    NSString *sellerID = [self transfromSellerID:requestInfo[kBidMachineSellerId]];
+    NSString *sellerID = transfromSellerID(requestInfo[kBidMachineSellerId]);
     if (sellerID &&
         ![self.currentSellerId isEqualToString:sellerID]) {
         self.currentSellerId = sellerID;
@@ -44,21 +44,25 @@
                                        configuration:config
                                           completion:^{
                                               NSLog(@"BidMachine SDK was successfully initialized!");
-                                              completion();
+                                              completion(nil);
                                           }];
     } else {
-        completion ? completion() : nil;
+        NSString *description = @"BidMachine's initialization skipped. The sellerId is empty or has an incorrect type.";
+        NSDictionary *userInfo = @{NSLocalizedDescriptionKey : description,
+                                   NSLocalizedFailureReasonErrorKey : description};
+        NSError *error = [NSError errorWithDomain:@"com.google.mediation.bidmachine" code:0 userInfo:userInfo];
+        completion ? completion(error) : nil;
         NSLog(@"BidMachine's initialization skipped. The sellerId is empty or has an incorrect type.");
     }
 }
 
-- (NSDictionary *)getRequestInfoFrom:(NSString *)string
+- (NSDictionary *)requestInfoFrom:(NSString *)string
                              request:(GADCustomEventRequest *)request{
     NSMutableDictionary *requestInfo = [NSMutableDictionary new];
     if (request.additionalParameters) {
         [requestInfo addEntriesFromDictionary:request.additionalParameters];
     }
-    [requestInfo addEntriesFromDictionary:[self getRequestInfoFrom:string]];
+    [requestInfo addEntriesFromDictionary:[self requestInfoFrom:string]];
     if (request.userHasLocation) {
         requestInfo[kBidMachineLatitude] = @(request.userLatitude);
         requestInfo[kBidMachineLongitude] = @(request.userLongitude);
@@ -66,7 +70,7 @@
     return requestInfo;
 }
 
-- (NSDictionary *)getRequestInfoFrom:(NSString *)string {
+- (NSDictionary *)requestInfoFrom:(NSString *)string {
     NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
     NSError *error = nil;
     NSDictionary *requestInfo = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
@@ -76,30 +80,7 @@
     return requestInfo;
 }
 
-- (GADVersionNumber)getSDKVersionFrom:(NSString *)version {
-    GADVersionNumber gadVersion = {0};
-    NSArray<NSString *> *components = [version componentsSeparatedByString:@"."];
-    if (components.count == 3) {
-        gadVersion.majorVersion = components[0].integerValue;
-        gadVersion.minorVersion = components[1].integerValue;
-        gadVersion.patchVersion = components[2].integerValue;
-    }
-    return gadVersion;
-}
-
-- (BDMBannerAdSize)getBannerAdSizeFrom:(GADAdSize)gadAdSize {
-    BDMBannerAdSize adSize;
-    CGSize transformedSize = CGSizeFromGADAdSize(gadAdSize);
-    switch ((int)transformedSize.height) {
-        case 50:  adSize = BDMBannerAdSize320x50;   break;
-        case 90:  adSize = BDMBannerAdSize728x90;   break;
-        case 250: adSize = BDMBannerAdSize300x250;  break;
-        default:  adSize = BDMBannerAdSizeUnknown;  break;
-    }
-    return adSize;
-}
-
-- (NSDictionary *)getRequestInfoFromConnector:(id<GADMAdNetworkConnector>)connector {
+- (NSDictionary *)requestInfoFromConnector:(id<GADMAdNetworkConnector>)connector {
     NSMutableDictionary *requestInfo = [NSMutableDictionary new];
     NSString *parameters = [connector.credentials valueForKey:@"parameter"];
     if (connector.testMode) {
@@ -109,18 +90,18 @@
         requestInfo[kBidMachineCoppa] = @YES;
     }
     if (connector.networkExtras) {
-        NSDictionary *networkExtras = [self getRequestInfoFromNetworkExtras:connector.networkExtras];
+        NSDictionary *networkExtras = [self requestInfoFromNetworkExtras:connector.networkExtras];
         [requestInfo addEntriesFromDictionary:networkExtras];
     }
     if (connector.credentials && parameters) {
-        NSDictionary *params = [self getRequestInfoFrom:parameters];
+        NSDictionary *params = [self requestInfoFrom:parameters];
         [requestInfo addEntriesFromDictionary:params];
     }
-    requestInfo[kBidMachineSellerId] = [self transfromSellerID:requestInfo[kBidMachineSellerId]];
+    requestInfo[kBidMachineSellerId] = transfromSellerID(requestInfo[kBidMachineSellerId]);
     return requestInfo;
 }
 
-- (NSDictionary *)getRequestInfoFromNetworkExtras:(GADBidMachineNetworkExtras *)networkExtras {
+- (NSDictionary *)requestInfoFromNetworkExtras:(GADBidMachineNetworkExtras *)networkExtras {
     NSMutableDictionary *requestInfo = [NSMutableDictionary new];
     requestInfo[kBidMachineSellerId] = networkExtras.sellerId;
     requestInfo[kBidMachineTestMode] = @(networkExtras.testMode);
@@ -157,7 +138,7 @@
     }
     if (requestInfo) {
         (!requestInfo[kBidMachineUserId]) ?: [targeting setUserId:(NSString *)requestInfo[kBidMachineUserId]];
-        (!requestInfo[kBidMachineGender]) ?: [targeting setGender:[self userGenderSetting:requestInfo[kBidMachineGender]]];
+        (!requestInfo[kBidMachineGender]) ?: [targeting setGender:userGenderSettingFromString(requestInfo[kBidMachineGender])];
         (!requestInfo[kBidMachineYearOfBirth]) ?: [targeting setYearOfBirth:requestInfo[kBidMachineYearOfBirth]];
         (!requestInfo[kBidMachineKeywords]) ?: [targeting setKeywords:requestInfo[kBidMachineKeywords]];
         (!requestInfo[kBidMachineBlockedCategories]) ?: [targeting setBlockedCategories:[requestInfo[kBidMachineBlockedCategories] componentsSeparatedByString:@","]];
@@ -171,51 +152,6 @@
         (!requestInfo[kBidMachinePaid]) ?: [targeting setPaid:[requestInfo[kBidMachinePaid] boolValue]];
     }
     return targeting;
-}
-
-- (NSArray<BDMPriceFloor *> *)makePriceFloorsWithPriceFloors:(NSArray *)priceFloors {
-    NSMutableArray<BDMPriceFloor *> *priceFloorsArr = [NSMutableArray new];
-    [priceFloors enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:NSDictionary.class]) {
-            BDMPriceFloor *priceFloor = [BDMPriceFloor new];
-            NSDictionary *object = (NSDictionary *)obj;
-            [priceFloor setID: object.allKeys[0]];
-            [priceFloor setValue: object.allValues[0]];
-            [priceFloorsArr addObject:priceFloor];
-        } else if ([obj isKindOfClass:NSNumber.class]) {
-            BDMPriceFloor *priceFloor = [BDMPriceFloor new];
-            NSNumber *object = (NSNumber *)obj;
-            [priceFloor setID:NSUUID.UUID.UUIDString.lowercaseString];
-            [priceFloor setValue:[NSDecimalNumber decimalNumberWithDecimal:object.decimalValue]];
-            [priceFloorsArr addObject:priceFloor];
-        }
-        if (idx == [priceFloors count] - 1) {
-            *stop = YES;
-        }
-    }];
-    return priceFloorsArr;
-}
-
-- (BDMUserGender *)userGenderSetting:(NSString *)gender {
-    BDMUserGender *userGender;
-    if ([gender isEqualToString:@"F"]) {
-        userGender = kBDMUserGenderFemale;
-    } else if ([gender isEqualToString:@"M"]) {
-        userGender = kBDMUserGenderMale;
-    } else if ([gender isEqualToString:@"O"]) {
-        userGender = kBDMUserGenderUnknown;
-    }
-    return userGender;
-}
-
-- (NSString *)transfromSellerID:(id)sellerId {
-    NSString *stringSellerId;
-    if ([sellerId isKindOfClass:NSString.class] && [sellerId integerValue]) {
-        stringSellerId = sellerId;
-    } else if ([sellerId isKindOfClass:NSNumber.class]) {
-        stringSellerId = [sellerId stringValue];
-    }
-    return stringSellerId;
 }
 
 @end
