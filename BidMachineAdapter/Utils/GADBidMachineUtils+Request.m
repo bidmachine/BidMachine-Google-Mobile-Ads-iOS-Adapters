@@ -25,6 +25,7 @@
 - (BDMInterstitialRequest *)interstitialRequestWithRequestInfo:(NSDictionary *)requestInfo {
     BDMInterstitialRequest *interstitialRequest = [BDMInterstitialRequest new];
     [self configureRequest:interstitialRequest info:requestInfo];
+    [interstitialRequest setType:BDMFullscreenAdTypeFromString(requestInfo[kBidMachineAdContentType])];
     return interstitialRequest;
 }
 
