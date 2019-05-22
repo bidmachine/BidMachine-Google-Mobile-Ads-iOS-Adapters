@@ -12,7 +12,7 @@
 #import "GADBidMachineUtils+Request.h"
 #import <BidMachine/BidMachine.h>
 
-@interface GADMBidMachineRewardedAd() <BDMRewardedDelegate>
+@interface GADMBidMachineRewardedAd () <BDMRewardedDelegate>
 
 @property (nonatomic, weak) id<GADMRewardBasedVideoAdNetworkConnector> rewardedAdConnector;
 @property (nonatomic, strong) BDMRewarded *rewardedAd;
@@ -45,7 +45,6 @@
     NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] requestInfoFromConnector:strongConnector];
     [[GADBidMachineUtils sharedUtils] initializeBidMachineWithRequestInfo:requestInfo completion:^(NSError *error) {
         if (!error) {
-            NSLog(@"BidMachine SDK was successfully initialized!");
             [self.rewardedAdConnector adapterDidSetUpRewardBasedVideoAd:self];
         } else {
             [self.rewardedAdConnector adapter:self didFailToSetUpRewardBasedVideoAdWithError:error];

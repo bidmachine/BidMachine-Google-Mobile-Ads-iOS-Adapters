@@ -11,7 +11,7 @@
 #import <BidMachine/BidMachine.h>
 
 
-@interface BidMachineCustomEventInterstitial() <BDMInterstitialDelegate>
+@interface BidMachineCustomEventInterstitial () <BDMInterstitialDelegate>
 
 @property (nonatomic, strong) BDMInterstitial *interstitial;
 

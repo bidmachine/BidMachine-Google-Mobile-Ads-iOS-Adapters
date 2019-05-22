@@ -50,11 +50,12 @@
         location = [[CLLocation alloc] initWithLatitude:[info[kBidMachineLatitude] doubleValue]
                                               longitude:[info[kBidMachineLongitude] doubleValue]];
     }
+    
     BDMUserRestrictions *restrictions = [self userRestrictionsWithRequestInfo:info];
     [BDMSdk.sharedSdk setRestrictions:restrictions];
     
     request.targeting = [GADBidMachineUtils.sharedUtils targetingWithRequestInfo:info location:location];
-    request.priceFloors = BDMPriceFloors(info[kBidMachinePriceFloors]);
+    request.priceFloors = BDMPriceFloors(info[kBidMachinePriceFloors]) ?: request.priceFloors;
 }
 
 @end

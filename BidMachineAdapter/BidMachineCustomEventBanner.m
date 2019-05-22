@@ -11,7 +11,7 @@
 #import <BidMachine/BidMachine.h>
 
 
-@interface BidMachineCustomEventBanner() <BDMBannerDelegate>
+@interface BidMachineCustomEventBanner () <BDMBannerDelegate>
 
 @property (nonatomic, strong) BDMBannerView *bannerView;
 

@@ -9,7 +9,7 @@
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
 
-@interface BidMachineCustomEventInterstitial : NSObject<GADCustomEventInterstitial>
+@interface BidMachineCustomEventInterstitial : NSObject <GADCustomEventInterstitial>
 
 @property (nonatomic, weak) id<GADCustomEventInterstitialDelegate> delegate;
 

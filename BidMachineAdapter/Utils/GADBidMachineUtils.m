@@ -77,8 +77,8 @@ NSString *BidMachineSellerID(id sellerId) {
 
 
 NSArray<BDMPriceFloor *> *BDMPriceFloors(NSArray *priceFloors) {
-    NSMutableArray<BDMPriceFloor *> *priceFloorsArr = [NSMutableArray new];
-    [priceFloors enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSMutableArray<BDMPriceFloor *> *priceFloorsArr = priceFloors.count > 0 ? [NSMutableArray new] : nil;
+    [priceFloors enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj isKindOfClass:NSDictionary.class]) {
             BDMPriceFloor *priceFloor = [BDMPriceFloor new];
             NSDictionary *object = (NSDictionary *)obj;
@@ -91,9 +91,6 @@ NSArray<BDMPriceFloor *> *BDMPriceFloors(NSArray *priceFloors) {
             [priceFloor setID:NSUUID.UUID.UUIDString.lowercaseString];
             [priceFloor setValue:[NSDecimalNumber decimalNumberWithDecimal:object.decimalValue]];
             [priceFloorsArr addObject:priceFloor];
-        }
-        if (idx == [priceFloors count] - 1) {
-            *stop = YES;
         }
     }];
     return priceFloorsArr;
@@ -135,27 +132,33 @@ NSArray<BDMPriceFloor *> *BDMPriceFloors(NSArray *priceFloors) {
                                               NSLog(@"BidMachine SDK was successfully initialized!");
                                               completion ? completion(nil) : nil;
                                           }];
+    } else if (sellerID && [self.currentSellerId isEqualToString:sellerID]) {
+        completion ? completion(nil) : nil;
     } else {
         NSString *description = @"BidMachine's initialization skipped. The sellerId is empty or has an incorrect type.";
         NSDictionary *userInfo = @{NSLocalizedDescriptionKey : description,
                                    NSLocalizedFailureReasonErrorKey : description};
         NSError *error = [NSError errorWithDomain:@"com.google.mediation.bidmachine" code:0 userInfo:userInfo];
-        completion ? completion(error) : nil;
         NSLog(@"BidMachine's initialization skipped. The sellerId is empty or has an incorrect type.");
+        completion ? completion(error) : nil;
     }
 }
 
 - (NSDictionary *)requestInfoFrom:(NSString *)string
                           request:(GADCustomEventRequest *)request {
     NSMutableDictionary *requestInfo = [NSMutableDictionary new];
+    
     if (request.additionalParameters) {
         [requestInfo addEntriesFromDictionary:request.additionalParameters];
     }
+    
     [requestInfo addEntriesFromDictionary:[self requestInfoFrom:string]];
+    
     if (request.userHasLocation) {
         requestInfo[kBidMachineLatitude] = @(request.userLatitude);
         requestInfo[kBidMachineLongitude] = @(request.userLongitude);
     }
+    
     return requestInfo;
 }
 
@@ -181,8 +184,8 @@ NSArray<BDMPriceFloor *> *BDMPriceFloors(NSArray *priceFloors) {
         requestInfo[kBidMachineCoppa] = @YES;
     }
     
-    if (connector.networkExtras) {
-        NSDictionary *networkExtras = [self requestInfoFromNetworkExtras:connector.networkExtras];
+    if ([connector.networkExtras isKindOfClass:GADBidMachineNetworkExtras.class]) {
+        NSDictionary *networkExtras = [(GADBidMachineNetworkExtras *)connector.networkExtras extras];
         [requestInfo addEntriesFromDictionary:networkExtras];
     }
     
@@ -195,40 +198,7 @@ NSArray<BDMPriceFloor *> *BDMPriceFloors(NSArray *priceFloors) {
     return requestInfo;
 }
 
-- (NSDictionary *)requestInfoFromNetworkExtras:(GADBidMachineNetworkExtras *)networkExtras {
-    NSMutableDictionary *requestInfo = [NSMutableDictionary new];
-    requestInfo[kBidMachineSellerId]            = networkExtras.sellerId;
-    requestInfo[kBidMachineTestMode]            = @(networkExtras.testMode);
-    requestInfo[kBidMachineLoggingEnabled]      = @(networkExtras.loggingEnabled);
-    requestInfo[kBidMachineSubjectToGDPR]       = @(networkExtras.isUnderGDPR);
-    requestInfo[kBidMachineHasConsent]          = @(networkExtras.hasUserConsent);
-    requestInfo[kBidMachineConsentString]       = networkExtras.consentString;
-    requestInfo[kBidMachineUserId]              = networkExtras.userId;
-    requestInfo[kBidMachineKeywords]            = networkExtras.keywords;
-    requestInfo[kBidMachineGender]              = networkExtras.gender;
-    requestInfo[kBidMachineYearOfBirth]         = networkExtras.yearOfBirth;
-    requestInfo[kBidMachineBlockedCategories]   = [networkExtras.blockedCategories componentsJoinedByString:@","];
-    requestInfo[kBidMachineBlockedAdvertisers]  = [networkExtras.blockedAdvertisers componentsJoinedByString:@","];
-    requestInfo[kBidMachineBlockedApps]         = [networkExtras.blockedApps componentsJoinedByString:@","];
-    requestInfo[kBidMachineCountry]             = networkExtras.country;
-    requestInfo[kBidMachineCity]                = networkExtras.city;
-    requestInfo[kBidMachineZip]                 = networkExtras.zip;
-    requestInfo[kBidMachineStoreURL]            = networkExtras.storeURL.absoluteString;
-    requestInfo[kBidMachineStoreId]             = networkExtras.storeId;
-    requestInfo[kBidMachinePaid]                = @(networkExtras.paid);
-    requestInfo[kBidMachineLatitude]            = @(networkExtras.userLatitude);
-    requestInfo[kBidMachineLongitude]           = @(networkExtras.userLongitude);
-    requestInfo[kBidMachinePriceFloors]         = networkExtras.priceFloors;
-    
-    if (networkExtras.coppa) {
-        requestInfo[kBidMachineCoppa] = @YES;
-    }
-    
-    return requestInfo;
-}
-
-- (BDMTargeting *)targetingWithRequestInfo:(NSDictionary *)requestInfo
-                                  location:(CLLocation *)location {
+- (BDMTargeting *)targetingWithRequestInfo:(NSDictionary *)requestInfo location:(CLLocation *)location {
     BDMTargeting * targeting = [BDMTargeting new];
     
     if (location) {

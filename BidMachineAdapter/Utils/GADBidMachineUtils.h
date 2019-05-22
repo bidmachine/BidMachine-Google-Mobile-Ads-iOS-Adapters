@@ -27,6 +27,6 @@ NSArray<BDMPriceFloor *> *BDMPriceFloors(NSArray *priceFloors);
                           request:(GADCustomEventRequest *)request;
 - (NSDictionary *)requestInfoFromConnector:(id<GADMRewardBasedVideoAdNetworkConnector>)connector;
 - (BDMTargeting *)targetingWithRequestInfo:(NSDictionary *)requestInfo
-                                    location:(CLLocation *)location;
+                                  location:(CLLocation *)location;
 
 @end
