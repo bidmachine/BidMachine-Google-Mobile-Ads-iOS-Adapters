@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "GADBidMachineUtils.h"
 
+
 @interface GADBidMachineUtils (Request)
-- (BDMBannerRequest *)setupBannerRequestWithSize:(BDMBannerAdSize)size
+
+- (BDMBannerRequest *)bannerRequestWithSize:(BDMBannerAdSize)size
                                requestInfo:(NSDictionary *)requestInfo;
 - (BDMInterstitialRequest *)interstitialRequestWithRequestInfo:(NSDictionary *)requestInfo;
 - (BDMRewardedRequest *)rewardedRequestWithRequestInfo:(NSDictionary *)requestInfo;
+
 @end

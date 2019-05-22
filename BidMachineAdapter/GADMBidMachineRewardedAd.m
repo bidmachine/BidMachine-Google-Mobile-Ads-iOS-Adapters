@@ -80,32 +80,32 @@
 
 #pragma mark - BDMRewardedDelegatge
 
-- (void)rewardedReadyToPresent:(nonnull BDMRewarded *)rewarded {
+- (void)rewardedReadyToPresent:(BDMRewarded *)rewarded {
     [self.rewardedAdConnector adapterDidReceiveRewardBasedVideoAd:self];
 }
 
-- (void)rewarded:(nonnull BDMRewarded *)rewarded failedWithError:(nonnull NSError *)error {
+- (void)rewarded:(BDMRewarded *)rewarded failedWithError:(NSError *)error {
     [self.rewardedAdConnector adapter:self didFailToLoadRewardBasedVideoAdwithError:error];
 }
 
-- (void)rewardedRecieveUserInteraction:(nonnull BDMRewarded *)rewarded {
+- (void)rewardedRecieveUserInteraction:(BDMRewarded *)rewarded {
     [self.rewardedAdConnector adapterDidGetAdClick:self];
 }
 
-- (void)rewarded:(nonnull BDMRewarded *)rewarded failedToPresentWithError:(nonnull NSError *)error {
+- (void)rewarded:(BDMRewarded *)rewarded failedToPresentWithError:(NSError *)error {
     // The Google Mobile Ads SDK does not have an equivalent callback.
     NSLog(@"Rewarded failed to present!");
 }
 
-- (void)rewardedWillPresent:(nonnull BDMRewarded *)rewarded {
+- (void)rewardedWillPresent:(BDMRewarded *)rewarded {
     [self.rewardedAdConnector adapterDidOpenRewardBasedVideoAd:self];
 }
 
-- (void)rewardedDidDismiss:(nonnull BDMRewarded *)rewarded {
+- (void)rewardedDidDismiss:(BDMRewarded *)rewarded {
     [self.rewardedAdConnector adapterDidCloseRewardBasedVideoAd:self];
 }
 
-- (void)rewardedFinishRewardAction:(nonnull BDMRewarded *)rewarded {
+- (void)rewardedFinishRewardAction:(BDMRewarded *)rewarded {
     GADAdReward *reward = [[GADAdReward alloc] initWithRewardType:@"" rewardAmount:[NSDecimalNumber one]];
     [self.rewardedAdConnector adapter:self didRewardUserWithReward:reward];
 }

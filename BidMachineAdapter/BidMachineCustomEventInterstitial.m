@@ -10,17 +10,19 @@
 #import "GADBidMachineUtils+Request.h"
 #import <BidMachine/BidMachine.h>
 
+
 @interface BidMachineCustomEventInterstitial() <BDMInterstitialDelegate>
 
 @property (nonatomic, strong) BDMInterstitial *interstitial;
 
 @end
 
+
 @implementation BidMachineCustomEventInterstitial
 
 - (void)requestInterstitialAdWithParameter:(nullable NSString *)serverParameter
                                      label:(nullable NSString *)serverLabel
-                                   request:(nonnull GADCustomEventRequest *)request {
+                                   request:(GADCustomEventRequest *)request {
     __weak typeof(self) weakSelf = self;
     NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] requestInfoFrom:serverParameter request:request];
     [[GADBidMachineUtils sharedUtils] initializeBidMachineWithRequestInfo:requestInfo completion:^(NSError *error) {
@@ -30,7 +32,7 @@
     }];
 }
 
-- (void)presentFromRootViewController:(nonnull UIViewController *)rootViewController {
+- (void)presentFromRootViewController:(UIViewController *)rootViewController {
     if ([self.interstitial isLoaded]) {
         [self.interstitial presentFromRootViewController:rootViewController];
     }
@@ -47,28 +49,28 @@
 
 #pragma mark - BDMInterstitialDelegate
 
-- (void)interstitialReadyToPresent:(nonnull BDMInterstitial *)interstitial {
+- (void)interstitialReadyToPresent:(BDMInterstitial *)interstitial {
     [self.delegate customEventInterstitialDidReceiveAd:self];
 }
 
-- (void)interstitial:(nonnull BDMInterstitial *)interstitial failedWithError:(nonnull NSError *)error {
+- (void)interstitial:(BDMInterstitial *)interstitial failedWithError:(NSError *)error {
     [self.delegate customEventInterstitial:self didFailAd:error];
 }
 
-- (void)interstitialWillPresent:(nonnull BDMInterstitial *)interstitial {
+- (void)interstitialWillPresent:(BDMInterstitial *)interstitial {
     [self.delegate customEventInterstitialWillPresent:self];
 }
 
-- (void)interstitial:(nonnull BDMInterstitial *)interstitial failedToPresentWithError:(nonnull NSError *)error {
+- (void)interstitial:(BDMInterstitial *)interstitial failedToPresentWithError:(NSError *)error {
     // The Google Mobile Ads SDK does not have an equivalent callback.
     NSLog(@"Interstitial failed to present!");
 }
 
-- (void)interstitialDidDismiss:(nonnull BDMInterstitial *)interstitial {
+- (void)interstitialDidDismiss:(BDMInterstitial *)interstitial {
     [self.delegate customEventInterstitialDidDismiss:self];
 }
 
-- (void)interstitialRecieveUserInteraction:(nonnull BDMInterstitial *)interstitial {
+- (void)interstitialRecieveUserInteraction:(BDMInterstitial *)interstitial {
     [self.delegate customEventInterstitialWasClicked:self];
 }
 

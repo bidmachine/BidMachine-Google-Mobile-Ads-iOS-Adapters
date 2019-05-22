@@ -10,23 +10,25 @@
 #import "GADBidMachineUtils+Request.h"
 #import <BidMachine/BidMachine.h>
 
+
 @interface BidMachineCustomEventBanner() <BDMBannerDelegate>
 
 @property (nonatomic, strong) BDMBannerView *bannerView;
 
 @end
 
+
 @implementation BidMachineCustomEventBanner
 
 - (void)requestBannerAd:(GADAdSize)adSize
               parameter:(nullable NSString *)serverParameter
                   label:(nullable NSString *)serverLabel
-                request:(nonnull GADCustomEventRequest *)request {
+                request:(GADCustomEventRequest *)request {
     __weak typeof(self) weakSelf = self;
     NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] requestInfoFrom:serverParameter request:request];
     [[GADBidMachineUtils sharedUtils] initializeBidMachineWithRequestInfo:requestInfo completion:^(NSError *error) {
-        BDMBannerAdSize size = bannerAdSizeFrom(adSize);
-        BDMBannerRequest *bannerRequest = [[GADBidMachineUtils sharedUtils] setupBannerRequestWithSize:size requestInfo:requestInfo];
+        BDMBannerAdSize size = BDMBannerAdSizeFromGADAdSize(adSize);
+        BDMBannerRequest *bannerRequest = [[GADBidMachineUtils sharedUtils] bannerRequestWithSize:size requestInfo:requestInfo];
         weakSelf.bannerView.delegate = weakSelf;
         [weakSelf.bannerView setFrame:CGRectMake(0, 0, adSize.size.width, adSize.size.height)];
         [weakSelf.bannerView populateWithRequest:bannerRequest];
@@ -44,15 +46,15 @@
 
 #pragma mark - BDMBannerDelegate
 
-- (void)bannerViewReadyToPresent:(nonnull BDMBannerView *)bannerView {
+- (void)bannerViewReadyToPresent:(BDMBannerView *)bannerView {
     [self.delegate customEventBanner:self didReceiveAd:bannerView];
 }
 
-- (void)bannerView:(nonnull BDMBannerView *)bannerView failedWithError:(nonnull NSError *)error {
+- (void)bannerView:(BDMBannerView *)bannerView failedWithError:(NSError *)error {
     [self.delegate customEventBanner:self didFailAd:error];
 }
 
-- (void)bannerViewRecieveUserInteraction:(nonnull BDMBannerView *)bannerView {
+- (void)bannerViewRecieveUserInteraction:(BDMBannerView *)bannerView {
     [self.delegate customEventBannerWasClicked:self];
 }
 

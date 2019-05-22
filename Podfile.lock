@@ -1,0 +1,119 @@
+PODS:
+  - BidMachine (1.0.3)
+  - Google-Mobile-Ads-SDK (7.44.0):
+    - GoogleAppMeasurement (~> 6.0)
+  - GoogleAppMeasurement (6.0.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 0.3)
+  - GoogleMobileAdsMediationTestSuite (1.0.0):
+    - Google-Mobile-Ads-SDK (>= 7.10.1)
+    - MaterialComponents/Cards (~> 76.0)
+    - MaterialComponents/Dialogs (~> 76.0)
+    - MaterialComponents/Tabs (~> 76.0)
+  - GoogleUtilities/AppDelegateSwizzler (6.1.0):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.1.0)
+  - GoogleUtilities/Logger (6.1.0):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.1.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.1.0):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.1.0)"
+  - GoogleUtilities/Reachability (6.1.0):
+    - GoogleUtilities/Logger
+  - MaterialComponents/AnimationTiming (76.1.2)
+  - MaterialComponents/Buttons (76.1.2):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
+  - MaterialComponents/Cards (76.1.2):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Icons/ic_check_circle
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
+  - MaterialComponents/Dialogs (76.1.2):
+    - MaterialComponents/Buttons
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/Ink (76.1.2):
+    - MaterialComponents/private/Math
+  - MaterialComponents/private/Application (76.1.2)
+  - MaterialComponents/private/Icons/Base (76.1.2)
+  - MaterialComponents/private/Icons/ic_check_circle (76.1.2):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/KeyboardWatcher (76.1.2):
+    - MaterialComponents/private/Application
+  - MaterialComponents/private/Math (76.1.2)
+  - MaterialComponents/ShadowElevations (76.1.2)
+  - MaterialComponents/ShadowLayer (76.1.2):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/Shapes (76.1.2):
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/Tabs (76.1.2):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/Typography (76.1.2):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/Math
+  - MDFInternationalization (2.0.0)
+  - MDFTextAccessibility (2.0.0)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
+
+DEPENDENCIES:
+  - BidMachine (~> 1.0)
+  - Google-Mobile-Ads-SDK
+  - GoogleMobileAdsMediationTestSuite
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - BidMachine
+    - Google-Mobile-Ads-SDK
+    - GoogleAppMeasurement
+    - GoogleMobileAdsMediationTestSuite
+    - GoogleUtilities
+    - MaterialComponents
+    - MDFInternationalization
+    - MDFTextAccessibility
+    - nanopb
+
+SPEC CHECKSUMS:
+  BidMachine: 4ba60d24144b821046e72c58f77f143fc6a004ca
+  Google-Mobile-Ads-SDK: 1e72b4f438d997ab0f2ee62b3a7b0cbcc87c47cb
+  GoogleAppMeasurement: 7f028ea162b72c8f326daec74afc95d94f7a47d6
+  GoogleMobileAdsMediationTestSuite: 5fa71a97dd0be6e45a98d12ffd78ff0829051cd6
+  GoogleUtilities: 84df567c76ca84f67b7bb40e769fdd4acc746a10
+  MaterialComponents: 1aef341d47fbaed37ddb5163a01af94cb6da8506
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+
+PODFILE CHECKSUM: f7c5686d52ab3b90856e3b2855387aef081fcca3
+
+COCOAPODS: 1.6.1
