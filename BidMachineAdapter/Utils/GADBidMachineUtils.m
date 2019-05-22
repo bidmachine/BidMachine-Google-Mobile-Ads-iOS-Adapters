@@ -88,7 +88,7 @@
         requestInfo[kBidMachineCoppa] = @YES;
     }
     if (connector.networkExtras) {
-        NSDictionary *networkExtras = [self requestInfoFromNetworkExtras:connector.networkExtras];
+        NSDictionary *networkExtras = [(GADBidMachineNetworkExtras *)connector.networkExtras dictionaryFromModel];
         [requestInfo addEntriesFromDictionary:networkExtras];
     }
     if (connector.credentials && parameters) {
@@ -96,36 +96,6 @@
         [requestInfo addEntriesFromDictionary:params];
     }
     requestInfo[kBidMachineSellerId] = transfromSellerID(requestInfo[kBidMachineSellerId]);
-    return requestInfo;
-}
-
-- (NSDictionary *)requestInfoFromNetworkExtras:(GADBidMachineNetworkExtras *)networkExtras {
-    NSMutableDictionary *requestInfo = [NSMutableDictionary new];
-    requestInfo[kBidMachineSellerId] = networkExtras.sellerId;
-    requestInfo[kBidMachineTestMode] = @(networkExtras.testMode);
-    requestInfo[kBidMachineLoggingEnabled] = @(networkExtras.loggingEnabled);
-    requestInfo[kBidMachineSubjectToGDPR] = @(networkExtras.isUnderGDPR);
-    requestInfo[kBidMachineHasConsent] = @(networkExtras.hasUserConsent);
-    requestInfo[kBidMachineConsentString] = networkExtras.consentString;
-    requestInfo[kBidMachineUserId] = networkExtras.userId;
-    requestInfo[kBidMachineKeywords] = networkExtras.keywords;
-    requestInfo[kBidMachineGender] = networkExtras.gender;
-    requestInfo[kBidMachineYearOfBirth] = networkExtras.yearOfBirth;
-    requestInfo[kBidMachineBlockedCategories] = [networkExtras.blockedCategories componentsJoinedByString:@","];
-    requestInfo[kBidMachineBlockedAdvertisers] = [networkExtras.blockedAdvertisers componentsJoinedByString:@","];
-    requestInfo[kBidMachineBlockedApps] = [networkExtras.blockedApps componentsJoinedByString:@","];
-    requestInfo[kBidMachineCountry] = networkExtras.country;
-    requestInfo[kBidMachineCity] = networkExtras.city;
-    requestInfo[kBidMachineZip] = networkExtras.zip;
-    requestInfo[kBidMachineStoreURL] = networkExtras.storeURL.absoluteString;
-    requestInfo[kBidMachineStoreId] = networkExtras.storeId;
-    requestInfo[kBidMachinePaid] = @(networkExtras.paid);
-    requestInfo[kBidMachineLatitude] = @(networkExtras.userLatitude);
-    requestInfo[kBidMachineLongitude] = @(networkExtras.userLongitude);
-    if (networkExtras.coppa) {
-        requestInfo[kBidMachineCoppa] = @YES;
-    }
-    requestInfo[kBidMachinePriceFloors] = networkExtras.priceFloors;
     return requestInfo;
 }
 

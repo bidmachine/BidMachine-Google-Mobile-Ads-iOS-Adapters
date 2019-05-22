@@ -45,7 +45,6 @@
     NSDictionary *requestInfo = [[GADBidMachineUtils sharedUtils] requestInfoFromConnector:strongConnector];
     [[GADBidMachineUtils sharedUtils] initializeBidMachineWithRequestInfo:requestInfo completion:^(NSError *error) {
         if (!error) {
-            NSLog(@"BidMachine SDK was successfully initialized!");
             [self.rewardedAdConnector adapterDidSetUpRewardBasedVideoAd:self];
         } else {
             [self.rewardedAdConnector adapter:self didFailToSetUpRewardBasedVideoAdWithError:error];

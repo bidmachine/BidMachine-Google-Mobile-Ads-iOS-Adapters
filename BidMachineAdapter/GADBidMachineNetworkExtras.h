@@ -102,6 +102,9 @@
  Bids configuration for current request.
  */
 @property (nonatomic, copy) NSArray *priceFloors;
-
+/**
+ Creates dictionary from properties.
+ */
+- (NSDictionary *)dictionaryFromModel;
 
 @end
