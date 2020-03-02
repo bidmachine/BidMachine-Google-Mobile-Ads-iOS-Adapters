@@ -8,7 +8,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 
 def bidmachine_header_bidding
-  pod "BidMachine", "1.4.0"
+  pod "BidMachine", "1.4.2"
   pod "BidMachine/Adapters"
 end
 
