@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
-
+#import <BidMachine/BidMachine.h>
 
 @implementation AppDelegate
 
