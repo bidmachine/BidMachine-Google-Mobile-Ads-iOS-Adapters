@@ -1,7 +1,6 @@
 Pod::Spec.new do |spec|
-
   spec.name         = "BidMachineAdMobAdManager"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.2"
   spec.summary      = "BidMachine IOS SDK for GAM mediation"
   spec.description  = <<-DESC
   Supported ad formats: Banner, Interstitial, Rewarded Video.\n
@@ -19,11 +18,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
     LICENSE
 }
-
   spec.author       = { "Appodeal" => "http://www.appodeal.com" }
   spec.platform     = :ios, '9.0'
   spec.source       = { :http => "https://appodeal-ios.s3-us-west-1.amazonaws.com/external-sdks/BidMachineAdMobAdManager/#{spec.version}/BidMachineAdMobAdManager.framework.zip" }
-
+  
+  spec.vendored_frameworks = 'BidMachineAdMobAdManager.framework'
   spec.dependency 'BidMachine', '1.4.4'
   spec.dependency 'Google-Mobile-Ads-SDK', '7.59.0'
 end

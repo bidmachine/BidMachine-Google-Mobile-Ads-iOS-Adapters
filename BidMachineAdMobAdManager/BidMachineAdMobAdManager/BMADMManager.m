@@ -7,6 +7,7 @@
 //
 
 #import "BMADMManager.h"
+#import "BMADMNetworkEvent.h"
 #import <BidMachine/BidMachine.h>
 
 @implementation BMADMManager

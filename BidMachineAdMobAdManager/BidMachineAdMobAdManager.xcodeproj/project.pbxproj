@@ -11,6 +11,8 @@
 		3726860F247BBCBD00061585 /* BMADMInterstitialAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3726860D247BBCBD00061585 /* BMADMInterstitialAd.m */; };
 		37268612247BBCE800061585 /* BMADMRewardedAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 37268610247BBCE800061585 /* BMADMRewardedAd.h */; };
 		37268613247BBCE800061585 /* BMADMRewardedAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 37268611247BBCE800061585 /* BMADMRewardedAd.m */; };
+		37268619247BDBBE00061585 /* BMADMNetworkEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 37268617247BDBBE00061585 /* BMADMNetworkEvent.h */; };
+		3726861A247BDBBE00061585 /* BMADMNetworkEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 37268618247BDBBE00061585 /* BMADMNetworkEvent.m */; };
 		653B6960246E87BD00E2D554 /* BidMachineAdMobAdManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 653B695E246E87BD00E2D554 /* BidMachineAdMobAdManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		653B696C246E8AD700E2D554 /* BMADMInterstitial.h in Headers */ = {isa = PBXBuildFile; fileRef = 653B696A246E8AD700E2D554 /* BMADMInterstitial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		653B696D246E8AD700E2D554 /* BMADMInterstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = 653B696B246E8AD700E2D554 /* BMADMInterstitial.m */; };
@@ -32,6 +34,8 @@
 		3726860D247BBCBD00061585 /* BMADMInterstitialAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMADMInterstitialAd.m; sourceTree = "<group>"; };
 		37268610247BBCE800061585 /* BMADMRewardedAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMADMRewardedAd.h; sourceTree = "<group>"; };
 		37268611247BBCE800061585 /* BMADMRewardedAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMADMRewardedAd.m; sourceTree = "<group>"; };
+		37268617247BDBBE00061585 /* BMADMNetworkEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMADMNetworkEvent.h; sourceTree = "<group>"; };
+		37268618247BDBBE00061585 /* BMADMNetworkEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMADMNetworkEvent.m; sourceTree = "<group>"; };
 		653B695B246E87BD00E2D554 /* BidMachineAdMobAdManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BidMachineAdMobAdManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		653B695E246E87BD00E2D554 /* BidMachineAdMobAdManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineAdMobAdManager.h; sourceTree = "<group>"; };
 		653B695F246E87BD00E2D554 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -130,6 +134,8 @@
 				654BDF46247281E20095CC67 /* BMADMManager.h */,
 				654BDF47247281E20095CC67 /* BMADMManager.m */,
 				654BDF4E247296EF0095CC67 /* BMADMAdEventProtocol.h */,
+				37268617247BDBBE00061585 /* BMADMNetworkEvent.h */,
+				37268618247BDBBE00061585 /* BMADMNetworkEvent.m */,
 				37268616247BBD1B00061585 /* Utils */,
 				37268614247BBCF300061585 /* Fullscreen */,
 				37268615247BBD0400061585 /* Banner */,
@@ -156,6 +162,7 @@
 				653B696C246E8AD700E2D554 /* BMADMInterstitial.h in Headers */,
 				654BDF5224729B4D0095CC67 /* BMADMBannerView.h in Headers */,
 				654BDF4F247296EF0095CC67 /* BMADMAdEventProtocol.h in Headers */,
+				37268619247BDBBE00061585 /* BMADMNetworkEvent.h in Headers */,
 				654BDF48247281E20095CC67 /* BMADMManager.h in Headers */,
 				654BDF5624729B990095CC67 /* BMADMBanner.h in Headers */,
 				3726860E247BBCBD00061585 /* BMADMInterstitialAd.h in Headers */,
@@ -277,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3726861A247BDBBE00061585 /* BMADMNetworkEvent.m in Sources */,
 				654BDF5F2472CE240095CC67 /* BMADMFetcher.m in Sources */,
 				653B696D246E8AD700E2D554 /* BMADMInterstitial.m in Sources */,
 				3726860F247BBCBD00061585 /* BMADMInterstitialAd.m in Sources */,
@@ -410,9 +418,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E3E1930F6706621D29032D27 /* Pods-BidMachineAdMobAdManager.debug.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = WG4VFF78ZM;
+				DEVELOPMENT_TEAM = 47K9SLT24Q;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -435,9 +444,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0CF995B4A61E091A1A45B913 /* Pods-BidMachineAdMobAdManager.release.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = WG4VFF78ZM;
+				DEVELOPMENT_TEAM = 47K9SLT24Q;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

@@ -304,7 +304,6 @@ SPEC REPOS:
     - BidMachine
     - CriteoPublisherSdk
     - StackIAB
-    - StackModules
   https://github.com/CocoaPods/Specs.git:
     - AdColony
     - FBAudienceNetwork
@@ -346,7 +345,7 @@ SPEC CHECKSUMS:
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
   smaato-ios-sdk: fad41f668ceefe75ece6d46f729bea3ca26471ea
   StackIAB: b0f07ac4c11e7001e0e596abb56ce287e2f97d08
-  StackModules: a829067eec6aa4be8bdc9515141b89f3d06bdb55
+  StackModules: 4a89dc77f24bcf1500e112a5c9c73140ec8ee58f
   TapjoySDK: c8d73f291cfe922cb8bb2c3ae09b5af0b2863841
   VungleSDK-iOS: b39f80d93c342cb07f9d83ab1105817ddcb61b72
 
