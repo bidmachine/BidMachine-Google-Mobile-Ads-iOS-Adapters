@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3726860E247BBCBD00061585 /* BMADMInterstitialAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 3726860C247BBCBD00061585 /* BMADMInterstitialAd.h */; };
+		3726860F247BBCBD00061585 /* BMADMInterstitialAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3726860D247BBCBD00061585 /* BMADMInterstitialAd.m */; };
+		37268612247BBCE800061585 /* BMADMRewardedAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 37268610247BBCE800061585 /* BMADMRewardedAd.h */; };
+		37268613247BBCE800061585 /* BMADMRewardedAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 37268611247BBCE800061585 /* BMADMRewardedAd.m */; };
 		653B6960246E87BD00E2D554 /* BidMachineAdMobAdManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 653B695E246E87BD00E2D554 /* BidMachineAdMobAdManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		653B696C246E8AD700E2D554 /* BMADMInterstitial.h in Headers */ = {isa = PBXBuildFile; fileRef = 653B696A246E8AD700E2D554 /* BMADMInterstitial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		653B696D246E8AD700E2D554 /* BMADMInterstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = 653B696B246E8AD700E2D554 /* BMADMInterstitial.m */; };
@@ -24,6 +28,10 @@
 
 /* Begin PBXFileReference section */
 		0CF995B4A61E091A1A45B913 /* Pods-BidMachineAdMobAdManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineAdMobAdManager.release.xcconfig"; path = "Target Support Files/Pods-BidMachineAdMobAdManager/Pods-BidMachineAdMobAdManager.release.xcconfig"; sourceTree = "<group>"; };
+		3726860C247BBCBD00061585 /* BMADMInterstitialAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMADMInterstitialAd.h; sourceTree = "<group>"; };
+		3726860D247BBCBD00061585 /* BMADMInterstitialAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMADMInterstitialAd.m; sourceTree = "<group>"; };
+		37268610247BBCE800061585 /* BMADMRewardedAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMADMRewardedAd.h; sourceTree = "<group>"; };
+		37268611247BBCE800061585 /* BMADMRewardedAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMADMRewardedAd.m; sourceTree = "<group>"; };
 		653B695B246E87BD00E2D554 /* BidMachineAdMobAdManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BidMachineAdMobAdManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		653B695E246E87BD00E2D554 /* BidMachineAdMobAdManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineAdMobAdManager.h; sourceTree = "<group>"; };
 		653B695F246E87BD00E2D554 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +62,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37268614247BBCF300061585 /* Fullscreen */ = {
+			isa = PBXGroup;
+			children = (
+				653B696A246E8AD700E2D554 /* BMADMInterstitial.h */,
+				653B696B246E8AD700E2D554 /* BMADMInterstitial.m */,
+				3726860C247BBCBD00061585 /* BMADMInterstitialAd.h */,
+				3726860D247BBCBD00061585 /* BMADMInterstitialAd.m */,
+				37268610247BBCE800061585 /* BMADMRewardedAd.h */,
+				37268611247BBCE800061585 /* BMADMRewardedAd.m */,
+			);
+			name = Fullscreen;
+			sourceTree = "<group>";
+		};
+		37268615247BBD0400061585 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				654BDF5424729B990095CC67 /* BMADMBanner.h */,
+				654BDF5524729B990095CC67 /* BMADMBanner.m */,
+				654BDF5024729B4D0095CC67 /* BMADMBannerView.h */,
+				654BDF5124729B4D0095CC67 /* BMADMBannerView.m */,
+			);
+			name = Banner;
+			sourceTree = "<group>";
+		};
+		37268616247BBD1B00061585 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				654BDF5C2472CE240095CC67 /* BMADMFetcher.h */,
+				654BDF5D2472CE240095CC67 /* BMADMFetcher.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		5B330EE8862B9200E1C3470B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,14 +130,9 @@
 				654BDF46247281E20095CC67 /* BMADMManager.h */,
 				654BDF47247281E20095CC67 /* BMADMManager.m */,
 				654BDF4E247296EF0095CC67 /* BMADMAdEventProtocol.h */,
-				653B696A246E8AD700E2D554 /* BMADMInterstitial.h */,
-				653B696B246E8AD700E2D554 /* BMADMInterstitial.m */,
-				654BDF5424729B990095CC67 /* BMADMBanner.h */,
-				654BDF5524729B990095CC67 /* BMADMBanner.m */,
-				654BDF5024729B4D0095CC67 /* BMADMBannerView.h */,
-				654BDF5124729B4D0095CC67 /* BMADMBannerView.m */,
-				654BDF5C2472CE240095CC67 /* BMADMFetcher.h */,
-				654BDF5D2472CE240095CC67 /* BMADMFetcher.m */,
+				37268616247BBD1B00061585 /* Utils */,
+				37268614247BBCF300061585 /* Fullscreen */,
+				37268615247BBD0400061585 /* Banner */,
 				653B695F246E87BD00E2D554 /* Info.plist */,
 			);
 			path = BidMachineAdMobAdManager;
@@ -122,8 +158,10 @@
 				654BDF4F247296EF0095CC67 /* BMADMAdEventProtocol.h in Headers */,
 				654BDF48247281E20095CC67 /* BMADMManager.h in Headers */,
 				654BDF5624729B990095CC67 /* BMADMBanner.h in Headers */,
+				3726860E247BBCBD00061585 /* BMADMInterstitialAd.h in Headers */,
 				654BDF5E2472CE240095CC67 /* BMADMFetcher.h in Headers */,
 				653B6960246E87BD00E2D554 /* BidMachineAdMobAdManager.h in Headers */,
+				37268612247BBCE800061585 /* BMADMRewardedAd.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +279,9 @@
 			files = (
 				654BDF5F2472CE240095CC67 /* BMADMFetcher.m in Sources */,
 				653B696D246E8AD700E2D554 /* BMADMInterstitial.m in Sources */,
+				3726860F247BBCBD00061585 /* BMADMInterstitialAd.m in Sources */,
 				654BDF5324729B4D0095CC67 /* BMADMBannerView.m in Sources */,
+				37268613247BBCE800061585 /* BMADMRewardedAd.m in Sources */,
 				654BDF49247281E20095CC67 /* BMADMManager.m in Sources */,
 				654BDF5724729B990095CC67 /* BMADMBanner.m in Sources */,
 			);

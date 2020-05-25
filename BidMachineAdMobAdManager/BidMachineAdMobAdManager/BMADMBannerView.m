@@ -12,8 +12,6 @@
 #import <StackUIKit/StackUIKit.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
-#define UNIT_ID         "/91759738/spacetour_banner_1"
-
 @interface BMADMBannerView ()<BDMBannerDelegate, BDMRequestDelegate, GADBannerViewDelegate, GADAppEventDelegate>
 
 @property (nonatomic, strong) BDMBannerView *banner;
@@ -68,7 +66,7 @@
     if (!_adMobBanner) {
         _adMobBanner = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeBanner];
         _adMobBanner.delegate = self;
-        _adMobBanner.adUnitID = @UNIT_ID;
+        _adMobBanner.adUnitID = self.unitId;
         _adMobBanner.rootViewController = [[UIApplication.sharedApplication keyWindow] rootViewController];
         _adMobBanner.appEventDelegate = self;
     }

@@ -19,10 +19,18 @@
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) NSTimer *refreshTimer;
 @property (nonatomic, strong) NSTimer *reloadTimer;
+@property (nonatomic, strong) NSString *unitId;
 
 @end
 
 @implementation BMADMBanner
+
+- (instancetype)initWithUnitId:(NSString *)unitId {
+    if (self = [super init]) {
+        _unitId = unitId;
+    }
+    return self;
+}
 
 - (void)loadAd {
     if (!self.adOnScreen && !self.cachedBanner) {
@@ -96,6 +104,7 @@
     self.reloadTimer = nil;
     self.cachedBanner = [BMADMBannerView new];
     self.cachedBanner.delegate = self;
+    self.cachedBanner.unitId = self.unitId;
     [self.cachedBanner loadAd];
 }
 
@@ -141,6 +150,5 @@
 - (void)onAdShown {
     [self.delegate onAdShown];
 }
-
 
 @end

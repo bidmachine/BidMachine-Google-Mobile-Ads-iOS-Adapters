@@ -24,6 +24,10 @@
 
 - (void)onAdExpired;
 
+@optional
+
+- (void)onAdRewarded;
+
 @end
 
 @protocol BMADMAdEventProtocol <NSObject>

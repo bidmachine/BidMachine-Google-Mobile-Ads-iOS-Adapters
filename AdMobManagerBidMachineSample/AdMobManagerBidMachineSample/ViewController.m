@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) BMADMInterstitial *interstitial;
 @property (nonatomic, strong) BMADMBanner *banner;
+@property (nonatomic, strong) BMADMInterstitial *rewarded;
 
 @end
 
@@ -27,7 +28,7 @@
 
 - (BMADMBanner *)banner {
     if (!_banner) {
-        _banner = [BMADMBanner new];
+        _banner = [[BMADMBanner alloc] initWithUnitId:@"/91759738/spacetour_banner_1"];
         _banner.delegate = self;
     }
     return _banner;
@@ -35,10 +36,18 @@
 
 - (BMADMInterstitial *)interstitial {
     if (!_interstitial) {
-        _interstitial = [BMADMInterstitial new];
+        _interstitial = [[BMADMInterstitial alloc] initWithUnitId:@"/91759738/spacetour_interstitial_1" rewarded:NO];
         _interstitial.delegate = self;
     }
     return _interstitial;
+}
+
+- (BMADMInterstitial *)rewarded {
+    if (!_rewarded) {
+        _rewarded = [[BMADMInterstitial alloc] initWithUnitId:@"/91759738/spacetour_rewarded_1" rewarded:YES];
+        _rewarded.delegate = self;
+    }
+    return _rewarded;
 }
 
 - (IBAction)bannerAction:(id)sender {
@@ -47,6 +56,10 @@
 
 - (IBAction)interstitialAction:(id)sender {
     [self.interstitial loadAd];
+}
+
+- (IBAction)rewardedAction:(id)sender {
+    [self.rewarded loadAd];
 }
 
 - (IBAction)showBanner:(id)sender {
@@ -88,6 +101,9 @@
     }
     if ([self.interstitial isLoaded]) {
         [self.interstitial show:self];
+    }
+    if ([self.rewarded isLoaded]) {
+        [self.rewarded show:self];
     }
 }
 

@@ -13,6 +13,12 @@
 
 @property (nonatomic, weak) id<BMADMAdEventDelegate> delegate;
 
+- (instancetype)init NS_UNAVAILABLE;
+
++ (instancetype)new NS_UNAVAILABLE;
+
+- (instancetype)initWithUnitId:(NSString *)unitId NS_DESIGNATED_INITIALIZER;
+
 - (void)hide;
 
 @end

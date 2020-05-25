@@ -1,18 +1,17 @@
 //
-//  BMADMBannerView.h
+//  BMADMInterstitialAd.h
 //  BidMachineAdMobAdManager
 //
-//  Created by Ilia Lozhkin on 5/18/20.
+//  Created by Ilia Lozhkin on 25.05.2020.
 //  Copyright © 2020 Appodeal. All rights reserved.
 //
 
 #import <BidMachineAdMobAdManager/BMADMAdEventProtocol.h>
 
-
-@interface BMADMBannerView : UIView <BMADMAdEventProtocol>
+@interface BMADMInterstitialAd : NSObject <BMADMAdEventProtocol>
 
 @property (nonatomic, weak) id<BMADMAdEventDelegate> delegate;
 
-@property (nonatomic, strong) NSString *unitId;
+- (instancetype)initWithUnitId:(NSString *)unitId;
 
 @end
