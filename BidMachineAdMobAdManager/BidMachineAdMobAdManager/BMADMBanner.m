@@ -32,13 +32,20 @@
 
 - (void)show:(UIViewController *)controller {
     self.controller = controller;
-    if (!self.adOnScreen && self.isLoaded) {
+    if (!self.adOnScreen && (self.containerView || self.isLoaded)) {
         [self presentBanner];
     }
 }
 
 - (BOOL)isLoaded {
     return [self.cachedBanner isLoaded];
+}
+
+- (void)hide {
+    if (self.adOnScreen) {
+        [self.containerView removeFromSuperview];
+        self.adOnScreen = NO;
+    }
 }
 
 - (void)dealloc {
@@ -65,6 +72,8 @@
     self.adOnScreen = YES;
     if (!self.containerView) {
         self.containerView = UIView.new;
+    }
+    if (!self.containerView.superview) {
         [self.controller.view addSubview:self.containerView];
         self.containerView.translatesAutoresizingMaskIntoConstraints = NO;
         [NSLayoutConstraint activateConstraints:@[[self.containerView.widthAnchor constraintEqualToConstant:320],
@@ -72,12 +81,15 @@
                                                   [self.containerView.centerXAnchor constraintEqualToAnchor:self.controller.view.centerXAnchor],
                                                   [self.containerView.bottomAnchor constraintEqualToAnchor:self.controller.view.bottomAnchor]]];
     }
-    [self.containerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    self.banner = self.cachedBanner;
-    [self.banner stk_edgesEqual:self.containerView];
-    [self.banner show:self.controller];
-    [self cacheBanner];
-    [self refreshBannerIfNeeded];
+    
+    if (self.isLoaded) {
+        [self.containerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        self.banner = self.cachedBanner;
+        [self.banner stk_edgesEqual:self.containerView];
+        [self.banner show:self.controller];
+        [self cacheBanner];
+        [self refreshBannerIfNeeded];
+    }
 }
 
 - (void)cacheBanner {

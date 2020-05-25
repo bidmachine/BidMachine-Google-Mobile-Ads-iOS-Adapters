@@ -49,6 +49,14 @@
     [self.interstitial loadAd];
 }
 
+- (IBAction)showBanner:(id)sender {
+    [self.banner show:self];
+}
+
+- (IBAction)hideBanner:(id)sender {
+    [self.banner hide];
+}
+
 #pragma mark - BMADMAdEventDelegate
 
 

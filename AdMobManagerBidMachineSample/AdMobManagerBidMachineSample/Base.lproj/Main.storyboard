@@ -26,6 +26,13 @@
                                     <action selector="bannerAction:" destination="5MK-QR-uHP" eventType="touchUpInside" id="PMX-9m-EAe"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9US-4C-zHp">
+                                <rect key="frame" x="0.0" y="496" width="103.5" height="30"/>
+                                <state key="normal" title="show"/>
+                                <connections>
+                                    <action selector="showBanner:" destination="5MK-QR-uHP" eventType="touchUpInside" id="2K9-aO-wzp"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsX-s4-OE7">
                                 <rect key="frame" x="207" y="433" width="207" height="30"/>
                                 <constraints>
@@ -36,13 +43,26 @@
                                     <action selector="interstitialAction:" destination="5MK-QR-uHP" eventType="touchUpInside" id="DzE-nW-xjz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwp-lt-qGb">
+                                <rect key="frame" x="103.5" y="496" width="103.5" height="30"/>
+                                <state key="normal" title="hide"/>
+                                <connections>
+                                    <action selector="hideBanner:" destination="5MK-QR-uHP" eventType="touchUpInside" id="aqU-RO-RkT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ysd-iq-YcH" firstAttribute="leading" secondItem="J2Z-2Y-dGT" secondAttribute="leading" id="6Nc-XL-XbF"/>
+                            <constraint firstItem="9US-4C-zHp" firstAttribute="top" secondItem="ysd-iq-YcH" secondAttribute="bottom" constant="33" id="CZu-wj-BEY"/>
+                            <constraint firstItem="gwp-lt-qGb" firstAttribute="width" secondItem="9US-4C-zHp" secondAttribute="width" id="HKB-J4-hW2"/>
                             <constraint firstItem="J2Z-2Y-dGT" firstAttribute="trailing" secondItem="gsX-s4-OE7" secondAttribute="trailing" id="NQW-n9-VY6"/>
+                            <constraint firstItem="gwp-lt-qGb" firstAttribute="top" secondItem="ysd-iq-YcH" secondAttribute="bottom" constant="33" id="PEV-jG-LpE"/>
+                            <constraint firstItem="gwp-lt-qGb" firstAttribute="leading" secondItem="9US-4C-zHp" secondAttribute="trailing" id="Qca-kD-qMk"/>
                             <constraint firstItem="gsX-s4-OE7" firstAttribute="width" secondItem="ysd-iq-YcH" secondAttribute="width" id="WFc-Ns-dEq"/>
                             <constraint firstItem="gsX-s4-OE7" firstAttribute="centerY" secondItem="ysd-iq-YcH" secondAttribute="centerY" id="Z5G-GT-Rdn"/>
+                            <constraint firstItem="9US-4C-zHp" firstAttribute="leading" secondItem="J2Z-2Y-dGT" secondAttribute="leading" id="cwD-NC-MKZ"/>
+                            <constraint firstItem="gwp-lt-qGb" firstAttribute="trailing" secondItem="ysd-iq-YcH" secondAttribute="trailing" id="ibA-fd-UTi"/>
                             <constraint firstItem="ysd-iq-YcH" firstAttribute="centerY" secondItem="r2w-kb-gbQ" secondAttribute="centerY" id="nmr-4p-YqM"/>
                             <constraint firstItem="gsX-s4-OE7" firstAttribute="leading" secondItem="ysd-iq-YcH" secondAttribute="trailing" id="w8v-LX-t1b"/>
                         </constraints>
@@ -51,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0aH-EF-3Qj" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-642" y="83"/>
+            <point key="canvasLocation" x="-642.02898550724638" y="82.366071428571431"/>
         </scene>
     </scenes>
 </document>

@@ -13,4 +13,6 @@
 
 @property (nonatomic, weak) id<BMADMAdEventDelegate> delegate;
 
+- (void)hide;
+
 @end
