@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSTimer *refreshTimer;
 @property (nonatomic, strong) NSTimer *reloadTimer;
 @property (nonatomic, strong) NSString *unitId;
+@property (nonatomic, assign) BOOL showWhenLoad;
 
 @end
 
@@ -40,6 +41,7 @@
 
 - (void)show:(UIViewController *)controller {
     self.controller = controller;
+    self.showWhenLoad = !self.adOnScreen && !self.containerView;
     if (!self.adOnScreen && (self.containerView || self.isLoaded)) {
         [self presentBanner];
     }
@@ -69,15 +71,21 @@
 }
 
 - (void)refreshBannerIfNeeded {
-    if (!self.refreshTimer && !self.isLoaded) {
+    if (self.refreshTimer) {
+        return;
+    }
+    
+    if (self.isLoaded) {
+        [self presentBanner];
+    } else {
         self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(refresh) userInfo:nil repeats:NO];
-    } if (self.isLoaded) {
-         [self presentBanner];
     }
 }
 
 - (void)presentBanner {
+    self.showWhenLoad = NO;
     self.adOnScreen = YES;
+    
     if (!self.containerView) {
         self.containerView = UIView.new;
     }
@@ -141,7 +149,9 @@
 }
 
 - (void)onAdLoaded {
-    if (self.adOnScreen) {
+    if (self.showWhenLoad) {
+        [self presentBanner];
+    } else  if (self.adOnScreen) {
         [self refreshBannerIfNeeded];
     }
     [self.delegate onAdLoaded];

@@ -20,7 +20,7 @@ PODS:
   - BidMachine/Core (1.4.4):
     - Protobuf (~> 3.9)
     - StackIAB (~> 0.5.0)
-    - StackModules (~> 0.6.3)
+    - StackModules (~> 0.7)
   - BidMachine/CriteoAdapter (1.4.4):
     - BidMachine/Core
     - CriteoPublisherSdk (= 3.4.1)
@@ -285,10 +285,10 @@ PODS:
     - StackModules (~> 0.6)
   - StackIAB/StackXML (0.5.14):
     - StackModules (~> 0.6)
-  - StackModules (0.6.10):
-    - StackModules/StackUIKit (= 0.6.10)
-  - StackModules/StackFoundation (0.6.10)
-  - StackModules/StackUIKit (0.6.10):
+  - StackModules (0.7.1):
+    - StackModules/StackUIKit (= 0.7.1)
+  - StackModules/StackFoundation (0.7.1)
+  - StackModules/StackUIKit (0.7.1):
     - StackModules/StackFoundation
   - TapjoySDK (12.4.2)
   - VungleSDK-iOS (6.5.2)
@@ -304,6 +304,7 @@ SPEC REPOS:
     - BidMachine
     - CriteoPublisherSdk
     - StackIAB
+    - StackModules
   https://github.com/CocoaPods/Specs.git:
     - AdColony
     - FBAudienceNetwork
@@ -321,13 +322,12 @@ SPEC REPOS:
     - PromisesObjC
     - Protobuf
     - smaato-ios-sdk
-    - StackModules
     - TapjoySDK
     - VungleSDK-iOS
 
 SPEC CHECKSUMS:
   AdColony: fc02f429d6c4591567c7ae1426ebfcecb704b11f
-  BidMachine: eb388ca4ab9046721b06b66735363fd01631d124
+  BidMachine: 636c0b6772c6a4bf44932756506129bb9283d8cd
   CriteoPublisherSdk: 9ea61c4f6facafd5bc003258d569e6510e06614c
   FBAudienceNetwork: 33fc8c8c07c1cdbf5279784b73729c6410809daa
   FBSDKCoreKit: 8ad31cd09f793d1d7e84cf20fd6cebfe80ad318d
@@ -345,7 +345,7 @@ SPEC CHECKSUMS:
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
   smaato-ios-sdk: fad41f668ceefe75ece6d46f729bea3ca26471ea
   StackIAB: b0f07ac4c11e7001e0e596abb56ce287e2f97d08
-  StackModules: 4a89dc77f24bcf1500e112a5c9c73140ec8ee58f
+  StackModules: 7b9141ed45cc9299c15c1bf8430e6408b2f28171
   TapjoySDK: c8d73f291cfe922cb8bb2c3ae09b5af0b2863841
   VungleSDK-iOS: b39f80d93c342cb07f9d83ab1105817ddcb61b72
 

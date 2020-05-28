@@ -52,6 +52,7 @@
 
 - (IBAction)bannerAction:(id)sender {
     [self.banner loadAd];
+    [self.banner show:self];
 }
 
 - (IBAction)interstitialAction:(id)sender {
@@ -97,7 +98,7 @@
 - (void)onAdLoaded {
     NSLog(@"[Callback] - ad load");
     if ([self.banner isLoaded]) {
-        [self.banner show:self];
+//        [self.banner show:self];
     }
     if ([self.interstitial isLoaded]) {
         [self.interstitial show:self];
