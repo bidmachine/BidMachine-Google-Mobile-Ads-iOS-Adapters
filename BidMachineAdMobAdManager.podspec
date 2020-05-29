@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "BidMachineAdMobAdManager"
-  spec.version      = "0.0.3"
+  spec.version      = "0.0.4"
   spec.summary      = "BidMachine IOS SDK for GAM mediation"
   spec.description  = <<-DESC
   Supported ad formats: Banner, Interstitial, Rewarded Video.\n
@@ -24,5 +24,5 @@ limitations under the License.
   
   spec.vendored_frameworks = 'BidMachineAdMobAdManager.framework'
   spec.dependency 'BidMachine', '1.4.4'
-  spec.dependency 'Google-Mobile-Ads-SDK', '7.59.0'
+  spec.dependency 'Google-Mobile-Ads-SDK', '7.60.0'
 end
