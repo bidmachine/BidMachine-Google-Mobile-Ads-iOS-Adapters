@@ -65,7 +65,10 @@ static NSString *sessionUUID = nil;
              [NSURLQueryItem queryItemWithName:@"session_id" value:self.sessionId],
              [NSURLQueryItem queryItemWithName:@"request_id" value:self.requestId],
              [NSURLQueryItem queryItemWithName:@"time_stamp" value:@(NSDate.stk_currentTimeInSeconds).stringValue],
-             [NSURLQueryItem queryItemWithName:@"bm_network_key" value:self.request.info.demandSource]];
+             [NSURLQueryItem queryItemWithName:@"bm_network_key" value:self.request.info.demandSource],
+             [NSURLQueryItem queryItemWithName:@"bm_version" value:kBDMVersion],
+             [NSURLQueryItem queryItemWithName:@"app_version" value:STKBundle.bundleVersion],
+             [NSURLQueryItem queryItemWithName:@"bundle_id" value:STKBundle.ID]];
 }
 
 - (NSArray <NSURLQueryItem *> *)queryItemsFromCustomParams:(NSDictionary<NSString *,NSString *> *)customParams {

@@ -13,7 +13,7 @@
 #import <StackUIKit/StackUIKit.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
-@interface BMADMBannerView ()<BDMBannerDelegate, BDMRequestDelegate, GADBannerViewDelegate, GADAppEventDelegate>
+@interface BMADMBannerView ()<BDMBannerDelegate, BDMRequestDelegate, GADBannerViewDelegate, GADAppEventDelegate, BDMAdEventProducerDelegate>
 
 @property (nonatomic, strong) BDMBannerView *banner;
 @property (nonatomic, strong) DFPBannerView *adMobBanner;
@@ -35,7 +35,6 @@
         [self.event trackEvent:BMADMEventBMShow customParams:nil];
         self.banner.rootViewController = controller;
         [self.banner stk_edgesEqual:self];
-        [self addSubview:self.banner];
     }
 }
 
@@ -62,6 +61,7 @@
     if (!_banner) {
         _banner = [BDMBannerView new];
         _banner.delegate = self;
+        _banner.producerDelegate = self;
     }
     return _banner;
 }
@@ -108,13 +108,21 @@
 }
 
 - (void)bannerViewWillPresentScreen:(nonnull BDMBannerView *)bannerView {
+
+}
+
+- (void)bannerViewDidDismissScreen:(nonnull BDMBannerView *)bannerView {
+//    [self.event trackEvent:BMADMEventBMClosed customParams:nil];
+//    [self.delegate onAdClosed];
+}
+
+- (void)didProduceImpression:(nonnull id<BDMAdEventProducer>)producer {
     [self.event trackEvent:BMADMEventBMShown customParams:nil];
     [self.delegate onAdShown];
 }
 
-- (void)bannerViewDidDismissScreen:(nonnull BDMBannerView *)bannerView {
-    [self.event trackEvent:BMADMEventBMClosed customParams:nil];
-    [self.delegate onAdClosed];
+- (void)didProduceUserAction:(nonnull id<BDMAdEventProducer>)producer {
+    
 }
 
 #pragma mark - BDMRequestDelegate
