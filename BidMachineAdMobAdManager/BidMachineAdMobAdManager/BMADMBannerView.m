@@ -19,6 +19,7 @@
 @property (nonatomic, strong) DFPBannerView *adMobBanner;
 @property (nonatomic, strong) BDMBannerRequest *bannerRequest;
 @property (nonatomic, strong) BMADMNetworkEvent *event;
+@property (nonatomic, strong) NSDictionary *customParams;
 
 @end
 
@@ -27,12 +28,13 @@
 - (void)loadAd {
     [self clean];
     self.event.request = self.bannerRequest;
+    [self.event trackEvent:BMADMEventBMRequestStart customParams:nil];
     [self.bannerRequest performWithDelegate:self];
 }
 
 - (void)show:(UIViewController *)controller {
     if (!self.banner.superview) {
-        [self.event trackEvent:BMADMEventBMShow customParams:nil];
+        [self.event trackEvent:BMADMEventBMShow customParams:self.customParams];
         self.banner.rootViewController = controller;
         [self.banner stk_edgesEqual:self];
     }
@@ -48,6 +50,7 @@
     self.banner = nil;
     self.adMobBanner = nil;
     self.bannerRequest = nil;
+    self.customParams = nil;
 }
 
 - (BDMBannerRequest *)bannerRequest {
@@ -88,22 +91,22 @@
 #pragma mark - BDMBannerDelegate
 
 - (void)bannerViewReadyToPresent:(nonnull BDMBannerView *)bannerView {
-    [self.event trackEvent:BMADMEventBMLoaded customParams:nil];
+    [self.event trackEvent:BMADMEventBMLoaded customParams:self.customParams];
     [self.delegate onAdLoaded];
 }
 
 - (void)bannerView:(nonnull BDMBannerView *)bannerView failedWithError:(nonnull NSError *)error {
-    [self.event trackError:error event:BMADMEventBMFailToLoad customParams:nil internal:NO];
+    [self.event trackError:error event:BMADMEventBMFailToLoad customParams:self.customParams internal:NO];
     [self.delegate onAdFailToLoad];
 }
 
 - (void)bannerViewRecieveUserInteraction:(nonnull BDMBannerView *)bannerView {
-    [self.event trackEvent:BMADMEventBMClicked customParams:nil];
+    [self.event trackEvent:BMADMEventBMClicked customParams:self.customParams];
     [self.delegate onAdClicked];
 }
 
 - (void)bannerViewDidExpire:(nonnull BDMBannerView *)bannerView {
-    [self.event trackEvent:BMADMEventBMExpired customParams:nil];
+    [self.event trackEvent:BMADMEventBMExpired customParams:self.customParams];
     [self.delegate onAdExpired];
 }
 
@@ -112,12 +115,11 @@
 }
 
 - (void)bannerViewDidDismissScreen:(nonnull BDMBannerView *)bannerView {
-//    [self.event trackEvent:BMADMEventBMClosed customParams:nil];
-//    [self.delegate onAdClosed];
+
 }
 
 - (void)didProduceImpression:(nonnull id<BDMAdEventProducer>)producer {
-    [self.event trackEvent:BMADMEventBMShown customParams:nil];
+    [self.event trackEvent:BMADMEventBMShown customParams:self.customParams];
     [self.delegate onAdShown];
 }
 
@@ -133,43 +135,47 @@
 }
 
 - (void)request:(nonnull BDMRequest *)request completeWithInfo:(nonnull BDMAuctionInfo *)info {
-    [self.event trackEvent:BMADMEventBMRequestSuccess customParams:nil];
     if (info.price.doubleValue <= 1) {
         [BMADMFetcher.shared setFormat:@"0.2"];
     } else {
         [BMADMFetcher.shared setFormat:@"1000.0"];
     }
+    
+    self.customParams = [BMADMFetcher.shared fetchParamsFromRequest:self.bannerRequest];
+    
     DFPRequest *adMobRequest = [DFPRequest request];
-    adMobRequest.customTargeting = [BMADMFetcher.shared fetchParamsFromRequest:self.bannerRequest];
-    [self.event trackEvent:BMADMEventGAMLoadStart customParams:adMobRequest.customTargeting];
+    adMobRequest.customTargeting = self.customParams;
+    
+    [self.event trackEvent:BMADMEventBMRequestSuccess customParams:self.customParams];
+    [self.event trackEvent:BMADMEventGAMLoadStart customParams:self.customParams];
     [self.adMobBanner loadRequest:adMobRequest];
 }
 
 - (void)requestDidExpire:(nonnull BDMRequest *)request {
-    [self.event trackEvent:BMADMEventBMExpired customParams:nil];
+    [self.event trackEvent:BMADMEventBMExpired customParams:self.customParams];
     [self.delegate onAdExpired];
 }
 
 #pragma mark - GADBannerViewDelegate
 
 - (void)adViewDidReceiveAd:(nonnull GADBannerView *)bannerView {
-    [self.event trackEvent:BMADMEventGAMLoaded customParams:nil];
+    [self.event trackEvent:BMADMEventGAMLoaded customParams:self.customParams];
 }
 
 - (void)adView:(nonnull GADBannerView *)bannerView
 didFailToReceiveAdWithError:(nonnull GADRequestError *)error {
-    [self.event trackError:error event:BMADMEventGAMFailToLoad customParams:nil internal:YES];
+    [self.event trackError:error event:BMADMEventGAMFailToLoad customParams:self.customParams internal:YES];
     [self.delegate onAdFailToLoad];
 }
 
 - (void)adView:(nonnull GADBannerView *)banner
 didReceiveAppEvent:(nonnull NSString *)name
       withInfo:(nullable NSString *)info {
-    NSMutableDictionary *customInfo = NSMutableDictionary.new;
+    NSMutableDictionary *customInfo = self.customParams.mutableCopy;
     customInfo[@"app_event_key"] = name;
     customInfo[@"app_event_value"] = info;
     [self.event trackEvent:BMADMEventGAMAppEvent customParams:customInfo];
-    [self.event trackEvent:BMADMEventBMLoadStart customParams:nil];
+    [self.event trackEvent:BMADMEventBMLoadStart customParams:self.customParams];
     [self.banner populateWithRequest:self.bannerRequest];
 }
 

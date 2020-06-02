@@ -1,8 +1,8 @@
 PODS:
   - AdColony (4.1.4)
-  - BidMachine (1.4.4):
-    - BidMachine/Core (= 1.4.4)
-  - BidMachine/Adapters (1.4.4):
+  - BidMachine (1.4.3.1):
+    - BidMachine/Core (= 1.4.3.1)
+  - BidMachine/Adapters (1.4.3.1):
     - BidMachine/AdColonyAdapter
     - BidMachine/AmazonAdapter
     - BidMachine/CriteoAdapter
@@ -12,36 +12,36 @@ PODS:
     - BidMachine/SmaatoAdapter
     - BidMachine/TapjoyAdapter
     - BidMachine/VungleAdapter
-  - BidMachine/AdColonyAdapter (1.4.4):
+  - BidMachine/AdColonyAdapter (1.4.3.1):
     - AdColony (= 4.1.4)
     - BidMachine/Core
-  - BidMachine/AmazonAdapter (1.4.4):
+  - BidMachine/AmazonAdapter (1.4.3.1):
     - BidMachine/Core
-  - BidMachine/Core (1.4.4):
+  - BidMachine/Core (1.4.3.1):
     - Protobuf (~> 3.9)
     - StackIAB (~> 0.5.0)
     - StackModules (~> 0.7)
-  - BidMachine/CriteoAdapter (1.4.4):
+  - BidMachine/CriteoAdapter (1.4.3.1):
     - BidMachine/Core
     - CriteoPublisherSdk (= 3.4.1)
-  - BidMachine/FacebookAdapter (1.4.4):
+  - BidMachine/FacebookAdapter (1.4.3.1):
     - BidMachine/Core
     - FBAudienceNetwork (= 5.7.1)
-  - BidMachine/MintegralAdapter (1.4.4):
+  - BidMachine/MintegralAdapter (1.4.3.1):
     - BidMachine/Core
     - MintegralAdSDK/BidInterstitialVideoAd (= 6.0.0.0)
     - MintegralAdSDK/BidRewardVideoAd (= 6.0.0.0)
-  - BidMachine/MyTargetAdapter (1.4.4):
+  - BidMachine/MyTargetAdapter (1.4.3.1):
     - BidMachine/Core
     - myTargetSDK (= 5.4.2)
-  - BidMachine/SmaatoAdapter (1.4.4):
+  - BidMachine/SmaatoAdapter (1.4.3.1):
     - BidMachine/Core
     - smaato-ios-sdk (= 21.2.2)
     - smaato-ios-sdk/Modules/UnifiedBidding (= 21.2.2)
-  - BidMachine/TapjoyAdapter (1.4.4):
+  - BidMachine/TapjoyAdapter (1.4.3.1):
     - BidMachine/Core
     - TapjoySDK (= 12.4.2)
-  - BidMachine/VungleAdapter (1.4.4):
+  - BidMachine/VungleAdapter (1.4.3.1):
     - BidMachine/Core
     - VungleSDK-iOS (= 6.5.2)
   - CriteoPublisherSdk (3.4.1)
@@ -79,9 +79,9 @@ PODS:
   - "GoogleUtilities/NSData+zlib (6.6.0)"
   - GoogleUtilities/Reachability (6.6.0):
     - GoogleUtilities/Logger
-  - MaterialComponents/AnimationTiming (109.4.0)
-  - MaterialComponents/Availability (109.4.0)
-  - MaterialComponents/Buttons (109.4.0):
+  - MaterialComponents/AnimationTiming (109.5.0)
+  - MaterialComponents/Availability (109.5.0)
+  - MaterialComponents/Buttons (109.5.0):
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
@@ -92,23 +92,23 @@ PODS:
     - MaterialComponents/Typography
     - MDFInternationalization
     - MDFTextAccessibility
-  - "MaterialComponents/Buttons+ColorThemer (109.4.0)":
+  - "MaterialComponents/Buttons+ColorThemer (109.5.0)":
     - MaterialComponents/Buttons
     - MaterialComponents/schemes/Color
-  - "MaterialComponents/Buttons+ShapeThemer (109.4.0)":
+  - "MaterialComponents/Buttons+ShapeThemer (109.5.0)":
     - MaterialComponents/Buttons
     - MaterialComponents/schemes/Shape
-  - "MaterialComponents/Buttons+Theming (109.4.0)":
+  - "MaterialComponents/Buttons+Theming (109.5.0)":
     - MaterialComponents/Buttons
     - "MaterialComponents/Buttons+ColorThemer"
     - "MaterialComponents/Buttons+ShapeThemer"
     - "MaterialComponents/Buttons+TypographyThemer"
     - MaterialComponents/schemes/Container
     - MaterialComponents/ShadowElevations
-  - "MaterialComponents/Buttons+TypographyThemer (109.4.0)":
+  - "MaterialComponents/Buttons+TypographyThemer (109.5.0)":
     - MaterialComponents/Buttons
     - MaterialComponents/schemes/Typography
-  - MaterialComponents/Cards (109.4.0):
+  - MaterialComponents/Cards (109.5.0):
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
     - MaterialComponents/private/Icons/ic_check_circle
@@ -116,7 +116,7 @@ PODS:
     - MaterialComponents/Ripple
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Shapes
-  - MaterialComponents/Dialogs (109.4.0):
+  - MaterialComponents/Dialogs (109.5.0):
     - MaterialComponents/Buttons
     - MaterialComponents/Elevation
     - MaterialComponents/private/KeyboardWatcher
@@ -125,71 +125,71 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - "MaterialComponents/Dialogs+ColorThemer (109.4.0)":
+  - "MaterialComponents/Dialogs+ColorThemer (109.5.0)":
     - "MaterialComponents/Buttons+ColorThemer"
     - MaterialComponents/Dialogs
     - MaterialComponents/Themes
-  - "MaterialComponents/Dialogs+Theming (109.4.0)":
+  - "MaterialComponents/Dialogs+Theming (109.5.0)":
     - "MaterialComponents/Buttons+Theming"
     - MaterialComponents/Dialogs
     - "MaterialComponents/Dialogs+ColorThemer"
     - "MaterialComponents/Dialogs+TypographyThemer"
     - MaterialComponents/schemes/Container
     - MaterialComponents/ShadowElevations
-  - "MaterialComponents/Dialogs+TypographyThemer (109.4.0)":
+  - "MaterialComponents/Dialogs+TypographyThemer (109.5.0)":
     - "MaterialComponents/Buttons+TypographyThemer"
     - MaterialComponents/Dialogs
     - MaterialComponents/schemes/Typography
-  - MaterialComponents/Elevation (109.4.0):
+  - MaterialComponents/Elevation (109.5.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Ink (109.4.0):
+  - MaterialComponents/Ink (109.5.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Palettes (109.4.0)
-  - MaterialComponents/private/Application (109.4.0)
-  - MaterialComponents/private/Color (109.4.0):
+  - MaterialComponents/Palettes (109.5.0)
+  - MaterialComponents/private/Application (109.5.0)
+  - MaterialComponents/private/Color (109.5.0):
     - MaterialComponents/Availability
-  - MaterialComponents/private/Icons/Base (109.4.0)
-  - MaterialComponents/private/Icons/ic_check_circle (109.4.0):
+  - MaterialComponents/private/Icons/Base (109.5.0)
+  - MaterialComponents/private/Icons/ic_check_circle (109.5.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/KeyboardWatcher (109.4.0):
+  - MaterialComponents/private/KeyboardWatcher (109.5.0):
     - MaterialComponents/private/Application
-  - MaterialComponents/private/Math (109.4.0)
-  - MaterialComponents/Ripple (109.4.0):
+  - MaterialComponents/private/Math (109.5.0)
+  - MaterialComponents/Ripple (109.5.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/schemes/Color (109.4.0):
+  - MaterialComponents/schemes/Color (109.5.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
-  - MaterialComponents/schemes/Container (109.4.0):
+  - MaterialComponents/schemes/Container (109.5.0):
     - MaterialComponents/schemes/Color
     - MaterialComponents/schemes/Shape
     - MaterialComponents/schemes/Typography
-  - MaterialComponents/schemes/Shape (109.4.0):
+  - MaterialComponents/schemes/Shape (109.5.0):
     - MaterialComponents/ShapeLibrary
     - MaterialComponents/Shapes
-  - MaterialComponents/schemes/Typography (109.4.0):
+  - MaterialComponents/schemes/Typography (109.5.0):
     - "MaterialComponents/schemes/Typography+BasicFontScheme"
     - "MaterialComponents/schemes/Typography+Scheming"
     - MaterialComponents/Typography
-  - "MaterialComponents/schemes/Typography+BasicFontScheme (109.4.0)"
-  - "MaterialComponents/schemes/Typography+Scheming (109.4.0)"
-  - MaterialComponents/ShadowElevations (109.4.0)
-  - MaterialComponents/ShadowLayer (109.4.0):
+  - "MaterialComponents/schemes/Typography+BasicFontScheme (109.5.0)"
+  - "MaterialComponents/schemes/Typography+Scheming (109.5.0)"
+  - MaterialComponents/ShadowElevations (109.5.0)
+  - MaterialComponents/ShadowLayer (109.5.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/ShapeLibrary (109.4.0):
+  - MaterialComponents/ShapeLibrary (109.5.0):
     - MaterialComponents/private/Math
     - MaterialComponents/Shapes
-  - MaterialComponents/Shapes (109.4.0):
+  - MaterialComponents/Shapes (109.5.0):
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowLayer
-  - MaterialComponents/Tabs (109.4.0):
+  - MaterialComponents/Tabs (109.5.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
@@ -200,10 +200,10 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/Themes (109.4.0):
+  - MaterialComponents/Themes (109.5.0):
     - MaterialComponents/schemes/Color
     - MaterialComponents/schemes/Typography
-  - MaterialComponents/Typography (109.4.0):
+  - MaterialComponents/Typography (109.5.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
@@ -255,35 +255,35 @@ PODS:
   - smaato-ios-sdk/RewardedAds (21.2.2):
     - smaato-ios-sdk/Modules/RewardedAds
     - smaato-ios-sdk/Modules/Video
-  - StackIAB (0.5.14):
-    - StackIAB/StackMRAIDKit (= 0.5.14)
-    - StackIAB/StackNASTKit (= 0.5.14)
-    - StackIAB/StackRichMedia (= 0.5.14)
-    - StackIAB/StackVASTAssets (= 0.5.14)
-    - StackIAB/StackVASTKit (= 0.5.14)
-    - StackIAB/StackVideoPlayer (= 0.5.14)
-    - StackIAB/StackXML (= 0.5.14)
+  - StackIAB (0.5.15):
+    - StackIAB/StackMRAIDKit (= 0.5.15)
+    - StackIAB/StackNASTKit (= 0.5.15)
+    - StackIAB/StackRichMedia (= 0.5.15)
+    - StackIAB/StackVASTAssets (= 0.5.15)
+    - StackIAB/StackVASTKit (= 0.5.15)
+    - StackIAB/StackVideoPlayer (= 0.5.15)
+    - StackIAB/StackXML (= 0.5.15)
     - StackModules (~> 0.6)
-  - StackIAB/StackMRAIDKit (0.5.14):
+  - StackIAB/StackMRAIDKit (0.5.15):
     - StackModules (~> 0.6)
-  - StackIAB/StackNASTKit (0.5.14):
+  - StackIAB/StackNASTKit (0.5.15):
     - StackIAB/StackVASTKit
     - StackModules (~> 0.6)
-  - StackIAB/StackRichMedia (0.5.14):
+  - StackIAB/StackRichMedia (0.5.15):
     - StackIAB/StackVASTAssets
     - StackIAB/StackVideoPlayer
     - StackModules (~> 0.6)
-  - StackIAB/StackVASTAssets (0.5.14):
+  - StackIAB/StackVASTAssets (0.5.15):
     - StackIAB/StackXML
     - StackModules (~> 0.6)
-  - StackIAB/StackVASTKit (0.5.14):
+  - StackIAB/StackVASTKit (0.5.15):
     - StackIAB/StackMRAIDKit
     - StackIAB/StackVASTAssets
     - StackIAB/StackVideoPlayer
     - StackModules (~> 0.6)
-  - StackIAB/StackVideoPlayer (0.5.14):
+  - StackIAB/StackVideoPlayer (0.5.15):
     - StackModules (~> 0.6)
-  - StackIAB/StackXML (0.5.14):
+  - StackIAB/StackXML (0.5.15):
     - StackModules (~> 0.6)
   - StackModules (0.7.1):
     - StackModules/StackUIKit (= 0.7.1)
@@ -294,7 +294,7 @@ PODS:
   - VungleSDK-iOS (6.5.2)
 
 DEPENDENCIES:
-  - BidMachine (= 1.4.4)
+  - BidMachine (= 1.4.3.1)
   - BidMachine/Adapters
   - Google-Mobile-Ads-SDK (~> 7.58)
   - GoogleMobileAdsMediationTestSuite
@@ -327,7 +327,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AdColony: fc02f429d6c4591567c7ae1426ebfcecb704b11f
-  BidMachine: 636c0b6772c6a4bf44932756506129bb9283d8cd
+  BidMachine: 8d02efa90c59f35e4c2e21dd9fab39e06a91bab6
   CriteoPublisherSdk: 9ea61c4f6facafd5bc003258d569e6510e06614c
   FBAudienceNetwork: 33fc8c8c07c1cdbf5279784b73729c6410809daa
   FBSDKCoreKit: 8ad31cd09f793d1d7e84cf20fd6cebfe80ad318d
@@ -335,7 +335,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 137afe68bfa406c3f4221b9395253d9e5d4654cf
   GoogleMobileAdsMediationTestSuite: 09b56ec48867bc9de0b0b131bf0e7f4a34fb9b5b
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
-  MaterialComponents: d4f75b4037cc114d71841ce9933b334c4b604a95
+  MaterialComponents: 7698cdf7eacb5f192456dbbe597aa7a8857fa3ef
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   MintegralAdSDK: 00e3c264c3f1c9f9a2fe0ac830e0f185b7ef87e2
@@ -344,11 +344,11 @@ SPEC CHECKSUMS:
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
   smaato-ios-sdk: fad41f668ceefe75ece6d46f729bea3ca26471ea
-  StackIAB: b0f07ac4c11e7001e0e596abb56ce287e2f97d08
+  StackIAB: 81eab2972a039a683e9ead2e50a9172b8b394bb4
   StackModules: 7b9141ed45cc9299c15c1bf8430e6408b2f28171
   TapjoySDK: c8d73f291cfe922cb8bb2c3ae09b5af0b2863841
   VungleSDK-iOS: b39f80d93c342cb07f9d83ab1105817ddcb61b72
 
-PODFILE CHECKSUM: bc3f95eb7a101b01105a0574ab66805b2c49b2f2
+PODFILE CHECKSUM: 6a2ae8814d3ce843a70d98fc292031f04ac00e5d
 
 COCOAPODS: 1.9.1

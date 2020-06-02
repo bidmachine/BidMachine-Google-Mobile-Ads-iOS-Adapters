@@ -19,6 +19,7 @@
 @property (nonatomic, strong) BDMInterstitialRequest *interstitialRequest;
 @property (nonatomic, strong) NSString *unitId;
 @property (nonatomic, strong) BMADMNetworkEvent *event;
+@property (nonatomic, strong) NSDictionary *customParams;
 
 @end
 
@@ -34,12 +35,12 @@
 - (void)loadAd {
     [self clean];
     self.event.request = self.interstitialRequest;
-    [self.interstitialRequest performWithDelegate:self];
     [self.event trackEvent:BMADMEventBMRequestStart customParams:nil];
+    [self.interstitialRequest performWithDelegate:self];
 }
 
 - (void)show:(UIViewController *)controller {
-    [self.event trackEvent:BMADMEventBMShow customParams:nil];
+    [self.event trackEvent:BMADMEventBMShow customParams:self.customParams];
     [self.interstitial presentFromRootViewController:controller];
 }
 
@@ -54,6 +55,7 @@
     self.adMobInterstitial = nil;
     self.interstitialRequest = nil;
     self.event = nil;
+    self.customParams = nil;
 }
 
 - (BDMInterstitialRequest *)interstitialRequest {
@@ -91,54 +93,56 @@
 #pragma mark - BDMInterstitialDelegate
 
 - (void)interstitial:(nonnull BDMInterstitial *)interstitial failedToPresentWithError:(nonnull NSError *)error {
-    [self.event trackError:error event:BMADMEventBMFailToShow customParams:nil internal:NO];
+    [self.event trackError:error event:BMADMEventBMFailToShow customParams:self.customParams internal:NO];
     [self.delegate onAdFailToPresent];
 }
 
 - (void)interstitial:(nonnull BDMInterstitial *)interstitial failedWithError:(nonnull NSError *)error {
-    [self.event trackError:error event:BMADMEventBMFailToLoad customParams:nil internal:NO];
+    [self.event trackError:error event:BMADMEventBMFailToLoad customParams:self.customParams internal:NO];
     [self.delegate onAdFailToLoad];
 }
 
 - (void)interstitialDidDismiss:(nonnull BDMInterstitial *)interstitial {
-    [self.event trackEvent:BMADMEventBMClosed customParams:nil];
+    [self.event trackEvent:BMADMEventBMClosed customParams:self.customParams];
     [self.delegate onAdClosed];
 }
 
 - (void)interstitialReadyToPresent:(nonnull BDMInterstitial *)interstitial {
-    [self.event trackEvent:BMADMEventBMLoaded customParams:nil];
+    [self.event trackEvent:BMADMEventBMLoaded customParams:self.customParams];
     [self.delegate onAdLoaded];
 }
 
 - (void)interstitialRecieveUserInteraction:(nonnull BDMInterstitial *)interstitial {
-    [self.event trackEvent:BMADMEventBMClicked customParams:nil];
+    [self.event trackEvent:BMADMEventBMClicked customParams:self.customParams];
     [self.delegate onAdClicked];
 }
 
 - (void)interstitialWillPresent:(nonnull BDMInterstitial *)interstitial {
-    [self.event trackEvent:BMADMEventBMShown customParams:nil];
+    [self.event trackEvent:BMADMEventBMShown customParams:self.customParams];
     [self.delegate onAdShown];
 }
 
 - (void)interstitialDidExpire:(nonnull BDMInterstitial *)interstitial {
-    [self.event trackEvent:BMADMEventBMExpired customParams:nil];
+    [self.event trackEvent:BMADMEventBMExpired customParams:self.customParams];
     [self.delegate onAdExpired];
 }
 
 #pragma mark - BDMRequestDelegate
 
 - (void)request:(nonnull BDMRequest *)request completeWithInfo:(nonnull BDMAuctionInfo *)info {
-    [self.event trackEvent:BMADMEventBMRequestSuccess customParams:nil];
     if (info.price.doubleValue <= 10) {
         [BMADMFetcher.shared setFormat:@"1.0"];
     } else {
         [BMADMFetcher.shared setFormat:@"1000.0"];
     }
     
-    DFPRequest *adMobRequest = [DFPRequest request];
-    adMobRequest.customTargeting = [BMADMFetcher.shared fetchParamsFromRequest:self.interstitialRequest];
+    self.customParams = [BMADMFetcher.shared fetchParamsFromRequest:self.interstitialRequest];
     
-    [self.event trackEvent:BMADMEventGAMLoadStart customParams:adMobRequest.customTargeting];
+    DFPRequest *adMobRequest = [DFPRequest request];
+    adMobRequest.customTargeting = self.customParams;
+    
+    [self.event trackEvent:BMADMEventBMRequestSuccess customParams:self.customParams];
+    [self.event trackEvent:BMADMEventGAMLoadStart customParams:self.customParams];
     [self.adMobInterstitial loadRequest:adMobRequest];
 }
 
@@ -148,29 +152,29 @@
 }
 
 - (void)requestDidExpire:(nonnull BDMRequest *)request {
-    [self.event trackEvent:BMADMEventBMExpired customParams:nil];
+    [self.event trackEvent:BMADMEventBMExpired customParams:self.customParams];
     [self.delegate onAdExpired];
 }
 
 #pragma mark - GADInterstitialDelegate
 
 - (void)interstitialDidReceiveAd:(nonnull GADInterstitial *)ad {
-    [self.event trackEvent:BMADMEventGAMLoaded customParams:nil];
+    [self.event trackEvent:BMADMEventGAMLoaded customParams:self.customParams];
 }
 
 - (void)didFailToReceiveAdWithError:(nonnull GADRequestError *)error {
-    [self.event trackError:error event:BMADMEventGAMFailToLoad customParams:nil internal:YES];
+    [self.event trackError:error event:BMADMEventGAMFailToLoad customParams:self.customParams internal:YES];
     [self.delegate onAdFailToLoad];
 }
 
 - (void)interstitial:(nonnull DFPInterstitial *)interstitial
   didReceiveAppEvent:(nonnull NSString *)name
             withInfo:(nullable NSString *)info {
-    NSMutableDictionary *customInfo = NSMutableDictionary.new;
+    NSMutableDictionary *customInfo = self.customParams.mutableCopy;
     customInfo[@"app_event_key"] = name;
     customInfo[@"app_event_value"] = info;
     [self.event trackEvent:BMADMEventGAMAppEvent customParams:customInfo];
-    [self.event trackEvent:BMADMEventBMLoadStart customParams:nil];
+    [self.event trackEvent:BMADMEventBMLoadStart customParams:self.customParams];
     [self.interstitial populateWithRequest:self.interstitialRequest];
 }
 

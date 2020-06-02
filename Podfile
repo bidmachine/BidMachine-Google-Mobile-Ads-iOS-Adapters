@@ -1,3 +1,4 @@
+
 platform :ios, '9.0'
 workspace 'AdMobBidMachineSample.xcworkspace'
 
@@ -8,7 +9,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 
 def bidmachine_header_bidding
-  pod "BidMachine", "1.4.4"
+  pod "BidMachine", "1.4.3.1"
   pod "BidMachine/Adapters"
 end
 
