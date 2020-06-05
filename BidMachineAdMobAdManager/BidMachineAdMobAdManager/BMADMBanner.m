@@ -118,7 +118,7 @@
 
 - (void)refresh {
     self.refreshTimer = nil;
-    if (self.isLoaded) {
+    if (self.isLoaded && self.adOnScreen) {
         [self presentBanner];
     }
 }

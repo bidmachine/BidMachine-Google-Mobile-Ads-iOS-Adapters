@@ -109,7 +109,7 @@
 }
 
 - (void)onAdShown {
-     NSLog(@"[Callback] - on show");
+     NSLog(@"[Callback] - on shown");
 }
 
 @end

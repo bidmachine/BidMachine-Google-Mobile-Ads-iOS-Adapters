@@ -54,6 +54,7 @@
     self.rewarded = nil;
     self.adMobRewarded = nil;
     self.rewardedRequest = nil;
+    self.event = nil;
     self.customParams = nil;
 }
 

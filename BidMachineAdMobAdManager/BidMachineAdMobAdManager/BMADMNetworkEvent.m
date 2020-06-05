@@ -49,6 +49,8 @@ static NSString *sessionUUID = nil;
         [queries addObject: [NSURLQueryItem queryItemWithName:@"error_code" value:@(error.code).stringValue]];
     } else if (error) {
         [queries addObject: [NSURLQueryItem queryItemWithName:@"bm_error" value:@(error.code).stringValue]];
+    } else {
+        [queries addObject: [NSURLQueryItem queryItemWithName:@"bm_error" value:@"ERROR WAS NILL"]];
     }
     
     [queries addObject: [NSURLQueryItem queryItemWithName:@"bm_pf_clear" value:self.request.info.price.stringValue]];

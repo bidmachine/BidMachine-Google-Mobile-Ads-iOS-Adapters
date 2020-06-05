@@ -50,6 +50,7 @@
     self.banner = nil;
     self.adMobBanner = nil;
     self.bannerRequest = nil;
+    self.event = nil;
     self.customParams = nil;
 }
 
