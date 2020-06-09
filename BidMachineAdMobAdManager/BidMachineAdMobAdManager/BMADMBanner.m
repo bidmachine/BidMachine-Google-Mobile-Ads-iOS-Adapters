@@ -98,6 +98,10 @@
                                                   [self.containerView.bottomAnchor constraintEqualToAnchor:self.controller.view.bottomAnchor]]];
     }
     
+    if (self.refreshTimer) {
+        return;
+    }
+    
     if (self.isLoaded) {
         [self.containerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         self.banner = self.cachedBanner;
