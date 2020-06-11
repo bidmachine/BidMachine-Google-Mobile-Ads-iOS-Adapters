@@ -8,6 +8,7 @@
 
 #import "BMADMBanner.h"
 #import "BMADMBannerView.h"
+#import "BMADMNetworkEvent.h"
 #import <StackUIKit/StackUIKit.h>
 
 @interface BMADMBanner ()<BMADMAdEventDelegate>
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) NSTimer *reloadTimer;
 @property (nonatomic, strong) NSString *unitId;
 @property (nonatomic, assign) BOOL showWhenLoad;
+@property (nonatomic, strong) BMADMNetworkEvent *event;
 
 @end
 
@@ -40,6 +42,7 @@
 }
 
 - (void)show:(UIViewController *)controller {
+    [self.event trackEvent:BMADMEventBMBannerAPIShow customParams:nil];
     self.controller = controller;
     self.showWhenLoad = !self.adOnScreen && !self.containerView;
     if (!self.adOnScreen && (self.containerView || self.isLoaded)) {
@@ -52,6 +55,7 @@
 }
 
 - (void)hide {
+    [self.event trackEvent:BMADMEventBMBannerAPIHide customParams:nil];
     if (self.adOnScreen) {
         [self.containerView removeFromSuperview];
         self.adOnScreen = NO;
@@ -60,6 +64,14 @@
 
 - (void)dealloc {
     [self.containerView removeFromSuperview];
+}
+
+- (BMADMNetworkEvent *)event {
+    if (!_event) {
+        _event = BMADMNetworkEvent.new;
+        _event.adType = BMADMEventTypeBanner;
+    }
+    return _event;
 }
 
 #pragma mark - Private

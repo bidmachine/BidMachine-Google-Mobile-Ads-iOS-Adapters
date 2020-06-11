@@ -27,7 +27,9 @@ typedef NS_ENUM(NSUInteger, BMADMEvent) {
     BMADMEventBMClosed,
     BMADMEventBMReward,
     BMADMEventBMFailToShow,
-    BMADMEventBMExpired
+    BMADMEventBMExpired,
+    BMADMEventBMBannerAPIShow,
+    BMADMEventBMBannerAPIHide
 };
 
 typedef NS_ENUM(NSUInteger, BMADMEventType) {

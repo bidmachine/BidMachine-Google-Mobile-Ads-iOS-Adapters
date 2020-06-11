@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "BidMachineAdMobAdManager"
-  spec.version      = "0.0.8"
+  spec.version      = "0.0.9"
   spec.summary      = "BidMachine IOS SDK for GAM mediation"
   spec.description  = <<-DESC
   Supported ad formats: Banner, Interstitial, Rewarded Video.\n

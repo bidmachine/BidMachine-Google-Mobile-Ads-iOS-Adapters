@@ -120,6 +120,8 @@ static NSString *sessionUUID = nil;
         case BMADMEventBMShown: return @"BMShown";
         case BMADMEventBMFailToShow: return @"BMFailToShow";
         case BMADMEventBMExpired: return @"BMExpired";
+        case BMADMEventBMBannerAPIShow: return @"BMBannerAPIShow";
+        case BMADMEventBMBannerAPIHide: return @"BMBannerAPIHide";
     }
 }
 
