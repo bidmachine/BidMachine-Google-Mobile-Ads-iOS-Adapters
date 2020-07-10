@@ -13,26 +13,31 @@
 #define UNIT_ID         "ca-app-pub-1405929557079197/1031272924"
 #define EXTRAS_MARK     "BM RV"
 
-@interface Rewarded ()<GADRewardBasedVideoAdDelegate>
+@interface Rewarded ()<GADRewardedAdDelegate>
 
-@property (nonatomic, strong) GADRewardBasedVideoAd *rewarded;
+@property (nonatomic, strong) GADRewardedAd *rewarded;
 
 @end
 
 @implementation Rewarded
 
 - (void)loadAd:(id)sender {
-    [self.rewarded loadRequest:self.request withAdUnitID:@UNIT_ID];
+    [self.rewarded loadRequest:self.request completionHandler:^(GADRequestError * error) {
+        if (error) {
+            NSLog(@"Reward video fail to load");
+        } else {
+            NSLog(@"Reward video ad is received");
+        }
+    }];
 }
 
 - (void)showAd:(id)sender {
-    [self.rewarded presentFromRootViewController:self];
+    [self.rewarded presentFromRootViewController:sender delegate:self];
 }
 
-- (GADRewardBasedVideoAd *)rewarded {
+- (GADRewardedAd *)rewarded {
     if (!_rewarded) {
-        _rewarded = [[GADRewardBasedVideoAd alloc] init];
-        _rewarded.delegate = self;
+        _rewarded = [[GADRewardedAd alloc] initWithAdUnitID:@UNIT_ID];
     }
     return _rewarded;
 }
@@ -92,40 +97,24 @@
     return extras;
 }
 
-#pragma mark - GADRewardBasedVideoAdDelegate
+#pragma mark - GADRewardedAdDelegate
 
-- (void)rewardBasedVideoAd:(GADRewardBasedVideoAd *)rewardBasedVideoAd
-   didRewardUserWithReward:(GADAdReward *)reward {
+- (void)rewardedAd:(nonnull GADRewardedAd *)rewardedAd
+ userDidEarnReward:(nonnull GADAdReward *)reward {
     NSLog(@"Reward received with currency %@ , amount %lf", reward.type, [reward.amount doubleValue]);
 }
 
-- (void)rewardBasedVideoAdDidReceiveAd:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
-    NSLog(@"Reward based video ad is received with network class name: %@.", rewardBasedVideoAd.adNetworkClassName);
+- (void)rewardedAd:(nonnull GADRewardedAd *)rewardedAd
+didFailToPresentWithError:(nonnull NSError *)error {
+    NSLog(@"Reward video ad failed to present.");
 }
 
-- (void)rewardBasedVideoAdDidOpen:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
-    NSLog(@"Opened reward based video ad.");
+- (void)rewardedAdDidPresent:(nonnull GADRewardedAd *)rewardedAd {
+    NSLog(@"Opened reward video ad.");
 }
 
-- (void)rewardBasedVideoAdDidStartPlaying:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
-    NSLog(@"Reward based video ad started playing.");
-}
-
-- (void)rewardBasedVideoAdDidCompletePlaying:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
-    NSLog(@"Reward based video ad has completed.");
-}
-
-- (void)rewardBasedVideoAdDidClose:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
-    NSLog(@"Reward based video ad is closed.");
-}
-
-- (void)rewardBasedVideoAdWillLeaveApplication:(GADRewardBasedVideoAd *)rewardBasedVideoAd {
-    NSLog(@"Reward based video ad will leave application.");
-}
-
-- (void)rewardBasedVideoAd:(GADRewardBasedVideoAd *)rewardBasedVideoAd
-    didFailToLoadWithError:(NSError *)error {
-    NSLog(@"Reward based video ad failed to load.");
+- (void)rewardedAdDidDismiss:(nonnull GADRewardedAd *)rewardedAd {
+    NSLog(@"Reward video ad is closed.");
 }
 
 @end
