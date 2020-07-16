@@ -11,7 +11,7 @@ Add following lines into your project Podfile
 ```ruby
 target 'Target' do
   project 'Project.xcodeproj'
-  pod 'GoogleMobileAds-BidMachine-Adapters', '~> 1.4'
+  pod 'GoogleMobileAds-BidMachine-Adapters', '~> 1.5'
 end
 ```
 
@@ -20,7 +20,7 @@ end
 ```ruby
 target 'Target' do
   project 'Project.xcodeproj'
-  pod 'GoogleMobileAds-BidMachine-Adapters', '~> 1.4'
+  pod 'GoogleMobileAds-BidMachine-Adapters', '~> 1.5'
   pod "BidMachine/VungleAdapter"
   pod "BidMachine/TapjoyAdapter"
   pod "BidMachine/MyTargetAdapter"
@@ -553,6 +553,10 @@ You can pass constants that are listed below:
 * rewarded
 
 ##  Changelog
+
+### Version 1.5.0.0
+
+* Update BidMachine to 1.5.0
 
 ### Version 1.4.2.0
 
