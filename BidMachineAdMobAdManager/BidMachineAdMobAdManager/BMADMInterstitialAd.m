@@ -136,6 +136,7 @@
         [BMADMFetcher.shared setFormat:@"1000.0"];
     }
     
+    [request notifyMediationWin];
     self.customParams = [BMADMFetcher.shared fetchParamsFromRequest:self.interstitialRequest];
     
     DFPRequest *adMobRequest = [DFPRequest request];

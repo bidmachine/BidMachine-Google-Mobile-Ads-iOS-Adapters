@@ -139,6 +139,7 @@
     } else {
         [BMADMFetcher.shared setFormat:@"1000.0"];
     }
+    [request notifyMediationWin];
     self.customParams = [BMADMFetcher.shared fetchParamsFromRequest:self.rewardedRequest];
     
     __weak __typeof__(self) weakSelf = self;
