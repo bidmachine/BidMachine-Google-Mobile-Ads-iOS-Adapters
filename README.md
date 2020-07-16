@@ -554,7 +554,7 @@ You can pass constants that are listed below:
 
 ##  Changelog
 
-### Version 1.4.2.0
+### Version 1.5.0.0
 
 * Update BidMachine to 1.5.0
 
