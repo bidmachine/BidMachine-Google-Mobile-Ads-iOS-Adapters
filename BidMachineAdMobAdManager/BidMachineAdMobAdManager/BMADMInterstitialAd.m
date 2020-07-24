@@ -174,9 +174,16 @@
     NSMutableDictionary *customInfo = self.customParams.mutableCopy;
     customInfo[@"app_event_key"] = name;
     customInfo[@"app_event_value"] = info;
-    [self.event trackEvent:BMADMEventGAMAppEvent customParams:customInfo];
-    [self.event trackEvent:BMADMEventBMLoadStart customParams:self.customParams];
-    [self.interstitial populateWithRequest:self.interstitialRequest];
+    
+    if ([name isEqualToString:@"bidmachine-interstitial"]) {
+        [self.event trackEvent:BMADMEventGAMAppEvent customParams:customInfo];
+        [self.event trackEvent:BMADMEventBMLoadStart customParams:self.customParams];
+        [self.interstitial populateWithRequest:self.interstitialRequest];
+    } else {
+        NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain code:500 userInfo:nil];
+        [self.event trackError:error event:BMADMEventGAMFailToLoad customParams:customInfo internal:YES];
+        [self.delegate onAdFailToLoad];
+    }
 }
 
 @end
