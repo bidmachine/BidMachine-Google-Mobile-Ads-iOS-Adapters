@@ -876,6 +876,10 @@ BMAUtils.shared.fetcher.format = @"0.00";
 
 ##  Changelog
 
+### Version 1.5.2.0
+
+* Update BidMachine to 1.5.2
+
 ### Version 1.5.0.1
 
 * Update 'Google-Mobile-Ads-SDK' to '7.62.0'

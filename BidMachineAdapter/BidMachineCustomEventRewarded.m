@@ -22,11 +22,11 @@
 @implementation BidMachineCustomEventRewarded
 
 + (GADVersionNumber)adSDKVersion {
-    return [BMATransformer versionFromBidMachineString:@"1.5.0.1"];
+    return [BMATransformer versionFromBidMachineString:@"1.5.2.0"];
 }
 
 + (GADVersionNumber)version {
-    return [BMATransformer versionFromBidMachineString:@"1.5.0.1"];
+    return [BMATransformer versionFromBidMachineString:@"1.5.2.0"];
 }
 
 + (Class<GADAdNetworkExtras>)networkExtrasClass {
