@@ -10,8 +10,7 @@
 
 @import BidMachine;
 @import StackFoundation;
-
-#import "BDMExternalAdapterRequestController.h"
+@import BidMachine.ExternalAdapterUtils;
 
 
 @interface BidMachineCustomEventInterstitial () <BDMInterstitialDelegate, BDMExternalAdapterRequestControllerDelegate>

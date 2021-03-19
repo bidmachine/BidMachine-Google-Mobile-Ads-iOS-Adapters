@@ -408,6 +408,10 @@ Then you can create an admob object and load it
 
 ##  Changelog
 
+### Version 1.6.5.0
+
+* Update BidMachine to 1.6.5
+
 ### Version 1.6.4.0
 
 * Update BidMachine to 1.6.4

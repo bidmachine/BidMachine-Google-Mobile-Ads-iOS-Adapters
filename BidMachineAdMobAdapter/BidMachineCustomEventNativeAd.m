@@ -11,8 +11,7 @@
 
 @import BidMachine;
 @import StackFoundation;
-
-#import "BDMExternalAdapterRequestController.h"
+@import BidMachine.ExternalAdapterUtils;
 
 
 @interface BidMachineCustomEventNativeAd()<BDMNativeAdDelegate, BDMExternalAdapterRequestControllerDelegate>

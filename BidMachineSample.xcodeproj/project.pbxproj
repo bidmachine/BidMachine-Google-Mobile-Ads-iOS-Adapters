@@ -11,10 +11,6 @@
 		3701FB3426009B4F006A7B04 /* BidMachineCustomEventRewarded.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701FB1A26009B4F006A7B04 /* BidMachineCustomEventRewarded.m */; };
 		3701FB3526009B4F006A7B04 /* BidMachineUnifiedNativeAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701FB1B26009B4F006A7B04 /* BidMachineUnifiedNativeAd.m */; };
 		3701FB3726009B4F006A7B04 /* BidMachineCustomEventInterstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701FB1E26009B4F006A7B04 /* BidMachineCustomEventInterstitial.m */; };
-		3701FB3826009B4F006A7B04 /* BDMExternalAdapterConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701FB2026009B4F006A7B04 /* BDMExternalAdapterConfiguration.m */; };
-		3701FB3926009B4F006A7B04 /* BDMExternalAdapterRequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701FB2426009B4F006A7B04 /* BDMExternalAdapterRequestController.m */; };
-		3701FB3A26009B4F006A7B04 /* BDMExternalAdapterConfigurationDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701FB2526009B4F006A7B04 /* BDMExternalAdapterConfigurationDefines.m */; };
-		3701FB3C26009B4F006A7B04 /* BDMExternalAdapterSDKController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701FB2726009B4F006A7B04 /* BDMExternalAdapterSDKController.m */; };
 		3701FB3D26009B4F006A7B04 /* BidMachineCustomEventRewardedAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701FB2C26009B4F006A7B04 /* BidMachineCustomEventRewardedAd.m */; };
 		3701FB3E26009B4F006A7B04 /* BidMachineCustomEventBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701FB2D26009B4F006A7B04 /* BidMachineCustomEventBanner.m */; };
 		3701FB3F26009B4F006A7B04 /* BidMachineCustomEventNativeAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701FB3026009B4F006A7B04 /* BidMachineCustomEventNativeAd.m */; };
@@ -44,16 +40,6 @@
 		3701FB1B26009B4F006A7B04 /* BidMachineUnifiedNativeAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidMachineUnifiedNativeAd.m; sourceTree = "<group>"; };
 		3701FB1C26009B4F006A7B04 /* BidMachineCustomEventNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidMachineCustomEventNativeAd.h; sourceTree = "<group>"; };
 		3701FB1E26009B4F006A7B04 /* BidMachineCustomEventInterstitial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidMachineCustomEventInterstitial.m; sourceTree = "<group>"; };
-		3701FB2026009B4F006A7B04 /* BDMExternalAdapterConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDMExternalAdapterConfiguration.m; sourceTree = "<group>"; };
-		3701FB2126009B4F006A7B04 /* BDMExternalAdapterSDKController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDMExternalAdapterSDKController.h; sourceTree = "<group>"; };
-		3701FB2326009B4F006A7B04 /* BDMExternalAdapterConfigurationBuilderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDMExternalAdapterConfigurationBuilderProtocol.h; sourceTree = "<group>"; };
-		3701FB2426009B4F006A7B04 /* BDMExternalAdapterRequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDMExternalAdapterRequestController.m; sourceTree = "<group>"; };
-		3701FB2526009B4F006A7B04 /* BDMExternalAdapterConfigurationDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDMExternalAdapterConfigurationDefines.m; sourceTree = "<group>"; };
-		3701FB2726009B4F006A7B04 /* BDMExternalAdapterSDKController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDMExternalAdapterSDKController.m; sourceTree = "<group>"; };
-		3701FB2826009B4F006A7B04 /* BDMExternalAdapterConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDMExternalAdapterConfiguration.h; sourceTree = "<group>"; };
-		3701FB2926009B4F006A7B04 /* BDMExternalAdapterRequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDMExternalAdapterRequestController.h; sourceTree = "<group>"; };
-		3701FB2A26009B4F006A7B04 /* BDMExternalAdapterConfigurationDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDMExternalAdapterConfigurationDefines.h; sourceTree = "<group>"; };
-		3701FB2B26009B4F006A7B04 /* BDMExternalAdapterConfigurationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDMExternalAdapterConfigurationProtocol.h; sourceTree = "<group>"; };
 		3701FB2C26009B4F006A7B04 /* BidMachineCustomEventRewardedAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidMachineCustomEventRewardedAd.m; sourceTree = "<group>"; };
 		3701FB2D26009B4F006A7B04 /* BidMachineCustomEventBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidMachineCustomEventBanner.m; sourceTree = "<group>"; };
 		3701FB2E26009B4F006A7B04 /* BidMachineCustomEventRewarded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidMachineCustomEventRewarded.h; sourceTree = "<group>"; };
@@ -103,30 +89,12 @@
 		3701FB1826009B4F006A7B04 /* BidMachineAdMobAdapter */ = {
 			isa = PBXGroup;
 			children = (
-				3701FB1F26009B4F006A7B04 /* Utils */,
 				3701FB5A2600A09F006A7B04 /* Banner */,
 				37ECB7AB2600A0F100390AEE /* Interstiital */,
 				37ECB7AC2600A0F900390AEE /* Rewarded */,
 				37ECB7AA2600A0E900390AEE /* NativeAd */,
 			);
 			path = BidMachineAdMobAdapter;
-			sourceTree = "<group>";
-		};
-		3701FB1F26009B4F006A7B04 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				3701FB2A26009B4F006A7B04 /* BDMExternalAdapterConfigurationDefines.h */,
-				3701FB2526009B4F006A7B04 /* BDMExternalAdapterConfigurationDefines.m */,
-				3701FB2B26009B4F006A7B04 /* BDMExternalAdapterConfigurationProtocol.h */,
-				3701FB2326009B4F006A7B04 /* BDMExternalAdapterConfigurationBuilderProtocol.h */,
-				3701FB2826009B4F006A7B04 /* BDMExternalAdapterConfiguration.h */,
-				3701FB2026009B4F006A7B04 /* BDMExternalAdapterConfiguration.m */,
-				3701FB2126009B4F006A7B04 /* BDMExternalAdapterSDKController.h */,
-				3701FB2726009B4F006A7B04 /* BDMExternalAdapterSDKController.m */,
-				3701FB2926009B4F006A7B04 /* BDMExternalAdapterRequestController.h */,
-				3701FB2426009B4F006A7B04 /* BDMExternalAdapterRequestController.m */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		3701FB5A2600A09F006A7B04 /* Banner */ = {
@@ -403,17 +371,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3701FB3A26009B4F006A7B04 /* BDMExternalAdapterConfigurationDefines.m in Sources */,
 				3701FB1626009B1D006A7B04 /* Empty.swift in Sources */,
 				3701FB3F26009B4F006A7B04 /* BidMachineCustomEventNativeAd.m in Sources */,
 				3701FB3426009B4F006A7B04 /* BidMachineCustomEventRewarded.m in Sources */,
 				378198A824C83E3D00E97FED /* Base.m in Sources */,
 				3701FB3E26009B4F006A7B04 /* BidMachineCustomEventBanner.m in Sources */,
-				3701FB3C26009B4F006A7B04 /* BDMExternalAdapterSDKController.m in Sources */,
 				3781989F24C83DA800E97FED /* NativeAdView.m in Sources */,
-				3701FB3926009B4F006A7B04 /* BDMExternalAdapterRequestController.m in Sources */,
 				3781989E24C83DA800E97FED /* NativeAdRenderer.m in Sources */,
-				3701FB3826009B4F006A7B04 /* BDMExternalAdapterConfiguration.m in Sources */,
 				378198B124C83E5A00E97FED /* Rewarded.m in Sources */,
 				3701FB3D26009B4F006A7B04 /* BidMachineCustomEventRewardedAd.m in Sources */,
 				3701FB3526009B4F006A7B04 /* BidMachineUnifiedNativeAd.m in Sources */,
