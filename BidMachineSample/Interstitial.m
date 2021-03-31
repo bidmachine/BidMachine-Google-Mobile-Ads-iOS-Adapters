@@ -49,7 +49,7 @@
     // BDMRequestStorage will capture request by itself
     self.request = nil;
     // Save request for bid
-    [BDMFetcher.shared fetchParamsFromRequest:request];
+    [BDMRequestStorage.shared saveRequest:request];
     // Here we define which Admob ad should be loaded
     [self makeRequest];
 }

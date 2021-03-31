@@ -1,19 +1,29 @@
 
 platform :ios, '10.0'
-
 install! 'cocoapods', :deterministic_uuids => false, :warn_for_multiple_pod_sources => false
 
+$BDMVersion = '~> 1.7.1.0'
+$GoogleVersion = '~> 8.2.0'
 
 def bidmachine
-  pod "BidMachine", "1.6.5"
-  pod "BidMachine/Adapters"
+  pod "BDMIABAdapter", $BDMVersion
+  pod "BDMAdColonyAdapter", $BDMVersion
+  pod "BDMAmazonAdapter", $BDMVersion
+  pod "BDMAppRollAdapter", $BDMVersion
+  pod "BDMCriteoAdapter", $BDMVersion
+  pod "BDMFacebookAdapter", $BDMVersion
+  pod "BDMMyTargetAdapter", $BDMVersion
+  pod "BDMSmaatoAdapter", $BDMVersion
+  pod "BDMTapjoyAdapter", $BDMVersion
+  pod "BDMVungleAdapter", $BDMVersion
 end
 
 def google 
-  pod 'Google-Mobile-Ads-SDK', '~> 8.2.0'
+  pod 'Google-Mobile-Ads-SDK', $GoogleVersion
 end
 
 target 'BidMachineSample' do
   google
   bidmachine
+
 end

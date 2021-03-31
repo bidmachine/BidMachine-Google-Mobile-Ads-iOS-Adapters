@@ -17,8 +17,8 @@
 
 ```ruby
 target 'Target' do
-   project 'Project.xcodeproj'
-  pod 'GoogleMobileAds-BidMachine-Adapters', '~> 1.6.4'
+  project 'Project.xcodeproj'
+  pod 'GoogleMobileAds-BidMachine-Adapters', '~> 1.7.1.0'
 end
 ```
 
@@ -27,8 +27,16 @@ end
 ```ruby
 target 'Target' do
   project 'Project.xcodeproj'
-  pod 'GoogleMobileAds-BidMachine-Adapters', '~> 1.6.4'
-  pod "BidMachine/Adapters"
+  pod 'GoogleMobileAds-BidMachine-Adapters', '~> 1.7.1.0'
+  pod "BDMAdColonyAdapter", "~> 1.7.1.0"
+  pod "BDMAmazonAdapter", "~> 1.7.1.0"
+  pod "BDMAppRollAdapter", "~> 1.7.1.0"
+  pod "BDMCriteoAdapter", "~> 1.7.1.0"
+  pod "BDMFacebookAdapter", "~> 1.7.1.0"
+  pod "BDMMyTargetAdapter", "~> 1.7.1.0"
+  pod "BDMSmaatoAdapter", "~> 1.7.1.0"
+  pod "BDMTapjoyAdapter", "~> 1.7.1.0"
+  pod "BDMVungleAdapter", "~> 1.7.1.0"
 end
 ```
 
@@ -135,8 +143,7 @@ All network required fields and values types are described in BidMachine doc. ([
     config.networkConfigurations = @[[BDMAdNetworkConfiguration buildWithBuilder:^(BDMAdNetworkConfigurationBuilder *builder) {
         builder.appendName(@"criteo");
         builder.appendNetworkClass(NSClassFromString(@"BDMCriteoAdNetwork"));
-        builder.appendInitializationParams(@{@"publisher_id": @"XXX",
-                                             @"banner_ad_units": @[@"XXX"]});
+        builder.appendParams(@{@"publisher_id": @"XXX"});
         builder.appendAdUnit(BDMAdUnitFormatBanner320x50, @{ @"ad_unit_id": @"XXX" }, nil);
     }]];
 
@@ -157,7 +164,7 @@ First you need to create a request and execute it
 
 ```
 
-After polling the request, you need to save the request for bid (**[BDMFetcher.shared fetchParamsFromRequest:request]**)
+After polling the request, you need to save the request for bid (**[BDMRequestStorage.shared saveRequest:request];**)
 
 ```objc
 
@@ -168,7 +175,7 @@ After polling the request, you need to save the request for bid (**[BDMFetcher.s
     // BidMachineFetcher will capture request by itself
     self.request = nil;
     // Save request for bid
-    [BDMFetcher.shared fetchParamsFromRequest:request];
+    [BDMRequestStorage.shared saveRequest:request];
     // Here we define which Admob ad should be loaded
     [self makeRequest];
 }
@@ -206,7 +213,7 @@ First you need to create a request and execute it
 
 ```
 
-After polling the request, you need to save the request for bid (**[BDMFetcher.shared fetchParamsFromRequest:request]**)
+After polling the request, you need to save the request for bid (**[BDMRequestStorage.shared saveRequest:request];**)
 
 ```objc
 
@@ -217,7 +224,7 @@ After polling the request, you need to save the request for bid (**[BDMFetcher.s
     // BidMachineFetcher will capture request by itself
     self.request = nil;
     // Save request for bid
-    [BDMFetcher.shared fetchParamsFromRequest:request];
+    [BDMRequestStorage.shared saveRequest:request];
     // Here we define which Admob ad should be loaded
     [self makeRequest];
 }
@@ -254,7 +261,7 @@ First you need to create a request and execute it
 
 ```
 
-After polling the request, you need to save the request for bid (**[BDMFetcher.shared fetchParamsFromRequest:request]**)
+After polling the request, you need to save the request for bid (**[BDMRequestStorage.shared saveRequest:request];**)
 
 ```objc
 
@@ -265,7 +272,7 @@ After polling the request, you need to save the request for bid (**[BDMFetcher.s
     // BidMachineFetcher will capture request by itself
     self.request = nil;
     // Save request for bid
-    [BDMFetcher.shared fetchParamsFromRequest:request];
+    [BDMRequestStorage.shared saveRequest:request];
     // Here we define which Admob ad should be loaded
     [self makeRequest];
 }
@@ -300,7 +307,7 @@ First you need to create a request and execute it
 
 ```
 
-After polling the request, you need to save the request for bid (**[BDMFetcher.shared fetchParamsFromRequest:request]**)
+After polling the request, you need to save the request for bid (**[BDMRequestStorage.shared saveRequest:request];**)
 
 ```objc
 
@@ -311,7 +318,7 @@ After polling the request, you need to save the request for bid (**[BDMFetcher.s
     // BidMachineFetcher will capture request by itself
     self.request = nil;
     // Save request for bid
-    [BDMFetcher.shared fetchParamsFromRequest:request];
+    [BDMRequestStorage.shared saveRequest:request];
     // Here we define which Admob ad should be loaded
     [self makeRequest];
 }
@@ -347,7 +354,7 @@ First you need to create a request and execute it
 
 ```
 
-After polling the request, you need to save the request for bid (**[BDMFetcher.shared fetchParamsFromRequest:request]**)
+After polling the request, you need to save the request for bid (**[BDMRequestStorage.shared saveRequest:request];**)
 
 ```objc
 
@@ -358,7 +365,7 @@ After polling the request, you need to save the request for bid (**[BDMFetcher.s
     // BidMachineFetcher will capture request by itself
     self.request = nil;
     // Save request for bid
-    [BDMFetcher.shared fetchParamsFromRequest:request];
+    [BDMRequestStorage.shared saveRequest:request];
     // Here we define which Admob ad should be loaded
     [self makeRequest];
 }
@@ -407,6 +414,10 @@ Then you can create an admob object and load it
 
 
 ##  Changelog
+
+### Version 1.7.1.0
+
+* Update BidMachine to 1.7.1.0
 
 ### Version 1.6.5.0
 
