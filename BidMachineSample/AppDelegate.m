@@ -25,6 +25,8 @@
 /// Start BidMachine session, should be called before AdMob initialisation
 - (void)startBidMachine:(void(^)(void))completion {
     BDMSdkConfiguration *config = [BDMSdkConfiguration new];
+    config.targeting = BDMTargeting.new;
+    config.targeting.storeId = @"12345";
     config.testMode = YES;
     [BDMSdk.sharedSdk startSessionWithSellerID:@"5"
                                  configuration:config
