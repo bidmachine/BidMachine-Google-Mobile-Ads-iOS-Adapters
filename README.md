@@ -30,7 +30,6 @@ target 'Target' do
   pod 'GoogleMobileAds-BidMachine-Adapters', '~> 1.7.3.0'
   pod "BDMAdColonyAdapter", "~> 1.7.3.0"
   pod "BDMAmazonAdapter", "~> 1.7.3.0"
-  pod "BDMAppRollAdapter", "~> 1.7.3.0"
   pod "BDMCriteoAdapter", "~> 1.7.3.0"
   pod "BDMFacebookAdapter", "~> 1.7.3.0"
   pod "BDMMyTargetAdapter", "~> 1.7.3.0"
