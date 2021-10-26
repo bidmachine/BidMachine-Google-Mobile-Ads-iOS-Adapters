@@ -71,11 +71,19 @@
     
 }
 
+- (void)adDidRecordClick:(nonnull id<GADFullScreenPresentingAd>)ad {
+    
+}
+
 - (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
     
 }
 
 - (void)adDidPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
+    
+}
+
+- (void)adWillDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
     
 }
 

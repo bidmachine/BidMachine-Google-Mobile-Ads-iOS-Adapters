@@ -38,7 +38,7 @@
     if (!_nativeLoader) {
         _nativeLoader = [[GADAdLoader alloc] initWithAdUnitID:@UNIT_ID
                                            rootViewController:self
-                                                      adTypes:@[kGADAdLoaderAdTypeNative]
+                                                      adTypes:@[GADAdLoaderAdTypeNative]
                                                       options:@[self.viewOptions, self.videoOptions, self.mediaOptions]];
         _nativeLoader.delegate = self;
     }

@@ -92,6 +92,7 @@
 }
 
 - (void)interstitialDidDismiss:(BDMInterstitial *)interstitial {
+    [self.delegate customEventInterstitialWillDismiss:self];
     [self.delegate customEventInterstitialDidDismiss:self];
 }
 

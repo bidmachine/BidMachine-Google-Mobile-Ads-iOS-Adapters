@@ -83,7 +83,7 @@
 }
 
 - (void)bannerViewWillLeaveApplication:(BDMBannerView *)bannerView {
-    [self.delegate customEventBannerWillLeaveApplication:self];
+    
 }
 
 - (void)bannerViewWillPresentScreen:(BDMBannerView *)bannerView {

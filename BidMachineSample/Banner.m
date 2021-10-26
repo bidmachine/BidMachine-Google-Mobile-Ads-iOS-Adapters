@@ -44,7 +44,7 @@
 
 - (GADBannerView *)bannerView {
     if (!_bannerView) {
-        _bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+        _bannerView = [[GADBannerView alloc] initWithAdSize:GADAdSizeBanner];
         _bannerView.delegate = self;
         _bannerView.adUnitID = @UNIT_ID;
         _bannerView.rootViewController = self;
@@ -89,6 +89,10 @@ didFailToReceiveAdWithError:(nonnull NSError *)error {
 }
 
 - (void)bannerViewDidRecordImpression:(nonnull GADBannerView *)bannerView {
+    
+}
+
+- (void)bannerViewDidRecordClick:(nonnull GADBannerView *)bannerView {
     
 }
 
