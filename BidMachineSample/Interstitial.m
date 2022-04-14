@@ -10,7 +10,6 @@
 
 
 #define UNIT_ID         "ca-app-pub-3216013768320747/4019430704"
-#define EXTRAS_MARK     "BMInterstitialCustomEvent_0.2"
 
 @interface Interstitial ()<BDMRequestDelegate, GADFullScreenContentDelegate>
 
@@ -22,22 +21,28 @@
 @implementation Interstitial
 
 - (void)loadAd:(id)sender {
+    [self switchState:BSStateLoading];
     self.request = [BDMInterstitialRequest new];
     [self.request performWithDelegate:self];
 }
 
 - (void)showAd:(id)sender {
+    [self switchState:BSStateIdle];
     [self.interstitial presentFromRootViewController:self];
 }
 
 - (void)makeRequest {
+    __weak typeof(self) weakSelf = self;
+    
     GADRequest *request = [GADRequest request];
     [GADInterstitialAd loadWithAdUnitID:@UNIT_ID request:request completionHandler:^(GADInterstitialAd * _Nullable interstitialAd, NSError * _Nullable error) {
         if (error) {
             // fail load
+            [weakSelf switchState:BSStateIdle];
         } else {
-            self.interstitial = interstitialAd;
-            self.interstitial.fullScreenContentDelegate = self;
+            [weakSelf switchState:BSStateReady];
+            weakSelf.interstitial = interstitialAd;
+            weakSelf.interstitial.fullScreenContentDelegate = self;
         }
     }];
 }
@@ -58,6 +63,7 @@
     // In case request failed we can release it
     // and build some retry logic
     self.request = nil;
+    [self switchState:BSStateIdle];
 }
 
 - (void)requestDidExpire:(BDMRequest *)request {
@@ -79,7 +85,7 @@
     
 }
 
-- (void)adDidPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
+- (void)adWillPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
     
 }
 

@@ -10,9 +10,8 @@
 #import "NativeAdRenderer.h"
 
 #define UNIT_ID         "ca-app-pub-3216013768320747/7699763218"
-#define EXTRAS_MARK     "BMNativeCustomEvent_0.2"
 
-@interface Native ()<BDMRequestDelegate, GADAdLoaderDelegate, GADNativeAdDelegate>
+@interface Native ()<BDMRequestDelegate, GADNativeAdDelegate, GADNativeAdLoaderDelegate>
 
 @property (nonatomic, strong) GADAdLoader *nativeLoader;
 @property (nonatomic, strong) GADNativeAd *nativeAd;
@@ -24,11 +23,17 @@
 @implementation Native
 
 - (void)loadAd:(id)sender {
+    [self switchState:BSStateLoading];
+    
+    [NativeAdRenderer unregister:self.nativeAd fromView:self.container];
+    self.nativeAd = nil;
+    
     self.request = [BDMNativeAdRequest new];
     [self.request performWithDelegate:self];
 }
 
 - (void)showAd:(id)sender {
+    [self switchState:BSStateIdle];
     self.nativeAd.delegate = self;
     self.nativeAd.rootViewController = self;
     [NativeAdRenderer renderAd:self.nativeAd onView:self.container];
@@ -84,6 +89,7 @@
     // In case request failed we can release it
     // and build some retry logic
     self.request = nil;
+    [self switchState:BSStateIdle];
 }
 
 - (void)requestDidExpire:(BDMRequest *)request {
@@ -93,12 +99,27 @@
 
 #pragma mark - GADUnifiedNativeAdLoaderDelegate
 
-- (void)adLoader:(nonnull GADAdLoader *)adLoader
-didFailToReceiveAdWithError:(nonnull NSError *)error {
-    
+- (void)adLoader:(nonnull GADAdLoader *)adLoader didFailToReceiveAdWithError:(nonnull NSError *)error {
+    [self switchState:BSStateIdle];
 }
 
 - (void)adLoaderDidFinishLoading:(nonnull GADAdLoader *)adLoader {
+    
+}
+
+- (void)adLoader:(nonnull GADAdLoader *)adLoader didReceiveNativeAd:(nonnull GADNativeAd *)nativeAd {
+    [self switchState:BSStateReady];
+    self.nativeAd = nativeAd;
+    self.nativeAd.delegate = self;
+}
+
+#pragma mark - GADNativeAdDelegate
+
+- (void)nativeAdDidRecordImpression:(nonnull GADNativeAd *)nativeAd {
+    
+}
+
+- (void)nativeAdDidRecordClick:(nonnull GADNativeAd *)nativeAd {
     
 }
 

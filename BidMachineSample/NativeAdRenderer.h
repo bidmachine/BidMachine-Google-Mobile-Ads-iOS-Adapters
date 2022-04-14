@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)renderAd:(GADNativeAd *)ad onView:(UIView *)view;
 
++ (void)unregister:(GADNativeAd *)ad fromView:(UIView *)view;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,7 +9,6 @@
 #import "Banner.h"
 
 #define UNIT_ID         "ca-app-pub-3216013768320747/5715655753"
-#define EXTRAS_MARK     "BMBannerCustomEvent_0.2"
 
 @interface Banner ()<BDMRequestDelegate, GADBannerViewDelegate>
 
@@ -22,11 +21,15 @@
 @implementation Banner
 
 - (void)loadAd:(id)sender {
+    [self switchState:BSStateLoading];
+    
+    self.bannerView = nil;
     self.request = [BDMBannerRequest new];
     [self.request performWithDelegate:self];
 }
 
 - (void)showAd:(id)sender {
+    [self switchState:BSStateIdle];
     [self addBannerInContainer];
 }
 
@@ -38,6 +41,10 @@
 - (void)addBannerInContainer {
     [self.container.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.container addSubview:self.bannerView];
+    
+    self.bannerView.translatesAutoresizingMaskIntoConstraints = NO;
+    [[self.bannerView.centerXAnchor constraintEqualToAnchor:self.container.centerXAnchor] setActive:YES];
+    [[self.bannerView.centerYAnchor constraintEqualToAnchor:self.container.centerYAnchor] setActive:YES];
 }
 
 #pragma mark - lazy
@@ -70,6 +77,7 @@
     // In case request failed we can release it
     // and build some retry logic
     self.request = nil;
+    [self switchState:BSStateIdle];
 }
 
 - (void)requestDidExpire:(BDMRequest *)request {
@@ -80,12 +88,11 @@
 #pragma mark - GADBannerViewDelegate
 
 - (void)bannerViewDidReceiveAd:(nonnull GADBannerView *)bannerView {
-    
+    [self switchState:BSStateReady];
 }
 
-- (void)bannerView:(nonnull GADBannerView *)bannerView
-didFailToReceiveAdWithError:(nonnull NSError *)error {
-    
+- (void)bannerView:(nonnull GADBannerView *)bannerView didFailToReceiveAdWithError:(nonnull NSError *)error {
+    [self switchState:BSStateIdle];
 }
 
 - (void)bannerViewDidRecordImpression:(nonnull GADBannerView *)bannerView {

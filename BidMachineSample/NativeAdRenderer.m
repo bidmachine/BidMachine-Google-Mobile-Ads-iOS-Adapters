@@ -11,6 +11,11 @@
 
 @implementation NativeAdRenderer
 
++ (void)unregister:(GADNativeAd *)ad fromView:(UIView *)view {
+    [ad unregisterAdView];
+    [view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+}
+
 + (void)renderAd:(GADNativeAd *)ad onView:(UIView *)view {
     [ad unregisterAdView];
     

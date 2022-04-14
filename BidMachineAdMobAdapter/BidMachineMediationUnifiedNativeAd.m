@@ -1,12 +1,14 @@
 //
-//  BidMachineUnifiedNativeAd.m
-//  BidMachineAdapter
+//  BidMachineMediationUnifiedNativeAd.m
+//  BidMachineSample
 //
-//  Created by Ilia Lozhkin on 11/19/19.
-//  Copyright © 2019 bidmachine. All rights reserved.
+//  Created by Ilia Lozhkin on 13.04.2022.
+//  Copyright © 2022 Ilia Lozhkin. All rights reserved.
 //
 
-#import "BidMachineUnifiedNativeAd.h"
+#import "BidMachineMediationUnifiedNativeAd.h"
+
+@import StackFoundation;
 
 @interface BidMachineNativeAdRendering : NSObject <BDMNativeAdRendering>
 
@@ -21,38 +23,39 @@
 
 @end
 
-@interface BidMachineUnifiedNativeAd ()<BDMAdEventProducerDelegate>
+@implementation BidMachineMediationUnifiedNativeAd
 
-@property(nonatomic, strong) BDMNativeAd *nativeAd;
-
-@property(nonatomic, readwrite, nullable) NSArray<GADNativeAdImage *> *images;
-@property(nonatomic, readwrite, nullable) GADNativeAdImage *icon;
-
-@end
-
-@implementation BidMachineUnifiedNativeAd
-
-- (instancetype)initWithNativeAd:(BDMNativeAd *)nativeAd {
-    if (self = [super init]) {
-        NSURL *mainUrl = [NSURL URLWithString:nativeAd.mainImageUrl];
-        NSURL *iconUrl = [NSURL URLWithString:nativeAd.iconUrl];
-        
-        _nativeAd = nativeAd;
-        _images = @[[[GADNativeAdImage alloc] initWithURL:mainUrl scale:1.0]];
-        _icon = [[GADNativeAdImage alloc] initWithURL:iconUrl scale:1.0];
-        
-        self.nativeAd.producerDelegate = self;
-        
+- (BDMNativeAd *)nativeAd {
+    if (!_nativeAd) {
+        _nativeAd = BDMNativeAd.new;
     }
-    return self;
+    return _nativeAd;
 }
+
+#pragma mark - GADMediatedUnifiedNativeAd
 
 - (NSString *)headline {
     return self.nativeAd.title;
 }
 
+- (NSArray<GADNativeAdImage *> *)images {
+    NSURL *imageUrl = [NSURL stk_url:self.nativeAd.mainImageUrl];
+    if (imageUrl) {
+        return ANY([[GADNativeAdImage alloc] initWithURL:imageUrl scale:1.0]).array;
+    }
+    return nil;
+}
+
 - (NSString *)body {
     return self.nativeAd.body;
+}
+
+- (GADNativeAdImage *)icon {
+    NSURL *iconUrl = [NSURL stk_url:self.nativeAd.iconUrl];
+    if (iconUrl) {
+        return [[GADNativeAdImage alloc] initWithURL:iconUrl scale:1.0];
+    }
+    return nil;
 }
 
 - (NSString *)callToAction {
@@ -94,26 +97,18 @@
     NSMutableDictionary<GADNativeAssetIdentifier, UIView *> *assetViews = NSMutableDictionary.new;
     [assetViews addEntriesFromDictionary:clickableAssetViews];
     [assetViews addEntriesFromDictionary:nonclickableAssetViews];
+    
     BidMachineNativeAdRendering *adRendering = [BidMachineNativeAdRendering nativeAdRenderingWith:assetViews];
+    
     [self.nativeAd presentOn:view
-    clickableViews:clickableAssetViews.allValues
-       adRendering:adRendering
-        controller:viewController
-             error:nil];
+              clickableViews:clickableAssetViews.allValues
+                 adRendering:adRendering
+                  controller:viewController
+                       error:nil];
 }
 
 - (void)didUntrackView:(UIView *)view {
     [self.nativeAd unregisterViews];
-}
-
-#pragma mark - BDMAdEventProducerDelegate
-
-- (void)didProduceUserAction:(nonnull id<BDMAdEventProducer>)producer {
-    [GADMediatedUnifiedNativeAdNotificationSource mediatedNativeAdDidRecordClick:self];
-}
-
-- (void)didProduceImpression:(nonnull id<BDMAdEventProducer>)producer {
-    [GADMediatedUnifiedNativeAdNotificationSource mediatedNativeAdDidRecordImpression:self];
 }
 
 @end
