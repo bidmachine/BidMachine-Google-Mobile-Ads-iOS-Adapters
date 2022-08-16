@@ -96,8 +96,7 @@
 }
 
 - (void)rewardedFinishRewardAction:(nonnull BDMRewarded *)rewarded {
-    GADAdReward *reward = [[GADAdReward alloc] initWithRewardType:@"" rewardAmount:NSDecimalNumber.zero];
-    [self.delegate didRewardUserWithReward:reward];
+    [self.delegate didRewardUser];
 }
 
 @end

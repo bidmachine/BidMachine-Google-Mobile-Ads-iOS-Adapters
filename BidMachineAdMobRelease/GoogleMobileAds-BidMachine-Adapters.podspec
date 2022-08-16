@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "GoogleMobileAds-BidMachine-Adapters"
-  spec.version      = "1.9.2.0"
+  spec.version      = "1.9.4.0"
   spec.summary      = "BidMachine IOS adapter for GoogleMobileAds mediation"
   spec.description  = <<-DESC
   Supported ad formats: Banner, Interstitial, Rewarded Video.\n
@@ -28,16 +28,10 @@ limitations under the License.
   spec.static_framework = true
 
   spec.pod_target_xcconfig = {
-    "VALID_ARCHS": "arm64 armv7 armv7s x86_64",
-    "VALID_ARCHS[sdk=iphoneos*]": "arm64 armv7 armv7s",
-    "VALID_ARCHS[sdk=iphonesimulator*]": "x86_64"
-  }
-  spec.user_target_xcconfig = {
-    "VALID_ARCHS": "arm64 armv7 armv7s x86_64",
-    "VALID_ARCHS[sdk=iphoneos*]": "arm64 armv7 armv7s",
-    "VALID_ARCHS[sdk=iphonesimulator*]": "x86_64"
+    "VALID_ARCHS[sdk=iphoneos*]": "arm64 armv7",
+    "VALID_ARCHS[sdk=iphonesimulator*]": "arm64 x86_64"
   }
 
-  spec.dependency 'BDMIABAdapter', '~> 1.9.2.0'
-  spec.dependency 'Google-Mobile-Ads-SDK', '~> 9.3.0'
+  spec.dependency 'BDMIABAdapter', '~> 1.9.4.0'
+  spec.dependency 'Google-Mobile-Ads-SDK', '~> 9.8.0'
 end

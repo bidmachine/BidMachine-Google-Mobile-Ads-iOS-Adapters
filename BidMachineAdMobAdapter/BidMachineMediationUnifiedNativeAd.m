@@ -100,10 +100,10 @@
     
     BidMachineNativeAdRendering *adRendering = [BidMachineNativeAdRendering nativeAdRenderingWith:assetViews];
     
+    self.nativeAd.rootViewController = viewController;
     [self.nativeAd presentOn:view
               clickableViews:clickableAssetViews.allValues
                  adRendering:adRendering
-                  controller:viewController
                        error:nil];
 }
 

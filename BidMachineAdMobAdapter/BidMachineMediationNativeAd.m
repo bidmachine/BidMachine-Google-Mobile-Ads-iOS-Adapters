@@ -63,12 +63,12 @@
     BDMNativeAdRequest *adRequest = (BDMNativeAdRequest *)request;
     self.nativeAd.delegate = self;
     self.nativeAd.producerDelegate = self;
-    [self.nativeAd makeRequest:adRequest];
+    [self.nativeAd populateWithRequest:adRequest];
 }
 
 #pragma mark - BDMNativeAdDelegate
 
-- (void)nativeAd:(nonnull BDMNativeAd *)nativeAd readyToPresentAd:(nonnull BDMAuctionInfo *)auctionInfo {
+- (void)nativeAdReadyToPresent:(BDMNativeAd *)nativeAd {
     self.delegate = _loadCompletionHandler(self, nil);
 }
 

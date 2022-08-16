@@ -63,7 +63,7 @@
 
 #pragma mark - BDMRequestDelegate
 
-- (void)request:(BDMRequest *)request completeWithInfo:(BDMAuctionInfo *)info {
+- (void)request:(BDMRequest *)request completeWithAd:(id<BDMAdProtocol>)adObject {
     // After request complete loading application can lost strong ref on it
     // BDMRequestStorage will capture request by itself
     self.request = nil;
@@ -80,7 +80,7 @@
     [self switchState:BSStateIdle];
 }
 
-- (void)requestDidExpire:(BDMRequest *)request {
+- (void)request:(BDMRequest *)request didExpireAd:(id<BDMAdProtocol>)adObject {
     // In case request expired we can release it
     // and build some retry logic
 }

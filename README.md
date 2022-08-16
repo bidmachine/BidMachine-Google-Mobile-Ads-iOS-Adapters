@@ -18,7 +18,7 @@
 ```ruby
 target 'Target' do
   project 'Project.xcodeproj'
-  pod 'GoogleMobileAds-BidMachine-Adapters', '~> 1.9.2.0'
+  pod 'GoogleMobileAds-BidMachine-Adapters', '~> 1.9.4.0'
 end
 ```
 
@@ -27,16 +27,16 @@ end
 ```ruby
 target 'Target' do
   project 'Project.xcodeproj'
-  pod 'GoogleMobileAds-BidMachine-Adapters', '~> 1.9.2.0'
-  pod "BDMAdColonyAdapter", "~> 1.9.2.0"
-  pod "BDMAmazonAdapter", "~> 1.9.2.0"
-  pod "BDMCriteoAdapter", "~> 1.9.2.0"
-  pod "BDMFacebookAdapter", "~> 1.9.2.0"
-  pod "BDMMyTargetAdapter", "~> 1.9.2.0"
-  pod "BDMSmaatoAdapter", "~> 1.9.2.0"
-  pod "BDMTapjoyAdapter", "~> 1.9.2.0"
-  pod "BDMVungleAdapter", "~> 1.9.2.0"
-  pod "BDMPangleAdapter", "~> 1.9.2.0"
+  pod 'GoogleMobileAds-BidMachine-Adapters', '~> 1.9.4.0'
+  pod "BDMAdColonyAdapter", "~> 1.9.4.0"
+  pod "BDMAmazonAdapter", "~> 1.9.4.0"
+  pod "BDMCriteoAdapter", "~> 1.9.4.0"
+  pod "BDMFacebookAdapter", "~> 1.9.4.0"
+  pod "BDMMyTargetAdapter", "~> 1.9.4.0"
+  pod "BDMSmaatoAdapter", "~> 1.9.4.0"
+  pod "BDMTapjoyAdapter", "~> 1.9.4.0"
+  pod "BDMVungleAdapter", "~> 1.9.4.0"
+  pod "BDMPangleAdapter", "~> 1.9.4.0"
 end
 ```
 
@@ -414,6 +414,11 @@ Then you can create an admob object and load it
 
 
 ##  Changelog
+
+### Version 1.9.4.0
+
+* Update BidMachine to 1.9.4.0 +
+* Update 'Google-Mobile-Ads-SDK' to '9.8.0'
 
 ### Version 1.9.2.0
 
