@@ -415,6 +415,11 @@ Then you can create an admob object and load it
 
 ##  Changelog
 
+### Version 1.9.5.0
+
+* Update BidMachine to 1.9.5.0 +
+* Update 'Google-Mobile-Ads-SDK' to '9.14.0'
+
 ### Version 1.9.4.0
 
 * Update BidMachine to 1.9.4.0 +
