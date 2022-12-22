@@ -73,7 +73,7 @@ function parseVersion {
   done < $PODSPEC
 
   VER="$SDK_VER.$ADAPTER_VER"
-  TAG="v$SPEC-$VER"
+  TAG="v$VER"
 
   if [[ $VER == "." ]]; then
     echo "${ERROR} ❌ Can't parse version from $SPEC${INFO}"
@@ -127,13 +127,13 @@ function createRelease {
 
 function repoPush {
   cd "./BidMachineSpecs"
-  pod repo push appodeal "$SPEC.podspec"
+  pod repo push appodeal "$SPEC.podspec" --allow-warnings
   cd -
 }
 
 function trunkPush {
   cd "./BidMachineSpecs"
-  pod trunk push "$SPEC.podspec"
+  pod trunk push "$SPEC.podspec" --allow-warnings
   cd -
 }
 
