@@ -85,7 +85,7 @@ function copyInfo {
 function compress {
     echo "🗜 Compress packages"
     cd "./release"
-    zip -r "BidMachine.zip" * > /dev/null
+    zip -r "BidMachineAdMobAdapter.zip" * > /dev/null
     cd -
 }
 

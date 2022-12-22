@@ -8,7 +8,7 @@ export INFO='\033[0m'       # Standart color
 export WARNING='\033[0;33m' # Orange color
 
 SPEC="BidMachineAdMobAdapter"
-PODSPEC="./$SPEC.podspec"
+PODSPEC="./BidMachineSpecs/$SPEC.podspec"
 ADAPTER_VER=""
 SDK_VER=""
 VER=""
@@ -110,7 +110,7 @@ function upload {
 }
 
 function createRelease {
-  PATH_NOTE="./NOTE.md"
+  PATH_NOTE="./release/NOTE.md"
   NOTE+=" \n - [XCFramework](https://s3-us-west-1.amazonaws.com/appodeal-ios/BidMachineAdaptors/${SPEC}/${VER}/${SPEC}.zip)"
   echo "$NOTE" > "$PATH_NOTE"
   echo "$(tail -n +2 "$PATH_NOTE")" > "$PATH_NOTE"
@@ -122,7 +122,19 @@ function createRelease {
   git tag -a $TAG -m "$TAG"
   git push origin $TAG
 
-  gh release create $TAG -F "./NOTE.md"
+  gh release create $TAG -F "./release/NOTE.md"
+}
+
+function repoPush {
+  cd "./BidMachineSpecs"
+  pod repo push appodeal "$SPEC.podspec"
+  cd -
+}
+
+function trunkPush {
+  cd "./BidMachineSpecs"
+  pod trunk push "$SPEC.podspec"
+  cd -
 }
 
 # ----------------------------------
@@ -141,6 +153,6 @@ echo "Repo push          ${WARNING}${REPO_PUSH}${INFO}"
 echo "Trunk push         ${WARNING}${TRUNK_PUSH}${INFO}"
 echo "Create git tag:    ${WARNING}${CREATE_TAG}${INFO}"
 
-[ "$REPO_PUSH" = "YES" ] && upload && pod repo push appodeal "$SPEC.podspec" --allow-warnings
-[ "$TRUNK_PUSH" = "YES" ] && pod trunk push "$SPEC.podspec" --allow-warnings
+[ "$REPO_PUSH" = "YES" ] && upload && repoPush
+[ "$TRUNK_PUSH" = "YES" ] && trunkPush
 [ "$CREATE_TAG" = "YES" ] && createRelease
