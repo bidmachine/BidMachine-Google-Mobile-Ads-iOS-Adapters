@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10184FE2DCD14173936BD1C1 /* libPods-BidMachineAdMobAdapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C33406F1E2D85D55DF440DA4 /* libPods-BidMachineAdMobAdapter.a */; };
 		65AD7DAC2951F14200469668 /* BidMachineAdMobAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 65AD7DAB2951F14200469668 /* BidMachineAdMobAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65AD7DB72952132400469668 /* MediationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AD7DB62952132400469668 /* MediationAdapter.swift */; };
 		65AD7DBB295213B600469668 /* InterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AD7DBA295213B600469668 /* InterstitialAd.swift */; };
@@ -40,9 +39,6 @@
 		65AD7DD02953420400469668 /* AdStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdStorageService.swift; sourceTree = "<group>"; };
 		65AD7DD2295343BF00469668 /* AdStorageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdStorageItem.swift; sourceTree = "<group>"; };
 		65AD7DD529538A5500469668 /* MediationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediationSettings.swift; sourceTree = "<group>"; };
-		961788D7123F1DD1D347307F /* Pods-BidMachineAdMobAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineAdMobAdapter.debug.xcconfig"; path = "Target Support Files/Pods-BidMachineAdMobAdapter/Pods-BidMachineAdMobAdapter.debug.xcconfig"; sourceTree = "<group>"; };
-		A7F240A15C2832D62D1398E8 /* Pods-BidMachineAdMobAdapter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineAdMobAdapter.release.xcconfig"; path = "Target Support Files/Pods-BidMachineAdMobAdapter/Pods-BidMachineAdMobAdapter.release.xcconfig"; sourceTree = "<group>"; };
-		C33406F1E2D85D55DF440DA4 /* libPods-BidMachineAdMobAdapter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BidMachineAdMobAdapter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10184FE2DCD14173936BD1C1 /* libPods-BidMachineAdMobAdapter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,8 +57,6 @@
 			children = (
 				65AD7DAA2951F14200469668 /* BidMachineAdMobAdapter */,
 				65AD7DA92951F14200469668 /* Products */,
-				9757455B3D6410DAF30EF1D9 /* Pods */,
-				6AC525307EEC90DAA8A361F1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,24 +129,6 @@
 			name = MediationSettings;
 			sourceTree = "<group>";
 		};
-		6AC525307EEC90DAA8A361F1 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C33406F1E2D85D55DF440DA4 /* libPods-BidMachineAdMobAdapter.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9757455B3D6410DAF30EF1D9 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				961788D7123F1DD1D347307F /* Pods-BidMachineAdMobAdapter.debug.xcconfig */,
-				A7F240A15C2832D62D1398E8 /* Pods-BidMachineAdMobAdapter.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../../Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -172,7 +147,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65AD7DAF2951F14200469668 /* Build configuration list for PBXNativeTarget "BidMachineAdMobAdapter" */;
 			buildPhases = (
-				BF7DA7A6F9621FEF2840173A /* [CP] Check Pods Manifest.lock */,
 				65AD7DA32951F14200469668 /* Headers */,
 				65AD7DA42951F14200469668 /* Sources */,
 				65AD7DA52951F14200469668 /* Frameworks */,
@@ -229,31 +203,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		BF7DA7A6F9621FEF2840173A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BidMachineAdMobAdapter-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		65AD7DA42951F14200469668 /* Sources */ = {
@@ -401,7 +350,6 @@
 		};
 		65AD7DB02951F14200469668 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 961788D7123F1DD1D347307F /* Pods-BidMachineAdMobAdapter.debug.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -436,7 +384,6 @@
 		};
 		65AD7DB12951F14200469668 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7F240A15C2832D62D1398E8 /* Pods-BidMachineAdMobAdapter.release.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
