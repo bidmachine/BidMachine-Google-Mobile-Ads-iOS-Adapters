@@ -36,6 +36,11 @@ end
     }];
     
     [BidMachineSdk.shared initializeSdk: @"1"];
+
+    [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus * _Nonnull status) {
+            NSDictionary *statuses = status.adapterStatusesByClassName;
+            NSLog(@"%@", [statuses.allKeys componentsJoinedByString:@","]);
+    }];
 ```
 
 ### Banner implementation
