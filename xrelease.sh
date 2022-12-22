@@ -7,8 +7,10 @@ export ERROR='\033[0;31m'   # Red color
 export INFO='\033[0m'       # Standart color
 export WARNING='\033[0;33m' # Orange color
 
-SPEC="BidMachine"
-PODSPEC="./BidMachineSpecs/$SPEC.podspec"
+SPEC="BidMachineAdMobAdapter"
+PODSPEC="./$SPEC.podspec"
+ADAPTER_VER=""
+SDK_VER=""
 VER=""
 TAG=""
 NOTE=""
@@ -63,15 +65,18 @@ done
 
 function parseVersion {
   while read line; do
-    if [[ "$line" == *"spec.version"* && $line =~ [0-9]+\.[0-9]+\.[0-9]+\.[0-9] ]]; then 
-        VER=${BASH_REMATCH[0]}
+    if [[ "$line" == *"sdkPath"* && $line =~ [0-9]+\.[0-9]+\.[0-9] ]]; then 
+        SDK_VER=${BASH_REMATCH[0]}
+    elif [[ "$line" == *"adapterPath"* && $line =~ [0-9]+ ]]; then
+        ADAPTER_VER=${BASH_REMATCH[0]}
     fi
   done < $PODSPEC
 
-  TAG="v$VER"
+  VER="$SDK_VER.$ADAPTER_VER"
+  TAG="v$SPEC-$VER"
 
-  if [[ $VER == "" ]]; then
-    echo "${ERROR} ❌ Can't parse version from $PODSPEC${INFO}"
+  if [[ $VER == "." ]]; then
+    echo "${ERROR} ❌ Can't parse version from $SPEC${INFO}"
     exit 0
   fi
 }
@@ -101,12 +106,12 @@ function parseNotes {
 function upload {
     echo "🌎 Upload"
     name="$SPEC.zip"
-    aws s3 cp "$(PWD)/release/$name" "s3://appodeal-ios/${SPEC}/$VER/$name" --acl public-read
+    aws s3 cp "$(PWD)/release/$name" "s3://appodeal-ios/BidMachineAdaptors/$SPEC/$VER/$name" --acl public-read
 }
 
 function createRelease {
-  PATH_NOTE="./release/NOTE.md"
-  NOTE+=" \n - [XCFramework](https://s3-us-west-1.amazonaws.com/appodeal-ios/${SPEC}/${VER}/${SPEC}.zip)"
+  PATH_NOTE="./NOTE.md"
+  NOTE+=" \n - [XCFramework](https://s3-us-west-1.amazonaws.com/appodeal-ios/BidMachineAdaptors/${SPEC}/${VER}/${SPEC}.zip)"
   echo "$NOTE" > "$PATH_NOTE"
   echo "$(tail -n +2 "$PATH_NOTE")" > "$PATH_NOTE"
 
@@ -117,19 +122,7 @@ function createRelease {
   git tag -a $TAG -m "$TAG"
   git push origin $TAG
 
-  gh release create $TAG -F "./release/NOTE.md"
-}
-
-function repoPush {
-  cd "./BidMachineSpecs"
-  pod repo push appodeal "$SPEC.podspec"
-  cd -
-}
-
-function trunkPush {
-  cd "./BidMachineSpecs"
-  pod trunk push "$SPEC.podspec"
-  cd -
+  gh release create $TAG -F "./NOTE.md"
 }
 
 # ----------------------------------
@@ -148,6 +141,6 @@ echo "Repo push          ${WARNING}${REPO_PUSH}${INFO}"
 echo "Trunk push         ${WARNING}${TRUNK_PUSH}${INFO}"
 echo "Create git tag:    ${WARNING}${CREATE_TAG}${INFO}"
 
-[ "$REPO_PUSH" = "YES" ] && upload && repoPush
-[ "$TRUNK_PUSH" = "YES" ] && trunkPush
+[ "$REPO_PUSH" = "YES" ] && upload && pod repo push appodeal "$SPEC.podspec" --allow-warnings
+[ "$TRUNK_PUSH" = "YES" ] && pod trunk push "$SPEC.podspec" --allow-warnings
 [ "$CREATE_TAG" = "YES" ] && createRelease
