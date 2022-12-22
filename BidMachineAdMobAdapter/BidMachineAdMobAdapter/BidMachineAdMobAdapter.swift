@@ -8,9 +8,9 @@
 import Foundation
 import BidMachine
 
-@objc (BidMachineAdMobAdapter) public class BidMachineAdMobAdapter: NSObject {
+@objc(BidMachineAdMobAdapter) public class AdMobAdapter: NSObject {
     
-    static let shared: BidMachineAdMobAdapter = BidMachineAdMobAdapter()
+    static let shared: AdMobAdapter = AdMobAdapter()
     
     let storageService = AdStorageService()
     
@@ -20,14 +20,14 @@ import BidMachine
 }
 
 
-@objc public extension BidMachineAdMobAdapter {
+@objc public extension AdMobAdapter {
     
     static func store(_ ad: BidMachineAdProtocol?) {
         Self.shared._store(ad)
     }
 }
 
-private extension BidMachineAdMobAdapter {
+private extension AdMobAdapter {
     
     func _store(_ ad: BidMachineAdProtocol?) {
         guard let ad = ad else {

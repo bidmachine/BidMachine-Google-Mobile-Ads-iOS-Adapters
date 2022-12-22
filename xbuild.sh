@@ -4,8 +4,7 @@
 # ENVIROMENT VARIABLES
 # ----------------------------------
 SCHEMES=( 
-    "BidMachine"
-    "BidMachineAdapterCore"
+    "BidMachineAdMobAdapter"
 )
 
 start=`date +%s`
@@ -23,8 +22,8 @@ function prepare {
 function xcframework {
     # iOS devices
     xcodebuild archive \
-        -workspace "./BidMachine.xcworkspace" \
-        -scheme "BidMachineCore" \
+        -workspace "./BidMachineAdMobAdapter.xcworkspace" \
+        -scheme "BidMachineAdMobAdapter" \
         -archivePath "./build/ios.xcarchive" \
         -sdk iphoneos \
         VALID_ARCHS="arm64 armv7" \
@@ -41,8 +40,8 @@ function xcframework {
 
     # iOS simulator
     xcodebuild archive \
-        -workspace "./BidMachine.xcworkspace" \
-        -scheme "BidMachineCore" \
+        -workspace "./BidMachineAdMobAdapter.xcworkspace" \
+        -scheme "BidMachineAdMobAdapter" \
         -archivePath "./build/ios_sim.xcarchive" \
         -sdk iphonesimulator \
         VALID_ARCHS="x86_64 arm64" \

@@ -23,9 +23,11 @@
 		378198B324C83E5A00E97FED /* Interstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = 378198AE24C83E5A00E97FED /* Interstitial.m */; };
 		378198B424C83E5A00E97FED /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 378198AF24C83E5A00E97FED /* Banner.m */; };
 		65AD7DB529520A2E00469668 /* BidMachineAdMobAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AD7DB429520A2E00469668 /* BidMachineAdMobAdapter.framework */; };
+		E798E06186DBEDFCCDEB18F5 /* libPods-BidMachineSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49472903164C2168349B4C06 /* libPods-BidMachineSample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16582F8CEA5CCC6CEA1BEBA4 /* Pods-BidMachineSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineSample.release.xcconfig"; path = "Target Support Files/Pods-BidMachineSample/Pods-BidMachineSample.release.xcconfig"; sourceTree = "<group>"; };
 		3701FB1526009B1D006A7B04 /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		3781987C24C83BFB00E97FED /* BidMachineSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BidMachineSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3781987F24C83BFB00E97FED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,7 +53,9 @@
 		378198AE24C83E5A00E97FED /* Interstitial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interstitial.m; sourceTree = "<group>"; };
 		378198AF24C83E5A00E97FED /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
 		378198B024C83E5A00E97FED /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
+		49472903164C2168349B4C06 /* libPods-BidMachineSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BidMachineSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65AD7DB429520A2E00469668 /* BidMachineAdMobAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BidMachineAdMobAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6EC49E70BA7CF7C10E4852E /* Pods-BidMachineSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineSample.debug.xcconfig"; path = "Target Support Files/Pods-BidMachineSample/Pods-BidMachineSample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65AD7DB529520A2E00469668 /* BidMachineAdMobAdapter.framework in Frameworks */,
+				E798E06186DBEDFCCDEB18F5 /* libPods-BidMachineSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,8 +76,8 @@
 			children = (
 				3781987E24C83BFB00E97FED /* BidMachineSample */,
 				3781987D24C83BFB00E97FED /* Products */,
-				FBD9770F7EF183070EEA7568 /* Pods */,
 				3F2F9F309A84FEDC6456167A /* Frameworks */,
+				94490450F58C54902BF2D2AA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,15 +156,19 @@
 			isa = PBXGroup;
 			children = (
 				65AD7DB429520A2E00469668 /* BidMachineAdMobAdapter.framework */,
+				49472903164C2168349B4C06 /* libPods-BidMachineSample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FBD9770F7EF183070EEA7568 /* Pods */ = {
+		94490450F58C54902BF2D2AA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				E6EC49E70BA7CF7C10E4852E /* Pods-BidMachineSample.debug.xcconfig */,
+				16582F8CEA5CCC6CEA1BEBA4 /* Pods-BidMachineSample.release.xcconfig */,
 			);
-			path = Pods;
+			name = Pods;
+			path = ../Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +178,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3781989524C83BFB00E97FED /* Build configuration list for PBXNativeTarget "BidMachineSample" */;
 			buildPhases = (
+				FE19C06EC035D0004F6C1FBB /* [CP] Check Pods Manifest.lock */,
 				3781987824C83BFB00E97FED /* Sources */,
 				3781987924C83BFB00E97FED /* Frameworks */,
 				3781987A24C83BFB00E97FED /* Resources */,
@@ -229,6 +239,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FE19C06EC035D0004F6C1FBB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BidMachineSample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3781987824C83BFB00E97FED /* Sources */ = {
@@ -382,6 +417,7 @@
 		};
 		3781989624C83BFB00E97FED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6EC49E70BA7CF7C10E4852E /* Pods-BidMachineSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -403,6 +439,7 @@
 		};
 		3781989724C83BFB00E97FED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16582F8CEA5CCC6CEA1BEBA4 /* Pods-BidMachineSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

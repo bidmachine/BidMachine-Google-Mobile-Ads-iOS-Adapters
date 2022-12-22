@@ -49,7 +49,7 @@ class BidMachineAdProvider <T: BidMachineAdProtocol>: BidMachineAdDelegate {
         self.success = success
         self.failure = failure
         
-        let storageResult = BidMachineAdMobAdapter.shared.storageService.fetchResult(format, settings)
+        let storageResult = AdMobAdapter.shared.storageService.fetchResult(format, settings)
         if storageResult.prebid {
             _makePrebid(storageResult.ad, configuration)
         } else {
