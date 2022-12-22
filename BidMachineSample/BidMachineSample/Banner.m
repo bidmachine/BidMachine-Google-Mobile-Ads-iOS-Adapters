@@ -26,7 +26,8 @@
     [self switchState:BSStateLoading];
     
     __weak typeof(self) weakSelf = self;
-    [BidMachineSdk.shared banner:nil :^(BidMachineBanner *ad, NSError *error) {
+    id<BidMachineRequestConfigurationProtocol> config = [BidMachineSdk.shared requestConfiguration:BidMachinePlacementFormatBanner320x50 error:nil];
+    [BidMachineSdk.shared banner:config :^(BidMachineBanner *ad, NSError *error) {
         [BidMachineAdMobAdapter store:ad];
         [weakSelf makeRequest];
     }];
