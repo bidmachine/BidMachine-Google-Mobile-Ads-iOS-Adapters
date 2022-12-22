@@ -60,7 +60,7 @@ Before start loading Admob you should load Bidmachine ad and save it to store
 }
 
 - (void)after {
-    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner]; // kGADAdSizeMediumRectangle
     self.bannerView.delegate = self;
     self.bannerView.adUnitID = @UNIT_ID;
     self.bannerView.rootViewController = self;
