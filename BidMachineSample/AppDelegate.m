@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <BidMachine/BidMachine.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
 @import BidMachine;
@@ -15,25 +14,18 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    __weak typeof(self) weakSelf = self;
-    [self startBidMachine:^{
-        [weakSelf startAdMob];
+    [BidMachineSdk.shared populate:^(id<BidMachineInfoBuilderProtocol> builder) {
+            [builder withTestMode:YES];
+            [builder withLoggingMode:YES];
+            [builder withBidLoggingMode:YES];
+            [builder withEventLoggingMode:YES];
     }];
+    
+    [BidMachineSdk.shared initializeSdk: @"1"];
+    [self startAdMob];
     return YES;
 }
 
-/// Start BidMachine session, should be called before AdMob initialisation
-- (void)startBidMachine:(void(^)(void))completion {
-    BDMSdkConfiguration *config = [BDMSdkConfiguration new];
-    config.targeting = BDMTargeting.new;
-    config.targeting.storeId = @"12345";
-    config.testMode = YES;
-    [BDMSdk.sharedSdk startSessionWithSellerID:@"1"
-                                 configuration:config
-                                    completion:completion];
-}
-
-///  Start AdMob SDK
 - (void)startAdMob {
     GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers = @[ @"0364fe200acbb0d9a468177494e7e27a" ];
    [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus * _Nonnull status) {

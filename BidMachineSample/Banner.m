@@ -10,9 +10,8 @@
 
 #define UNIT_ID         "ca-app-pub-3216013768320747/5715655753"
 
-@interface Banner ()<BDMRequestDelegate, GADBannerViewDelegate>
+@interface Banner ()<GADBannerViewDelegate>
 
-@property (nonatomic, strong) BDMBannerRequest *request;
 @property (nonatomic, strong) GADBannerView *bannerView;
 @property (weak, nonatomic) IBOutlet UIView *container;
 
@@ -21,11 +20,16 @@
 @implementation Banner
 
 - (void)loadAd:(id)sender {
+    self.bannerView = nil;
+    [self.container.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
     [self switchState:BSStateLoading];
     
-    self.bannerView = nil;
-    self.request = [BDMBannerRequest new];
-    [self.request performWithDelegate:self];
+    __weak typeof(self) weakSelf = self;
+    [BidMachineSdk.shared banner:nil :^(BidMachineBanner *ad, NSError *error) {
+        [BidMachineAdMobAdapter store:ad];
+        [weakSelf makeRequest];
+    }];
 }
 
 - (void)showAd:(id)sender {
@@ -59,30 +63,6 @@
         _bannerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
     return _bannerView;
-}
-
-#pragma mark - BDMRequestDelegate
-
-- (void)request:(BDMRequest *)request completeWithAd:(id<BDMAdProtocol>)adObject {
-    // After request complete loading application can lost strong ref on it
-    // BDMRequestStorage will capture request by itself
-    self.request = nil;
-    // Save request for bid
-    [BDMRequestStorage.shared saveRequest:request];
-    // Here we define which Admob ad should be loaded
-    [self makeRequest];
-}
-
-- (void)request:(BDMRequest *)request failedWithError:(NSError *)error {
-    // In case request failed we can release it
-    // and build some retry logic
-    self.request = nil;
-    [self switchState:BSStateIdle];
-}
-
-- (void)request:(BDMRequest *)request didExpireAd:(id<BDMAdProtocol>)adObject {
-    // In case request expired we can release it
-    // and build some retry logic
 }
 
 #pragma mark - GADBannerViewDelegate

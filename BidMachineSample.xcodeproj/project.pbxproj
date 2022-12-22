@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,13 +23,7 @@
 		378198B324C83E5A00E97FED /* Interstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = 378198AE24C83E5A00E97FED /* Interstitial.m */; };
 		378198B424C83E5A00E97FED /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 378198AF24C83E5A00E97FED /* Banner.m */; };
 		47378A31F0D1EF6925A05930 /* libPods-BidMachineSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C95C21597C4A93AB896A8072 /* libPods-BidMachineSample.a */; };
-		65E943B62806DCFC006E48B9 /* BidMachineCustomEventAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E943B52806DCFC006E48B9 /* BidMachineCustomEventAdapter.m */; };
-		65E943B92806F4C1006E48B9 /* BidMachineMediationBannerAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E943B82806F4C1006E48B9 /* BidMachineMediationBannerAd.m */; };
-		65E943C22806FEB6006E48B9 /* BidMachineMediationAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E943C12806FEB6006E48B9 /* BidMachineMediationAdapter.m */; };
-		65E943C5280713F1006E48B9 /* BidMachineMediationRewardedAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E943C4280713F1006E48B9 /* BidMachineMediationRewardedAd.m */; };
-		65E943C82807183B006E48B9 /* BidMachineMediationInterstitialAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E943C72807183B006E48B9 /* BidMachineMediationInterstitialAd.m */; };
-		65E943CB28071C04006E48B9 /* BidMachineMediationNativeAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E943CA28071C04006E48B9 /* BidMachineMediationNativeAd.m */; };
-		65E943CE28072106006E48B9 /* BidMachineMediationUnifiedNativeAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E943CD28072106006E48B9 /* BidMachineMediationUnifiedNativeAd.m */; };
+		65AD7DB529520A2E00469668 /* BidMachineAdMobAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AD7DB429520A2E00469668 /* BidMachineAdMobAdapter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,20 +54,7 @@
 		378198AE24C83E5A00E97FED /* Interstitial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interstitial.m; sourceTree = "<group>"; };
 		378198AF24C83E5A00E97FED /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
 		378198B024C83E5A00E97FED /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
-		65E943B42806DCFC006E48B9 /* BidMachineCustomEventAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineCustomEventAdapter.h; sourceTree = "<group>"; };
-		65E943B52806DCFC006E48B9 /* BidMachineCustomEventAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineCustomEventAdapter.m; sourceTree = "<group>"; };
-		65E943B72806F4C1006E48B9 /* BidMachineMediationBannerAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineMediationBannerAd.h; sourceTree = "<group>"; };
-		65E943B82806F4C1006E48B9 /* BidMachineMediationBannerAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineMediationBannerAd.m; sourceTree = "<group>"; };
-		65E943C02806FEB6006E48B9 /* BidMachineMediationAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineMediationAdapter.h; sourceTree = "<group>"; };
-		65E943C12806FEB6006E48B9 /* BidMachineMediationAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineMediationAdapter.m; sourceTree = "<group>"; };
-		65E943C3280713F1006E48B9 /* BidMachineMediationRewardedAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineMediationRewardedAd.h; sourceTree = "<group>"; };
-		65E943C4280713F1006E48B9 /* BidMachineMediationRewardedAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineMediationRewardedAd.m; sourceTree = "<group>"; };
-		65E943C62807183B006E48B9 /* BidMachineMediationInterstitialAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineMediationInterstitialAd.h; sourceTree = "<group>"; };
-		65E943C72807183B006E48B9 /* BidMachineMediationInterstitialAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineMediationInterstitialAd.m; sourceTree = "<group>"; };
-		65E943C928071C04006E48B9 /* BidMachineMediationNativeAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineMediationNativeAd.h; sourceTree = "<group>"; };
-		65E943CA28071C04006E48B9 /* BidMachineMediationNativeAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineMediationNativeAd.m; sourceTree = "<group>"; };
-		65E943CC28072106006E48B9 /* BidMachineMediationUnifiedNativeAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineMediationUnifiedNativeAd.h; sourceTree = "<group>"; };
-		65E943CD28072106006E48B9 /* BidMachineMediationUnifiedNativeAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineMediationUnifiedNativeAd.m; sourceTree = "<group>"; };
+		65AD7DB429520A2E00469668 /* BidMachineAdMobAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BidMachineAdMobAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C95C21597C4A93AB896A8072 /* libPods-BidMachineSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BidMachineSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -82,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65AD7DB529520A2E00469668 /* BidMachineAdMobAdapter.framework in Frameworks */,
 				47378A31F0D1EF6925A05930 /* libPods-BidMachineSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,34 +71,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3701FB1826009B4F006A7B04 /* BidMachineAdMobAdapter */ = {
-			isa = PBXGroup;
-			children = (
-				65E943B42806DCFC006E48B9 /* BidMachineCustomEventAdapter.h */,
-				65E943B52806DCFC006E48B9 /* BidMachineCustomEventAdapter.m */,
-				65E943C02806FEB6006E48B9 /* BidMachineMediationAdapter.h */,
-				65E943C12806FEB6006E48B9 /* BidMachineMediationAdapter.m */,
-				3701FB5A2600A09F006A7B04 /* Banner */,
-				37ECB7AB2600A0F100390AEE /* Interstiital */,
-				37ECB7AC2600A0F900390AEE /* Rewarded */,
-				37ECB7AA2600A0E900390AEE /* NativeAd */,
-			);
-			path = BidMachineAdMobAdapter;
-			sourceTree = "<group>";
-		};
-		3701FB5A2600A09F006A7B04 /* Banner */ = {
-			isa = PBXGroup;
-			children = (
-				65E943B72806F4C1006E48B9 /* BidMachineMediationBannerAd.h */,
-				65E943B82806F4C1006E48B9 /* BidMachineMediationBannerAd.m */,
-			);
-			name = Banner;
-			sourceTree = "<group>";
-		};
 		3781987324C83BFB00E97FED = {
 			isa = PBXGroup;
 			children = (
-				3701FB1826009B4F006A7B04 /* BidMachineAdMobAdapter */,
 				3781987E24C83BFB00E97FED /* BidMachineSample */,
 				3781987D24C83BFB00E97FED /* Products */,
 				FBD9770F7EF183070EEA7568 /* Pods */,
@@ -195,38 +152,10 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
-		37ECB7AA2600A0E900390AEE /* NativeAd */ = {
-			isa = PBXGroup;
-			children = (
-				65E943C928071C04006E48B9 /* BidMachineMediationNativeAd.h */,
-				65E943CA28071C04006E48B9 /* BidMachineMediationNativeAd.m */,
-				65E943CC28072106006E48B9 /* BidMachineMediationUnifiedNativeAd.h */,
-				65E943CD28072106006E48B9 /* BidMachineMediationUnifiedNativeAd.m */,
-			);
-			name = NativeAd;
-			sourceTree = "<group>";
-		};
-		37ECB7AB2600A0F100390AEE /* Interstiital */ = {
-			isa = PBXGroup;
-			children = (
-				65E943C62807183B006E48B9 /* BidMachineMediationInterstitialAd.h */,
-				65E943C72807183B006E48B9 /* BidMachineMediationInterstitialAd.m */,
-			);
-			name = Interstiital;
-			sourceTree = "<group>";
-		};
-		37ECB7AC2600A0F900390AEE /* Rewarded */ = {
-			isa = PBXGroup;
-			children = (
-				65E943C3280713F1006E48B9 /* BidMachineMediationRewardedAd.h */,
-				65E943C4280713F1006E48B9 /* BidMachineMediationRewardedAd.m */,
-			);
-			name = Rewarded;
-			sourceTree = "<group>";
-		};
 		3F2F9F309A84FEDC6456167A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65AD7DB429520A2E00469668 /* BidMachineAdMobAdapter.framework */,
 				C95C21597C4A93AB896A8072 /* libPods-BidMachineSample.a */,
 			);
 			name = Frameworks;
@@ -344,19 +273,12 @@
 				378198A824C83E3D00E97FED /* Base.m in Sources */,
 				3781989F24C83DA800E97FED /* NativeAdView.m in Sources */,
 				3781989E24C83DA800E97FED /* NativeAdRenderer.m in Sources */,
-				65E943C82807183B006E48B9 /* BidMachineMediationInterstitialAd.m in Sources */,
 				378198B124C83E5A00E97FED /* Rewarded.m in Sources */,
 				378198B224C83E5A00E97FED /* Native.m in Sources */,
-				65E943CE28072106006E48B9 /* BidMachineMediationUnifiedNativeAd.m in Sources */,
 				378198B324C83E5A00E97FED /* Interstitial.m in Sources */,
 				3781988124C83BFB00E97FED /* AppDelegate.m in Sources */,
-				65E943C22806FEB6006E48B9 /* BidMachineMediationAdapter.m in Sources */,
 				378198B424C83E5A00E97FED /* Banner.m in Sources */,
-				65E943B92806F4C1006E48B9 /* BidMachineMediationBannerAd.m in Sources */,
-				65E943CB28071C04006E48B9 /* BidMachineMediationNativeAd.m in Sources */,
 				3781989224C83BFB00E97FED /* main.m in Sources */,
-				65E943C5280713F1006E48B9 /* BidMachineMediationRewardedAd.m in Sources */,
-				65E943B62806DCFC006E48B9 /* BidMachineCustomEventAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

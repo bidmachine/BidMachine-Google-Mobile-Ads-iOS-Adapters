@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:BidMachineAdMobAdapter/BidMachineAdMobAdapter/BidMachineAdMobAdapter.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:BidMachineSample.xcodeproj">
    </FileRef>
    <FileRef

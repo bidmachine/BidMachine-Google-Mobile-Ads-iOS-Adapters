@@ -11,10 +11,9 @@
 
 #define UNIT_ID         "ca-app-pub-3216013768320747/4019430704"
 
-@interface Interstitial ()<BDMRequestDelegate, GADFullScreenContentDelegate>
+@interface Interstitial () <GADFullScreenContentDelegate>
 
 @property (nonatomic, strong) GADInterstitialAd *interstitial;
-@property (nonatomic, strong) BDMInterstitialRequest *request;
 
 @end
 
@@ -22,8 +21,12 @@
 
 - (void)loadAd:(id)sender {
     [self switchState:BSStateLoading];
-    self.request = [BDMInterstitialRequest new];
-    [self.request performWithDelegate:self];
+    
+    __weak typeof(self) weakSelf = self;
+    [BidMachineSdk.shared interstitial:nil :^(BidMachineInterstitial *ad, NSError *error) {
+        [BidMachineAdMobAdapter store:ad];
+        [weakSelf makeRequest];
+    }];
 }
 
 - (void)showAd:(id)sender {
@@ -45,30 +48,6 @@
             weakSelf.interstitial.fullScreenContentDelegate = self;
         }
     }];
-}
-
-#pragma mark - BDMRequestDelegate
-
-- (void)request:(BDMRequest *)request completeWithAd:(id<BDMAdProtocol>)adObject {
-    // After request complete loading application can lost strong ref on it
-    // BDMRequestStorage will capture request by itself
-    self.request = nil;
-    // Save request for bid
-    [BDMRequestStorage.shared saveRequest:request];
-    // Here we define which Admob ad should be loaded
-    [self makeRequest];
-}
-
-- (void)request:(BDMRequest *)request failedWithError:(NSError *)error {
-    // In case request failed we can release it
-    // and build some retry logic
-    self.request = nil;
-    [self switchState:BSStateIdle];
-}
-
-- (void)request:(BDMRequest *)request didExpireAd:(id<BDMAdProtocol>)adObject {
-    // In case request expired we can release it
-    // and build some retry logic
 }
 
 #pragma mark - GADFullScreenContentDelegate
