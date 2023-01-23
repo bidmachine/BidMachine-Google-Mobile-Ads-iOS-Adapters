@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import BidMachineApiKit
+import BidMachineApiCore
 
 struct MediationSettings: Decodable {
     

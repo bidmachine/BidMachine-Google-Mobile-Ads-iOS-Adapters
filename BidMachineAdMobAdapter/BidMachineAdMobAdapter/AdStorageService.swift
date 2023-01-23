@@ -7,7 +7,7 @@
 
 import Foundation
 import BidMachine
-import BidMachineApiKit
+import BidMachineApiCore
 
 class AdStorageService {
     

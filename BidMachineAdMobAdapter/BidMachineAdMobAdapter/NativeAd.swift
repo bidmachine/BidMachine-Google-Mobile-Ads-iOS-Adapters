@@ -8,7 +8,7 @@
 import Foundation
 import BidMachine
 import GoogleMobileAds
-import BidMachineApiKit
+import BidMachineApiCore
 
 @objc class NativeAd: NSObject, GADMediationNativeAd {
     

@@ -1,5 +1,5 @@
 
-platform :ios, '10.0'
+platform :ios, '12.0'
 install! 'cocoapods', :deterministic_uuids => false, :warn_for_multiple_pod_sources => false
 
 workspace 'BidMachineAdMobAdapter.xcworkspace'
@@ -30,4 +30,17 @@ target 'BidMachineAdMobAdapter' do
   google
   bidmachine
 
+end
+
+
+# Post install configuration
+post_install do |installer|
+  project = installer.pods_project
+  project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['ENABLE_BITCODE'] = 'NO'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+    end
+  end
 end

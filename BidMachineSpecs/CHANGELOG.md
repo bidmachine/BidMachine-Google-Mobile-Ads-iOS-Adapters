@@ -5,6 +5,11 @@
 - Update Adapter
 - update Spec name (GoogleMobileAds-BidMachine-Adapters) -> (BidMachineAdMobAdapter)
 
+- Bump min ios version - 12.0
+- Build project with Xcode14
+- remove deprecated (Xcode14) Bitcode
+- remove deprecated (Xcode14) armv7, i386 arch support
+
 ## Version 1.9.5.0
 
 - Update BidMachine to 1.9.5.0 +

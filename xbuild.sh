@@ -26,15 +26,14 @@ function xcframework {
         -scheme "BidMachineAdMobAdapter" \
         -archivePath "./build/ios.xcarchive" \
         -sdk iphoneos \
-        VALID_ARCHS="arm64 armv7" \
+        VALID_ARCHS="arm64" \
         GCC_GENERATE_DEBUGGING_SYMBOLS=NO \
         STRIP_INSTALLED_PRODUCT=YES \
         LINK_FRAMEWORKS_AUTOMATICALLY=NO \
-                OTHER_CFLAGS="-fembed-bitcode -Qunused-arguments" \
                 ONLY_ACTIVE_ARCH=NO \
                 DEPLOYMENT_POSTPROCESSING=YES \
                 MACH_O_TYPE=staticlib \
-                IPHONEOS_DEPLOYMENT_TARGET=10.0 \
+                IPHONEOS_DEPLOYMENT_TARGET=12.0 \
                 DEBUG_INFORMATION_FORMAT="dwarf" \
         SKIP_INSTALL=NO | xcpretty
 
@@ -48,11 +47,10 @@ function xcframework {
         GCC_GENERATE_DEBUGGING_SYMBOLS=NO \
         STRIP_INSTALLED_PRODUCT=YES \
         LINK_FRAMEWORKS_AUTOMATICALLY=NO \
-                OTHER_CFLAGS="-fembed-bitcode -Qunused-arguments" \
                 ONLY_ACTIVE_ARCH=NO \
                 DEPLOYMENT_POSTPROCESSING=YES \
                 MACH_O_TYPE=staticlib \
-                IPHONEOS_DEPLOYMENT_TARGET=10.0 \
+                IPHONEOS_DEPLOYMENT_TARGET=12.0 \
                 DEBUG_INFORMATION_FORMAT="dwarf" \
         SKIP_INSTALL=NO | xcpretty  
 }

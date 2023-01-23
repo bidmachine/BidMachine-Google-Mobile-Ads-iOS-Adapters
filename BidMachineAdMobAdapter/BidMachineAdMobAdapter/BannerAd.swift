@@ -8,8 +8,8 @@
 import Foundation
 import BidMachine
 import GoogleMobileAds
-import BidMachineApiKit
 import StackFoundation
+import BidMachineApiCore
 
 @objc class BannerAd: NSObject, GADMediationBannerAd {
     

@@ -10,7 +10,7 @@
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
 @import BidMachine;
-@import BidMachineApiKit;
+@import BidMachineApiCore;
 @import BidMachineAdMobAdapter;
 
 NS_ASSUME_NONNULL_BEGIN
