@@ -52,7 +52,7 @@ Before start loading Admob you should load Bidmachine ad and save it to store
 ```objc
 
 @import BidMachine;
-@import BidMachineApiKit;
+@import BidMachineApiCore;
 @import BidMachineAdMobAdapter;
 
 - (void)before {
@@ -84,7 +84,7 @@ Before start loading Admob you should load Bidmachine ad and save it to store
 
 ```objc
 @import BidMachine;
-@import BidMachineApiKit;
+@import BidMachineApiCore;
 @import BidMachineAdMobAdapter;
 
 - (void)before {
@@ -115,7 +115,7 @@ Before start loading Admob you should load Bidmachine ad and save it to store
 
 ```objc
 @import BidMachine;
-@import BidMachineApiKit;
+@import BidMachineApiCore;
 @import BidMachineAdMobAdapter;
 
 - (void)before {
@@ -145,7 +145,7 @@ Before start loading Admob you should load Bidmachine ad and save it to store
 
 ```objc
 @import BidMachine;
-@import BidMachineApiKit;
+@import BidMachineApiCore;
 @import BidMachineAdMobAdapter;
 
 - (void)before {
