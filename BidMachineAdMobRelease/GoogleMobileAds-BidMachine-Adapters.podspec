@@ -6,7 +6,6 @@ Pod::Spec.new do |spec|
   spec.description  = "Supported ad formats: Banner, Interstitial, Rewarded Video."
   spec.homepage     = "https://github.com/bidmachine/BidMachine-Google-Mobile-Ads-iOS-Adapters"
   spec.license      = { :type => 'Commercial', :text => 'https://bidmachine.io/privacy-policy/' }
-}
 
   spec.author       = { "Stack" => "https://explorestack.com/bidmachine/" }
   spec.platform     = :ios, '10.0'
