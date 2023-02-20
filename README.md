@@ -415,7 +415,11 @@ Then you can create an admob object and load it
 
 ##  Changelog
 
-### Version 1.9.5.0
+### Version 1.9.5.2
+
+* Update 'Google-Mobile-Ads-SDK' to '10.1.0'
+
+### Version 1.9.5.1
 
 * Update 'Google-Mobile-Ads-SDK' to '10.0.0'
 
