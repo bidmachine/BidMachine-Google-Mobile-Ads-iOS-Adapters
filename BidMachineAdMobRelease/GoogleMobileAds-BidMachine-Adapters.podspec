@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   spec.license      = { :type => 'Commercial', :text => 'https://bidmachine.io/privacy-policy/' }
 
   spec.author       = { "Stack" => "https://explorestack.com/bidmachine/" }
-  spec.platform     = :ios, '10.0'
+  spec.platform     = :ios, '11.0'
   spec.source       = { :git => "https://github.com/bidmachine/BidMachine-Google-Mobile-Ads-iOS-Adapters.git", :tag => "v#{spec.version}" }
   
   spec.swift_versions           = "4.0", "4.2", "5.0"
