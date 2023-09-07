@@ -1,3 +1,8 @@
+## Version 2.1.0.0 (Sep 7h, 2023)
+
+- Update BidMachine to 2.1.0.0 +
+- Update 'Google-Mobile-Ads-SDK' to '10.6.0'
+
 ## Version 2.0.1.0 (Dec 22h, 2022)
 
 - Update BidMachine to 2.0.1.0 +
