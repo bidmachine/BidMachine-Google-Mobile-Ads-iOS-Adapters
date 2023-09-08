@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "GoogleMobileAds-BidMachine-Adapters"
-  spec.version      = "1.9.5.5"
+  spec.version      = "1.9.5.6"
   spec.summary      = "BidMachine IOS adapter for GoogleMobileAds mediation"
   spec.description  = "Supported ad formats: Banner, Interstitial, Rewarded Video."
   spec.homepage     = "https://github.com/bidmachine/BidMachine-Google-Mobile-Ads-iOS-Adapters"
@@ -22,5 +22,5 @@ Pod::Spec.new do |spec|
   }
 
   spec.dependency 'BDMIABAdapter', '~> 1.9.5.1'
-  spec.dependency 'Google-Mobile-Ads-SDK', '~> 10.8.0'
+  spec.dependency 'Google-Mobile-Ads-SDK', '~> 10.10.0'
 end

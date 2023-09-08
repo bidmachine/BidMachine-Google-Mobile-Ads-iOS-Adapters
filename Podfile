@@ -1,9 +1,9 @@
 
-platform :ios, '10.0'
+platform :ios, '11.0'
 install! 'cocoapods', :deterministic_uuids => false, :warn_for_multiple_pod_sources => false
 
 $BDMVersion = '~> 1.9.5.1'
-$GoogleVersion = '~> 10.8.0'
+$GoogleVersion = '~> 10.10.0'
 
 def bidmachine
   pod "BDMIABAdapter", $BDMVersion
