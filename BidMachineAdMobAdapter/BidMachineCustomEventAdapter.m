@@ -28,7 +28,7 @@
 }
 
 + (GADVersionNumber)adapterVersion {
-    return [self versionFromBidMachineString:@"1.9.5.6"];
+    return [self versionFromBidMachineString:@"1.9.5.7"];
 }
 
 + (nullable Class<GADAdNetworkExtras>)networkExtrasClass {
