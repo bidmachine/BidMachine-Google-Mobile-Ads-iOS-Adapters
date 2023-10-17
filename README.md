@@ -19,7 +19,7 @@
 ```ruby
 target 'Target' do
   project 'Project.xcodeproj'
-  pod 'BidMachineAdMobAdapter', '~> 2.1.0.0'
+  pod 'BidMachineAdMobAdapter', '~> 2.3.0.0'
 end
 ```
 
