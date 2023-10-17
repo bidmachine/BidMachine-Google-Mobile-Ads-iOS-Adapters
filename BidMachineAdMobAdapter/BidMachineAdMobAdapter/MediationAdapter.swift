@@ -7,8 +7,8 @@
 
 import Foundation
 import BidMachine
+import BidMachineBidding
 import GoogleMobileAds
-import BidMachineAdapterCore
 
 @objc class MediationAdapter: NSObject, GADMediationAdapter {
     
