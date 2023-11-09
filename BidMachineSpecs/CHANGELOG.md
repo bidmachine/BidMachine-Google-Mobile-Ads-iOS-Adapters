@@ -1,3 +1,7 @@
+## Version 2.4.0.0 (Nov 9h, 2023)
+
+- Update BidMachine to 2.4.0.0 +
+
 ## Version 2.3.0.0 (Oct 17h, 2023)
 
 - Update BidMachine to 2.3.0.0 +
