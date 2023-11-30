@@ -24,7 +24,7 @@
     
     __weak typeof(self) weakSelf = self;
     [BidMachineSdk.shared interstitial:nil :^(BidMachineInterstitial *ad, NSError *error) {
-        [BidMachineAdMobAdapter store:ad];
+        [BDMAdMobAdapter store:ad];
         [weakSelf makeRequest];
     }];
 }

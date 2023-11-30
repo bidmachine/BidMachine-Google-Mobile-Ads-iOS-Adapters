@@ -8,7 +8,7 @@
 import Foundation
 import BidMachine
 
-@objc(BidMachineAdMobAdapter) public class AdMobAdapter: NSObject {
+@objc(BDMAdMobAdapter) public class AdMobAdapter: NSObject {
     
     static let shared: AdMobAdapter = AdMobAdapter()
     

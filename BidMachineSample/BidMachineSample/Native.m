@@ -29,7 +29,7 @@
     
     __weak typeof(self) weakSelf = self;
     [BidMachineSdk.shared native:nil :^(BidMachineNative *ad, NSError *error) {
-        [BidMachineAdMobAdapter store:ad];
+        [BDMAdMobAdapter store:ad];
         [weakSelf makeRequest];
     }];
 }

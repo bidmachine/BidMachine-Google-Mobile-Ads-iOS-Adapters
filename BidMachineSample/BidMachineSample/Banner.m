@@ -28,7 +28,7 @@
     __weak typeof(self) weakSelf = self;
     id<BidMachineRequestConfigurationProtocol> config = [BidMachineSdk.shared requestConfiguration:BidMachinePlacementFormatBanner320x50 error:nil];
     [BidMachineSdk.shared banner:config :^(BidMachineBanner *ad, NSError *error) {
-        [BidMachineAdMobAdapter store:ad];
+        [BDMAdMobAdapter store:ad];
         [weakSelf makeRequest];
     }];
 }
