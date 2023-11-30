@@ -21,7 +21,7 @@
     [self switchState:BSStateLoading];
     __weak typeof(self) weakSelf = self;
     [BidMachineSdk.shared rewarded:nil :^(BidMachineRewarded *ad, NSError *error) {
-        [BidMachineAdMobAdapter store:ad];
+        [BDMAdMobAdapter store:ad];
         [weakSelf makeRequest];
     }];
 }
