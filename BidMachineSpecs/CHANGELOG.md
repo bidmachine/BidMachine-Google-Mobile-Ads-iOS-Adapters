@@ -1,3 +1,7 @@
+## Version 2.4.0.2 (Jan 9h, 2024)
+
+- remove waterfall implementation
+
 ## Version 2.4.0.1 (Nov 30h, 2023)
 
 - Fix module conflicts: Rename BidMachineAdMobAdapter to BDMAdMobAdapter for Objective-C

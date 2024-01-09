@@ -53,7 +53,7 @@ class BidMachineAdProvider <T: BidMachineAdProtocol>: BidMachineAdDelegate {
         if storageResult.prebid {
             _makePrebid(storageResult.ad, configuration)
         } else {
-            _makeWaterfall(configuration)
+            failure(ErrorProvider.admob.withDescription("Can't find prebid ad"))
         }
     }
     
@@ -74,24 +74,6 @@ class BidMachineAdProvider <T: BidMachineAdProtocol>: BidMachineAdDelegate {
 }
 
 extension BidMachineAdProvider {
-    
-    func _makeWaterfall(_ configuration: BidMachineRequestConfigurationProtocol) {
-        BidMachineSdk.shared.ad(T.self, configuration) { [weak self] ad, error in
-            guard let self = self else {
-                return
-            }
-            
-            if let error = error {
-                self.failure?(error)
-            } else if let ad = ad {
-                self.ad = ad
-                ad.delegate = self
-                ad.loadAd()
-            } else {
-                self.failure?(ErrorProvider.admob.withDescription("Ad can't be nill"))
-            }
-        }
-    }
     
     func _makePrebid(_ ad: BidMachineAdProtocol?, _ configuration: BidMachineRequestConfigurationProtocol) {
         guard let ad = ad else {
