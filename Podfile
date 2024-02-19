@@ -1,5 +1,6 @@
-
 platform :ios, '12.0'
+use_frameworks!
+
 install! 'cocoapods', :deterministic_uuids => false, :warn_for_multiple_pod_sources => false
 
 workspace 'BidMachineAdMobAdapter.xcworkspace'
@@ -7,8 +8,8 @@ workspace 'BidMachineAdMobAdapter.xcworkspace'
 source 'https://github.com/appodeal/CocoaPods.git'
 source 'https://cdn.cocoapods.org/'
 
-$BDMVersion = '~> 2.4.0.0'
-$GoogleVersion = '~> 10.12.0'
+$BDMVersion = '~> 2.5.0'
+$GoogleVersion = '~> 10.14.0'
 
 def bidmachine
   pod "BidMachine", $BDMVersion
@@ -31,7 +32,6 @@ target 'BidMachineAdMobAdapter' do
   bidmachine
 
 end
-
 
 # Post install configuration
 post_install do |installer|

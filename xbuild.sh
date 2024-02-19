@@ -77,6 +77,11 @@ function copyInfo {
     cp "./BidMachineSpecs/CHANGELOG.md" "./release/CHANGELOG.md"
 }
 
+function copyResources {
+    scheme="$1"
+    cp -r "./BidMachineAdMobAdapterResources/${scheme}.bundle" "./release/${scheme}.bundle"
+}
+
 # ----------------------------------
 # COMPRESS
 # ----------------------------------
@@ -91,6 +96,7 @@ prepare
 xcframework
 for scheme in ${SCHEMES[@]}; do
     package "$scheme"
+    copyResources "$scheme"
 done
 
 copyInfo

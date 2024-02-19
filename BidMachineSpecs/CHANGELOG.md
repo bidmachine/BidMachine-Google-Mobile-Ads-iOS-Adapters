@@ -1,3 +1,8 @@
+## Version 2.5.0.0 (Feb 19h, 2024)
+
+- Update BidMachine to 2.5.0 +
+- Update 'Google-Mobile-Ads-SDK' to '10.14.0' +
+
 ## Version 2.4.0.2 (Jan 9h, 2024)
 
 - remove waterfall implementation
