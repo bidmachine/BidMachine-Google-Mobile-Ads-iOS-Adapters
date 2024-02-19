@@ -23,7 +23,7 @@
 		378198B324C83E5A00E97FED /* Interstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = 378198AE24C83E5A00E97FED /* Interstitial.m */; };
 		378198B424C83E5A00E97FED /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 378198AF24C83E5A00E97FED /* Banner.m */; };
 		65AD7DB529520A2E00469668 /* BidMachineAdMobAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AD7DB429520A2E00469668 /* BidMachineAdMobAdapter.framework */; };
-		E798E06186DBEDFCCDEB18F5 /* libPods-BidMachineSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49472903164C2168349B4C06 /* libPods-BidMachineSample.a */; };
+		F758B8D52DE1E9EB68C3BE99 /* Pods_BidMachineSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955B8AC29E508645FF8845A7 /* Pods_BidMachineSample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,8 +53,8 @@
 		378198AE24C83E5A00E97FED /* Interstitial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interstitial.m; sourceTree = "<group>"; };
 		378198AF24C83E5A00E97FED /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
 		378198B024C83E5A00E97FED /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
-		49472903164C2168349B4C06 /* libPods-BidMachineSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BidMachineSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65AD7DB429520A2E00469668 /* BidMachineAdMobAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BidMachineAdMobAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		955B8AC29E508645FF8845A7 /* Pods_BidMachineSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BidMachineSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6EC49E70BA7CF7C10E4852E /* Pods-BidMachineSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineSample.debug.xcconfig"; path = "Target Support Files/Pods-BidMachineSample/Pods-BidMachineSample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,7 +64,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65AD7DB529520A2E00469668 /* BidMachineAdMobAdapter.framework in Frameworks */,
-				E798E06186DBEDFCCDEB18F5 /* libPods-BidMachineSample.a in Frameworks */,
+				F758B8D52DE1E9EB68C3BE99 /* Pods_BidMachineSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				65AD7DB429520A2E00469668 /* BidMachineAdMobAdapter.framework */,
-				49472903164C2168349B4C06 /* libPods-BidMachineSample.a */,
+				955B8AC29E508645FF8845A7 /* Pods_BidMachineSample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,6 +183,7 @@
 				3781987924C83BFB00E97FED /* Frameworks */,
 				3781987A24C83BFB00E97FED /* Resources */,
 				069C307522C9856548282628 /* [CP] Embed Pods Frameworks */,
+				16F13BEEE0C360E128D48B23 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,6 +258,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BidMachineSample/Pods-BidMachineSample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		16F13BEEE0C360E128D48B23 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BidMachineSample/Pods-BidMachineSample-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BidMachineSample/Pods-BidMachineSample-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BidMachineSample/Pods-BidMachineSample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FE19C06EC035D0004F6C1FBB /* [CP] Check Pods Manifest.lock */ = {

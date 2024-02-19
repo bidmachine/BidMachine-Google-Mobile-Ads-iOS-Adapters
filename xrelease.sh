@@ -17,6 +17,7 @@ NOTE=""
 CREATE_TAG=NO
 REPO_PUSH=NO
 TRUNK_PUSH=NO
+NOTIFY_HOOK=NO
 
 # ----------------------------------
 # CONSOLE IO
@@ -32,6 +33,7 @@ while [[ $# -gt 0 ]]; do
       echo "-t,  --tag                                        Creaate tag version of build. ${WARNING}Default = NO${INFO}"
       echo "-rp, --repo_push                                  Update CocoaPods appodeal repo. ${WARNING}Default = NO${INFO}"
       echo "-tp, --trunk_push                                 Update CocoaPods public repo. ${WARNING}Default = NO${INFO}"
+      echo "-n, --notify_hook                                 Push noftification to the SLACK channel. ${WARNING}Default = NO${INFO}"
       exit 0
       ;;
     -t|--tag)
@@ -46,6 +48,11 @@ while [[ $# -gt 0 ]]; do
       ;;
     -tp|--trunk_push)
       TRUNK_PUSH=$2
+      shift # past argument
+      shift # past value
+      ;;
+    -n|--notify_hook)
+      NOTIFY_HOOK=$2
       shift # past argument
       shift # past value
       ;;
@@ -138,6 +145,23 @@ function trunkPush {
 }
 
 # ----------------------------------
+# SLACK NOTIFY
+# ----------------------------------
+
+function slackNofify {
+  changelog=$(echo "$NOTE" | sed '1,2d; /^\s*$/d' | sed '$s/ *$//')
+  curl -X POST --data-urlencode "payload={
+    \"channel\": \"#bidmachine_releases\",
+    \"username\": \"BidMachineAdMobAdapter\", 
+    \"text\": \"
+🚀 <https://github.com/bidmachine/BidMachine-Google-Mobile-Ads-iOS-Adapters/releases/tag/${TAG}|BidMachineAdMobAdapter>
+#️⃣ *Version:* ${TAG}
+🗒️ *Changelog:* 
+\`\`\`${changelog}\`\`\`
+    \"}" https://hooks.slack.com/services/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
+}
+
+# ----------------------------------
 # EXECUTION
 # ----------------------------------
 
@@ -149,10 +173,14 @@ echo "Spec name:         ${WARNING}${SPEC}${INFO}"
 echo "Spec version:      ${WARNING}${VER}${INFO}"
 echo "Git tag:           ${WARNING}${TAG}${INFO}"
 echo " "
+echo "Notes:           \n_____________________________________________________\n${WARNING}${NOTE}${INFO}\n_____________________________________________________\n"
+echo "SLACK              ${WARNING}${NOTIFY_HOOK}${INFO}"
 echo "Repo push          ${WARNING}${REPO_PUSH}${INFO}"
 echo "Trunk push         ${WARNING}${TRUNK_PUSH}${INFO}"
 echo "Create git tag:    ${WARNING}${CREATE_TAG}${INFO}"
+echo "====================================================="
 
 [ "$REPO_PUSH" = "YES" ] && upload && repoPush
 [ "$TRUNK_PUSH" = "YES" ] && trunkPush
 [ "$CREATE_TAG" = "YES" ] && createRelease
+[ "$NOTIFY_HOOK" = "YES" ] && slackNofify

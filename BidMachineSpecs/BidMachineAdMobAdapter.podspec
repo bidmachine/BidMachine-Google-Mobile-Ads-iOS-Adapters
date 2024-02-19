@@ -1,8 +1,8 @@
 Pod::Spec.new do |spec|
   sourceName               = "BidMachineAdMobAdapter"
-  adapterPath              = "2"
-  sdkPath                  = "2.4.0"
-  networkVersion           = "10.12.0"
+  adapterPath              = "0"
+  sdkPath                  = "2.5.0"
+  networkVersion           = "10.14.0"
 
   spec.name                = "#{sourceName}"
   spec.version             = "#{sdkPath}.#{adapterPath}"
@@ -23,7 +23,9 @@ Pod::Spec.new do |spec|
 
   spec.source = { :http => "https://s3-us-west-1.amazonaws.com/appodeal-ios/BidMachineAdaptors/#{sourceName}/#{spec.version}/#{sourceName}.zip" }
   spec.vendored_frameworks = "#{sourceName}.xcframework"
+  spec.resources = "#{sourceName}.bundle"
 
-  spec.dependency "BidMachine", "~> #{sdkPath}.0"
+  spec.dependency "BidMachine", "~> #{sdkPath}"
   spec.dependency "Google-Mobile-Ads-SDK", "#{networkVersion}"
+
 end
