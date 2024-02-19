@@ -14,12 +14,12 @@
 
 ##### Add following lines into your project Podfile
 
-> **_NOTE:_** In 2.0 + version needed use BidMachineAdMobAdapter spec name
+> **_NOTE:_** In 2.5 + version needed use BidMachineAdMobAdapter spec name
 
 ```ruby
 target 'Target' do
   project 'Project.xcodeproj'
-  pod 'BidMachineAdMobAdapter', '~> 2.4.0.0'
+  pod 'BidMachineAdMobAdapter', '~> 2.5.0'
 end
 ```
 
