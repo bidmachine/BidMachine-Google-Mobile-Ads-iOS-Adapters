@@ -1,8 +1,8 @@
 Pod::Spec.new do |spec|
   sourceName               = "BidMachineAdMobAdapter"
-  adapterPath              = "0"
+  adapterPath              = "1"
   sdkPath                  = "2.5"
-  networkVersion           = "10.14.0"
+  networkVersion           = "11.0.0"
 
   spec.name                = "#{sourceName}"
   spec.version             = "#{sdkPath}.#{adapterPath}"
@@ -26,6 +26,6 @@ Pod::Spec.new do |spec|
   spec.resources = "#{sourceName}.bundle"
 
   spec.dependency "BidMachine", "~> #{sdkPath}.0"
-  spec.dependency "Google-Mobile-Ads-SDK", "#{networkVersion}"
+  spec.dependency "Google-Mobile-Ads-SDK", "~> #{networkVersion}"
 
 end
