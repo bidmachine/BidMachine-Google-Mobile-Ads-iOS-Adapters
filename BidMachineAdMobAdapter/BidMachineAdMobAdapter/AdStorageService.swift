@@ -11,7 +11,7 @@ import BidMachineApiCore
 
 class AdStorageService {
     
-    @Atomic private var items = [AdStorageItem]()
+    private var items = Synchronized([AdStorageItem]())
 }
 
 extension AdStorageService {
@@ -20,7 +20,7 @@ extension AdStorageService {
     
     func store(_ ad: BidMachineAdProtocol) {
         let item = AdStorageItem(ad)
-        items.append(item)
+        items.write { $0.append(item) }
         item.prepare(self)
     }
     
@@ -32,7 +32,7 @@ extension AdStorageService {
         }
         
         let placement = Placement(placementType)
-        let items = self.items.filter { $0.placement == placement }
+        let items = self.items.read({ $0.filter { $0.placement == placement } })
         
         if items.count == 0 {
             return (false, nil)
@@ -55,7 +55,7 @@ extension AdStorageService {
 private extension AdStorageService {
     
     func _remove(_ item: AdStorageItem) {
-        items.removeAll { $0.id == item.id }
+        items.write({ $0.removeAll { $0.id == item.id } })
     }
 }
 
