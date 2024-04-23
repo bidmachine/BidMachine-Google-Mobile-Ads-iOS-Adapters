@@ -1,3 +1,7 @@
+## Version 2.6.0 (Apr 23h, 2024)
+
+- Update BidMachine to 2.6.0 +
+
 ## Version 2.5.2 (Apr 3h, 2024)
 
 - Update BidMachine to 2.5.3 +
