@@ -25,7 +25,7 @@ Pod::Spec.new do |spec|
   spec.vendored_frameworks = "#{sourceName}.xcframework"
   spec.resources = "#{sourceName}.bundle"
 
-  spec.dependency "BidMachine", "~> #{sdkPath}.3"
+  spec.dependency "BidMachine", "~> #{sdkPath}"
   spec.dependency "Google-Mobile-Ads-SDK", "~> #{networkVersion}"
 
 end
