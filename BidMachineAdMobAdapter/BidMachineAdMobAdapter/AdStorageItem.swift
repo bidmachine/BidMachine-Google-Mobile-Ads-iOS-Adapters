@@ -7,8 +7,8 @@
 
 import Foundation
 import BidMachine
-import StackFoundation
-import BidMachineApiCore
+import StackModules
+
 
 protocol AdStorageItemDelegate: AnyObject {
     

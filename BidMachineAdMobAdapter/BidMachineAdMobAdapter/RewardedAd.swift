@@ -8,7 +8,7 @@
 import Foundation
 import BidMachine
 import GoogleMobileAds
-import BidMachineApiCore
+
 
 @objc class RewardedAd: NSObject, GADMediationRewardedAd {
     

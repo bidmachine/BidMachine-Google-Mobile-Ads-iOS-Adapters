@@ -8,7 +8,7 @@
 import Foundation
 import BidMachine
 import GoogleMobileAds
-import BidMachineApiCore
+
 
 class NativeAdRendering: BidMachineNativeAdRendering {
     

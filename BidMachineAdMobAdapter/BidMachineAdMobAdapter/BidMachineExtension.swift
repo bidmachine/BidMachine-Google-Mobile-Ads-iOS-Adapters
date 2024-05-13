@@ -8,7 +8,7 @@
 import Foundation
 import BidMachine
 import GoogleMobileAds
-import BidMachineApiCore
+
 
 fileprivate struct Constants {
     
@@ -94,6 +94,46 @@ extension AdStorageItem {
         case .equalOrBelow: return price.xRound() >= self.price.xRound()
         case .equalOrAbove: return price.xRound() <= self.price.xRound()
         }
+    }
+    
+}
+
+extension Dictionary where Key == String {
+    public func decode<T: Decodable>(_ value: T.Type) throws -> T where Value == Any {
+        let data: Data
+        do {
+            data = try Foundation.JSONSerialization.data(withJSONObject: self)
+        } catch {
+            throw ErrorProvider.api.badContent.withExeption("Json serialization data error", error)
+        }
+        
+        let result: T
+        do {
+            result = try Foundation.JSONDecoder().decode(value, from: data)
+        } catch {
+            throw ErrorProvider.api.badContent.withExeption("Decode object from json error", error)
+        }
+        return result
+    }
+}
+
+extension String {
+    
+    func JSON() throws -> [String : Any] {
+        guard let data = self.data(using: .utf8) else {
+            throw ErrorProvider.api.badContent.withDescription("Serialized string data is empty")
+        }
+        
+        let json: Any
+        do {
+            json = try Foundation.JSONSerialization.jsonObject(with: data)
+        } catch {
+            throw ErrorProvider.api.badContent.withExeption("Serialized string data to json error", error)
+        }
+        guard let json = json as? [String : Any] else {
+            throw ErrorProvider.api.badContent.withDescription("Serialized string is not [String : Any] object")
+        }
+        return json
     }
     
 }

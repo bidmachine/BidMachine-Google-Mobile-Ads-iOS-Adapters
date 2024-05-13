@@ -1,48 +1,53 @@
-## Version 2.6.1 (Apr 24h, 2024)
+## Version 2.7.0 (May 13th, 2024)
+
+- Update BidMachine to 2.7.0
+- Update 'Google-Mobile-Ads-SDK' to '11.4.0' +
+
+## Version 2.6.1 (Apr 24th, 2024)
 
 - Update 'Google-Mobile-Ads-SDK' to '11.3.0' +
 
-## Version 2.6.0 (Apr 24h, 2024)
+## Version 2.6.0 (Apr 24th, 2024)
 
 - Update BidMachine to 2.6.0 +
 
-## Version 2.5.2 (Apr 3h, 2024)
+## Version 2.5.2 (Apr 3th, 2024)
 
 - Update BidMachine to 2.5.3 +
 - Update 'Google-Mobile-Ads-SDK' to '11.2.0' +
 
-## Version 2.5.1 (Feb 20h, 2024)
+## Version 2.5.1 (Feb 20th, 2024)
 
 - Update 'Google-Mobile-Ads-SDK' to '11.0.0' +
 
-## Version 2.5.0 (Feb 19h, 2024)
+## Version 2.5.0 (Feb 19th, 2024)
 
 - Update BidMachine to 2.5.0 +
 - Update 'Google-Mobile-Ads-SDK' to '10.14.0' +
 
-## Version 2.4.0.2 (Jan 9h, 2024)
+## Version 2.4.0.2 (Jan 9th, 2024)
 
 - remove waterfall implementation
 
-## Version 2.4.0.1 (Nov 30h, 2023)
+## Version 2.4.0.1 (Nov 30th, 2023)
 
 - Fix module conflicts: Rename BidMachineAdMobAdapter to BDMAdMobAdapter for Objective-C
 
-## Version 2.4.0.0 (Nov 9h, 2023)
+## Version 2.4.0.0 (Nov 9th, 2023)
 
 - Update BidMachine to 2.4.0.0 +
 
-## Version 2.3.0.0 (Oct 17h, 2023)
+## Version 2.3.0.0 (Oct 17th, 2023)
 
 - Update BidMachine to 2.3.0.0 +
 - Update 'Google-Mobile-Ads-SDK' to '10.12.0'
 
-## Version 2.1.0.0 (Sep 7h, 2023)
+## Version 2.1.0.0 (Sep 7th, 2023)
 
 - Update BidMachine to 2.1.0.0 +
 - Update 'Google-Mobile-Ads-SDK' to '10.6.0'
 
-## Version 2.0.1.0 (Dec 22h, 2022)
+## Version 2.0.1.0 (Dec 22th, 2022)
 
 - Update BidMachine to 2.0.1.0 +
 - Update 'Google-Mobile-Ads-SDK' to '9.14.0'
