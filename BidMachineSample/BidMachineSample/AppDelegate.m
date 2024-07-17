@@ -21,7 +21,7 @@
             [builder withEventLoggingMode:YES];
     }];
     
-    [BidMachineSdk.shared initializeSdk: @"1"];
+    [BidMachineSdk.shared initializeSdk: @"154"];
     [self startAdMob];
     return YES;
 }
