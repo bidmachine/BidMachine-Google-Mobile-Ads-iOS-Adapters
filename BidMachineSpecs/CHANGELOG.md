@@ -1,3 +1,7 @@
+## Version 2.7.2 (Sep 5th, 2024)
+
+- Update 'Google-Mobile-Ads-SDK' to '11.8.0' +
+
 ## Version 2.7.1 (Jul 17th, 2024)
 
 - Update 'Google-Mobile-Ads-SDK' to '11.7.0' +
