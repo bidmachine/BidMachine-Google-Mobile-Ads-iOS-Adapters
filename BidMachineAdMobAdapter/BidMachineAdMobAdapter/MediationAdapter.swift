@@ -13,7 +13,7 @@ import GoogleMobileAds
 @objc class MediationAdapter: NSObject, GADMediationAdapter {
     
     static func adapterVersion() -> GADVersionNumber {
-        return GADVersionNumber.version(BidMachineAdapter.adapterVersionPath + ".2")
+        return GADVersionNumber.version(BidMachineAdapter.adapterVersionPath + ".1")
     }
     
     static func adSDKVersion() -> GADVersionNumber {
