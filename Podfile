@@ -26,6 +26,13 @@ target 'BidMachineSample' do
 
 end
 
+target 'BidMachineSampleSwift' do
+  project 'BidMachineSampleSwift/BidMachineSampleSwift.xcodeproj'
+  google
+  bidmachine
+
+end
+
 target 'BidMachineAdMobAdapter' do
   project 'BidMachineAdMobAdapter/BidMachineAdMobAdapter.xcodeproj'
   google
