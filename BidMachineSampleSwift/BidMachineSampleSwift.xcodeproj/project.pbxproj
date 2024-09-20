@@ -7,17 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0116D79F2C9DD12A00E18DDD /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116D79E2C9DD12A00E18DDD /* BannerViewController.swift */; };
+		0116D7A22C9DD42500E18DDD /* AppModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116D7A12C9DD42500E18DDD /* AppModule.swift */; };
+		0116D7A42C9DD46800E18DDD /* AdType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116D7A32C9DD46800E18DDD /* AdType.swift */; };
 		01DD29452C9DAE50002A8AB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD29442C9DAE50002A8AB8 /* AppDelegate.swift */; };
-		01DD29492C9DAE50002A8AB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD29482C9DAE50002A8AB8 /* ViewController.swift */; };
+		01DD29492C9DAE50002A8AB8 /* AdLoadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD29482C9DAE50002A8AB8 /* AdLoadController.swift */; };
 		01DD294E2C9DAE51002A8AB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01DD294D2C9DAE51002A8AB8 /* Assets.xcassets */; };
 		01DD29512C9DAE51002A8AB8 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 01DD29502C9DAE51002A8AB8 /* Base */; };
 		0DEF72573C7AAE6B72A9A890 /* Pods_BidMachineSampleSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4026FE177304CE0C36F5FB /* Pods_BidMachineSampleSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0116D79E2C9DD12A00E18DDD /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
+		0116D7A12C9DD42500E18DDD /* AppModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModule.swift; sourceTree = "<group>"; };
+		0116D7A32C9DD46800E18DDD /* AdType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdType.swift; sourceTree = "<group>"; };
 		01DD29412C9DAE50002A8AB8 /* BidMachineSampleSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BidMachineSampleSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01DD29442C9DAE50002A8AB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		01DD29482C9DAE50002A8AB8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		01DD29482C9DAE50002A8AB8 /* AdLoadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdLoadController.swift; sourceTree = "<group>"; };
 		01DD294D2C9DAE51002A8AB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01DD29502C9DAE51002A8AB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01DD29522C9DAE51002A8AB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -38,6 +44,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0116D7A02C9DD3D900E18DDD /* AdControllers */ = {
+			isa = PBXGroup;
+			children = (
+				01DD29482C9DAE50002A8AB8 /* AdLoadController.swift */,
+				0116D79E2C9DD12A00E18DDD /* BannerViewController.swift */,
+			);
+			path = AdControllers;
+			sourceTree = "<group>";
+		};
 		01DD29382C9DAE50002A8AB8 = {
 			isa = PBXGroup;
 			children = (
@@ -60,8 +75,10 @@
 			isa = PBXGroup;
 			children = (
 				01DD29442C9DAE50002A8AB8 /* AppDelegate.swift */,
-				01DD29482C9DAE50002A8AB8 /* ViewController.swift */,
+				0116D7A02C9DD3D900E18DDD /* AdControllers */,
 				01DD29582C9DAF74002A8AB8 /* ApplicationSupport */,
+				0116D7A12C9DD42500E18DDD /* AppModule.swift */,
+				0116D7A32C9DD46800E18DDD /* AdType.swift */,
 			);
 			path = BidMachineSampleSwift;
 			sourceTree = "<group>";
@@ -226,7 +243,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01DD29492C9DAE50002A8AB8 /* ViewController.swift in Sources */,
+				0116D79F2C9DD12A00E18DDD /* BannerViewController.swift in Sources */,
+				0116D7A42C9DD46800E18DDD /* AdType.swift in Sources */,
+				0116D7A22C9DD42500E18DDD /* AppModule.swift in Sources */,
+				01DD29492C9DAE50002A8AB8 /* AdLoadController.swift in Sources */,
 				01DD29452C9DAE50002A8AB8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
