@@ -13,18 +13,10 @@ final class NativeAdRenderer {
     
     static func render(ad: GADNativeAd, in view: UIView) {
         ad.unregisterAdView()
-        
-        let nib = UINib(
-            nibName: "NativeAdView",
-            bundle: Bundle.main
-        )
-        guard let adView = nib.instantiate(
-            withOwner: view,
-            options: nil
-        ).first as? NativeAdView else {
-            fatalError()
-        }
 
+        guard let adView = NativeAdView.instantiateFromNib(owner: nil) else {
+            return
+        }
         ad.register(
             adView,
             clickableAssetViews: [

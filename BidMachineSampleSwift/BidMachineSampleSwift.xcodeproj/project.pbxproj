@@ -21,6 +21,7 @@
 		01DD294E2C9DAE51002A8AB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01DD294D2C9DAE51002A8AB8 /* Assets.xcassets */; };
 		01DD29512C9DAE51002A8AB8 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 01DD29502C9DAE51002A8AB8 /* Base */; };
 		01DF27C12CA1850B00415765 /* BidMachineAdMobAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DF27C02CA1850B00415765 /* BidMachineAdMobAdapter.framework */; };
+		01DF27C62CA19CAB00415765 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF27C52CA19CAB00415765 /* UIView+Nib.swift */; };
 		0DEF72573C7AAE6B72A9A890 /* Pods_BidMachineSampleSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4026FE177304CE0C36F5FB /* Pods_BidMachineSampleSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		01DD29502C9DAE51002A8AB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01DD29522C9DAE51002A8AB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01DF27C02CA1850B00415765 /* BidMachineAdMobAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BidMachineAdMobAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		01DF27C52CA19CAB00415765 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		6A4026FE177304CE0C36F5FB /* Pods_BidMachineSampleSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BidMachineSampleSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA4B841B8BCEC2C5CB4C506 /* Pods-BidMachineSampleSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineSampleSwift.debug.xcconfig"; path = "Target Support Files/Pods-BidMachineSampleSwift/Pods-BidMachineSampleSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		E0C8ACCEA51A6F2EBAED1D9D /* Pods-BidMachineSampleSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineSampleSwift.release.xcconfig"; path = "Target Support Files/Pods-BidMachineSampleSwift/Pods-BidMachineSampleSwift.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				0116D7A12C9DD42500E18DDD /* AppModule.swift */,
 				0116D7A32C9DD46800E18DDD /* AdType.swift */,
 				0116D7A02C9DD3D900E18DDD /* AdControllers */,
+				01DF27C42CA19C9D00415765 /* Extensions */,
 				01DD29582C9DAF74002A8AB8 /* ApplicationSupport */,
 			);
 			path = BidMachineSampleSwift;
@@ -128,6 +131,14 @@
 				01DD29522C9DAE51002A8AB8 /* Info.plist */,
 			);
 			path = ApplicationSupport;
+			sourceTree = "<group>";
+		};
+		01DF27C42CA19C9D00415765 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				01DF27C52CA19CAB00415765 /* UIView+Nib.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1300C6AF02D074625048FD2C /* Frameworks */ = {
@@ -289,6 +300,7 @@
 				01B367F02CA171D9005AACAB /* NativeAdRenderer.swift in Sources */,
 				0116D7A22C9DD42500E18DDD /* AppModule.swift in Sources */,
 				01DD29492C9DAE50002A8AB8 /* AdLoadController.swift in Sources */,
+				01DF27C62CA19CAB00415765 /* UIView+Nib.swift in Sources */,
 				01B367E42CA15F4C005AACAB /* RewardedViewController.swift in Sources */,
 				01DD29452C9DAE50002A8AB8 /* AppDelegate.swift in Sources */,
 				01B367EE2CA16882005AACAB /* NativeAdView.swift in Sources */,
