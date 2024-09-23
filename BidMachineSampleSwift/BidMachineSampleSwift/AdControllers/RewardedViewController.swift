@@ -3,9 +3,9 @@
 //
 
 import UIKit
-import BidMachine
-import BidMachineAdMobAdapter
 import GoogleMobileAds
+import BidMachineAdMobAdapter
+import BidMachine
 
 private enum Constant {
     static let unitID = "ca-app-pub-3216013768320747/1325926558" // "your unit id here"

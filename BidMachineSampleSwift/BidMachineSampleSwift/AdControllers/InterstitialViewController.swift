@@ -37,11 +37,7 @@ final class InterstitialViewController: AdLoadController {
         }
         interstitial.present(fromRootViewController: self)
     }
-    
-    private func deleteLoadedAd() {
-        interstitial = nil
-    }
-    
+
     private func makeRequest() {
         let request = GADRequest()
 
@@ -58,6 +54,10 @@ final class InterstitialViewController: AdLoadController {
                 self?.interstitial?.fullScreenContentDelegate = self
             }
         }
+    }
+
+    private func deleteLoadedAd() {
+        interstitial = nil
     }
 }
 

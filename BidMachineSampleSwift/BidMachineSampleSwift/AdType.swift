@@ -15,13 +15,13 @@ extension AdType {
     var associatedControllerType: UIViewController.Type {
         switch self {
         case .interstitial:
-            AdLoadController.self
+            InterstitialViewController.self
         case .rewarded:
-            AdLoadController.self
+            RewardedViewController.self
         case .banner:
             BannerViewController.self
         case .native:
-            AdLoadController.self
+            NativeViewController.self
         }
     }
     

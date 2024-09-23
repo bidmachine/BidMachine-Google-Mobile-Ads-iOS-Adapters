@@ -3,9 +3,9 @@
 //
 
 import UIKit
-import BidMachine
-import BidMachineAdMobAdapter
 import GoogleMobileAds
+import BidMachineAdMobAdapter
+import BidMachine
 
 private enum Constant {
     static let unitID = "ca-app-pub-3216013768320747/5715655753" // "your unit id here"
@@ -50,16 +50,6 @@ final class BannerViewController: AdLoadController {
         }
     }
     
-    private func makeRequest() {
-        let banner = GADBannerView(adSize: GADAdSizeBanner)
-        self.googleBanner = banner
-
-        banner.delegate = self
-        banner.adUnitID = Constant.unitID
-        banner.rootViewController = self
-        banner.load(GADRequest())
-    }
-    
     override func showAd() {
         switchState(to: .idle)
 
@@ -79,6 +69,16 @@ final class BannerViewController: AdLoadController {
             googleBanner.heightAnchor.constraint(equalToConstant: 50),
             googleBanner.widthAnchor.constraint(equalToConstant: 320)
         ])
+    }
+
+    private func makeRequest() {
+        let banner = GADBannerView(adSize: GADAdSizeBanner)
+        self.googleBanner = banner
+
+        banner.delegate = self
+        banner.adUnitID = Constant.unitID
+        banner.rootViewController = self
+        banner.load(GADRequest())
     }
 
     private func deleteLoadedAd() {

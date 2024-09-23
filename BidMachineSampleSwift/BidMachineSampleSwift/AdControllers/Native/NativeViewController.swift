@@ -12,6 +12,10 @@ private enum Constant {
 }
 
 final class NativeViewController: AdLoadController {
+    override var topTitle: String? {
+        "Native"
+    }
+    
     private var nativeAd: GADNativeAd?
     private let container = UIView()
 
