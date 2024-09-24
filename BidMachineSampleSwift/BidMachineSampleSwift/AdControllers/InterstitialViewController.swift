@@ -23,8 +23,16 @@ final class InterstitialViewController: AdLoadController {
         switchState(to: .loading)
         
         BidMachineSdk.shared.interstitial { [weak self] interstitial, error in
-            AdMobAdapter.store(interstitial)
-            self?.makeRequest()
+            guard let self else {
+                return
+            }
+            if let error {
+                self.switchState(to: .idle)
+                self.showAlert(with: error.localizedDescription)
+            } else {
+                AdMobAdapter.store(interstitial)
+                self.makeRequest()
+            }
         }
     }
  
@@ -45,13 +53,16 @@ final class InterstitialViewController: AdLoadController {
             withAdUnitID: Constant.unitID,
             request: request
         ) { [weak self] interstitial, error in
+            guard let self else {
+                return
+            }
             if let error {
-                self?.switchState(to: .idle)
-                self?.showAlert(with: "Error: \(error.localizedDescription)")
+                self.switchState(to: .idle)
+                self.showAlert(with: "Error: \(error.localizedDescription)")
             } else {
-                self?.switchState(to: .loaded)
-                self?.interstitial = interstitial
-                self?.interstitial?.fullScreenContentDelegate = self
+                self.switchState(to: .loaded)
+                self.interstitial = interstitial
+                self.interstitial?.fullScreenContentDelegate = self
             }
         }
     }

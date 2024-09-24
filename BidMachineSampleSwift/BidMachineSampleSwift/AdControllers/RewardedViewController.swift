@@ -23,12 +23,15 @@ final class RewardedViewController: AdLoadController {
         switchState(to: .loading)
         
         BidMachineSdk.shared.rewarded { [weak self] rewarded, error in
+            guard let self else {
+                return
+            }
             if let error {
-                self?.switchState(to: .idle)
-                self?.showAlert(with: error.localizedDescription)
+                self.switchState(to: .idle)
+                self.showAlert(with: error.localizedDescription)
             } else {
                 AdMobAdapter.store(rewarded)
-                self?.makeRequest()
+                self.makeRequest()
             }
         }
     }
@@ -52,13 +55,16 @@ final class RewardedViewController: AdLoadController {
             withAdUnitID: Constant.unitID,
             request: request
         ) { [weak self] rewarded, error in
+            guard let self else {
+                return
+            }
             if let error {
-                self?.switchState(to: .idle)
-                self?.showAlert(with: "Error occurred: \(error.localizedDescription)")
+                self.switchState(to: .idle)
+                self.showAlert(with: "Error occurred: \(error.localizedDescription)")
             } else {
-                self?.rewarded = rewarded
-                self?.rewarded?.fullScreenContentDelegate = self
-                self?.switchState(to: .loaded)
+                self.rewarded = rewarded
+                self.rewarded?.fullScreenContentDelegate = self
+                self.switchState(to: .loaded)
             }
         }
     }

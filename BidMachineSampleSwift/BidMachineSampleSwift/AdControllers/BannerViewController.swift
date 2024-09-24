@@ -41,8 +41,16 @@ final class BannerViewController: AdLoadController {
             let config = try BidMachineSdk.shared.requestConfiguration(.banner320x50)
 
             BidMachineSdk.shared.banner(config) { [weak self] banner, error in
-                AdMobAdapter.store(banner)
-                self?.makeRequest()
+                guard let self else {
+                    return
+                }
+                if let error {
+                    self.switchState(to: .idle)
+                    self.showAlert(with: error.localizedDescription)
+                } else {
+                    AdMobAdapter.store(banner)
+                    self.makeRequest()
+                }
             }
         } catch let error {
             showAlert(with: "Error occurred: \(error.localizedDescription)")

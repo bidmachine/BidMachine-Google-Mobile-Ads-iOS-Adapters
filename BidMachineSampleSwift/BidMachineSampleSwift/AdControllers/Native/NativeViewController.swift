@@ -63,8 +63,16 @@ final class NativeViewController: AdLoadController {
         switchState(to: .loading)
         
         BidMachineSdk.shared.native { [weak self] nativeAd, error in
-            AdMobAdapter.store(nativeAd)
-            self?.makeRequest()
+            guard let self else {
+                return
+            }
+            if let error {
+                self.switchState(to: .idle)
+                self.showAlert(with: error.localizedDescription)
+            } else {
+                AdMobAdapter.store(nativeAd)
+                self.makeRequest()
+            }
         }
     }
     
