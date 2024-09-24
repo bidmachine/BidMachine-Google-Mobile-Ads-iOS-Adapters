@@ -66,13 +66,13 @@ final class NativeViewController: AdLoadController {
             guard let self else {
                 return
             }
-            if let error {
+            guard let nativeAd else {
                 self.switchState(to: .idle)
-                self.showAlert(with: error.localizedDescription)
-            } else {
-                AdMobAdapter.store(nativeAd)
-                self.makeRequest()
+                self.showAlert(with: "Error occurred: \(error?.localizedDescription ?? "")")
+                return
             }
+            AdMobAdapter.store(nativeAd)
+            self.makeRequest()
         }
     }
     

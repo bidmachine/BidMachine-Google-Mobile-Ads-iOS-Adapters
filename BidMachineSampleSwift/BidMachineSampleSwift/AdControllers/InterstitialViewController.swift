@@ -26,13 +26,13 @@ final class InterstitialViewController: AdLoadController {
             guard let self else {
                 return
             }
-            if let error {
+            guard let interstitial else {
                 self.switchState(to: .idle)
-                self.showAlert(with: error.localizedDescription)
-            } else {
-                AdMobAdapter.store(interstitial)
-                self.makeRequest()
+                self.showAlert(with: "Error occurred: \(error?.localizedDescription ?? "")")
+                return
             }
+            AdMobAdapter.store(interstitial)
+            self.makeRequest()
         }
     }
  
@@ -56,14 +56,14 @@ final class InterstitialViewController: AdLoadController {
             guard let self else {
                 return
             }
-            if let error {
+            guard let interstitial else {
                 self.switchState(to: .idle)
-                self.showAlert(with: "Error: \(error.localizedDescription)")
-            } else {
-                self.switchState(to: .loaded)
-                self.interstitial = interstitial
-                self.interstitial?.fullScreenContentDelegate = self
+                self.showAlert(with: "Error occurred: \(error?.localizedDescription ?? "")")
+                return
             }
+            self.switchState(to: .loaded)
+            self.interstitial = interstitial
+            interstitial.fullScreenContentDelegate = self
         }
     }
 

@@ -44,13 +44,13 @@ final class BannerViewController: AdLoadController {
                 guard let self else {
                     return
                 }
-                if let error {
+                guard let banner else {
                     self.switchState(to: .idle)
-                    self.showAlert(with: error.localizedDescription)
-                } else {
-                    AdMobAdapter.store(banner)
-                    self.makeRequest()
+                    showAlert(with: "Error occurred: \(error?.localizedDescription ?? "")")
+                    return
                 }
+                AdMobAdapter.store(banner)
+                self.makeRequest()
             }
         } catch let error {
             showAlert(with: "Error occurred: \(error.localizedDescription)")

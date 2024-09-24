@@ -26,13 +26,13 @@ final class RewardedViewController: AdLoadController {
             guard let self else {
                 return
             }
-            if let error {
+            guard let rewarded else {
                 self.switchState(to: .idle)
-                self.showAlert(with: error.localizedDescription)
-            } else {
-                AdMobAdapter.store(rewarded)
-                self.makeRequest()
+                self.showAlert(with: "Error occurred: \(error?.localizedDescription ?? "")")
+                return
             }
+            AdMobAdapter.store(rewarded)
+            self.makeRequest()
         }
     }
     
@@ -58,14 +58,14 @@ final class RewardedViewController: AdLoadController {
             guard let self else {
                 return
             }
-            if let error {
+            guard let rewarded else {
                 self.switchState(to: .idle)
-                self.showAlert(with: "Error occurred: \(error.localizedDescription)")
-            } else {
-                self.rewarded = rewarded
-                self.rewarded?.fullScreenContentDelegate = self
-                self.switchState(to: .loaded)
+                self.showAlert(with: "Error occurred: \(error?.localizedDescription ?? "")")
+                return
             }
+            self.rewarded = rewarded
+            rewarded.fullScreenContentDelegate = self
+            self.switchState(to: .loaded)
         }
     }
     
