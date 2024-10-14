@@ -29,7 +29,7 @@ import GoogleMobileAds
     }
 }
 
-@objc (BidMachineCustomEventBanner) class BannerAdapter: MediationAdapter {
+@objc(BidMachineCustomEventBanner) class BannerAdapter: MediationAdapter {
     
     private var provider: BidMachineAdProvider<BidMachineBanner>?
     
@@ -47,7 +47,7 @@ import GoogleMobileAds
     }
 }
 
-@objc (BidMachineCustomEventInterstitial) class InterstitialAdapter: MediationAdapter {
+@objc(BidMachineCustomEventInterstitial) class InterstitialAdapter: MediationAdapter {
     
     private var provider: BidMachineAdProvider<BidMachineInterstitial>?
     
@@ -65,7 +65,7 @@ import GoogleMobileAds
     }
 }
 
-@objc (BidMachineCustomEventRewarded) class RewardedAdapter: MediationAdapter {
+@objc(BidMachineCustomEventRewarded) class RewardedAdapter: MediationAdapter {
     
     private var provider: BidMachineAdProvider<BidMachineRewarded>?
     
@@ -83,7 +83,7 @@ import GoogleMobileAds
     }
 }
 
-@objc (BidMachineCustomEventNativeAd) class NativeAdapter: MediationAdapter {
+@objc(BidMachineCustomEventNativeAd) class NativeAdapter: MediationAdapter {
     
     private var provider: BidMachineAdProvider<BidMachineNative>?
     

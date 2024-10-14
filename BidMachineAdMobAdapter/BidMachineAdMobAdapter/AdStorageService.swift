@@ -11,7 +11,7 @@ import BidMachine
 
 class AdStorageService {
     
-    private var items = Synchronized([AdStorageItem]())
+    private var items = BidMachine.BidMachineSynchronized([AdStorageItem]())
 }
 
 extension AdStorageService {
