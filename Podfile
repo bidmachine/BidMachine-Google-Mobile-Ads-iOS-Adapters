@@ -9,7 +9,7 @@ source 'https://github.com/appodeal/CocoaPods.git'
 source 'https://cdn.cocoapods.org/'
 
 $BDMVersion = '3.0.1'
-$GoogleVersion = '~> 11.9.0'
+$GoogleVersion = '~> 11.10.0'
 
 def bidmachine
   pod "BidMachine", $BDMVersion
