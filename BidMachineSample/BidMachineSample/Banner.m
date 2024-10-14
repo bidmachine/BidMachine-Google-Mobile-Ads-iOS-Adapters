@@ -8,7 +8,7 @@
 
 #import "Banner.h"
 
-#define UNIT_ID         "ca-app-pub-3216013768320747/5715655753"
+#define UNIT_ID         "ca-app-pub-3940256099942544/2435281174"
 
 @interface Banner ()<GADBannerViewDelegate>
 
