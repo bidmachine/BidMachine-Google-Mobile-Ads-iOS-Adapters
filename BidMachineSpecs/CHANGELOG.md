@@ -1,3 +1,8 @@
+## Version 3.1.1 (Nov 21th, 2024)
+
+- Update BidMachine to 3.1.1
+- Update 'Google-Mobile-Ads-SDK' to '11.12.0' +
+
 ## Version 3.1.0 (Nov 5th, 2024)
 
 - Update BidMachine to 3.1.0

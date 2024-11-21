@@ -1,8 +1,8 @@
 Pod::Spec.new do |spec|
   sourceName               = "BidMachineAdMobAdapter"
   adapterPath              = "0"
-  sdkPath                  = "3.1"
-  networkVersion           = "11.10.0"
+  sdkPath                  = "3.1.1"
+  networkVersion           = "11.12.0"
 
   spec.name                = "#{sourceName}"
   spec.version             = "#{sdkPath}.#{adapterPath}"
