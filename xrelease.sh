@@ -66,7 +66,7 @@ done
 
 function parseVersion {
   while read line; do
-    if [[ "$line" == *"sdkPath"* && $line =~ [0-9]+\.[0-9] ]]; then 
+    if [[ "$line" == *"sdkPath"* && $line =~ [0-9]+\.[0-9]+\.[0-9] ]]; then 
         SDK_VER=${BASH_REMATCH[0]}
     elif [[ "$line" == *"adapterPath"* && $line =~ [0-9]+ ]]; then
         ADAPTER_VER=${BASH_REMATCH[0]}

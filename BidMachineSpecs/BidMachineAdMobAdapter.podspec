@@ -21,7 +21,7 @@ Pod::Spec.new do |spec|
     "VALID_ARCHS[sdk=iphonesimulator*]": "arm64 x86_64"
   }
 
-  spec.source = { :http => "https://s3-us-west-1.amazonaws.com/appodeal-ios/BidMachineAdaptors/#{sourceName}/#{spec.version}/#{sourceName}.zip" }
+  spec.source = { :http => "https://appodeal-ios.s3.amazonaws.com/BidMachineAdaptors/#{sourceName}/#{spec.version}/#{sourceName}.zip" }
   spec.vendored_frameworks = "#{sourceName}.xcframework"
   spec.resources = "#{sourceName}.bundle"
 
