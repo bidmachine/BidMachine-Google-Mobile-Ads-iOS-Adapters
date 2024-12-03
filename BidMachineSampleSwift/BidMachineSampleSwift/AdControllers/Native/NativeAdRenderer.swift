@@ -17,18 +17,16 @@ final class NativeAdRenderer {
         guard let adView = NativeAdView.instantiateFromNib(owner: nil) else {
             return
         }
-        ad.register(
-            adView,
-            clickableAssetViews: [
-                .headlineAsset: adView.headlineView,
-                .callToActionAsset: adView.callToActionView
-            ].compactMapValues { $0 },
-            nonclickableAssetViews: [
-                .mediaViewAsset: adView.mediaView,
-                .iconAsset: adView.iconView,
-                .bodyAsset: adView.bodyView
-            ].compactMapValues { $0 }
-        )
+        
+        if let mediaView = adView.mediaView {
+            adView.mediaView?.mediaContent = ad.mediaContent
+            let aspectRatio = 1 / ad.mediaContent.aspectRatio
+            
+            NSLayoutConstraint.activate(
+                [mediaView.heightAnchor.constraint(equalTo: mediaView.widthAnchor, multiplier: aspectRatio)]
+            )
+        }
+
         adView.nativeAd = ad
         replaceNativeAdView(adView, in: view)
         
@@ -40,19 +38,53 @@ final class NativeAdRenderer {
         
         (adView.advertiserView as? UILabel)?.text = ad.advertiser
         adView.advertiserView?.isHidden = ad.advertiser == nil
+        
+        (adView.headlineView as? UILabel)?.text = ad.headline
+        adView.headlineView?.isHidden = ad.headline == nil
+        
+        (adView.callToActionView as? UILabel)?.text = ad.callToAction
+        adView.callToActionView?.isHidden = ad.callToAction == nil
+        
+        (adView.iconView as? UIImageView)?.image = ad.icon?.image
+        adView.iconView?.isHidden = ad.icon == nil
+        
+        (adView.bodyView as? UILabel)?.text = ad.body
+        adView.bodyView?.isHidden = ad.body == nil
+        
+        let choicesView = GADAdChoicesView()
+        choicesView.translatesAutoresizingMaskIntoConstraints = false
+        choicesView.isUserInteractionEnabled = false
+
+        adView.adChoicesView = choicesView
+        adView.addSubview(choicesView)
+
+        NSLayoutConstraint.activate([
+            choicesView.topAnchor.constraint(equalTo: adView.topAnchor, constant: 8),
+            choicesView.trailingAnchor.constraint(equalTo: adView.trailingAnchor, constant: -8),
+            choicesView.widthAnchor.constraint(equalToConstant: 20),
+            choicesView.heightAnchor.constraint(equalToConstant: 20)
+        ])
+
+        ad.register(
+            adView,
+            clickableAssetViews: [
+                .headlineAsset: adView.headlineView,
+                .mediaViewAsset: adView.mediaView,
+                .callToActionAsset: adView.callToActionView
+            ].compactMapValues { $0 },
+            nonclickableAssetViews: [
+                .iconAsset: adView.iconView,
+                .bodyAsset: adView.bodyView,
+                .adChoicesViewAsset: choicesView,
+                .advertiserAsset: adView.advertiserView,
+                .priceAsset: adView.priceView,
+                .storeAsset: adView.storeView
+            ].compactMapValues { $0 }
+        )
     }
     
     private static func replaceNativeAdView(_ adView: UIView, in container: UIView) {
         container.subviews.forEach { $0.removeFromSuperview() }
-        
-        container.addSubview(adView)
-        adView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            adView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            adView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            adView.topAnchor.constraint(equalTo: container.topAnchor),
-            adView.bottomAnchor.constraint(equalTo: container.bottomAnchor)
-        ])
+        adView.stk_edgesEqual(container)
     }
 }

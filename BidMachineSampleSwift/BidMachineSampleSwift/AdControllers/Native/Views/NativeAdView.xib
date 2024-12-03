@@ -137,6 +137,17 @@
                 <constraint firstItem="D79-55-6Yx" firstAttribute="leading" secondItem="LNP-UZ-QTS" secondAttribute="trailing" constant="10" id="yyE-Nq-VOj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="advertiserView" destination="ugI-Xx-RYZ" id="cUq-8e-7SX"/>
+                <outlet property="bodyView" destination="u7E-wE-IMf" id="k7I-hz-vIX"/>
+                <outlet property="callToActionView" destination="vFW-Hg-C8r" id="Mdx-NY-bDE"/>
+                <outlet property="headlineView" destination="D79-55-6Yx" id="XNd-ZR-1Ra"/>
+                <outlet property="iconView" destination="LNP-UZ-QTS" id="6de-cc-ROY"/>
+                <outlet property="mediaView" destination="Hda-Ug-PYB" id="YFn-6z-8wQ"/>
+                <outlet property="priceView" destination="YvW-AW-TS7" id="Fr8-QF-yeG"/>
+                <outlet property="starRatingView" destination="xyD-2P-hRw" id="JzO-tB-4a6"/>
+                <outlet property="storeView" destination="535-ao-Wpn" id="Y6B-L6-Le1"/>
+            </connections>
             <point key="canvasLocation" x="4" y="-133"/>
         </view>
     </objects>
