@@ -7,10 +7,6 @@ import GoogleMobileAds
 import BidMachineAdMobAdapter
 import BidMachine
 
-private enum Constant {
-    static let unitId = "ca-app-pub-3216013768320747/7699763218" // "your unit id here"
-}
-
 final class NativeViewController: AdLoadController {
     override var topTitle: String? {
         "Native"
@@ -30,7 +26,7 @@ final class NativeViewController: AdLoadController {
         viewOptions.preferredAdChoicesPosition = .topRightCorner
 
         let loader = GADAdLoader(
-            adUnitID: Constant.unitId,
+            adUnitID: Constant.UnitID.Native.googleTest,
             rootViewController: self,
             adTypes: [.native],
             options: [

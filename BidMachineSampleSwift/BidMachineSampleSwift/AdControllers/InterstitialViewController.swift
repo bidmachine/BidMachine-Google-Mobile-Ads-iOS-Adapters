@@ -7,10 +7,6 @@ import GoogleMobileAds
 import BidMachineAdMobAdapter
 import BidMachine
 
-private enum Constant {
-    static let unitID = "ca-app-pub-3216013768320747/4019430704" // "your unit id here"
-}
-
 final class InterstitialViewController: AdLoadController {
     private var interstitial: GADInterstitialAd?
 
@@ -50,7 +46,7 @@ final class InterstitialViewController: AdLoadController {
         let request = GADRequest()
 
         GADInterstitialAd.load(
-            withAdUnitID: Constant.unitID,
+            withAdUnitID: Constant.UnitID.Interstitial.googleTest,
             request: request
         ) { [weak self] interstitial, error in
             guard let self else {

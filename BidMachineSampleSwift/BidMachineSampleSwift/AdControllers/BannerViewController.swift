@@ -7,10 +7,6 @@ import GoogleMobileAds
 import BidMachineAdMobAdapter
 import BidMachine
 
-private enum Constant {
-    static let unitID = "ca-app-pub-3216013768320747/5715655753" // "your unit id here"
-}
-
 final class BannerViewController: AdLoadController {
     override var topTitle: String? {
         "Banner"
@@ -84,7 +80,7 @@ final class BannerViewController: AdLoadController {
         self.googleBanner = banner
 
         banner.delegate = self
-        banner.adUnitID = Constant.unitID
+        banner.adUnitID = Constant.UnitID.Banner.googleTest
         banner.rootViewController = self
         banner.load(GADRequest())
     }

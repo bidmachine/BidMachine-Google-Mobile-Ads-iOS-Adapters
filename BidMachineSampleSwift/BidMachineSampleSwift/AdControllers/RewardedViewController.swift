@@ -7,10 +7,6 @@ import GoogleMobileAds
 import BidMachineAdMobAdapter
 import BidMachine
 
-private enum Constant {
-    static let unitID = "ca-app-pub-3216013768320747/1325926558" // "your unit id here"
-}
-
 final class RewardedViewController: AdLoadController {
     private var rewarded: GADRewardedAd?
     
@@ -52,7 +48,7 @@ final class RewardedViewController: AdLoadController {
         let request = GADRequest()
         
         GADRewardedAd.load(
-            withAdUnitID: Constant.unitID,
+            withAdUnitID: Constant.UnitID.Rewarded.googleTest,
             request: request
         ) { [weak self] rewarded, error in
             guard let self else {
