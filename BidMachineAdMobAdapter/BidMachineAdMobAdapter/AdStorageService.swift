@@ -47,7 +47,7 @@ extension AdStorageService {
             return (true, nil)
         }
         
-        _remove(item)
+        defer { _remove(item) }
         return (true, item.ad)
     }
 }
