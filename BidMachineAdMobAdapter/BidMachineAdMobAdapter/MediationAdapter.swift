@@ -26,18 +26,4 @@ import GoogleMobileAds
     required override init() {
         
     }
-
-    static func setUpWith(
-        _ configuration: GADMediationServerConfiguration,
-        completionHandler: @escaping GADMediationAdapterSetUpCompletionBlock
-    ) {
-        let credentials = configuration.credentials.first
-        
-        defer { completionHandler(nil) }
-        
-        guard !BidMachineSdk.shared.isInitialized, let sourceID = try? credentials?.mediationSettings().sourceID else {
-            return
-        }
-        BidMachineSdk.shared.initializeSdk(sourceID)
-    }
 }

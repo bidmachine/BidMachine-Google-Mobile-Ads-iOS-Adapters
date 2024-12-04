@@ -40,10 +40,9 @@ extension AdStorageService {
         
         let item = items
             .filter { $0.compare(settings.price, settings.compareType) }
-            .sorted { $0.price.xRound() > $1.price.xRound() }
-            .first
-        
-        guard let item = item else {
+            .max(by: { $0.price.xRound() < $1.price.xRound() })
+
+        guard let item else {
             return (true, nil)
         }
         

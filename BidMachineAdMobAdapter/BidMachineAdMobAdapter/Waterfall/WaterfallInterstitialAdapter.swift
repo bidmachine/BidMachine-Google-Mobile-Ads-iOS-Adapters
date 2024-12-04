@@ -10,7 +10,7 @@ import BidMachine
 import GoogleMobileAds
 
 @objc(BidMachineWaterfallCustomEventInterstitial)
-final class WaterfallInterstitialAdapter: MediationAdapter {
+final class WaterfallInterstitialAdapter: WaterfallMediationAdapter {
     private var provider: BidMachineAdProvider<BidMachineInterstitial>?
     
     func loadInterstitial(
