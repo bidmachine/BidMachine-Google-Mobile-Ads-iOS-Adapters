@@ -100,15 +100,17 @@ final class NativeViewController: AdLoadController {
 
 extension NativeViewController: GADNativeAdLoaderDelegate {
     func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: any Error) {
+        print("[DEBUG]: didFailToReceiveAdWithError")
         switchState(to: .idle)
         showAlert(with: "Failed to receive ad: \(error.localizedDescription)")
     }
     
     func adLoaderDidFinishLoading(_ adLoader: GADAdLoader) {
-        
+        print("[DEBUG]: adLoaderDidFinishLoading")
     }
     
     func adLoader(_ adLoader: GADAdLoader, didReceive nativeAd: GADNativeAd) {
+        print("[DEBUG]: didReceive nativeAd")
         switchState(to: .loaded)
         self.nativeAd = nativeAd
     }
@@ -116,10 +118,10 @@ extension NativeViewController: GADNativeAdLoaderDelegate {
 
 extension NativeViewController: GADNativeAdDelegate {
     func nativeAdDidRecordImpression(_ nativeAd: GADNativeAd) {
-        
+        print("[DEBUG]: nativeAdDidRecordImpression")
     }
     
     func nativeAdDidRecordClick(_ nativeAd: GADNativeAd) {
-        
+        print("[DEBUG]: nativeAdDidRecordClick")
     }
 }

@@ -72,26 +72,26 @@ final class RewardedViewController: AdLoadController {
 
 extension RewardedViewController: GADFullScreenContentDelegate {
     func adDidRecordImpression(_ ad: any GADFullScreenPresentingAd) {
-
+        print("[DEBUG]: adDidRecordImpression")
     }
     
     func adDidRecordClick(_ ad: any GADFullScreenPresentingAd) {
-
+        print("[DEBUG]: adDidRecordClick")
     }
     
     func ad(_ ad: any GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: any Error) {
-
+        print("[DEBUG]: didFailToPresentFullScreenContentWithError \(error.localizedDescription)")
     }
     
     func adWillPresentFullScreenContent(_ ad: any GADFullScreenPresentingAd) {
-
+        print("[DEBUG]: adWillPresentFullScreenContent")
     }
     
     func adWillDismissFullScreenContent(_ ad: any GADFullScreenPresentingAd) {
-
+        print("[DEBUG]: adWillDismissFullScreenContent")
     }
     
     func adDidDismissFullScreenContent(_ ad: any GADFullScreenPresentingAd) {
-
+        print("[DEBUG]: adDidDismissFullScreenContent")
     }
 }

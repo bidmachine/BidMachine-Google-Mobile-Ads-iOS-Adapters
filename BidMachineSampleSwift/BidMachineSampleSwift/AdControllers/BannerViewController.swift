@@ -93,10 +93,12 @@ final class BannerViewController: AdLoadController {
 
 extension BannerViewController: GADBannerViewDelegate {
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("[DEBUG]: bannerViewDidReceiveAd")
         switchState(to: .loaded)
     }
     
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: any Error) {
+        print("[DEBUG]: didFailToReceiveAdWithError")
         switchState(to: .idle)
         showAlert(with: "Error occurred: \(error.localizedDescription)")
     }
