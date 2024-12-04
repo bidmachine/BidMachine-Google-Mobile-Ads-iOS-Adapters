@@ -1,0 +1,533 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0116D79F2C9DD12A00E18DDD /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116D79E2C9DD12A00E18DDD /* BannerViewController.swift */; };
+		0116D7A22C9DD42500E18DDD /* AppModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116D7A12C9DD42500E18DDD /* AppModule.swift */; };
+		0116D7A42C9DD46800E18DDD /* AdType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116D7A32C9DD46800E18DDD /* AdType.swift */; };
+		0161F8AF2CFE28BB00C270EB /* NativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161F8AE2CFE28BB00C270EB /* NativeAdView.swift */; };
+		0161F8B12CFEFD0B00C270EB /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161F8B02CFEFD0B00C270EB /* Constant.swift */; };
+		01B367E22CA15AF4005AACAB /* InterstitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B367E12CA15AF4005AACAB /* InterstitialViewController.swift */; };
+		01B367E42CA15F4C005AACAB /* RewardedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B367E32CA15F4C005AACAB /* RewardedViewController.swift */; };
+		01B367E62CA16259005AACAB /* NativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B367E52CA16259005AACAB /* NativeViewController.swift */; };
+		01B367EC2CA16867005AACAB /* NativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B367EB2CA16867005AACAB /* NativeAdView.xib */; };
+		01B367F02CA171D9005AACAB /* NativeAdRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B367EF2CA171D9005AACAB /* NativeAdRenderer.swift */; };
+		01DD29452C9DAE50002A8AB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD29442C9DAE50002A8AB8 /* AppDelegate.swift */; };
+		01DD29492C9DAE50002A8AB8 /* AdLoadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD29482C9DAE50002A8AB8 /* AdLoadController.swift */; };
+		01DD294E2C9DAE51002A8AB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01DD294D2C9DAE51002A8AB8 /* Assets.xcassets */; };
+		01DD29512C9DAE51002A8AB8 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 01DD29502C9DAE51002A8AB8 /* Base */; };
+		01DF27C12CA1850B00415765 /* BidMachineAdMobAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DF27C02CA1850B00415765 /* BidMachineAdMobAdapter.framework */; };
+		01DF27C62CA19CAB00415765 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF27C52CA19CAB00415765 /* UIView+Nib.swift */; };
+		0DEF72573C7AAE6B72A9A890 /* Pods_BidMachineSampleSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4026FE177304CE0C36F5FB /* Pods_BidMachineSampleSwift.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0116D79E2C9DD12A00E18DDD /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
+		0116D7A12C9DD42500E18DDD /* AppModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModule.swift; sourceTree = "<group>"; };
+		0116D7A32C9DD46800E18DDD /* AdType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdType.swift; sourceTree = "<group>"; };
+		0161F8AE2CFE28BB00C270EB /* NativeAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdView.swift; sourceTree = "<group>"; };
+		0161F8B02CFEFD0B00C270EB /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		01B367E12CA15AF4005AACAB /* InterstitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialViewController.swift; sourceTree = "<group>"; };
+		01B367E32CA15F4C005AACAB /* RewardedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedViewController.swift; sourceTree = "<group>"; };
+		01B367E52CA16259005AACAB /* NativeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeViewController.swift; sourceTree = "<group>"; };
+		01B367EB2CA16867005AACAB /* NativeAdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NativeAdView.xib; sourceTree = "<group>"; };
+		01B367EF2CA171D9005AACAB /* NativeAdRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdRenderer.swift; sourceTree = "<group>"; };
+		01DD29412C9DAE50002A8AB8 /* BidMachineSampleSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BidMachineSampleSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		01DD29442C9DAE50002A8AB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		01DD29482C9DAE50002A8AB8 /* AdLoadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdLoadController.swift; sourceTree = "<group>"; };
+		01DD294D2C9DAE51002A8AB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		01DD29502C9DAE51002A8AB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		01DD29522C9DAE51002A8AB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01DF27C02CA1850B00415765 /* BidMachineAdMobAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BidMachineAdMobAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		01DF27C52CA19CAB00415765 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
+		6A4026FE177304CE0C36F5FB /* Pods_BidMachineSampleSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BidMachineSampleSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDA4B841B8BCEC2C5CB4C506 /* Pods-BidMachineSampleSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineSampleSwift.debug.xcconfig"; path = "Target Support Files/Pods-BidMachineSampleSwift/Pods-BidMachineSampleSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		E0C8ACCEA51A6F2EBAED1D9D /* Pods-BidMachineSampleSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineSampleSwift.release.xcconfig"; path = "Target Support Files/Pods-BidMachineSampleSwift/Pods-BidMachineSampleSwift.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01DD293E2C9DAE50002A8AB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01DF27C12CA1850B00415765 /* BidMachineAdMobAdapter.framework in Frameworks */,
+				0DEF72573C7AAE6B72A9A890 /* Pods_BidMachineSampleSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0116D7A02C9DD3D900E18DDD /* AdControllers */ = {
+			isa = PBXGroup;
+			children = (
+				01DD29482C9DAE50002A8AB8 /* AdLoadController.swift */,
+				0116D79E2C9DD12A00E18DDD /* BannerViewController.swift */,
+				01B367E12CA15AF4005AACAB /* InterstitialViewController.swift */,
+				01B367E32CA15F4C005AACAB /* RewardedViewController.swift */,
+				01B367E72CA16779005AACAB /* Native */,
+			);
+			path = AdControllers;
+			sourceTree = "<group>";
+		};
+		01B367E72CA16779005AACAB /* Native */ = {
+			isa = PBXGroup;
+			children = (
+				01B367E82CA167DE005AACAB /* Views */,
+				01B367E52CA16259005AACAB /* NativeViewController.swift */,
+				01B367EF2CA171D9005AACAB /* NativeAdRenderer.swift */,
+			);
+			path = Native;
+			sourceTree = "<group>";
+		};
+		01B367E82CA167DE005AACAB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				01B367EB2CA16867005AACAB /* NativeAdView.xib */,
+				0161F8AE2CFE28BB00C270EB /* NativeAdView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		01DD29382C9DAE50002A8AB8 = {
+			isa = PBXGroup;
+			children = (
+				01DD29432C9DAE50002A8AB8 /* BidMachineSampleSwift */,
+				01DD29422C9DAE50002A8AB8 /* Products */,
+				B6EEEAD8C609954379725603 /* Pods */,
+				1300C6AF02D074625048FD2C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		01DD29422C9DAE50002A8AB8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01DD29412C9DAE50002A8AB8 /* BidMachineSampleSwift.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		01DD29432C9DAE50002A8AB8 /* BidMachineSampleSwift */ = {
+			isa = PBXGroup;
+			children = (
+				01DD29442C9DAE50002A8AB8 /* AppDelegate.swift */,
+				0116D7A12C9DD42500E18DDD /* AppModule.swift */,
+				0116D7A32C9DD46800E18DDD /* AdType.swift */,
+				0116D7A02C9DD3D900E18DDD /* AdControllers */,
+				01DF27C42CA19C9D00415765 /* Extensions */,
+				01DD29582C9DAF74002A8AB8 /* ApplicationSupport */,
+				0161F8B02CFEFD0B00C270EB /* Constant.swift */,
+			);
+			path = BidMachineSampleSwift;
+			sourceTree = "<group>";
+		};
+		01DD29582C9DAF74002A8AB8 /* ApplicationSupport */ = {
+			isa = PBXGroup;
+			children = (
+				01DD294D2C9DAE51002A8AB8 /* Assets.xcassets */,
+				01DD294F2C9DAE51002A8AB8 /* LaunchScreen.storyboard */,
+				01DD29522C9DAE51002A8AB8 /* Info.plist */,
+			);
+			path = ApplicationSupport;
+			sourceTree = "<group>";
+		};
+		01DF27C42CA19C9D00415765 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				01DF27C52CA19CAB00415765 /* UIView+Nib.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1300C6AF02D074625048FD2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				01DF27C02CA1850B00415765 /* BidMachineAdMobAdapter.framework */,
+				6A4026FE177304CE0C36F5FB /* Pods_BidMachineSampleSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6EEEAD8C609954379725603 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DDA4B841B8BCEC2C5CB4C506 /* Pods-BidMachineSampleSwift.debug.xcconfig */,
+				E0C8ACCEA51A6F2EBAED1D9D /* Pods-BidMachineSampleSwift.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		01DD29402C9DAE50002A8AB8 /* BidMachineSampleSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01DD29552C9DAE51002A8AB8 /* Build configuration list for PBXNativeTarget "BidMachineSampleSwift" */;
+			buildPhases = (
+				8EB6E3B41701138CC4A5DD27 /* [CP] Check Pods Manifest.lock */,
+				01DD293D2C9DAE50002A8AB8 /* Sources */,
+				01DD293E2C9DAE50002A8AB8 /* Frameworks */,
+				01DD293F2C9DAE50002A8AB8 /* Resources */,
+				89F489D21D5EA656C3F79EE5 /* [CP] Embed Pods Frameworks */,
+				CC6AFBAB60633CB97CBF39D3 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BidMachineSampleSwift;
+			productName = BidMachineSampleSwift;
+			productReference = 01DD29412C9DAE50002A8AB8 /* BidMachineSampleSwift.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		01DD29392C9DAE50002A8AB8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					01DD29402C9DAE50002A8AB8 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = 01DD293C2C9DAE50002A8AB8 /* Build configuration list for PBXProject "BidMachineSampleSwift" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 01DD29382C9DAE50002A8AB8;
+			productRefGroup = 01DD29422C9DAE50002A8AB8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				01DD29402C9DAE50002A8AB8 /* BidMachineSampleSwift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		01DD293F2C9DAE50002A8AB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01DD294E2C9DAE51002A8AB8 /* Assets.xcassets in Resources */,
+				01DD29512C9DAE51002A8AB8 /* Base in Resources */,
+				01B367EC2CA16867005AACAB /* NativeAdView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		89F489D21D5EA656C3F79EE5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BidMachineSampleSwift/Pods-BidMachineSampleSwift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BidMachineSampleSwift/Pods-BidMachineSampleSwift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BidMachineSampleSwift/Pods-BidMachineSampleSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EB6E3B41701138CC4A5DD27 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BidMachineSampleSwift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC6AFBAB60633CB97CBF39D3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BidMachineSampleSwift/Pods-BidMachineSampleSwift-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BidMachineSampleSwift/Pods-BidMachineSampleSwift-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BidMachineSampleSwift/Pods-BidMachineSampleSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01DD293D2C9DAE50002A8AB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0116D79F2C9DD12A00E18DDD /* BannerViewController.swift in Sources */,
+				0116D7A42C9DD46800E18DDD /* AdType.swift in Sources */,
+				01B367E22CA15AF4005AACAB /* InterstitialViewController.swift in Sources */,
+				0161F8AF2CFE28BB00C270EB /* NativeAdView.swift in Sources */,
+				01B367E62CA16259005AACAB /* NativeViewController.swift in Sources */,
+				01B367F02CA171D9005AACAB /* NativeAdRenderer.swift in Sources */,
+				0116D7A22C9DD42500E18DDD /* AppModule.swift in Sources */,
+				01DD29492C9DAE50002A8AB8 /* AdLoadController.swift in Sources */,
+				01DF27C62CA19CAB00415765 /* UIView+Nib.swift in Sources */,
+				01B367E42CA15F4C005AACAB /* RewardedViewController.swift in Sources */,
+				01DD29452C9DAE50002A8AB8 /* AppDelegate.swift in Sources */,
+				0161F8B12CFEFD0B00C270EB /* Constant.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		01DD294F2C9DAE51002A8AB8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01DD29502C9DAE51002A8AB8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		01DD29532C9DAE51002A8AB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		01DD29542C9DAE51002A8AB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		01DD29562C9DAE51002A8AB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDA4B841B8BCEC2C5CB4C506 /* Pods-BidMachineSampleSwift.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WG4VFF78ZM;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BidMachineSampleSwift/ApplicationSupport/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bidmachine.gam.sample.BidMachineSampleSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		01DD29572C9DAE51002A8AB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0C8ACCEA51A6F2EBAED1D9D /* Pods-BidMachineSampleSwift.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WG4VFF78ZM;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BidMachineSampleSwift/ApplicationSupport/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bidmachine.gam.sample.BidMachineSampleSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		01DD293C2C9DAE50002A8AB8 /* Build configuration list for PBXProject "BidMachineSampleSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01DD29532C9DAE51002A8AB8 /* Debug */,
+				01DD29542C9DAE51002A8AB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01DD29552C9DAE51002A8AB8 /* Build configuration list for PBXNativeTarget "BidMachineSampleSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01DD29562C9DAE51002A8AB8 /* Debug */,
+				01DD29572C9DAE51002A8AB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 01DD29392C9DAE50002A8AB8 /* Project object */;
+}

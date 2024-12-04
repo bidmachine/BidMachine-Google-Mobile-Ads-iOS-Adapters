@@ -5,7 +5,7 @@ install! 'cocoapods', :deterministic_uuids => false, :warn_for_multiple_pod_sour
 
 workspace 'BidMachineAdMobAdapter.xcworkspace'
 
-source 'https://github.com/appodeal/CocoaPods.git'
+source 'https://github.com/bidmachine/CocoaPods-Specs.git'
 source 'https://cdn.cocoapods.org/'
 
 $BDMVersion = '3.1.1'
@@ -21,6 +21,13 @@ end
 
 target 'BidMachineSample' do
   project 'BidMachineSample/BidMachineSample.xcodeproj'
+  google
+  bidmachine
+
+end
+
+target 'BidMachineSampleSwift' do
+  project 'BidMachineSampleSwift/BidMachineSampleSwift.xcodeproj'
   google
   bidmachine
 
