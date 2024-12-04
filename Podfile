@@ -1,4 +1,4 @@
-platform :ios, '13.0'
+platform :ios, '12.0'
 use_frameworks!
 
 install! 'cocoapods', :deterministic_uuids => false, :warn_for_multiple_pod_sources => false
@@ -46,7 +46,7 @@ post_install do |installer|
   project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['ENABLE_BITCODE'] = 'NO'
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
       config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
     end
   end

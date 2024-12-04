@@ -19,8 +19,9 @@ final class NativeAdRenderer {
         }
         
         if let mediaView = adView.mediaView {
-            adView.mediaView?.mediaContent = ad.mediaContent
-            let aspectRatio = 1 / ad.mediaContent.aspectRatio
+            mediaView.mediaContent = ad.mediaContent
+            let divider = ad.mediaContent.aspectRatio > 0 ? ad.mediaContent.aspectRatio : 1
+            let aspectRatio = 1 / divider
             
             NSLayoutConstraint.activate(
                 [mediaView.heightAnchor.constraint(equalTo: mediaView.widthAnchor, multiplier: aspectRatio)]
