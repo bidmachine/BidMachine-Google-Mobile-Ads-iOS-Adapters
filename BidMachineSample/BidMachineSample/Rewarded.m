@@ -8,7 +8,7 @@
 
 #import "Rewarded.h"
 
-#define UNIT_ID         "ca-app-pub-3216013768320747/1325926558"
+#define UNIT_ID         "ca-app-pub-3940256099942544/1712485313"
 
 @interface Rewarded ()<GADFullScreenContentDelegate>
 

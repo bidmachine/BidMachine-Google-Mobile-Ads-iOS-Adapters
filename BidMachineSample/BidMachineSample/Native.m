@@ -9,7 +9,7 @@
 #import "Native.h"
 #import "NativeAdRenderer.h"
 
-#define UNIT_ID         "ca-app-pub-3216013768320747/7699763218"
+#define UNIT_ID         "ca-app-pub-3940256099942544/3986624511"
 
 @interface Native ()<GADNativeAdDelegate, GADNativeAdLoaderDelegate>
 
