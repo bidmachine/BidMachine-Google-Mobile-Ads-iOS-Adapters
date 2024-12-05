@@ -9,7 +9,6 @@ import Foundation
 import BidMachine
 import GoogleMobileAds
 
-
 @objc class MediationAdapter: NSObject, GADMediationAdapter {
     
     static func adapterVersion() -> GADVersionNumber {
@@ -27,76 +26,20 @@ import GoogleMobileAds
     required override init() {
         
     }
-}
-
-@objc(BidMachineCustomEventBanner) class BannerAdapter: MediationAdapter {
     
-    private var provider: BidMachineAdProvider<BidMachineBanner>?
-    
-    func loadBanner(for adConfiguration: GADMediationBannerAdConfiguration,
-                    completionHandler: @escaping GADMediationBannerLoadCompletionHandler) {
-     
-        self.provider = BidMachineAdProvider(adConfiguration.adSize.size.format)
-        self.provider?.loadAd(mediationParams: adConfiguration.credentials,
-                              success: {
-            let ad = BannerAd($0)
-            ad.delegate = completionHandler(ad, nil)
-        }, failure: {
-            _ = completionHandler(nil, $0)
-        })
-    }
-}
-
-@objc(BidMachineCustomEventInterstitial) class InterstitialAdapter: MediationAdapter {
-    
-    private var provider: BidMachineAdProvider<BidMachineInterstitial>?
-    
-    func loadInterstitial(for adConfiguration: GADMediationInterstitialAdConfiguration,
-                          completionHandler: @escaping GADMediationInterstitialLoadCompletionHandler) {
-     
-        self.provider = BidMachineAdProvider(.interstitial)
-        self.provider?.loadAd(mediationParams: adConfiguration.credentials,
-                              success: {
-            let ad = InterstitialAd($0)
-            ad.delegate = completionHandler(ad, nil)
-        }, failure: {
-            _ = completionHandler(nil, $0)
-        })
-    }
-}
-
-@objc(BidMachineCustomEventRewarded) class RewardedAdapter: MediationAdapter {
-    
-    private var provider: BidMachineAdProvider<BidMachineRewarded>?
-    
-    func loadRewardedAd(for adConfiguration: GADMediationRewardedAdConfiguration,
-                        completionHandler: @escaping GADMediationRewardedLoadCompletionHandler) {
-     
-        self.provider = BidMachineAdProvider(.rewarded)
-        self.provider?.loadAd(mediationParams: adConfiguration.credentials,
-                              success: {
-            let ad = RewardedAd($0)
-            ad.delegate = completionHandler(ad, nil)
-        }, failure: {
-            _ = completionHandler(nil, $0)
-        })
-    }
-}
-
-@objc(BidMachineCustomEventNativeAd) class NativeAdapter: MediationAdapter {
-    
-    private var provider: BidMachineAdProvider<BidMachineNative>?
-    
-    func loadNativeAd(for adConfiguration: GADMediationNativeAdConfiguration,
-                      completionHandler: @escaping GADMediationNativeLoadCompletionHandler) {
-     
-        self.provider = BidMachineAdProvider(.native)
-        self.provider?.loadAd(mediationParams: adConfiguration.credentials,
-                              success: {
-            let ad = NativeAd($0)
-            ad.delegate = completionHandler(ad, nil)
-        }, failure: {
-            _ = completionHandler(nil, $0)
-        })
+    static func setUpWith(
+        _ configuration: GADMediationServerConfiguration,
+        completionHandler: @escaping GADMediationAdapterSetUpCompletionBlock
+    ) {
+        defer { completionHandler(nil) }
+        
+        guard
+            !BidMachineSdk.shared.isInitialized,
+            let credential = configuration.credentials.first,
+            let sourceID = try? credential.mediationSettings().sourceID
+        else {
+            return
+        }
+        BidMachineSdk.shared.initializeSdk(sourceID)
     }
 }
