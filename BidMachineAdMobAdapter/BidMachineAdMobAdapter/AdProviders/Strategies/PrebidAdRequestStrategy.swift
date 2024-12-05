@@ -43,7 +43,7 @@ final class PrebidAdRequestStrategy<T: BidMachineAdProtocol>: AdLoadingStrategy,
             return
         }
         guard let casted = storageAd as? Ad else {
-            failure(ErrorProvider.admob.withDescription("Ad loaded with unknown placement"))
+            failure(ErrorProvider.admob.withDescription("Ad fetched with unknown placement"))
             return
         }
         _makePrebid(casted)
@@ -55,11 +55,11 @@ final class PrebidAdRequestStrategy<T: BidMachineAdProtocol>: AdLoadingStrategy,
     
     private func _makePrebid(_ ad: Ad) {
         self.ad = ad
-
+        
         ad.delegate = self
         ad.loadAd()
     }
-    
+
     func didFailLoadAd(_ ad: any BidMachine.BidMachineAdProtocol, _ error: any Error) {
         ad.delegate = nil
         self.ad = nil
