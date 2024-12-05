@@ -67,7 +67,9 @@ final class PrebidMediationStrategy<T: BidMachineAdProtocol>: AdMediationStrateg
     }
     
     func didLoadAd(_ ad: BidMachineAdProtocol) {
+        self.ad = nil
         ad.delegate = nil
+
         guard let ad = ad as? T else {
             failure(ErrorProvider.admob.withDescription("Ad loaded with unknown placement"))
             return

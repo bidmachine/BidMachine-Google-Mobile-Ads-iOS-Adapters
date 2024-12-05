@@ -65,11 +65,14 @@ final class WaterfallMediationStrategy<T: BidMachineAdProtocol>: AdMediationStra
     func didFailLoadAd(_ ad: BidMachineAdProtocol, _ error: any Error) {
         ad.delegate = nil
         self.ad = nil
+
         failure(error)
     }
     
     func didLoadAd(_ ad: BidMachineAdProtocol) {
+        self.ad = nil
         ad.delegate = nil
+
         guard let ad = ad as? T else {
             notifyLoadingError(ErrorProvider.admob.withDescription("Ad loaded with unknown placement"))
             return
