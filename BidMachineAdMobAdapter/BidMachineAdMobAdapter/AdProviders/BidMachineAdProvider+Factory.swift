@@ -10,14 +10,14 @@ import BidMachine
 import GoogleMobileAds
 
 extension BidMachineAdProvider {
-    enum Strategy {
+    enum MediationStrategy {
         case waterfall
         case prebid
     }
 
     static func banner(
         format: PlacementFormat,
-        strategy: Strategy,
+        strategy: MediationStrategy,
         completionHandler: @escaping GADMediationBannerLoadCompletionHandler
     ) -> BidMachineAdProvider<BidMachineBanner> {
         return provider(
@@ -32,7 +32,7 @@ extension BidMachineAdProvider {
     }
     
     static func interstitial(
-        strategy: Strategy,
+        strategy: MediationStrategy,
         completionHandler: @escaping GADMediationInterstitialLoadCompletionHandler
     ) -> BidMachineAdProvider<BidMachineInterstitial> {
         return provider(
@@ -47,7 +47,7 @@ extension BidMachineAdProvider {
     }
     
     static func rewarded(
-        strategy: Strategy,
+        strategy: MediationStrategy,
         completionHandler: @escaping GADMediationRewardedLoadCompletionHandler
     ) -> BidMachineAdProvider<BidMachineRewarded> {
         return provider(
@@ -62,7 +62,7 @@ extension BidMachineAdProvider {
     }
     
     static func native(
-        strategy: Strategy,
+        strategy: MediationStrategy,
         completionHandler: @escaping GADMediationNativeLoadCompletionHandler
     ) -> BidMachineAdProvider<BidMachineNative> {
         return provider(
@@ -77,14 +77,14 @@ extension BidMachineAdProvider {
     }
 
     private static func provider<Ad: BidMachineAdProtocol>(
-        strategy: Strategy,
+        strategy: MediationStrategy,
         format: PlacementFormat,
         success: @escaping (Ad) -> Void,
         failure: @escaping (Error) -> Void
     ) -> BidMachineAdProvider<Ad> {
         switch strategy {
         case .waterfall:
-            let strategy = WaterfallAdRequestStrategy(
+            let strategy = WaterfallMediationStrategy(
                 success: success,
                 failure: failure
             )
@@ -94,7 +94,7 @@ extension BidMachineAdProvider {
             )
 
         case .prebid:
-            let strategy = PrebidAdRequestStrategy(
+            let strategy = PrebidMediationStrategy(
                 success: success,
                 failure: failure
             )

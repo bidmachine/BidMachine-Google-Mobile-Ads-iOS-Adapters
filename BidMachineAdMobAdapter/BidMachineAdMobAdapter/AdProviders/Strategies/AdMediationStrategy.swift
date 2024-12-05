@@ -8,7 +8,7 @@
 import Foundation
 import BidMachine
 
-protocol AdLoadingStrategy {
+protocol AdMediationStrategy {
     associatedtype Ad: BidMachineAdProtocol
     
     typealias SuccessCompetion = (Ad) -> Void

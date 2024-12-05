@@ -11,11 +11,11 @@ import GoogleMobileAds
 
 final class BidMachineAdProvider<T: BidMachineAdProtocol> {
     private let format: PlacementFormat
-    private let strategy: any AdLoadingStrategy
+    private let strategy: any AdMediationStrategy
     
     init(
         format: PlacementFormat,
-        strategy: any AdLoadingStrategy
+        strategy: any AdMediationStrategy
     ) {
         self.format = format
         self.strategy = strategy
