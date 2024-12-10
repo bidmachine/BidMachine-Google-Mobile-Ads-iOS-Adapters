@@ -24,13 +24,7 @@
     [self.container.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     [self switchState:BSStateLoading];
-    
-    __weak typeof(self) weakSelf = self;
-    id<BidMachineRequestConfigurationProtocol> config = [BidMachineSdk.shared requestConfiguration:BidMachinePlacementFormatBanner320x50 error:nil];
-    [BidMachineSdk.shared banner:config :^(BidMachineBanner *ad, NSError *error) {
-        [BDMAdMobAdapter store:ad];
-        [weakSelf makeRequest];
-    }];
+    [self makeRequest];
 }
 
 - (void)showAd:(id)sender {

@@ -26,12 +26,7 @@
     
     [NativeAdRenderer unregister:self.nativeAd fromView:self.container];
     self.nativeAd = nil;
-    
-    __weak typeof(self) weakSelf = self;
-    [BidMachineSdk.shared native:nil :^(BidMachineNative *ad, NSError *error) {
-        [BDMAdMobAdapter store:ad];
-        [weakSelf makeRequest];
-    }];
+    [self makeRequest];
 }
 
 - (void)showAd:(id)sender {

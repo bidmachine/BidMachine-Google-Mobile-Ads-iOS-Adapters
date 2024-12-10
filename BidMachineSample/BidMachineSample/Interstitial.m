@@ -21,12 +21,7 @@
 
 - (void)loadAd:(id)sender {
     [self switchState:BSStateLoading];
-    
-    __weak typeof(self) weakSelf = self;
-    [BidMachineSdk.shared interstitial:nil :^(BidMachineInterstitial *ad, NSError *error) {
-        [BDMAdMobAdapter store:ad];
-        [weakSelf makeRequest];
-    }];
+    [self makeRequest];
 }
 
 - (void)showAd:(id)sender {
