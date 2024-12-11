@@ -18,29 +18,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = AppModule.create(for: AdType.allCases)
         window?.makeKeyAndVisible()
         
-        startBidMachine()
+        setupBidMachine()
         startAdMob()
 
         return true
     }
     
-    private func startBidMachine() {
+    private func setupBidMachine() {
         BidMachineSdk.shared.populate { builder in
             builder.withTestMode(true)
             builder.withLoggingMode(true)
             builder.withBidLoggingMode(true)
             builder.withEventLoggingMode(true)
         }
-        BidMachineSdk.shared.initializeSdk("154")
     }
     
-    private func startAdMob() {
-        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["0364fe200acbb0d9a468177494e7e27a"]
-        
+    private func startAdMob() {        
         GADMobileAds.sharedInstance().start { status in
-            let statuses = status.adapterStatusesByClassName
-            print(statuses.keys.joined(separator: ","))
+            let notReadyAdapters = status
+                .adapterStatusesByClassName
+                .filter { $0.value.state == .notReady }
+
+            print((["[⚠️ WARNING]: Not ready for use adapters"] + notReadyAdapters.keys).joined(separator: "\n"))
         }
     }
 }
-

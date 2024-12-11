@@ -11,7 +11,9 @@
 		0116D7A22C9DD42500E18DDD /* AppModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116D7A12C9DD42500E18DDD /* AppModule.swift */; };
 		0116D7A42C9DD46800E18DDD /* AdType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116D7A32C9DD46800E18DDD /* AdType.swift */; };
 		0161F8AF2CFE28BB00C270EB /* NativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161F8AE2CFE28BB00C270EB /* NativeAdView.swift */; };
-		0161F8B12CFEFD0B00C270EB /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161F8B02CFEFD0B00C270EB /* Constant.swift */; };
+		01B23CF12D08A098007C6E36 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B23CF02D08A098007C6E36 /* Environment.swift */; };
+		01B23CF42D08A879007C6E36 /* PublisherUnitIDsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B23CF32D08A879007C6E36 /* PublisherUnitIDsProvider.swift */; };
+		01B23CF62D08A931007C6E36 /* GoogleTestUnitIDsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B23CF52D08A931007C6E36 /* GoogleTestUnitIDsProvider.swift */; };
 		01B367E22CA15AF4005AACAB /* InterstitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B367E12CA15AF4005AACAB /* InterstitialViewController.swift */; };
 		01B367E42CA15F4C005AACAB /* RewardedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B367E32CA15F4C005AACAB /* RewardedViewController.swift */; };
 		01B367E62CA16259005AACAB /* NativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B367E52CA16259005AACAB /* NativeViewController.swift */; };
@@ -31,7 +33,9 @@
 		0116D7A12C9DD42500E18DDD /* AppModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModule.swift; sourceTree = "<group>"; };
 		0116D7A32C9DD46800E18DDD /* AdType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdType.swift; sourceTree = "<group>"; };
 		0161F8AE2CFE28BB00C270EB /* NativeAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdView.swift; sourceTree = "<group>"; };
-		0161F8B02CFEFD0B00C270EB /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		01B23CF02D08A098007C6E36 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		01B23CF32D08A879007C6E36 /* PublisherUnitIDsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherUnitIDsProvider.swift; sourceTree = "<group>"; };
+		01B23CF52D08A931007C6E36 /* GoogleTestUnitIDsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTestUnitIDsProvider.swift; sourceTree = "<group>"; };
 		01B367E12CA15AF4005AACAB /* InterstitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialViewController.swift; sourceTree = "<group>"; };
 		01B367E32CA15F4C005AACAB /* RewardedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedViewController.swift; sourceTree = "<group>"; };
 		01B367E52CA16259005AACAB /* NativeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +77,16 @@
 				01B367E72CA16779005AACAB /* Native */,
 			);
 			path = AdControllers;
+			sourceTree = "<group>";
+		};
+		01B23CF22D08A7D7007C6E36 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				01B23CF02D08A098007C6E36 /* Environment.swift */,
+				01B23CF32D08A879007C6E36 /* PublisherUnitIDsProvider.swift */,
+				01B23CF52D08A931007C6E36 /* GoogleTestUnitIDsProvider.swift */,
+			);
+			path = Environment;
 			sourceTree = "<group>";
 		};
 		01B367E72CA16779005AACAB /* Native */ = {
@@ -118,10 +132,10 @@
 				01DD29442C9DAE50002A8AB8 /* AppDelegate.swift */,
 				0116D7A12C9DD42500E18DDD /* AppModule.swift */,
 				0116D7A32C9DD46800E18DDD /* AdType.swift */,
+				01B23CF22D08A7D7007C6E36 /* Environment */,
 				0116D7A02C9DD3D900E18DDD /* AdControllers */,
 				01DF27C42CA19C9D00415765 /* Extensions */,
 				01DD29582C9DAF74002A8AB8 /* ApplicationSupport */,
-				0161F8B02CFEFD0B00C270EB /* Constant.swift */,
 			);
 			path = BidMachineSampleSwift;
 			sourceTree = "<group>";
@@ -304,10 +318,12 @@
 				01B367F02CA171D9005AACAB /* NativeAdRenderer.swift in Sources */,
 				0116D7A22C9DD42500E18DDD /* AppModule.swift in Sources */,
 				01DD29492C9DAE50002A8AB8 /* AdLoadController.swift in Sources */,
+				01B23CF12D08A098007C6E36 /* Environment.swift in Sources */,
+				01B23CF62D08A931007C6E36 /* GoogleTestUnitIDsProvider.swift in Sources */,
 				01DF27C62CA19CAB00415765 /* UIView+Nib.swift in Sources */,
+				01B23CF42D08A879007C6E36 /* PublisherUnitIDsProvider.swift in Sources */,
 				01B367E42CA15F4C005AACAB /* RewardedViewController.swift in Sources */,
 				01DD29452C9DAE50002A8AB8 /* AppDelegate.swift in Sources */,
-				0161F8B12CFEFD0B00C270EB /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

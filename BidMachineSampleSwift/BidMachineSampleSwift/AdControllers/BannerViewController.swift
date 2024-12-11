@@ -32,26 +32,7 @@ final class BannerViewController: AdLoadController {
     override func loadAd() {
         deleteLoadedAd()
         switchState(to: .loading)
-        
-        do {
-            let config = try BidMachineSdk.shared.requestConfiguration(.banner320x50)
-
-            BidMachineSdk.shared.banner(config) { [weak self] banner, error in
-                guard let self else {
-                    return
-                }
-                guard let banner else {
-                    self.switchState(to: .idle)
-                    showAlert(with: "Error occurred: \(error?.localizedDescription ?? "")")
-                    return
-                }
-                AdMobAdapter.store(banner)
-                self.makeRequest()
-            }
-        } catch let error {
-            showAlert(with: "Error occurred: \(error.localizedDescription)")
-            switchState(to: .idle)
-        }
+        makeRequest()
     }
     
     override func showAd() {
@@ -61,17 +42,17 @@ final class BannerViewController: AdLoadController {
             showAlert(with: "No banner to show")
             return
         }
+        
+        let bannerSize = googleBanner.adSize.size
 
         bannerContainer.addSubview(googleBanner)
         googleBanner.translatesAutoresizingMaskIntoConstraints = false
+        
+        googleBanner.stk_edgesEqual(bannerContainer)
 
         NSLayoutConstraint.activate([
-            googleBanner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
-            googleBanner.leftAnchor.constraint(equalTo: bannerContainer.leftAnchor),
-            googleBanner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
-            googleBanner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
-            googleBanner.heightAnchor.constraint(equalToConstant: 50),
-            googleBanner.widthAnchor.constraint(equalToConstant: 320)
+            googleBanner.heightAnchor.constraint(equalToConstant: bannerSize.height),
+            googleBanner.widthAnchor.constraint(equalToConstant: bannerSize.width)
         ])
     }
 
@@ -80,7 +61,7 @@ final class BannerViewController: AdLoadController {
         self.googleBanner = banner
 
         banner.delegate = self
-        banner.adUnitID = Constant.UnitID.Banner.googleTest
+        banner.adUnitID = Environment.current.bannerUnitID
         banner.rootViewController = self
         banner.load(GADRequest())
     }

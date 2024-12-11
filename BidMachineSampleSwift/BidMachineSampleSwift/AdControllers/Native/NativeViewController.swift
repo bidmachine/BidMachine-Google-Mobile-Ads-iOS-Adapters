@@ -26,7 +26,7 @@ final class NativeViewController: AdLoadController {
         viewOptions.preferredAdChoicesPosition = .topRightCorner
 
         let loader = GADAdLoader(
-            adUnitID: Constant.UnitID.Native.googleTest,
+            adUnitID: Environment.current.nativeUnitID,
             rootViewController: self,
             adTypes: [.native],
             options: [
@@ -57,19 +57,7 @@ final class NativeViewController: AdLoadController {
     override func loadAd() {
         deleteLoadedAd()
         switchState(to: .loading)
-        
-        BidMachineSdk.shared.native { [weak self] nativeAd, error in
-            guard let self else {
-                return
-            }
-            guard let nativeAd else {
-                self.switchState(to: .idle)
-                self.showAlert(with: "Error occurred: \(error?.localizedDescription ?? "")")
-                return
-            }
-            AdMobAdapter.store(nativeAd)
-            self.makeRequest()
-        }
+        makeRequest()
     }
     
     override func showAd() {

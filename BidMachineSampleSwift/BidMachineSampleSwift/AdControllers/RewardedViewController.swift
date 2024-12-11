@@ -17,19 +17,7 @@ final class RewardedViewController: AdLoadController {
     override func loadAd() {
         deleteLoadedAd()
         switchState(to: .loading)
-        
-        BidMachineSdk.shared.rewarded { [weak self] rewarded, error in
-            guard let self else {
-                return
-            }
-            guard let rewarded else {
-                self.switchState(to: .idle)
-                self.showAlert(with: "Error occurred: \(error?.localizedDescription ?? "")")
-                return
-            }
-            AdMobAdapter.store(rewarded)
-            self.makeRequest()
-        }
+        makeRequest()
     }
     
     override func showAd() {
@@ -48,7 +36,7 @@ final class RewardedViewController: AdLoadController {
         let request = GADRequest()
         
         GADRewardedAd.load(
-            withAdUnitID: Constant.UnitID.Rewarded.googleTest,
+            withAdUnitID: Environment.current.rewardedUnitID,
             request: request
         ) { [weak self] rewarded, error in
             guard let self else {
