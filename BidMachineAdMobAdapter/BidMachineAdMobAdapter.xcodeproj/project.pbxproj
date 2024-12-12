@@ -25,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01B23CF72D0B1994007C6E36 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3021870A57561ACD9F44B3ED /* Pods_BidMachineAdMobAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BidMachineAdMobAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F1AED9889CB84B56EECCD22 /* Pods-BidMachineAdMobAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineAdMobAdapter.debug.xcconfig"; path = "Target Support Files/Pods-BidMachineAdMobAdapter/Pods-BidMachineAdMobAdapter.debug.xcconfig"; sourceTree = "<group>"; };
 		65AD7DA82951F14200469668 /* BidMachineAdMobAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BidMachineAdMobAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +87,7 @@
 		65AD7DAA2951F14200469668 /* BidMachineAdMobAdapter */ = {
 			isa = PBXGroup;
 			children = (
+				01B23CF72D0B1994007C6E36 /* PrivacyInfo.xcprivacy */,
 				65AD7DAB2951F14200469668 /* BidMachineAdMobAdapter.h */,
 				65AD7DCD295341AF00469668 /* BidMachineAdMobAdapter.swift */,
 				65AD7DC0295233CF00469668 /* BidMachineError.swift */,

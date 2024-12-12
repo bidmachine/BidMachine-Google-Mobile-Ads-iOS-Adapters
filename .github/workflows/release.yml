@@ -1,0 +1,80 @@
+name: Release Admob Adapter iOS
+
+on:
+ release:
+    types: [published]
+
+env:
+  WORKFLOW: ios-admob-adapter-release
+  AWS_BUCKET: bidmachine-ios
+  AWS_S3_REGION: us-east-1
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+      - name: Set up Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '15.3.0'
+        
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+
+      - name: Setup CocoaPods
+        uses: maxim-lobanov/setup-cocoapods@v1
+        with:
+          version: 1.15.2
+
+      - name: Build
+        run: |
+          export LC_ALL=en_US.UTF-8
+          export LANG=en_US.UTF-8
+          bundle exec fastlane build version:${{ env.RELEASE_VERSION }} upload:true 
+        env:
+            S3_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            S3_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            S3_BUCKET: ${{ env.AWS_BUCKET }}
+            S3_REGION: ${{ env.AWS_S3_REGION}}
+
+      - name: Push podspec
+        run: |
+          bundle exec pod repo add bidmachine ${POD_REPO}
+          bundle exec pod repo push bidmachine ./BidMachineAdMobAdapter.podspec --allow-warnings --verbose
+        env:
+          POD_REPO: https://${{ secrets.JENKINSBOTAPPODEALX_TOKEN_FOR_ARGOCD }}@github.com/bidmachine/CocoaPods-Specs.git
+
+      - name: Notify slack
+        uses: ravsamhq/notify-slack-action@v2
+        with:
+          status: ${{ job.status }}
+          notification_title: "*Admob Adapter iOS* Build Success"
+          footer: '<https://github.com/{repo}/actions/workflows/${{ env.WORKFLOW }}.yml>'
+          message_format: "
+            {emoji} Version: *${{ env.RELEASE_VERSION }}*
+            CocoaPods: ```pod 'BidMachineAdMobAdapter'```"
+          notify_when: 'success'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.BM_SDKRELHUB_SLACKBOT_URL }}
+
+      - name: Notify slack
+        uses: ravsamhq/notify-slack-action@v2
+        if: always()
+        with:
+          status: ${{ job.status }}
+          notification_title: "*Admob Adapter iOS* Build Failed"
+          footer: '<https://github.com/{repo}/actions/workflows/${{ env.WORKFLOW }}.yml>'
+          message_format: "{emoji} Version: **${{ env.RELEASE_VERSION }}**"
+          notify_when: 'failure'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.BM_SDKRELHUB_SLACKBOT_URL }}
+        

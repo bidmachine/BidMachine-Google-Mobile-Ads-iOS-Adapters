@@ -1,0 +1,133 @@
+require "cocoapods-core"
+require "fileutils"
+require "json"
+require "rest-client"
+
+fastlane_version "2.211.0"
+default_platform :ios
+
+fastlane_require "dotenv"
+fastlane_require "date"
+fastlane_require "fileutils"
+
+# Globals
+$build_path = File.expand_path("./build")
+$schmes = ["BidMachineAdMobAdapter"]
+
+# Defenitions
+def ios_build_universal(scheme, version, type)
+  xcargs = [
+    "GCC_GENERATE_DEBUGGING_SYMBOLS=NO",
+    "STRIP_INSTALLED_PRODUCT=YES",
+    "LINK_FRAMEWORKS_AUTOMATICALLY=NO",
+    "OTHER_CFLAGS=\"-Qunused-arguments\"",
+    "ONLY_ACTIVE_ARCH=NO",
+    "DEPLOYMENT_POSTPROCESSING=YES",
+    "MACH_O_TYPE=#{type}",
+    "IPHONEOS_DEPLOYMENT_TARGET=12.0",
+    "DEBUG_INFORMATION_FORMAT=\"dwarf\"",
+    "SKIP_INSTALL=NO",
+    "MARKETING_VERSION=#{version}",
+    "CODE_SIGN_IDENTITY=\"\"",
+    "CODE_SIGNING_REQUIRED=NO",
+    "CODE_SIGN_ENTITLEMENTS=\"\"",
+  ]
+
+  xcodebuild(
+    archive: true,
+    archive_path: "#{$build_path}/tmp/#{type}/#{scheme}/ios.xcarchive",
+    scheme: scheme,
+    workspace: "BidMachineAdMobAdapter.xcworkspace",
+    sdk: "iphoneos",
+    xcargs: (xcargs + ["VALID_ARCHS=\"arm64 armv7\""]).join(" "),
+  )
+
+  xcodebuild(
+    archive: true,
+    archive_path: "#{$build_path}/tmp/#{type}/#{scheme}/ios-sim.xcarchive",
+    scheme: scheme,
+    workspace: "BidMachineAdMobAdapter.xcworkspace",
+    sdk: "iphonesimulator",
+    xcargs: (xcargs + ["VALID_ARCHS=\"x86_64 arm64\""]).join(" "),
+  )
+end
+
+def ios_xcframework(scheme, type, path)
+  create_xcframework(
+    frameworks: [
+      "#{$build_path}/tmp/#{type}/#{scheme}/ios-sim.xcarchive/Products/Library/Frameworks/#{scheme}.framework",
+      "#{$build_path}/tmp/#{type}/#{scheme}/ios.xcarchive/Products/Library/Frameworks/#{scheme}.framework",
+    ],
+    output: "#{$build_path}/release/#{path}/#{scheme}.xcframework",
+  )
+
+  # Remove .bundle files
+  Dir.glob("#{$build_path}/release/#{path}/#{scheme}.xcframework/**/*").each do |file|
+    if file.end_with?(".bundle")
+      FileUtils.rm_rf(file)
+    end
+  end
+end
+
+def assert_podspec_version(version)
+  podspec = Pod::Specification.from_file("../BidMachineAdMobAdapter.podspec")
+  raise "Podspec version mismatch".red unless podspec.version.to_s == version
+end
+
+def assert_changelog_updated(version)
+  changelog = File.read("../CHANGELOG.md")
+  raise "Changelog not updated".red unless changelog.include?("# Version #{version}")
+end
+
+# Lanes
+platform :ios do
+  before_all do
+   Dotenv.load ".env.default"
+
+     clean_build_artifacts
+
+     FileUtils.rm_rf($build_path)
+     FileUtils.mkdir($build_path)
+   end
+
+   desc "Build XCFrameworks"
+   lane :build do |options|
+     raise "No Adapter version specified".red if options[:version].nil?
+
+     version = options[:version].start_with?("v") ? options[:version][1..-1] : options[:version]
+     upload = options[:upload] || false
+     update_carthage = options[:update_carthage] || false
+
+     UI::message("Building AdMob Adapter version #{version}")
+
+     cocoapods(clean_install: true)
+
+     assert_podspec_version(version)
+     assert_changelog_updated(version)
+
+     for scheme in $schmes
+       # Compile Static XCFramework
+       ios_build_universal(scheme, version, "staticlib")
+       ios_xcframework(scheme, "staticlib", "Static")
+     end
+
+     zip(
+       path: "#{$build_path}/release/",
+       output_path: "#{$build_path}/archive/pod/BidMachineAdMobAdapter.zip",
+       include: ["Static/**"],
+     )
+
+     if upload
+       # Upload to S3
+       aws_s3(
+         access_key: ENV["S3_ACCESS_KEY"],
+         secret_access_key: ENV["S3_SECRET_ACCESS_KEY"],
+         bucket: ENV["S3_BUCKET"],
+         region: ENV["S3_REGION"],
+         acl: "public-read",
+         path: "BidMachineAdMobAdapter/#{version}/pod",
+         files: ["#{$build_path}/archive/pod/BidMachineAdMobAdapter.zip"],
+       )
+     end
+   end
+ end
