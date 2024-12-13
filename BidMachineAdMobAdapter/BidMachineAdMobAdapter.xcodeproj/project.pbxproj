@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0131D36A2D0C6DB400811C4D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 01B23CF72D0B1994007C6E36 /* PrivacyInfo.xcprivacy */; };
 		65AD7DAC2951F14200469668 /* BidMachineAdMobAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 65AD7DAB2951F14200469668 /* BidMachineAdMobAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65AD7DB72952132400469668 /* MediationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AD7DB62952132400469668 /* MediationAdapter.swift */; };
 		65AD7DBB295213B600469668 /* InterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AD7DBA295213B600469668 /* InterstitialAd.swift */; };
@@ -228,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0131D36A2D0C6DB400811C4D /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

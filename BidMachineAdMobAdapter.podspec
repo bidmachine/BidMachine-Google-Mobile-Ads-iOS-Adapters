@@ -15,10 +15,11 @@ Pod::Spec.new do |spec|
     "OTHER_LDFLAGS": "-ObjC",
   }
 
-  spec.source = { :http => "https://appodeal-ios.s3.amazonaws.com/BidMachineAdaptors/#{spec.name}/#{spec.version}/pod/#{spec.name}.zip" }
-
+  spec.source = { :http => "https://bidmachine-ios.s3.amazonaws.com/#{spec.name}/#{spec.version}/pod/#{spec.name}.zip" }
   spec.vendored_frameworks = "release/Static/#{spec.name}.xcframework"
-  spec.resource_bundles = "release/Static/#{spec.name}.xcframework/ios-arm64/**/PrivacyInfo.xcprivacy"
+  spec.resource_bundles = {
+    "#{spec.name}" => ["release/Static/#{spec.name}.xcframework/ios-arm64/**/PrivacyInfo.xcprivacy"],
+  }
 
   spec.dependency "BidMachine", "~> 3.1.1"
   spec.dependency "Google-Mobile-Ads-SDK", "~> 11.13.0"
