@@ -1,0 +1,26 @@
+name: Repo sync
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  repo-sync:
+    name: Repo sync
+    runs-on: [self-hosted, main]
+    permissions:
+      contents: write
+    steps:
+
+      - name: Init src repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PUBLIC_ORIGIN_GITHUB_TOKEN }}
+
+      - name: Push to public-origin
+        run: |
+          git remote remove public-origin;
+          git remote add public-origin https://${{ secrets.PUBLIC_ORIGIN_GITHUB_TOKEN }}@github.com/bidmachine/BidMachine-Google-Mobile-Ads-iOS-Adapters.git;
+          git pull origin
+          git push -u public-origin master
