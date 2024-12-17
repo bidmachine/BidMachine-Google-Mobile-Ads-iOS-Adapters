@@ -1,3 +1,7 @@
+## Version 3.1.1.2-beta.0 (Dec 17th, 2024)
+
+- Add waterfall mediation support
+
 ## Version 3.1.1.1 (Dec 12th, 2024)
 
 - Update 'Google-Mobile-Ads-SDK' to '11.13.0' +

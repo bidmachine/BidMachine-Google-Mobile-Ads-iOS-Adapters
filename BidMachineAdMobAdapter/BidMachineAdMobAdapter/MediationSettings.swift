@@ -25,11 +25,15 @@ struct MediationSettings: Decodable {
         case bm_pf
         
         case bm_pf_compare
+        
+        case source_id
     }
     
     let price: Double
     
     let compareType: CompareType
+    
+    let sourceID: String?
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
@@ -43,5 +47,6 @@ struct MediationSettings: Decodable {
         
         self.price = price
         self.compareType = (try? container.decodeIfPresent(CompareType.self, forKey: .bm_pf_compare)) ?? .equalOrAbove
+        self.sourceID = try? container.decodeIfPresent(String.self, forKey: .source_id)
     }
 }
