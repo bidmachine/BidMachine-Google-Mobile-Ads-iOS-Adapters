@@ -8,7 +8,7 @@
 import Foundation
 import BidMachine
 
-final class PrebidMediationStrategy<T: BidMachineAdProtocol>: AdMediationStrategy, BidMachineAdDelegate {
+final class PrebidMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMediationStrategy, BidMachineAdDelegate {
     typealias Ad = T
     
     private let success: SuccessCompetion

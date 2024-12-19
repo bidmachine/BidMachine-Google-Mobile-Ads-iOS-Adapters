@@ -8,7 +8,11 @@
 import Foundation
 import BidMachine
 
-protocol AdMediationStrategy {
+// AdMediationStrategy must inherit from NSObject to ensure compatibility with the Objective-C runtime.
+// This is necessary because in current implementation it conforms to the @objc protocol BidMachineAdDelegate.
+// Removing NSObject inheritance will cause crashes when a Swift object conforms to an @objc protocol.
+
+protocol AdMediationStrategy: NSObject {
     associatedtype Ad: BidMachineAdProtocol
     
     typealias SuccessCompetion = (Ad) -> Void
