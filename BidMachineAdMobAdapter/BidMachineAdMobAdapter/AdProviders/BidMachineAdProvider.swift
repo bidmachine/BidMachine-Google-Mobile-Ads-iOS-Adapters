@@ -35,9 +35,11 @@ final class BidMachineAdProvider<T: BidMachineAdProtocol> {
         let price = NumberFormatter.bidMachinePrice.string(
             from: NSNumber(value: settings.price)
         )!
+        let mediationMode = strategy.getModeIdentifier()
         
         configuration.populate {
             $0.appendPriceFloor(settings.price, "bm_pf:\(price)")
+            $0.withCustomParameters(["mediation_mode": mediationMode])
         }
         strategy.load(configuration: configuration, settings: settings, format: format)
     }
