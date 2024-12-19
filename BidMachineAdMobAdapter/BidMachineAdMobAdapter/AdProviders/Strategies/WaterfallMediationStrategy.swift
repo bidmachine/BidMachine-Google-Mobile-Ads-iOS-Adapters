@@ -52,6 +52,10 @@ final class WaterfallMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMed
         self.failure(error)
     }
     
+    func getModeIdentifier() -> String {
+        return "waterfall_admob"
+    }
+    
     private func handleLoadingError(description: String) {
         failure(ErrorProvider.admob.withDescription(description))
     }
