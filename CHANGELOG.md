@@ -1,3 +1,8 @@
+## Version 3.1.1.2-beta.1 (Dec 20th, 2024)
+
+- Crashes Fixes
+- Send mediation mode as custom parameter
+
 ## Version 3.1.1.2-beta.0 (Dec 17th, 2024)
 
 - Add waterfall mediation support
