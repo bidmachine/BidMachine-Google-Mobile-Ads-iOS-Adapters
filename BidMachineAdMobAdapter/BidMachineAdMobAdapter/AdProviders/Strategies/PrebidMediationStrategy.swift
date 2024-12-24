@@ -52,11 +52,7 @@ final class PrebidMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMediat
     func notifyLoadingError(_ error: Error) {
         self.failure(error)
     }
-    
-    func getModeIdentifier() -> String {
-        return "prebid_admob"
-    }
-    
+
     private func _makePrebid(_ ad: Ad) {
         self.ad = ad
         

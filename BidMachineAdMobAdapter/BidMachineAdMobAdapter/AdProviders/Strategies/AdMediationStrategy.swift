@@ -30,6 +30,4 @@ protocol AdMediationStrategy: NSObject {
     )
 
     func notifyLoadingError(_ error: Error)
-    
-    func getModeIdentifier() -> String
 }

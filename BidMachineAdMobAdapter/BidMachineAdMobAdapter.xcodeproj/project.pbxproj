@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0116CDDF2D19B091003E7402 /* CustomParamsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116CDDE2D19B091003E7402 /* CustomParamsKey.swift */; };
 		0131D36A2D0C6DB400811C4D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 01B23CF72D0B1994007C6E36 /* PrivacyInfo.xcprivacy */; };
 		0161F8B82CFF0DC100C270EB /* BidMachineAdProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161F8B72CFF0DC100C270EB /* BidMachineAdProvider.swift */; };
 		0161F8BB2CFF114100C270EB /* PrebidMediationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161F8BA2CFF114100C270EB /* PrebidMediationStrategy.swift */; };
@@ -38,7 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01B23CF72D0B1994007C6E36 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		0116CDDE2D19B091003E7402 /* CustomParamsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomParamsKey.swift; sourceTree = "<group>"; };
 		0161F8B72CFF0DC100C270EB /* BidMachineAdProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidMachineAdProvider.swift; sourceTree = "<group>"; };
 		0161F8BA2CFF114100C270EB /* PrebidMediationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidMediationStrategy.swift; sourceTree = "<group>"; };
 		0161F8BC2CFF14C900C270EB /* AdMediationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMediationStrategy.swift; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		0161F8CE2CFF3BEA00C270EB /* WaterfallInterstitialAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallInterstitialAdapter.swift; sourceTree = "<group>"; };
 		0161F8D02CFF3BFE00C270EB /* WaterfallRewardedAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallRewardedAdapter.swift; sourceTree = "<group>"; };
 		0161F8D22CFF42BA00C270EB /* BidMachineAdProvider+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BidMachineAdProvider+Factory.swift"; sourceTree = "<group>"; };
+		01B23CF72D0B1994007C6E36 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3021870A57561ACD9F44B3ED /* Pods_BidMachineAdMobAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BidMachineAdMobAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F1AED9889CB84B56EECCD22 /* Pods-BidMachineAdMobAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineAdMobAdapter.debug.xcconfig"; path = "Target Support Files/Pods-BidMachineAdMobAdapter/Pods-BidMachineAdMobAdapter.debug.xcconfig"; sourceTree = "<group>"; };
 		65AD7DA82951F14200469668 /* BidMachineAdMobAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BidMachineAdMobAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,9 +85,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0116CDDD2D19B08A003E7402 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0116CDDE2D19B091003E7402 /* CustomParamsKey.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0161F8B22CFF0C8900C270EB /* AdProviders */ = {
 			isa = PBXGroup;
 			children = (
+				0116CDDD2D19B08A003E7402 /* Model */,
 				0161F8B92CFF113800C270EB /* Strategies */,
 				0161F8B72CFF0DC100C270EB /* BidMachineAdProvider.swift */,
 				0161F8D22CFF42BA00C270EB /* BidMachineAdProvider+Factory.swift */,
@@ -370,6 +381,7 @@
 				65AD7DC1295233CF00469668 /* BidMachineError.swift in Sources */,
 				65AD7DC729524E6000469668 /* RewardedAd.swift in Sources */,
 				0161F8C52CFF205A00C270EB /* PrebidNativeAdapter.swift in Sources */,
+				0116CDDF2D19B091003E7402 /* CustomParamsKey.swift in Sources */,
 				0161F8CF2CFF3BEA00C270EB /* WaterfallInterstitialAdapter.swift in Sources */,
 				65AD7DD629538A5500469668 /* MediationSettings.swift in Sources */,
 				0161F8C22CFF1D8100C270EB /* WaterfallNativeAdapter.swift in Sources */,

@@ -33,7 +33,10 @@ final class WaterfallMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMed
         settings: MediationSettings,
         format: PlacementFormat
     ) {
-        BidMachineSdk.shared.ad(T.self, configuration) { [weak self] ad, error in
+        configuration.populate {
+            $0.withCustomParameters([CustomParamsKey.mediationMode: "waterfall_admob"])
+        }
+        BidMachineSdk.shared.ad(Ad.self, configuration) { [weak self] ad, error in
             guard let self else { return }
 
             if let error {
@@ -41,7 +44,7 @@ final class WaterfallMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMed
                 return
             }
             if let ad {
-                handleLoadingSuccess(ad)
+                handleAdLoaded(ad, for: configuration)
                 return
             }
             handleLoadingError(description: "Unknown state: no error, no ad")
@@ -51,16 +54,24 @@ final class WaterfallMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMed
     func notifyLoadingError(_ error: Error) {
         self.failure(error)
     }
-    
-    func getModeIdentifier() -> String {
-        return "waterfall_admob"
-    }
-    
+
     private func handleLoadingError(description: String) {
         failure(ErrorProvider.admob.withDescription(description))
     }
     
-    private func handleLoadingSuccess(_ ad: T) {
+    private func handleAdLoaded(_ ad: Ad, for configuration: BidMachineRequestConfigurationProtocol) {
+        guard let minPriceFloor = configuration.priceFloors.min(by: { $0.price < $1.price }) else {
+            handleLoadingSuccess(ad)
+            return
+        }
+        guard ad.auctionInfo.price >= minPriceFloor.price else {
+            handleLoadingError(description: "Loaded ad doesn't meet price floor requirements")
+            return
+        }
+        handleLoadingSuccess(ad)
+    }
+    
+    private func handleLoadingSuccess(_ ad: Ad) {
         self.ad = ad
         ad.delegate = self
         ad.loadAd()
@@ -77,7 +88,7 @@ final class WaterfallMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMed
         self.ad = nil
         ad.delegate = nil
 
-        guard let ad = ad as? T else {
+        guard let ad = ad as? Ad else {
             notifyLoadingError(ErrorProvider.admob.withDescription("Ad loaded with unknown placement"))
             return
         }
