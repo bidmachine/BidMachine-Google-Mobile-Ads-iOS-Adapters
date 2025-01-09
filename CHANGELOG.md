@@ -1,3 +1,9 @@
+## Version 3.1.1.2 (Jan 9th, 2025)
+
+- Added waterfall mediation support +
+- Send mediation mode as custom parameter +
+- Added price floor validation for loaded waterfall ads +
+
 ## Version 3.1.1.2-beta.2 (Dec 23th, 2024)
 
 - Added price floor validation for loaded waterfall ads +
@@ -9,7 +15,7 @@
 
 ## Version 3.1.1.2-beta.0 (Dec 17th, 2024)
 
-- Add waterfall mediation support +
+- Added waterfall mediation support +
 
 ## Version 3.1.1.1 (Dec 12th, 2024)
 
