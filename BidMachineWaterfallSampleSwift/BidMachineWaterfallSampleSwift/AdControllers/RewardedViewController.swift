@@ -7,68 +7,58 @@ import GoogleMobileAds
 import BidMachineAdMobAdapter
 import BidMachine
 
-final class InterstitialViewController: AdLoadController {
-    private var interstitial: GADInterstitialAd?
-
+final class RewardedViewController: AdLoadController {
+    private var rewarded: GADRewardedAd?
+    
     override var topTitle: String? {
-        "Interstitial"
+        "Rewarded"
     }
 
     override func loadAd() {
         deleteLoadedAd()
         switchState(to: .loading)
-        
-        BidMachineSdk.shared.interstitial { [weak self] interstitial, error in
-            guard let self else {
-                return
-            }
-            guard let interstitial else {
-                self.switchState(to: .idle)
-                self.showAlert(with: "Error occurred: \(error?.localizedDescription ?? "")")
-                return
-            }
-            AdMobAdapter.store(interstitial)
-            self.makeRequest()
-        }
+        makeRequest()
     }
- 
+    
     override func showAd() {
         switchState(to: .idle)
-
-        guard let interstitial else {
-            showAlert(with: "No inter to show")
+        
+        guard let rewarded else {
+            showAlert(with: "No rewarded to show")
             return
         }
-        interstitial.present(fromRootViewController: self)
+        rewarded.present(fromRootViewController: self) { [weak self] in
+            self?.showAlert(with: "User did earn reward, handle accordingly")
+        }
     }
-
+    
     private func makeRequest() {
         let request = GADRequest()
-
-        GADInterstitialAd.load(
-            withAdUnitID: Environment.current.interstitialUnitID,
+        
+        GADRewardedAd.load(
+            withAdUnitID: Environment.current.rewardedUnitID,
             request: request
-        ) { [weak self] interstitial, error in
+        ) { [weak self] rewarded, error in
             guard let self else {
                 return
             }
-            guard let interstitial else {
+            guard let rewarded else {
                 self.switchState(to: .idle)
                 self.showAlert(with: "Error occurred: \(error?.localizedDescription ?? "")")
                 return
             }
+            self.rewarded = rewarded
+            rewarded.fullScreenContentDelegate = self
             self.switchState(to: .loaded)
-            self.interstitial = interstitial
-            interstitial.fullScreenContentDelegate = self
         }
     }
-
+    
     private func deleteLoadedAd() {
-        interstitial = nil
+        rewarded = nil
     }
 }
 
-extension InterstitialViewController: GADFullScreenContentDelegate {
+extension RewardedViewController: GADFullScreenContentDelegate {
     func adDidRecordImpression(_ ad: any GADFullScreenPresentingAd) {
         print("[DEBUG]: adDidRecordImpression")
     }

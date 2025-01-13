@@ -17,19 +17,7 @@ final class InterstitialViewController: AdLoadController {
     override func loadAd() {
         deleteLoadedAd()
         switchState(to: .loading)
-        
-        BidMachineSdk.shared.interstitial { [weak self] interstitial, error in
-            guard let self else {
-                return
-            }
-            guard let interstitial else {
-                self.switchState(to: .idle)
-                self.showAlert(with: "Error occurred: \(error?.localizedDescription ?? "")")
-                return
-            }
-            AdMobAdapter.store(interstitial)
-            self.makeRequest()
-        }
+        makeRequest()
     }
  
     override func showAd() {

@@ -25,8 +25,22 @@ target 'BidMachineSample' do
 
 end
 
+target 'BidMachineWaterfallSample' do
+  project 'BidMachineWaterfallSample/BidMachineWaterfallSample.xcodeproj'
+  google
+  bidmachine
+
+end
+
 target 'BidMachineSampleSwift' do
   project 'BidMachineSampleSwift/BidMachineSampleSwift.xcodeproj'
+  google
+  bidmachine
+
+end
+
+target 'BidMachineWaterfallSampleSwift' do
+  project 'BidMachineWaterfallSampleSwift/BidMachineWaterfallSampleSwift.xcodeproj'
   google
   bidmachine
 

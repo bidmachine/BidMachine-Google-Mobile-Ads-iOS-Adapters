@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01050D102D3028BE0017CB5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01DD294F2C9DAE51002A8AB8 /* LaunchScreen.storyboard */; };
 		0116D79F2C9DD12A00E18DDD /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116D79E2C9DD12A00E18DDD /* BannerViewController.swift */; };
 		0116D7A22C9DD42500E18DDD /* AppModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116D7A12C9DD42500E18DDD /* AppModule.swift */; };
 		0116D7A42C9DD46800E18DDD /* AdType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116D7A32C9DD46800E18DDD /* AdType.swift */; };
 		0161F8AF2CFE28BB00C270EB /* NativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161F8AE2CFE28BB00C270EB /* NativeAdView.swift */; };
-		0161F8B12CFEFD0B00C270EB /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161F8B02CFEFD0B00C270EB /* Constant.swift */; };
+		01A6DE472D313DB400450286 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6DE462D313DB400450286 /* Environment.swift */; };
+		01A6DE492D313DC400450286 /* GoogleTestUnitIDsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6DE482D313DC400450286 /* GoogleTestUnitIDsProvider.swift */; };
+		01A6DE4B2D313DDC00450286 /* PublisherUnitIDsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6DE4A2D313DDC00450286 /* PublisherUnitIDsProvider.swift */; };
 		01B367E22CA15AF4005AACAB /* InterstitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B367E12CA15AF4005AACAB /* InterstitialViewController.swift */; };
 		01B367E42CA15F4C005AACAB /* RewardedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B367E32CA15F4C005AACAB /* RewardedViewController.swift */; };
 		01B367E62CA16259005AACAB /* NativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B367E52CA16259005AACAB /* NativeViewController.swift */; };
@@ -31,7 +34,9 @@
 		0116D7A12C9DD42500E18DDD /* AppModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModule.swift; sourceTree = "<group>"; };
 		0116D7A32C9DD46800E18DDD /* AdType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdType.swift; sourceTree = "<group>"; };
 		0161F8AE2CFE28BB00C270EB /* NativeAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdView.swift; sourceTree = "<group>"; };
-		0161F8B02CFEFD0B00C270EB /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		01A6DE462D313DB400450286 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		01A6DE482D313DC400450286 /* GoogleTestUnitIDsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTestUnitIDsProvider.swift; sourceTree = "<group>"; };
+		01A6DE4A2D313DDC00450286 /* PublisherUnitIDsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherUnitIDsProvider.swift; sourceTree = "<group>"; };
 		01B367E12CA15AF4005AACAB /* InterstitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialViewController.swift; sourceTree = "<group>"; };
 		01B367E32CA15F4C005AACAB /* RewardedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedViewController.swift; sourceTree = "<group>"; };
 		01B367E52CA16259005AACAB /* NativeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +80,16 @@
 			path = AdControllers;
 			sourceTree = "<group>";
 		};
+		01A6DE312D313B4B00450286 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				01A6DE462D313DB400450286 /* Environment.swift */,
+				01A6DE482D313DC400450286 /* GoogleTestUnitIDsProvider.swift */,
+				01A6DE4A2D313DDC00450286 /* PublisherUnitIDsProvider.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
 		01B367E72CA16779005AACAB /* Native */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,13 +130,13 @@
 		01DD29432C9DAE50002A8AB8 /* BidMachineSampleSwift */ = {
 			isa = PBXGroup;
 			children = (
+				01A6DE312D313B4B00450286 /* Environment */,
 				01DD29442C9DAE50002A8AB8 /* AppDelegate.swift */,
 				0116D7A12C9DD42500E18DDD /* AppModule.swift */,
 				0116D7A32C9DD46800E18DDD /* AdType.swift */,
 				0116D7A02C9DD3D900E18DDD /* AdControllers */,
 				01DF27C42CA19C9D00415765 /* Extensions */,
 				01DD29582C9DAF74002A8AB8 /* ApplicationSupport */,
-				0161F8B02CFEFD0B00C270EB /* Constant.swift */,
 			);
 			path = BidMachineSampleSwift;
 			sourceTree = "<group>";
@@ -225,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01DD294E2C9DAE51002A8AB8 /* Assets.xcassets in Resources */,
+				01050D102D3028BE0017CB5E /* LaunchScreen.storyboard in Resources */,
 				01DD29512C9DAE51002A8AB8 /* Base in Resources */,
 				01B367EC2CA16867005AACAB /* NativeAdView.xib in Resources */,
 			);
@@ -296,18 +312,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01A6DE492D313DC400450286 /* GoogleTestUnitIDsProvider.swift in Sources */,
 				0116D79F2C9DD12A00E18DDD /* BannerViewController.swift in Sources */,
 				0116D7A42C9DD46800E18DDD /* AdType.swift in Sources */,
 				01B367E22CA15AF4005AACAB /* InterstitialViewController.swift in Sources */,
 				0161F8AF2CFE28BB00C270EB /* NativeAdView.swift in Sources */,
 				01B367E62CA16259005AACAB /* NativeViewController.swift in Sources */,
 				01B367F02CA171D9005AACAB /* NativeAdRenderer.swift in Sources */,
+				01A6DE4B2D313DDC00450286 /* PublisherUnitIDsProvider.swift in Sources */,
 				0116D7A22C9DD42500E18DDD /* AppModule.swift in Sources */,
 				01DD29492C9DAE50002A8AB8 /* AdLoadController.swift in Sources */,
+				01A6DE472D313DB400450286 /* Environment.swift in Sources */,
 				01DF27C62CA19CAB00415765 /* UIView+Nib.swift in Sources */,
 				01B367E42CA15F4C005AACAB /* RewardedViewController.swift in Sources */,
 				01DD29452C9DAE50002A8AB8 /* AppDelegate.swift in Sources */,
-				0161F8B12CFEFD0B00C270EB /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

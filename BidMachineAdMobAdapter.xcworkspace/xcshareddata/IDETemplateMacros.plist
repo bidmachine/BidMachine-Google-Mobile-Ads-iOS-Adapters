@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>FILEHEADER</key>
+<string>  
+//  ___PRODUCTNAME___
+//
+//  Created by BidMachine Team on ___DATE___.
+//  Copyright © ___YEAR___ BidMachine Inc. All rights reserved.</string>
+</dict>
+</plist>

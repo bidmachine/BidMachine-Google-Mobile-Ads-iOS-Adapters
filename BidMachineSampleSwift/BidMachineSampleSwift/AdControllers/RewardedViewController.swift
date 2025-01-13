@@ -48,7 +48,7 @@ final class RewardedViewController: AdLoadController {
         let request = GADRequest()
         
         GADRewardedAd.load(
-            withAdUnitID: Constant.UnitID.Rewarded.googleTest,
+            withAdUnitID: Environment.current.rewardedUnitID,
             request: request
         ) { [weak self] rewarded, error in
             guard let self else {
