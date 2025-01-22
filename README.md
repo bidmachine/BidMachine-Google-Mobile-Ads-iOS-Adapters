@@ -14,45 +14,82 @@
 
 ##### Add following lines into your project Podfile
 
-> **_NOTE:_** In 2.5 + version needed use BidMachineAdMobAdapter spec name
-
 ```ruby
 target 'Target' do
   project 'Project.xcodeproj'
-  pod 'BidMachineAdMobAdapter', '~> 2.5.0'
+  pod 'BidMachineAdMobAdapter', '~> 3.1.1.2'
 end
 ```
 
 ### Initialize sdk
 
+The BidMachineAdMobAdapter starting 3.1.1.2 version offers robust support for both prebid and waterfall integration.
+Both integration types require to configure mediations group in AdMob account by adding BidMachine Custom Events and Mappings.
+
+#### Waterfall:
+Waterfall integration does not require BidMachineSdk initialization code, as it is triggered automatically as part of the GADMobileAds initialization.
+However, if you need to configure additional BidMachineSdk settings, refer to the [documentation](https://docs.bidmachine.io/docs/in-house-mediation-ios)
+
+#### Prebid:
 > **_WARNING:_** Before initialize AdMob sdk you should start BM sdk. 
 
-``` objc
-    [BidMachineSdk.shared populate:^(id<BidMachineInfoBuilderProtocol> builder) {
-            [builder withTestMode:YES];
-            [builder withLoggingMode:YES];
-            [builder withBidLoggingMode:YES];
-            [builder withEventLoggingMode:YES];
-    }];
-    
-    [BidMachineSdk.shared initializeSdk: @"1"];
+Objective-C:
+```objc
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
-    [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus * _Nonnull status) {
-            NSDictionary *statuses = status.adapterStatusesByClassName;
-            NSLog(@"%@", [statuses.allKeys componentsJoinedByString:@","]);
-    }];
+@import BidMachine;
+@import BidMachineAdMobAdapter;
+
+[BidMachineSdk.shared populate:^(id<BidMachineInfoBuilderProtocol> builder) {
+    [builder withTestMode:YES];
+    [builder withLoggingMode:YES];
+    [builder withBidLoggingMode:YES];
+    [builder withEventLoggingMode:YES];
+}];
+    
+[BidMachineSdk.shared initializeSdk: @"YOUR_SOURCE_ID"];
+
+[[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus * _Nonnull status) {
+    NSDictionary *statuses = status.adapterStatusesByClassName;
+    NSLog(@"%@", [statuses.allKeys componentsJoinedByString:@","]);
+}];
+```
+
+Swift:
+```swift
+import BidMachine
+import BidMachineAdMobAdapter
+import GoogleMobileAds
+
+BidMachineSdk.shared.populate { builder in
+    builder
+        .withTestMode(true)
+        .withLoggingMode(true)
+        .withBidLoggingMode(true)
+        .withEventLoggingMode(true)
+}
+BidMachineSdk.shared.initializeSdk("YOUR_SOURCE_ID")
+
+GADMobileAds.sharedInstance().start { status in
+    let statuses = status.adapterStatusesByClassName
+    print(statuses.keys.joined(separator: ","))
+}
 ```
 
 ### Banner implementation
 
+#### Waterfall:
+Integration remains consistent with the approach outlined in [Google Mobile Ads Banner Ads Guide](hhttps://developers.google.com/admob/ios/banner), ensuring seamless compatibility with existing configurations.
+No further modifications are necessary, streamlining the implementation process and minimizing any additional overhead.
+
+#### Prebid:
 Before start loading Admob you should load Bidmachine ad and save it to store
 
 > **_NOTE:_** For some banners you should use some placment (BidMachinePlacementFormatBanner320x50, BidMachinePlacementFormatBanner300x250)
 
+Objective-C:
 ```objc
-
 @import BidMachine;
-@import BidMachineApiCore;
 @import BidMachineAdMobAdapter;
 
 - (void)before {
@@ -65,23 +102,38 @@ Before start loading Admob you should load Bidmachine ad and save it to store
 }
 
 - (void)after {
-    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner]; // kGADAdSizeMediumRectangle
-    self.bannerView.delegate = self;
-    self.bannerView.adUnitID = @UNIT_ID;
-    self.bannerView.rootViewController = self;
-    self.bannerView.translatesAutoresizingMaskIntoConstraints = YES;
-    self.bannerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    // Follow the approach outlined in the [Google Mobile Ads Banner Ads Guide](https://developers.google.com/admob/ios/banner) to load google Admob banner ad
+}
+```
 
-    GADRequest *request = [GADRequest request];
-    [self.bannerView loadRequest:request];
+Swift:
+```swift
+import BidMachine
+import BidMachineAdMobAdapter
+
+func before() throws {
+    let configuration = try BidMachineSdk.shared.requestConfiguration(.banner320x50)
+    BidMachineSdk.shared.banner(configuration) { [weak self] banner, error in
+        AdMobAdapter.store(banner)
+        self?.after()
+    }
 }
 
+func after() {
+    // Follow the approach outlined in the [Google Mobile Ads Banner Ads Guide](https://developers.google.com/admob/ios/banner) to load google Admob banner ad
+}
 ```
 
 ### Interstitial implementation
 
+#### Waterfall:
+Integration remains consistent with the approach outlined in [Google Mobile Ads Interstitial Ads Guide](https://developers.google.com/admob/ios/interstitial), ensuring seamless compatibility with existing configurations. 
+No further modifications are necessary, streamlining the implementation process and minimizing any additional overhead.
+
+#### Prebid:
 Before start loading Admob you should load Bidmachine ad and save it to store
 
+Objective-C:
 ```objc
 @import BidMachine;
 @import BidMachineApiCore;
@@ -96,26 +148,40 @@ Before start loading Admob you should load Bidmachine ad and save it to store
 }
 
 - (void)after {
-    GADRequest *request = [GADRequest request];
-    [GADInterstitialAd loadWithAdUnitID:@UNIT_ID request:request completionHandler:^(GADInterstitialAd * _Nullable interstitialAd, NSError * _Nullable error) {
-        if (error) {
-            // fail load
-        } else {
-            self.interstitial = interstitialAd;
-            self.interstitial.fullScreenContentDelegate = self;
-        }
-    }];
+    // Follow the approach outlined in the [Google Mobile Ads Interstitial Ads Guide](https://developers.google.com/admob/ios/interstitial) to load google Admob interstitial ad
+}
+```
+
+Swift:
+```swift
+import BidMachine
+import BidMachineAdMobAdapter
+
+func before() throws {
+    let configuration = try BidMachineSdk.shared.requestConfiguration(.interstitial)
+    BidMachineSdk.shared.interstitial(configuration) { [weak self] interstitial, error in
+        AdMobAdapter.store(interstitial)
+        self?.after()
+    }
 }
 
+func after() {
+    // Follow the approach outlined in the [Google Mobile Ads Interstitial Ads Guide](https://developers.google.com/admob/ios/interstitial) to load google Admob interstitial ad
+}
 ```
 
 ### Rewarded implementation
 
+#### Waterfall:
+Integration remains consistent with the approach outlined in [Google Mobile Ads Rewarded Ads Guide](https://developers.google.com/admob/ios/rewarded), ensuring seamless compatibility with existing configurations. 
+No further modifications are necessary, streamlining the implementation process and minimizing any additional overhead.
+
+#### Prebid:
 Before start loading Admob you should load Bidmachine ad and save it to store
 
+Objective-C:
 ```objc
 @import BidMachine;
-@import BidMachineApiCore;
 @import BidMachineAdMobAdapter;
 
 - (void)before {
@@ -127,25 +193,40 @@ Before start loading Admob you should load Bidmachine ad and save it to store
 }
 
 - (void)after {
-    GADRequest *request = [GADRequest request];
-    [GADRewardedAd loadWithAdUnitID:@UNIT_ID request:request completionHandler:^(GADRewardedAd * _Nullable rewardedAd, NSError * _Nullable error) {
-        if (error) {
-            // fail load
-        } else {
-            self.rewarded = rewardedAd;
-            self.rewarded.fullScreenContentDelegate = self;
-        }
-    }];
+    // Follow the approach outlined in the [Google Mobile Ads Rewarded Ads Guide](https://developers.google.com/admob/ios/rewarded) to load google Admob rewarded ad
+}
+```
+
+Swift:
+```swift
+import BidMachine
+import BidMachineAdMobAdapter
+
+func before() throws {
+    let configuration = try BidMachineSdk.shared.requestConfiguration(.rewardedVideo)
+    BidMachineSdk.shared.rewarded(configuration) { [weak self] rewarded, error in
+        AdMobAdapter.store(rewarded)
+        self?.after()
+    }
+}
+
+func after() {
+    // Follow the approach outlined in the [Google Mobile Ads Rewarded Ads Guide](https://developers.google.com/admob/ios/rewarded) to load google Admob rewarded ad
 }
 ```
 
 ### Native ad implementation
 
+#### Waterfall:
+Integration remains consistent with the approach outlined in [Google Mobile Ads Native Ads Guide](https://developers.google.com/admob/ios/native), ensuring seamless compatibility with existing configurations. 
+No further modifications are necessary, streamlining the implementation process and minimizing any additional overhead.
+
+#### Prebid:
 Before start loading Admob you should load Bidmachine ad and save it to store
 
+Objective-C:
 ```objc
 @import BidMachine;
-@import BidMachineApiCore;
 @import BidMachineAdMobAdapter;
 
 - (void)before {
@@ -156,37 +237,24 @@ Before start loading Admob you should load Bidmachine ad and save it to store
 }
 
 - (void)after {
-    GADRequest *request = [GADRequest request];
-    [self.nativeLoader loadRequest:request];
+    // Follow the approach outlined in the [Google Mobile Ads Native Ads Guide](https://developers.google.com/admob/ios/native) to load google Admob native ad
 }
+```
 
-- (GADAdLoader *)nativeLoader {
-    if (!_nativeLoader) {
-        _nativeLoader = [[GADAdLoader alloc] initWithAdUnitID:@UNIT_ID
-                                           rootViewController:self
-                                                      adTypes:@[kGADAdLoaderAdTypeNative]
-                                                      options:@[self.viewOptions, self.videoOptions, self.mediaOptions]];
-        _nativeLoader.delegate = self;
+Swift:
+```swift
+import BidMachine
+import BidMachineAdMobAdapter
+
+func before() throws {
+    let configuration = try BidMachineSdk.shared.requestConfiguration(.native)
+    BidMachineSdk.shared.native(configuration) { [weak self] native, error in
+        AdMobAdapter.store(native)
+        self?.after()
     }
-    return _nativeLoader;
 }
 
-- (GADAdLoaderOptions *)videoOptions {
-    GADVideoOptions *options = GADVideoOptions.new;
-    options.startMuted = YES;
-    return options;
+func after() {
+    // Follow the approach outlined in the [Google Mobile Ads Native Ads Guide](https://developers.google.com/admob/ios/native) to load google Admob native ad
 }
-
-- (GADAdLoaderOptions *)mediaOptions {
-    GADNativeAdMediaAdLoaderOptions *options = GADNativeAdMediaAdLoaderOptions.new;
-    options.mediaAspectRatio = GADMediaAspectRatioLandscape;
-    return options;
-}
-
-- (GADAdLoaderOptions *)viewOptions {
-    GADNativeAdViewAdOptions *options = GADNativeAdViewAdOptions.new;
-    options.preferredAdChoicesPosition = GADAdChoicesPositionTopRightCorner;
-    return options;
-}
-
 ```
