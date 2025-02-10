@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name                = "BidMachineAdMobAdapter"
-  spec.version             = "3.1.1.2"
+  spec.version             = "3.1.1.3"
   spec.summary             = "Bidmachine adapter for AdMob"
 
   spec.homepage            = "https://bidmachine.io"
@@ -22,6 +22,6 @@ Pod::Spec.new do |spec|
   }
 
   spec.dependency "BidMachine", "~> 3.1.1"
-  spec.dependency "Google-Mobile-Ads-SDK", "~> 11.13.0"
+  spec.dependency "Google-Mobile-Ads-SDK", "~> 12.0.0"
 
 end

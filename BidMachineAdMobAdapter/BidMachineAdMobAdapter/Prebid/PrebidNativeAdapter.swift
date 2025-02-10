@@ -14,7 +14,7 @@ final class PrebidNativeAdapter: MediationAdapter {
     private var provider: BidMachineAdProvider<BidMachineNative>?
 
     func loadNativeAd(
-        for adConfiguration: GADMediationNativeAdConfiguration,
+        for adConfiguration: MediationNativeAdConfiguration,
         completionHandler: @escaping GADMediationNativeLoadCompletionHandler
     ) {
         self.provider = .native(strategy: .prebid, completionHandler: completionHandler)

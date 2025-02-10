@@ -10,13 +10,13 @@ import BidMachine
 import GoogleMobileAds
 
 
-@objc class BannerAd: NSObject, GADMediationBannerAd {
+@objc class BannerAd: NSObject, MediationBannerAd {
     
     var view: UIView {
         return self.ad
     }
     
-    weak var delegate: GADMediationBannerAdEventDelegate?
+    weak var delegate: MediationBannerAdEventDelegate?
     
     private let ad: BidMachineBanner
     

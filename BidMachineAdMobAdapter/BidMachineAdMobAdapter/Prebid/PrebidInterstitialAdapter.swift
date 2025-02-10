@@ -14,7 +14,7 @@ final class PrebidInterstitialAdapter: MediationAdapter {
     private var provider: BidMachineAdProvider<BidMachineInterstitial>?
     
     func loadInterstitial(
-        for adConfiguration: GADMediationInterstitialAdConfiguration,
+        for adConfiguration: MediationInterstitialAdConfiguration,
         completionHandler: @escaping GADMediationInterstitialLoadCompletionHandler
     ) {
         self.provider = .interstitial(strategy: .prebid, completionHandler: completionHandler)

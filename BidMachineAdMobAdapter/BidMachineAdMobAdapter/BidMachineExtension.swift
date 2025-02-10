@@ -18,7 +18,7 @@ fileprivate struct Constants {
     
 }
 
-extension GADMediationCredentials {
+extension MediationCredentials {
     
     func mediationSettings() throws -> MediationSettings {
         return try json.decode(MediationSettings.self)
@@ -31,9 +31,9 @@ extension GADMediationCredentials {
     }
 }
 
-extension GADVersionNumber {
+extension VersionNumber {
     
-    static func version(_ ver: String) -> GADVersionNumber {
+    static func version(_ ver: String) -> VersionNumber {
         let separatedVersion = ver.components(separatedBy: ".").compactMap { Int($0) }
         
         var majorVersion: Int = 0
@@ -59,9 +59,9 @@ extension GADVersionNumber {
             }
         }
         
-        return GADVersionNumber(majorVersion: majorVersion,
-                                minorVersion: minorVersion,
-                                patchVersion: patchVersion)
+        return VersionNumber(majorVersion: majorVersion,
+                             minorVersion: minorVersion,
+                             patchVersion: patchVersion)
     }
 }
 

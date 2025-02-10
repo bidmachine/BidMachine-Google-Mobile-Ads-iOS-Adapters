@@ -8,5 +8,5 @@
 import UIKit
 import GoogleMobileAds
 
-final class NativeAdView: GADNativeAdView {
+final class NativeAdView: GoogleMobileAds.NativeAdView {
 }

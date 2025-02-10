@@ -6,12 +6,12 @@ import UIKit
 import GoogleMobileAds
 
 final class NativeAdRenderer {
-    static func unregister(ad: GADNativeAd, from view: UIView) {
+    static func unregister(ad: NativeAd, from view: UIView) {
         ad.unregisterAdView()
         view.subviews.forEach { $0.removeFromSuperview() }
     }
     
-    static func render(ad: GADNativeAd, in view: UIView) {
+    static func render(ad: NativeAd, in view: UIView) {
         ad.unregisterAdView()
 
         guard let adView = NativeAdView.instantiateFromNib(owner: nil) else {
@@ -52,7 +52,7 @@ final class NativeAdRenderer {
         (adView.bodyView as? UILabel)?.text = ad.body
         adView.bodyView?.isHidden = ad.body == nil
         
-        let choicesView = GADAdChoicesView()
+        let choicesView = AdChoicesView()
         choicesView.translatesAutoresizingMaskIntoConstraints = false
         choicesView.isUserInteractionEnabled = false
 

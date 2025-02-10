@@ -8,7 +8,7 @@ import BidMachineAdMobAdapter
 import BidMachine
 
 final class BannerViewController: AdLoadController {
-    private var googleBanner: GADBannerView?
+    private var googleBanner: BannerView?
 
     override var topTitle: String? {
         "Banner"
@@ -58,13 +58,13 @@ final class BannerViewController: AdLoadController {
     }
 
     private func makeRequest() {
-        let banner = GADBannerView(adSize: GADAdSizeBanner)
+        let banner = BannerView(adSize: AdSizeBanner)
         self.googleBanner = banner
 
         banner.delegate = self
         banner.adUnitID = Environment.current.bannerUnitID
         banner.rootViewController = self
-        banner.load(GADRequest())
+        banner.load(Request())
     }
 
     private func deleteLoadedAd() {
@@ -73,13 +73,13 @@ final class BannerViewController: AdLoadController {
     }
 }
 
-extension BannerViewController: GADBannerViewDelegate {
-    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+extension BannerViewController: BannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: BannerView) {
         print("[DEBUG]: bannerViewDidReceiveAd")
         switchState(to: .loaded)
     }
     
-    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: any Error) {
+    func bannerView(_ bannerView: BannerView, didFailToReceiveAdWithError error: any Error) {
         print("[DEBUG]: didFailToReceiveAdWithError")
         switchState(to: .idle)
         showAlert(with: "Error occurred: \(error.localizedDescription)")

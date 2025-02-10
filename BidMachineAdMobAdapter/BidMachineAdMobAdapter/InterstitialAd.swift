@@ -10,9 +10,9 @@ import BidMachine
 import GoogleMobileAds
 
 
-@objc class InterstitialAd: NSObject, GADMediationInterstitialAd {
+@objc class InterstitialAd: NSObject, MediationInterstitialAd {
     
-    weak var delegate: GADMediationInterstitialAdEventDelegate?
+    weak var delegate: MediationInterstitialAdEventDelegate?
     
     private let ad: BidMachineInterstitial
     

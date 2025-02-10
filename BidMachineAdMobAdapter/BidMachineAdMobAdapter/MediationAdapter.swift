@@ -9,17 +9,17 @@ import Foundation
 import BidMachine
 import GoogleMobileAds
 
-@objc class MediationAdapter: NSObject, GADMediationAdapter {
+@objc class MediationAdapter: NSObject, GoogleMobileAds.MediationAdapter {
     
-    static func adapterVersion() -> GADVersionNumber {
-        return GADVersionNumber.version(BidMachineAdapter.adapterVersionPath + ".0")
+    static func adapterVersion() -> VersionNumber {
+        return .version(BidMachineAdapter.adapterVersionPath + ".0")
     }
     
-    static func adSDKVersion() -> GADVersionNumber {
-        return GADVersionNumber.version(BidMachineSdk.sdkVersion)
+    static func adSDKVersion() -> VersionNumber {
+        return .version(BidMachineSdk.sdkVersion)
     }
     
-    static func networkExtrasClass() -> GADAdNetworkExtras.Type? {
+    static func networkExtrasClass() -> AdNetworkExtras.Type? {
         nil
     }
     
@@ -27,8 +27,8 @@ import GoogleMobileAds
         
     }
     
-    static func setUpWith(
-        _ configuration: GADMediationServerConfiguration,
+    static func setUp(
+        with configuration: MediationServerConfiguration,
         completionHandler: @escaping GADMediationAdapterSetUpCompletionBlock
     ) {
         defer { completionHandler(nil) }

@@ -14,7 +14,7 @@ final class WaterfallBannerAdapter: MediationAdapter {
     private var provider: BidMachineAdProvider<BidMachineBanner>?
     
     func loadBanner(
-        for adConfiguration: GADMediationBannerAdConfiguration,
+        for adConfiguration: MediationBannerAdConfiguration,
         completionHandler: @escaping GADMediationBannerLoadCompletionHandler
     ) {
         self.provider = .banner(

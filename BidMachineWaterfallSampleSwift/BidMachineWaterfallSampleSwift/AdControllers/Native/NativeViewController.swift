@@ -12,20 +12,20 @@ final class NativeViewController: AdLoadController {
         "Native"
     }
     
-    private var nativeAd: GADNativeAd?
+    private var nativeAd: NativeAd?
     private let container = UIView()
 
     private lazy var nativeLoader = {
-        let mediaOptions = GADNativeAdMediaAdLoaderOptions()
+        let mediaOptions = NativeAdMediaAdLoaderOptions()
         mediaOptions.mediaAspectRatio = .landscape
         
-        let videoOptions = GADVideoOptions()
-        videoOptions.startMuted = true
+        let videoOptions = VideoOptions()
+        videoOptions.shouldStartMuted = true
         
-        let viewOptions = GADNativeAdViewAdOptions()
+        let viewOptions = NativeAdViewAdOptions()
         viewOptions.preferredAdChoicesPosition = .topRightCorner
 
-        let loader = GADAdLoader(
+        let loader = AdLoader(
             adUnitID: Environment.current.nativeUnitID,
             rootViewController: self,
             adTypes: [.native],
@@ -74,7 +74,7 @@ final class NativeViewController: AdLoadController {
     }
     
     private func makeRequest() {
-        let request = GADRequest()
+        let request = Request()
         nativeLoader.load(request)
     }
     
@@ -86,30 +86,30 @@ final class NativeViewController: AdLoadController {
     }
 }
 
-extension NativeViewController: GADNativeAdLoaderDelegate {
-    func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: any Error) {
+extension NativeViewController: NativeAdLoaderDelegate {
+    func adLoader(_ adLoader: AdLoader, didFailToReceiveAdWithError error: any Error) {
         print("[DEBUG]: didFailToReceiveAdWithError")
         switchState(to: .idle)
         showAlert(with: "Failed to receive ad: \(error.localizedDescription)")
     }
     
-    func adLoaderDidFinishLoading(_ adLoader: GADAdLoader) {
+    func adLoaderDidFinishLoading(_ adLoader: AdLoader) {
         print("[DEBUG]: adLoaderDidFinishLoading")
     }
     
-    func adLoader(_ adLoader: GADAdLoader, didReceive nativeAd: GADNativeAd) {
+    func adLoader(_ adLoader: AdLoader, didReceive nativeAd: NativeAd) {
         print("[DEBUG]: didReceive nativeAd")
         switchState(to: .loaded)
         self.nativeAd = nativeAd
     }
 }
 
-extension NativeViewController: GADNativeAdDelegate {
-    func nativeAdDidRecordImpression(_ nativeAd: GADNativeAd) {
+extension NativeViewController: NativeAdDelegate {
+    func nativeAdDidRecordImpression(_ nativeAd: NativeAd) {
         print("[DEBUG]: nativeAdDidRecordImpression")
     }
     
-    func nativeAdDidRecordClick(_ nativeAd: GADNativeAd) {
+    func nativeAdDidRecordClick(_ nativeAd: NativeAd) {
         print("[DEBUG]: nativeAdDidRecordClick")
     }
 }

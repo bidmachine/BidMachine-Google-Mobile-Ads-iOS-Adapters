@@ -21,7 +21,7 @@ final class BidMachineAdProvider<T: BidMachineAdProtocol> {
         self.strategy = strategy
     }
     
-    func loadAd(mediationParams: GADMediationCredentials) {
+    func loadAd(mediationParams: MediationCredentials) {
         let settings: MediationSettings
         let configuration: BidMachineRequestConfigurationProtocol
 

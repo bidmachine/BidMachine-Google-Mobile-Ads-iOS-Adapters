@@ -14,7 +14,7 @@ final class PrebidRewardedAdapter: MediationAdapter {
     private var provider: BidMachineAdProvider<BidMachineRewarded>?
 
     func loadRewardedAd(
-        for adConfiguration: GADMediationRewardedAdConfiguration,
+        for adConfiguration: MediationRewardedAdConfiguration,
         completionHandler: @escaping GADMediationRewardedLoadCompletionHandler
     ) {
         self.provider = .rewarded(strategy: .prebid, completionHandler: completionHandler)

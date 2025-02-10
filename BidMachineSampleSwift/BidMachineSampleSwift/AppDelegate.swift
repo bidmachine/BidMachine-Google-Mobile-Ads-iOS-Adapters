@@ -35,11 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func startAdMob() {
-        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["0364fe200acbb0d9a468177494e7e27a"]
-        
-        GADMobileAds.sharedInstance().start { status in
-            let statuses = status.adapterStatusesByClassName
-            print(statuses.keys.joined(separator: ","))
+        MobileAds.shared.start { status in
+            let notReadyAdapters = status
+                .adapterStatusesByClassName
+                .filter { $0.value.state == .notReady }
+
+            print((["[⚠️ WARNING]: Not ready for use adapters"] + notReadyAdapters.keys).joined(separator: "\n"))
         }
     }
 }

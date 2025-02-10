@@ -10,9 +10,9 @@ import BidMachine
 import GoogleMobileAds
 
 
-@objc class NativeAd: NSObject, GADMediationNativeAd {
+@objc class NativeAd: NSObject, MediationNativeAd {
     
-    weak var delegate: GADMediationNativeAdEventDelegate?
+    weak var delegate: MediationNativeAdEventDelegate?
     
     private let ad: BidMachineNative
     
@@ -43,16 +43,16 @@ extension NativeAd {
     
     var hasVideoContent: Bool { ad.isVideo }
     
-    var icon: GADNativeAdImage? {
+    var icon: NativeAdImage? {
         ad.icon
         .flatMap { URL(string: $0) }
-        .flatMap { GADNativeAdImage(url: $0, scale: 1.0) }
+        .flatMap { NativeAdImage(url: $0, scale: 1.0) }
     }
     
-    var images: [GADNativeAdImage]? {
+    var images: [NativeAdImage]? {
         ad.main
         .flatMap { URL(string: $0) }
-        .flatMap { GADNativeAdImage(url: $0, scale: 1.0) }
+        .flatMap { NativeAdImage(url: $0, scale: 1.0) }
         .flatMap { [$0] }
     }
 }

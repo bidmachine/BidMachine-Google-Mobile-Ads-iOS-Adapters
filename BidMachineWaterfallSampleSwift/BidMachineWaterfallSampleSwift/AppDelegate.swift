@@ -33,8 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    private func startAdMob() {        
-        GADMobileAds.sharedInstance().start { status in
+    private func startAdMob() {
+        MobileAds.shared.start { status in
             let notReadyAdapters = status
                 .adapterStatusesByClassName
                 .filter { $0.value.state == .notReady }

@@ -27,7 +27,6 @@
 }
 
 - (void)startAdMob {
-    GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers = @[ @"0364fe200acbb0d9a468177494e7e27a" ];
    [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus * _Nonnull status) {
         NSDictionary *statuses = status.adapterStatusesByClassName;
         NSLog(@"%@", [statuses.allKeys componentsJoinedByString:@","]);

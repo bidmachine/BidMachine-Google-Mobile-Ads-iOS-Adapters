@@ -8,7 +8,7 @@ import BidMachineAdMobAdapter
 import BidMachine
 
 final class InterstitialViewController: AdLoadController {
-    private var interstitial: GADInterstitialAd?
+    private var interstitial: InterstitialAd?
 
     override var topTitle: String? {
         "Interstitial"
@@ -27,14 +27,14 @@ final class InterstitialViewController: AdLoadController {
             showAlert(with: "No inter to show")
             return
         }
-        interstitial.present(fromRootViewController: self)
+        interstitial.present(from: self)
     }
 
     private func makeRequest() {
-        let request = GADRequest()
+        let request = Request()
 
-        GADInterstitialAd.load(
-            withAdUnitID: Environment.current.interstitialUnitID,
+        InterstitialAd.load(
+            with: Environment.current.interstitialUnitID,
             request: request
         ) { [weak self] interstitial, error in
             guard let self else {
@@ -56,28 +56,28 @@ final class InterstitialViewController: AdLoadController {
     }
 }
 
-extension InterstitialViewController: GADFullScreenContentDelegate {
-    func adDidRecordImpression(_ ad: any GADFullScreenPresentingAd) {
+extension InterstitialViewController: FullScreenContentDelegate {
+    func adDidRecordImpression(_ ad: any FullScreenPresentingAd) {
         print("[DEBUG]: adDidRecordImpression")
     }
     
-    func adDidRecordClick(_ ad: any GADFullScreenPresentingAd) {
+    func adDidRecordClick(_ ad: any FullScreenPresentingAd) {
         print("[DEBUG]: adDidRecordClick")
     }
     
-    func ad(_ ad: any GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: any Error) {
+    func ad(_ ad: any FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: any Error) {
         print("[DEBUG]: didFailToPresentFullScreenContentWithError \(error.localizedDescription)")
     }
     
-    func adWillPresentFullScreenContent(_ ad: any GADFullScreenPresentingAd) {
+    func adWillPresentFullScreenContent(_ ad: any FullScreenPresentingAd) {
         print("[DEBUG]: adWillPresentFullScreenContent")
     }
     
-    func adWillDismissFullScreenContent(_ ad: any GADFullScreenPresentingAd) {
+    func adWillDismissFullScreenContent(_ ad: any FullScreenPresentingAd) {
         print("[DEBUG]: adWillDismissFullScreenContent")
     }
     
-    func adDidDismissFullScreenContent(_ ad: any GADFullScreenPresentingAd) {
+    func adDidDismissFullScreenContent(_ ad: any FullScreenPresentingAd) {
         print("[DEBUG]: adDidDismissFullScreenContent")
     }
 }

@@ -10,9 +10,9 @@ import BidMachine
 import GoogleMobileAds
 
 
-@objc class RewardedAd: NSObject, GADMediationRewardedAd {
+@objc class RewardedAd: NSObject, MediationRewardedAd {
     
-    weak var delegate: GADMediationRewardedAdEventDelegate?
+    weak var delegate: MediationRewardedAdEventDelegate?
     
     private let ad: BidMachineRewarded
     
