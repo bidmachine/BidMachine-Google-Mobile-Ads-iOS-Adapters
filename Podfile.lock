@@ -1,26 +1,26 @@
 PODS:
-  - BidMachine (3.1.1):
-    - BidMachine/Static (= 3.1.1)
-  - BidMachine/Static (3.1.1):
-    - StackModules/Static (~> 3.0.1)
+  - BidMachine (3.2.0):
+    - BidMachine/Static (= 3.2.0)
+  - BidMachine/Static (3.2.0):
+    - StackModules/Static (~> 3.1.0)
   - Google-Mobile-Ads-SDK (12.0.0):
     - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleUserMessagingPlatform (2.7.0)
   - OMSDK_Appodeal (1.5.2)
-  - StackModules/Core-Static (3.0.1)
-  - StackModules/ProductPresentation-Static (3.0.1):
+  - StackModules/Core-Static (3.1.0)
+  - StackModules/ProductPresentation-Static (3.1.0):
     - StackModules/Core-Static
-  - StackModules/Rendering-Static (3.0.1):
+  - StackModules/Rendering-Static (3.1.0):
     - OMSDK_Appodeal (~> 1.5.2)
     - StackModules/Core-Static
     - StackModules/ProductPresentation-Static
-  - StackModules/Static (3.0.1):
+  - StackModules/Static (3.1.0):
     - StackModules/Core-Static
     - StackModules/ProductPresentation-Static
     - StackModules/Rendering-Static
 
 DEPENDENCIES:
-  - BidMachine (= 3.1.1)
+  - BidMachine (~> 3.2.0)
   - Google-Mobile-Ads-SDK (~> 12.0.0)
 
 SPEC REPOS:
@@ -32,12 +32,12 @@ SPEC REPOS:
     - StackModules
 
 SPEC CHECKSUMS:
-  BidMachine: 0deb881916c2063690debcbe98b0b5f11f6ce40d
+  BidMachine: b5d8236e691a0c71fbb95a72e86f3ec189f1a8a9
   Google-Mobile-Ads-SDK: 14a8e52164a89a44178bd67d544f207969f8d69a
   GoogleUserMessagingPlatform: a8b56893477f67212fbc8411c139e61d463349f5
   OMSDK_Appodeal: 066f9da2c77d560e319341c6bd4739828bc65842
-  StackModules: 3a8cbd3d0f48f678b9310f471c7b84877e40201e
+  StackModules: f43fdc3fc047c0e208a6a44d604c97b2d1651bd7
 
-PODFILE CHECKSUM: 48eb6cabce4249046a963640eabb36eb1ab75110
+PODFILE CHECKSUM: 11798aa31ace1b6a5b6dce2744d1cc25e27c6c0b
 
 COCOAPODS: 1.16.2
