@@ -1,27 +1,27 @@
 PODS:
-  - BidMachine (3.2.0):
-    - BidMachine/Static (= 3.2.0)
-  - BidMachine/Static (3.2.0):
-    - StackModules/Static (~> 3.1.0)
-  - Google-Mobile-Ads-SDK (12.1.0):
+  - BidMachine (3.2.1):
+    - BidMachine/Static (= 3.2.1)
+  - BidMachine/Static (3.2.1):
+    - StackModules/Static (~> 3.2.0)
+  - Google-Mobile-Ads-SDK (12.2.0):
     - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleUserMessagingPlatform (2.7.0)
-  - OMSDK_Appodeal (1.5.2)
-  - StackModules/Core-Static (3.1.0)
-  - StackModules/ProductPresentation-Static (3.1.0):
+  - OMSDK_Appodeal (1.5.4)
+  - StackModules/Core-Static (3.2.0)
+  - StackModules/ProductPresentation-Static (3.2.0):
     - StackModules/Core-Static
-  - StackModules/Rendering-Static (3.1.0):
-    - OMSDK_Appodeal (~> 1.5.2)
+  - StackModules/Rendering-Static (3.2.0):
+    - OMSDK_Appodeal (~> 1.5.4)
     - StackModules/Core-Static
     - StackModules/ProductPresentation-Static
-  - StackModules/Static (3.1.0):
+  - StackModules/Static (3.2.0):
     - StackModules/Core-Static
     - StackModules/ProductPresentation-Static
     - StackModules/Rendering-Static
 
 DEPENDENCIES:
-  - BidMachine (~> 3.2.0)
-  - Google-Mobile-Ads-SDK (~> 12.1.0)
+  - BidMachine (~> 3.2.1)
+  - Google-Mobile-Ads-SDK (~> 12.2.0)
 
 SPEC REPOS:
   trunk:
@@ -32,12 +32,12 @@ SPEC REPOS:
     - StackModules
 
 SPEC CHECKSUMS:
-  BidMachine: b5d8236e691a0c71fbb95a72e86f3ec189f1a8a9
-  Google-Mobile-Ads-SDK: c9e5722cac79b39241d13b911f9f1eb21bdd0802
+  BidMachine: 48529ae35f438e48708882e08426b907434eeee9
+  Google-Mobile-Ads-SDK: 1dfb0c3cb46c7e2b00b0f4de74a1e06d9ea25d67
   GoogleUserMessagingPlatform: a8b56893477f67212fbc8411c139e61d463349f5
-  OMSDK_Appodeal: 066f9da2c77d560e319341c6bd4739828bc65842
-  StackModules: f43fdc3fc047c0e208a6a44d604c97b2d1651bd7
+  OMSDK_Appodeal: 9ed58fc8cabfbe31637cd267b35c1f86d227c49d
+  StackModules: f31936ffa3a8f146b141624729e11488ceeef85d
 
-PODFILE CHECKSUM: 91242b45984786e8506f97f03ac55731c40bb638
+PODFILE CHECKSUM: dc469717a7246b09189748369e621005d65cc770
 
 COCOAPODS: 1.16.2
