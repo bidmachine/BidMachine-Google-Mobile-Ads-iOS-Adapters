@@ -1,11 +1,11 @@
 Pod::Spec.new do |spec|
   spec.name                = "BidMachineAdMobAdapter"
-  spec.version             = "3.2.1.0"
+  spec.version             = "3.2.1.1"
   spec.summary             = "Bidmachine adapter for AdMob"
 
   spec.homepage            = "https://bidmachine.io"
   spec.license             = { :type => "Commercial License",
-                               :text => "Copyright #{Time.new.year}. Appodeal Inc. All rights reserved.\nThe #{spec.name} is available under a commercial license (https://appodeal.com/sdk-license-agreement)." }
+                               :text => "Copyright #{Time.new.year}. Appodeal Inc. All rights reserved.\nThe #{spec.name} is available under a commercial license (https://bidmachine.io/sdk-license-agreement/)." }
   spec.author              = { "Stack" => "https://explorestack.com/bidmachine/" }
 
   spec.platform            = :ios, "12.0"
@@ -22,6 +22,6 @@ Pod::Spec.new do |spec|
   }
 
   spec.dependency "BidMachine", "~> 3.2.1"
-  spec.dependency "Google-Mobile-Ads-SDK", "~> 12.2.0"
+  spec.dependency "Google-Mobile-Ads-SDK", "~> 12.3.0"
 
 end
