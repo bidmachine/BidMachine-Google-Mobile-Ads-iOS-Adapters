@@ -27,11 +27,11 @@ extension AdStorageService {
     func fetchResult(_ format: PlacementFormat,
                      _ settings: MediationSettings) -> StoreResult {
         
-        guard let placementType = format.placementType() else {
+        let placement = try? BidMachineSdk.shared.placement(from: format)
+        guard let placement else {
             return (false, nil)
         }
         
-        let placement = Placement(placementType)
         let items = self.items.read({ $0.filter { $0.placement == placement } })
         
         if items.count == 0 {

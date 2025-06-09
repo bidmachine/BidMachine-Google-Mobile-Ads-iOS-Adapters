@@ -58,7 +58,16 @@ final class NativeViewController: AdLoadController {
         deleteLoadedAd()
         switchState(to: .loading)
         
-        BidMachineSdk.shared.native { [weak self] nativeAd, error in
+        let placement = try? BidMachineSdk.shared.placement(from: .native)
+        guard let placement else {
+            showAlert(with: "Unsupported placement")
+            switchState(to: .idle)
+            return
+        }
+        
+        let request = BidMachineSdk.shared.auctionRequest(placement: placement)
+
+        BidMachineSdk.shared.native(request: request) { [weak self] nativeAd, error in
             guard let self else {
                 return
             }

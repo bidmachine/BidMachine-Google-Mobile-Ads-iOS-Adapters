@@ -7,7 +7,7 @@ workspace 'BidMachineAdMobAdapter.xcworkspace'
 
 source 'https://cdn.cocoapods.org/'
 
-$BDMVersion = '~> 3.2.1'
+$BDMVersion = '~> 3.3.0'
 $GoogleVersion = '~> 12.4.0'
 
 def bidmachine

@@ -25,9 +25,16 @@
     
     [self switchState:BSStateLoading];
     
+    NSError *error = nil;
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatBanner320x50 error:&error builder:nil];
+    if (!placement) {
+        return;
+    }
+
+    BidMachineAuctionRequest *request = [[BidMachineSdk shared] auctionRequestWithPlacement:placement builder:nil];
+    
     __weak typeof(self) weakSelf = self;
-    id<BidMachineRequestConfigurationProtocol> config = [BidMachineSdk.shared requestConfiguration:BidMachinePlacementFormatBanner320x50 error:nil];
-    [BidMachineSdk.shared banner:config :^(BidMachineBanner *ad, NSError *error) {
+    [BidMachineSdk.shared bannerWithRequest:request completion:^(BidMachineBanner *ad, NSError *error) {
         [BDMAdMobAdapter store:ad];
         [weakSelf makeRequest];
     }];

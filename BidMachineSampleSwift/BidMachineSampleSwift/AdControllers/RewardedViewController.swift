@@ -18,7 +18,16 @@ final class RewardedViewController: AdLoadController {
         deleteLoadedAd()
         switchState(to: .loading)
         
-        BidMachineSdk.shared.rewarded { [weak self] rewarded, error in
+        let placement = try? BidMachineSdk.shared.placement(from: .rewarded)
+        guard let placement else {
+            showAlert(with: "Unsupported placement")
+            switchState(to: .idle)
+            return
+        }
+        
+        let request = BidMachineSdk.shared.auctionRequest(placement: placement)
+
+        BidMachineSdk.shared.rewarded(request: request) { [weak self] rewarded, error in
             guard let self else {
                 return
             }

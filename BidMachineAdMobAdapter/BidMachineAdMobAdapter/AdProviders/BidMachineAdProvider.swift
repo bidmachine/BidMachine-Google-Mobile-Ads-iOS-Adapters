@@ -27,18 +27,12 @@ final class BidMachineAdProvider<T: BidMachineAdProtocol> {
 
         do {
             settings = try mediationParams.mediationSettings()
-            configuration = try BidMachineSdk.shared.requestConfiguration(self.format)
         } catch {
             strategy.notifyLoadingError(error)
             return
         }
-        let price = NumberFormatter.bidMachinePrice.string(
-            from: NSNumber(value: settings.price)
-        )!
-        configuration.populate {
-            $0.appendPriceFloor(settings.price, "bm_pf:\(price)")
-        }
-        strategy.load(configuration: configuration, settings: settings, format: format)
+
+        strategy.load(settings: settings, format: format)
     }
 }
 
