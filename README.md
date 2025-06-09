@@ -93,9 +93,16 @@ Objective-C:
 @import BidMachineAdMobAdapter;
 
 - (void)before {
+    NSError *error = nil;
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatBanner320x50 error:&error builder:nil];
+    if (!placement) {
+        return;
+    }
+
+    BidMachineAuctionRequest *request = [[BidMachineSdk shared] auctionRequestWithPlacement:placement builder:nil];
+    
     __weak typeof(self) weakSelf = self;
-    id<BidMachineRequestConfigurationProtocol> config = [BidMachineSdk.shared requestConfiguration:BidMachinePlacementFormatBanner320x50 error:nil];
-    [BidMachineSdk.shared banner:config :^(BidMachineBanner *ad, NSError *error) {
+    [BidMachineSdk.shared bannerWithRequest:request completion:^(BidMachineBanner *ad, NSError *error) {
         [BidMachineAdMobAdapter store:ad]; 
         [weakSelf after];
     }];
@@ -112,8 +119,11 @@ import BidMachine
 import BidMachineAdMobAdapter
 
 func before() throws {
-    let configuration = try BidMachineSdk.shared.requestConfiguration(.banner320x50)
-    BidMachineSdk.shared.banner(configuration) { [weak self] banner, error in
+    let placement = try? BidMachineSdk.shared.placement(from: .banner320x50)
+    guard let placement else { return }
+    let request = BidMachineSdk.shared.auctionRequest(placement: placement)
+
+    BidMachineSdk.shared.banner(request: request) { [weak self] banner, error in
         AdMobAdapter.store(banner)
         self?.after()
     }
@@ -140,8 +150,16 @@ Objective-C:
 @import BidMachineAdMobAdapter;
 
 - (void)before {
+    NSError *error = nil;
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatInterstitial error:&error builder:nil];
+    if (!placement) {
+        return;
+    }
+
+    BidMachineAuctionRequest *request = [[BidMachineSdk shared] auctionRequestWithPlacement:placement builder:nil];
+    
     __weak typeof(self) weakSelf = self;
-    [BidMachineSdk.shared interstitial:nil :^(BidMachineInterstitial *ad, NSError *error) {
+    [BidMachineSdk.shared interstitialWithRequest:request completion:^(BidMachineInterstitial *ad, NSError *error) {
         [BidMachineAdMobAdapter store:ad];
         [weakSelf after];
     }];
@@ -158,8 +176,11 @@ import BidMachine
 import BidMachineAdMobAdapter
 
 func before() throws {
-    let configuration = try BidMachineSdk.shared.requestConfiguration(.interstitial)
-    BidMachineSdk.shared.interstitial(configuration) { [weak self] interstitial, error in
+    let placement = try? BidMachineSdk.shared.placement(from: .interstitial)
+    guard let placement else { return }
+    let request = BidMachineSdk.shared.auctionRequest(placement: placement)
+
+    BidMachineSdk.shared.interstitial(request: request) { [weak self] interstitial, error in
         AdMobAdapter.store(interstitial)
         self?.after()
     }
@@ -185,8 +206,16 @@ Objective-C:
 @import BidMachineAdMobAdapter;
 
 - (void)before {
-   __weak typeof(self) weakSelf = self;
-    [BidMachineSdk.shared rewarded:nil :^(BidMachineRewarded *ad, NSError *error) {
+    NSError *error = nil;
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatRewarded error:&error builder:nil];
+    if (!placement) {
+        return;
+    }
+
+    BidMachineAuctionRequest *request = [[BidMachineSdk shared] auctionRequestWithPlacement:placement builder:nil];
+    
+    __weak typeof(self) weakSelf = self;
+    [BidMachineSdk.shared rewardedWithRequest:request completion:^(BidMachineRewarded *ad, NSError *error) {
         [BidMachineAdMobAdapter store:ad];
         [weakSelf after];
     }];
@@ -203,8 +232,12 @@ import BidMachine
 import BidMachineAdMobAdapter
 
 func before() throws {
-    let configuration = try BidMachineSdk.shared.requestConfiguration(.rewardedVideo)
-    BidMachineSdk.shared.rewarded(configuration) { [weak self] rewarded, error in
+    let placement = try? BidMachineSdk.shared.placement(from: .rewardedVideo)
+    guard let placement else { return }
+    
+    let request = BidMachineSdk.shared.auctionRequest(placement: placement)
+
+    BidMachineSdk.shared.rewarded(request: request) { [weak self] rewarded, error in
         AdMobAdapter.store(rewarded)
         self?.after()
     }
@@ -230,7 +263,16 @@ Objective-C:
 @import BidMachineAdMobAdapter;
 
 - (void)before {
-    [BidMachineSdk.shared native:nil :^(BidMachineNative *ad, NSError *error) {
+    NSError *error = nil;
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatNative error:&error builder:nil];
+    if (!placement) {
+        return;
+    }
+
+    BidMachineAuctionRequest *request = [[BidMachineSdk shared] auctionRequestWithPlacement:placement builder:nil];
+    
+    __weak typeof(self) weakSelf = self;
+    [BidMachineSdk.shared nativeWithRequest:request completion:^(BidMachineNative *ad, NSError *error) {
         [BidMachineAdMobAdapter store:ad];
         [weakSelf after];
     }];
@@ -247,8 +289,12 @@ import BidMachine
 import BidMachineAdMobAdapter
 
 func before() throws {
-    let configuration = try BidMachineSdk.shared.requestConfiguration(.native)
-    BidMachineSdk.shared.native(configuration) { [weak self] native, error in
+    let placement = try? BidMachineSdk.shared.placement(from: .native)
+    guard let placement else { return }
+    
+    let request = BidMachineSdk.shared.auctionRequest(placement: placement)
+
+    BidMachineSdk.shared.native(request: request) { [weak self] nativeAd, error in
         AdMobAdapter.store(native)
         self?.after()
     }
