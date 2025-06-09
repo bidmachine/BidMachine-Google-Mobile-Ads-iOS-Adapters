@@ -19,8 +19,17 @@
 
 - (void)loadAd:(id)sender {
     [self switchState:BSStateLoading];
+    
+    NSError *error = nil;
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatRewarded error:&error builder:nil];
+    if (!placement) {
+        return;
+    }
+
+    BidMachineAuctionRequest *request = [[BidMachineSdk shared] auctionRequestWithPlacement:placement builder:nil];
+    
     __weak typeof(self) weakSelf = self;
-    [BidMachineSdk.shared rewarded:nil :^(BidMachineRewarded *ad, NSError *error) {
+    [BidMachineSdk.shared rewardedWithRequest:request completion:^(BidMachineRewarded *ad, NSError *error) {
         [BDMAdMobAdapter store:ad];
         [weakSelf makeRequest];
     }];

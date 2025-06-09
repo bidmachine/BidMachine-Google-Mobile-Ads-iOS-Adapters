@@ -24,11 +24,7 @@ final class PrebidMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMediat
         self.failure = failure
     }
     
-    func load(
-        configuration: BidMachineRequestConfigurationProtocol,
-        settings: MediationSettings,
-        format: PlacementFormat
-    ) {
+    func load(settings: MediationSettings, format: PlacementFormat) {
         let storageResult = AdMobAdapter.shared.storageService.fetchResult(format, settings)
         
         guard storageResult.prebid else  {
@@ -36,7 +32,10 @@ final class PrebidMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMediat
             return
         }
         guard let storageAd = storageResult.ad else {
-            let description = "Can't find prebid ad with current price \(configuration.priceFloors)"
+            let price = NumberFormatter.bidMachinePrice.string(
+                from: NSNumber(value: settings.price)
+            )!
+            let description = "Can't find prebid ad with current price \(price)"
             failure(
                 ErrorProvider.admob.withDescription(description)
             )

@@ -18,7 +18,16 @@ final class InterstitialViewController: AdLoadController {
         deleteLoadedAd()
         switchState(to: .loading)
         
-        BidMachineSdk.shared.interstitial { [weak self] interstitial, error in
+        let placement = try? BidMachineSdk.shared.placement(from: .interstitial)
+        guard let placement else {
+            showAlert(with: "Unsupported placement")
+            switchState(to: .idle)
+            return
+        }
+        
+        let request = BidMachineSdk.shared.auctionRequest(placement: placement)
+
+        BidMachineSdk.shared.interstitial(request: request) { [weak self] interstitial, error in
             guard let self else {
                 return
             }

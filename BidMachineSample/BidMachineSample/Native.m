@@ -27,8 +27,16 @@
     [NativeAdRenderer unregister:self.nativeAd fromView:self.container];
     self.nativeAd = nil;
     
+    NSError *error = nil;
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatNative error:&error builder:nil];
+    if (!placement) {
+        return;
+    }
+
+    BidMachineAuctionRequest *request = [[BidMachineSdk shared] auctionRequestWithPlacement:placement builder:nil];
+    
     __weak typeof(self) weakSelf = self;
-    [BidMachineSdk.shared native:nil :^(BidMachineNative *ad, NSError *error) {
+    [BidMachineSdk.shared nativeWithRequest:request completion:^(BidMachineNative *ad, NSError *error) {
         [BDMAdMobAdapter store:ad];
         [weakSelf makeRequest];
     }];

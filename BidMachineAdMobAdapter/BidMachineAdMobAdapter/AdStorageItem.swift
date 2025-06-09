@@ -34,8 +34,8 @@ extension AdStorageItem {
         return _ad.auctionInfo.price
     }
     
-    var placement: Placement {
-        return _ad.requestInfo.placement.placement
+    var placement: BidMachinePlacement {
+        return _ad.auctionRequest.placement
     }
     
     var ad: BidMachineAdProtocol {

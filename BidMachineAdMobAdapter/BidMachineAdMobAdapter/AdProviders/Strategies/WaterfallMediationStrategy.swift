@@ -28,15 +28,23 @@ final class WaterfallMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMed
         self.failure = failure
     }
     
-    func load(
-        configuration: BidMachineRequestConfigurationProtocol,
-        settings: MediationSettings,
-        format: PlacementFormat
-    ) {
-        configuration.populate {
+    func load(settings: MediationSettings, format: PlacementFormat) {
+        let placement = try? BidMachineSdk.shared.placement(from: format) {
             $0.withCustomParameters([CustomParamsKey.mediationMode: "waterfall_admob"])
         }
-        BidMachineSdk.shared.ad(Ad.self, configuration) { [weak self] ad, error in
+        guard let placement else {
+            handleLoadingError(description: "Unsupported ad format: \(format)")
+            return
+        }
+        
+        let price = NumberFormatter.bidMachinePrice.string(
+            from: NSNumber(value: settings.price)
+        )!
+        let request = BidMachineSdk.shared.auctionRequest(placement: placement) {
+            $0.appendPriceFloor(settings.price, "bm_pf:\(price)")
+        }
+        
+        BidMachineSdk.shared.ad(adType: Ad.self, request: request) { [weak self] ad, error in
             guard let self else { return }
 
             if let error {
@@ -44,7 +52,7 @@ final class WaterfallMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMed
                 return
             }
             if let ad {
-                handleAdLoaded(ad, for: configuration)
+                handleAdLoaded(ad, for: request)
                 return
             }
             handleLoadingError(description: "Unknown state: no error, no ad")
@@ -59,8 +67,8 @@ final class WaterfallMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMed
         failure(ErrorProvider.admob.withDescription(description))
     }
     
-    private func handleAdLoaded(_ ad: Ad, for configuration: BidMachineRequestConfigurationProtocol) {
-        guard let minPriceFloor = configuration.priceFloors.min(by: { $0.price < $1.price }) else {
+    private func handleAdLoaded(_ ad: Ad, for request: BidMachineAuctionRequest) {
+        guard let minPriceFloor = request.priceFloors.min(by: { $0.price < $1.price }) else {
             handleLoadingSuccess(ad)
             return
         }
