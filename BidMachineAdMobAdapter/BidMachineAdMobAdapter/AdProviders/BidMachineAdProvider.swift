@@ -23,7 +23,6 @@ final class BidMachineAdProvider<T: BidMachineAdProtocol> {
     
     func loadAd(mediationParams: MediationCredentials) {
         let settings: MediationSettings
-        let configuration: BidMachineRequestConfigurationProtocol
 
         do {
             settings = try mediationParams.mediationSettings()
