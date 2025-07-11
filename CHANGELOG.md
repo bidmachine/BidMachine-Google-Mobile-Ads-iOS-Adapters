@@ -1,3 +1,7 @@
+## Version 3.3.0.2 (Jul 11th, 2025)
+
+- Added optional placement ID support
+
 ## Version 3.3.0.1 (Jul 7th, 2025)
 
 - Update 'Google-Mobile-Ads-SDK' to '12.6.0'
