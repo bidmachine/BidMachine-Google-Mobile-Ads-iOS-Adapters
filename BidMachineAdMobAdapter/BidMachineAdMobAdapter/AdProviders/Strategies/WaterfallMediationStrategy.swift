@@ -30,6 +30,9 @@ final class WaterfallMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMed
     
     func load(settings: MediationSettings, format: PlacementFormat) {
         let placement = try? BidMachineSdk.shared.placement(from: format) {
+            if let placementID = settings.placementID {
+                $0.withPlacementId(placementID)
+            }
             $0.withCustomParameters([CustomParamsKey.mediationMode: "waterfall_admob"])
         }
         guard let placement else {

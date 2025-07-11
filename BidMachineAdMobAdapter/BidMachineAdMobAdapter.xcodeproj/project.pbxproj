@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0112853C2E21401600A33478 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112853B2E21401600A33478 /* AppLogger.swift */; };
 		0116CDDF2D19B091003E7402 /* CustomParamsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116CDDE2D19B091003E7402 /* CustomParamsKey.swift */; };
 		0131D36A2D0C6DB400811C4D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 01B23CF72D0B1994007C6E36 /* PrivacyInfo.xcprivacy */; };
 		0161F8B82CFF0DC100C270EB /* BidMachineAdProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161F8B72CFF0DC100C270EB /* BidMachineAdProvider.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0112853B2E21401600A33478 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		0116CDDE2D19B091003E7402 /* CustomParamsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomParamsKey.swift; sourceTree = "<group>"; };
 		0161F8B72CFF0DC100C270EB /* BidMachineAdProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidMachineAdProvider.swift; sourceTree = "<group>"; };
 		0161F8BA2CFF114100C270EB /* PrebidMediationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrebidMediationStrategy.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0112853A2E213EFC00A33478 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0112853B2E21401600A33478 /* AppLogger.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		0116CDDD2D19B08A003E7402 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +175,7 @@
 		65AD7DAA2951F14200469668 /* BidMachineAdMobAdapter */ = {
 			isa = PBXGroup;
 			children = (
+				0112853A2E213EFC00A33478 /* Utils */,
 				01B23CF72D0B1994007C6E36 /* PrivacyInfo.xcprivacy */,
 				65AD7DAB2951F14200469668 /* BidMachineAdMobAdapter.h */,
 				65AD7DCD295341AF00469668 /* BidMachineAdMobAdapter.swift */,
@@ -376,6 +387,7 @@
 				65AD7DCC2952543A00469668 /* NativeAdRendering.swift in Sources */,
 				65AD7DC529524A5300469668 /* BannerAd.swift in Sources */,
 				0161F8CB2CFF3B9700C270EB /* PrebidRewardedAdapter.swift in Sources */,
+				0112853C2E21401600A33478 /* AppLogger.swift in Sources */,
 				0161F8D32CFF42BA00C270EB /* BidMachineAdProvider+Factory.swift in Sources */,
 				65AD7DC92952511F00469668 /* NativeAd.swift in Sources */,
 				65AD7DC1295233CF00469668 /* BidMachineError.swift in Sources */,

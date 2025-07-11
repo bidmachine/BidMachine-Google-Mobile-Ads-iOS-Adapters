@@ -27,6 +27,8 @@ struct MediationSettings: Decodable {
         case bm_pf_compare
         
         case source_id
+        
+        case placement_id
     }
     
     let price: Double
@@ -34,6 +36,8 @@ struct MediationSettings: Decodable {
     let compareType: CompareType
     
     let sourceID: String?
+    
+    let placementID: String?
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
@@ -48,5 +52,16 @@ struct MediationSettings: Decodable {
         self.price = price
         self.compareType = (try? container.decodeIfPresent(CompareType.self, forKey: .bm_pf_compare)) ?? .equalOrAbove
         self.sourceID = try? container.decodeIfPresent(String.self, forKey: .source_id)
+
+        guard let placement = try? container.decodeIfPresent(String.self, forKey: .placement_id) else {
+            self.placementID = nil
+            return
+        }
+        if placement.isEmpty {
+            self.placementID = nil
+            AppLogger.error("placement_id should not be an empty string", category: "mediation_settings")
+        } else {
+            self.placementID = placement
+        }
     }
 }
