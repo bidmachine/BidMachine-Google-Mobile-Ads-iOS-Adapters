@@ -24,17 +24,18 @@ extension AdStorageService {
         item.prepare(self)
     }
     
-    func fetchResult(_ format: PlacementFormat,
-                     _ settings: MediationSettings) -> StoreResult {
-        
+    func fetchResult(_ format: PlacementFormat, _ settings: MediationSettings) -> StoreResult {
         let placement = try? BidMachineSdk.shared.placement(from: format)
+
         guard let placement else {
             return (false, nil)
         }
         
-        let items = self.items.read({ $0.filter { $0.placement == placement } })
-        
-        if items.count == 0 {
+        let items = self.items.read { item in
+            item.filter { $0.placement.type == placement.type }
+        }
+
+        guard !items.isEmpty else {
             return (false, nil)
         }
         

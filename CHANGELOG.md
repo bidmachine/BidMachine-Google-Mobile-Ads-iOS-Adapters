@@ -1,3 +1,7 @@
+## Version 3.3.0.3 (Jul 24th, 2025)
+
+- Fixed an issue with placement comparison for Prebid integrations
+
 ## Version 3.3.0.2 (Jul 11th, 2025)
 
 - Added optional placement ID support
