@@ -1,3 +1,8 @@
+## Version 3.4.0.0 (Jul 7th, 2025)
+
+- Update 'Google-Mobile-Ads-SDK' to '12.9.0'
+- Update 'BidMachine' to '3.4.0'
+
 ## Version 3.3.0.3 (Jul 24th, 2025)
 
 - Fixed an issue with placement comparison for Prebid integrations

@@ -5,10 +5,10 @@ install! 'cocoapods', :deterministic_uuids => false, :warn_for_multiple_pod_sour
 
 workspace 'BidMachineAdMobAdapter.xcworkspace'
 
-source 'https://cdn.cocoapods.org/'
+source 'https://github.com/cocoapods/specs'
 
-$BDMVersion = '~> 3.3.0'
-$GoogleVersion = '~> 12.6.0'
+$BDMVersion = '~> 3.4.0'
+$GoogleVersion = '~> 12.9.0'
 
 def bidmachine
   pod "BidMachine", $BDMVersion
