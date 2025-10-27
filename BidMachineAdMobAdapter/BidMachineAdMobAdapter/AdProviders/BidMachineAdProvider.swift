@@ -10,11 +10,11 @@ import BidMachine
 import GoogleMobileAds
 
 final class BidMachineAdProvider<T: BidMachineAdProtocol> {
-    private let format: PlacementFormat
+    private let format: BidMachine.AdFormat
     private let strategy: any AdMediationStrategy
     
     init(
-        format: PlacementFormat,
+        format: BidMachine.AdFormat,
         strategy: any AdMediationStrategy
     ) {
         self.format = format

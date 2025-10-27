@@ -24,7 +24,7 @@ final class PrebidMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMediat
         self.failure = failure
     }
     
-    func load(settings: MediationSettings, format: PlacementFormat) {
+    func load(settings: MediationSettings, format: BidMachine.AdFormat) {
         let storageResult = AdMobAdapter.shared.storageService.fetchResult(format, settings)
         
         guard storageResult.prebid else  {

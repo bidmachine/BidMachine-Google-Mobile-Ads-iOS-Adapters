@@ -65,18 +65,6 @@ extension VersionNumber {
     }
 }
 
-extension CGSize {
-    
-    var format: PlacementFormat {
-        switch self.height {
-        case 50: return .banner320x50
-        case 90: return .banner728x90
-        case 250: return .banner300x250
-        default: return .banner
-        }
-    }
-}
-
 extension Double {
     
     func xRound() -> Double {

@@ -28,15 +28,15 @@ final class WaterfallMediationStrategy<T: BidMachineAdProtocol>: NSObject, AdMed
         self.failure = failure
     }
     
-    func load(settings: MediationSettings, format: PlacementFormat) {
-        let placement = try? BidMachineSdk.shared.placement(from: format) {
+    func load(settings: MediationSettings, format: BidMachine.AdFormat) {
+        let placement = try? BidMachineSdk.shared.placement(format) {
             if let placementID = settings.placementID {
                 $0.withPlacementId(placementID)
             }
             $0.withCustomParameters([CustomParamsKey.mediationMode: "waterfall_admob"])
         }
         guard let placement else {
-            handleLoadingError(description: "Unsupported ad format: \(format)")
+            handleLoadingError(description: "Unsupported ad format: \(format.description)")
             return
         }
         

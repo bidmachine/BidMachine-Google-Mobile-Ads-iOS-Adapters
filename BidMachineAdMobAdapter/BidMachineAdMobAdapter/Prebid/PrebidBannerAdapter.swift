@@ -18,7 +18,7 @@ final class PrebidBannerAdapter: MediationAdapter {
         completionHandler: @escaping GADMediationBannerLoadCompletionHandler
     ) {
         self.provider = .banner(
-            format: adConfiguration.adSize.size.format,
+            format: .fromAdSize(adConfiguration.adSize),
             strategy: .prebid,
             completionHandler: completionHandler
         )

@@ -19,6 +19,6 @@ protocol AdMediationStrategy: NSObject {
     typealias FailureCompetion = (Error) -> Void
     
     init(success: @escaping SuccessCompetion, failure: @escaping FailureCompetion)
-    func load(settings: MediationSettings, format: PlacementFormat)
+    func load(settings: MediationSettings, format: BidMachine.AdFormat)
     func notifyLoadingError(_ error: Error)
 }

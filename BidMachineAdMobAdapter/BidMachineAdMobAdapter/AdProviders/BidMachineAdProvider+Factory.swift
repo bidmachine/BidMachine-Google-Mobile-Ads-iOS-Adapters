@@ -16,7 +16,7 @@ extension BidMachineAdProvider {
     }
 
     static func banner(
-        format: PlacementFormat,
+        format: BidMachine.AdFormat,
         strategy: MediationStrategy,
         completionHandler: @escaping GADMediationBannerLoadCompletionHandler
     ) -> BidMachineAdProvider<BidMachineBanner> {
@@ -78,7 +78,7 @@ extension BidMachineAdProvider {
 
     private static func provider<Ad: BidMachineAdProtocol>(
         strategy: MediationStrategy,
-        format: PlacementFormat,
+        format: BidMachine.AdFormat,
         success: @escaping (Ad) -> Void,
         failure: @escaping (Error) -> Void
     ) -> BidMachineAdProvider<Ad> {
