@@ -35,8 +35,17 @@ jobs:
         with:
           version: 1.15.2
 
-      - name: Build
+      - name: Export macOS roots for Ruby/OpenSSL & AWS SDK
         run: |
+          security find-certificate -a -p /System/Library/Keychains/SystemRootCertificates.keychain > "$RUNNER_TEMP/cacert.pem"
+         
+        env:
+          AWS_S3_REGION: ${{ env.AWS_S3_REGION }}
+
+      - name: Build (with explicit CA bundle)
+        run: |
+          export SSL_CERT_FILE="$RUNNER_TEMP/cacert.pem"
+          export AWS_CA_BUNDLE="$RUNNER_TEMP/cacert.pem"
           export LC_ALL=en_US.UTF-8
           export LANG=en_US.UTF-8
           bundle exec fastlane build version:${{ env.RELEASE_VERSION }} upload:true 

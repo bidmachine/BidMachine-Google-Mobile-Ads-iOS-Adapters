@@ -7,7 +7,7 @@ gem 'fastlane', '~> 2.220.0'
 gem "fastlane-plugin-aws_s3"
 gem 'xcpretty'
 gem 'dotenv'
-gem 'aws-sdk'
+gem 'aws-sdk', ">= 1.200.0"
 gem 'rest-client'
 gem 'net'
 gem 'cocoapods-core'
