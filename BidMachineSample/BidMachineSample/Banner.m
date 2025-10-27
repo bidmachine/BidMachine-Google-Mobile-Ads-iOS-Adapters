@@ -26,7 +26,7 @@
     [self switchState:BSStateLoading];
     
     NSError *error = nil;
-    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatBanner320x50 error:&error builder:nil];
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placement:BidMachineAdFormat.banner320x50 error:&error builder:nil];
     if (!placement) {
         return;
     }

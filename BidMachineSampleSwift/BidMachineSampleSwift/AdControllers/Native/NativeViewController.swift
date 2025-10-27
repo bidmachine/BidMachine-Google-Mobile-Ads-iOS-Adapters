@@ -58,7 +58,7 @@ final class NativeViewController: AdLoadController {
         deleteLoadedAd()
         switchState(to: .loading)
         
-        let placement = try? BidMachineSdk.shared.placement(from: .native)
+        let placement = try? BidMachineSdk.shared.placement(.native)
         guard let placement else {
             showAlert(with: "Unsupported placement")
             switchState(to: .idle)

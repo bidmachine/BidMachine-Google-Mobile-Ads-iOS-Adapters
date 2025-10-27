@@ -28,7 +28,7 @@
     self.nativeAd = nil;
     
     NSError *error = nil;
-    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatNative error:&error builder:nil];
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placement:BidMachineAdFormat.native error:&error builder:nil];
     if (!placement) {
         return;
     }

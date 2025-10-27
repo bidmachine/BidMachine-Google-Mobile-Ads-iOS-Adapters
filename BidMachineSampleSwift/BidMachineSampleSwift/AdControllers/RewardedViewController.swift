@@ -18,7 +18,7 @@ final class RewardedViewController: AdLoadController {
         deleteLoadedAd()
         switchState(to: .loading)
         
-        let placement = try? BidMachineSdk.shared.placement(from: .rewarded)
+        let placement = try? BidMachineSdk.shared.placement(.rewarded)
         guard let placement else {
             showAlert(with: "Unsupported placement")
             switchState(to: .idle)

@@ -17,7 +17,7 @@
 ```ruby
 target 'Target' do
   project 'Project.xcodeproj'
-  pod 'BidMachineAdMobAdapter', '~> 3.3.0.0'
+  pod 'BidMachineAdMobAdapter', '~> 3.5.0.0'
 end
 ```
 
@@ -28,7 +28,7 @@ Both integration types require to configure mediations group in AdMob account by
 
 #### Waterfall:
 Waterfall integration does not require BidMachineSdk initialization code, as it is triggered automatically as part of the GADMobileAds initialization.
-However, if you need to configure additional BidMachineSdk settings, refer to the [documentation](https://docs.bidmachine.io/docs/in-house-mediation-ios)
+However, if you need to configure additional BidMachineSdk settings, refer to the [documentation](https://developers.bidmachine.io/sdk/general/ios/advanced)
 
 #### Prebid:
 > **_WARNING:_** Before initialize AdMob sdk you should start BM sdk. 
@@ -79,7 +79,7 @@ GADMobileAds.sharedInstance().start { status in
 ### Banner implementation
 
 #### Waterfall:
-Integration remains consistent with the approach outlined in [Google Mobile Ads Banner Ads Guide](hhttps://developers.google.com/admob/ios/banner), ensuring seamless compatibility with existing configurations.
+Integration remains consistent with the approach outlined in [Google Mobile Ads Banner Ads Guide](https://developers.google.com/admob/ios/banner), ensuring seamless compatibility with existing configurations.
 No further modifications are necessary, streamlining the implementation process and minimizing any additional overhead.
 
 #### Prebid:
@@ -94,7 +94,7 @@ Objective-C:
 
 - (void)before {
     NSError *error = nil;
-    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatBanner320x50 error:&error builder:nil];
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placement:BidMachineAdFormat.banner320x50 error:&error builder:nil];
     if (!placement) {
         return;
     }
@@ -119,7 +119,7 @@ import BidMachine
 import BidMachineAdMobAdapter
 
 func before() throws {
-    let placement = try? BidMachineSdk.shared.placement(from: .banner320x50)
+    let placement = try? BidMachineSdk.shared.placement(.banner320x50)
     guard let placement else { return }
     let request = BidMachineSdk.shared.auctionRequest(placement: placement)
 
@@ -151,7 +151,7 @@ Objective-C:
 
 - (void)before {
     NSError *error = nil;
-    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatInterstitial error:&error builder:nil];
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placement:BidMachineAdFormat.interstitial error:&error builder:nil];
     if (!placement) {
         return;
     }
@@ -176,7 +176,7 @@ import BidMachine
 import BidMachineAdMobAdapter
 
 func before() throws {
-    let placement = try? BidMachineSdk.shared.placement(from: .interstitial)
+    let placement = try? BidMachineSdk.shared.placement(.interstitial)
     guard let placement else { return }
     let request = BidMachineSdk.shared.auctionRequest(placement: placement)
 
@@ -207,7 +207,7 @@ Objective-C:
 
 - (void)before {
     NSError *error = nil;
-    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatRewarded error:&error builder:nil];
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placement:BidMachineAdFormat.rewarded error:&error builder:nil];
     if (!placement) {
         return;
     }
@@ -232,7 +232,7 @@ import BidMachine
 import BidMachineAdMobAdapter
 
 func before() throws {
-    let placement = try? BidMachineSdk.shared.placement(from: .rewardedVideo)
+    let placement = try? BidMachineSdk.shared.placement(.rewardedVideo)
     guard let placement else { return }
     
     let request = BidMachineSdk.shared.auctionRequest(placement: placement)
@@ -264,7 +264,7 @@ Objective-C:
 
 - (void)before {
     NSError *error = nil;
-    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatNative error:&error builder:nil];
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placement:BidMachineAdFormat.native error:&error builder:nil];
     if (!placement) {
         return;
     }
@@ -289,7 +289,7 @@ import BidMachine
 import BidMachineAdMobAdapter
 
 func before() throws {
-    let placement = try? BidMachineSdk.shared.placement(from: .native)
+    let placement = try? BidMachineSdk.shared.placement(.native)
     guard let placement else { return }
     
     let request = BidMachineSdk.shared.auctionRequest(placement: placement)

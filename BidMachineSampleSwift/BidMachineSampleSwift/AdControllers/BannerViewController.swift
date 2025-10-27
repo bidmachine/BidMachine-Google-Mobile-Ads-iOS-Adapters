@@ -34,7 +34,7 @@ final class BannerViewController: AdLoadController {
         switchState(to: .loading)
         
         do {
-            let placement = try BidMachineSdk.shared.placement(from: .banner320x50)
+            let placement = try BidMachineSdk.shared.placement(.banner320x50)
             let request = BidMachineSdk.shared.auctionRequest(placement: placement)
 
             BidMachineSdk.shared.banner(request: request) { [weak self] banner, error in

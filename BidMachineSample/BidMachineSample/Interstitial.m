@@ -23,7 +23,7 @@
     [self switchState:BSStateLoading];
                                                                         
     NSError *error = nil;
-    BidMachinePlacement *placement = [[BidMachineSdk shared] placementFrom:BidMachinePlacementFormatInterstitial error:&error builder:nil];
+    BidMachinePlacement *placement = [[BidMachineSdk shared] placement:BidMachineAdFormat.interstitial error:&error builder:nil];
     if (!placement) {
         return;
     }
