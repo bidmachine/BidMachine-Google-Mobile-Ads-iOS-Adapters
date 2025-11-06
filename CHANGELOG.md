@@ -1,3 +1,7 @@
+## Version 3.5.0.1 (Nov 6th, 2025)
+
+- Update banner ad sizes mapping logic
+
 ## Version 3.5.0.0 (Oct 27th, 2025)
 
 - Update 'Google-Mobile-Ads-SDK' to '12.12.0'

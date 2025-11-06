@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name                = "BidMachineAdMobAdapter"
-  spec.version             = "3.5.0.0"
+  spec.version             = "3.5.0.1"
   spec.summary             = "Bidmachine adapter for AdMob"
 
   spec.homepage            = "https://bidmachine.io"

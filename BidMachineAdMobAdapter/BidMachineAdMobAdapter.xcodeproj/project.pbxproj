@@ -23,6 +23,7 @@
 		0161F8CF2CFF3BEA00C270EB /* WaterfallInterstitialAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161F8CE2CFF3BEA00C270EB /* WaterfallInterstitialAdapter.swift */; };
 		0161F8D12CFF3BFE00C270EB /* WaterfallRewardedAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161F8D02CFF3BFE00C270EB /* WaterfallRewardedAdapter.swift */; };
 		0161F8D32CFF42BA00C270EB /* BidMachineAdProvider+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161F8D22CFF42BA00C270EB /* BidMachineAdProvider+Factory.swift */; };
+		01A9B0712EB8DE7F00F3FCAC /* BidMachine.AdFormat+BannerSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A9B0702EB8DE7F00F3FCAC /* BidMachine.AdFormat+BannerSize.swift */; };
 		65AD7DAC2951F14200469668 /* BidMachineAdMobAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 65AD7DAB2951F14200469668 /* BidMachineAdMobAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65AD7DB72952132400469668 /* MediationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AD7DB62952132400469668 /* MediationAdapter.swift */; };
 		65AD7DBB295213B600469668 /* InterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AD7DBA295213B600469668 /* InterstitialAd.swift */; };
@@ -55,6 +56,7 @@
 		0161F8CE2CFF3BEA00C270EB /* WaterfallInterstitialAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallInterstitialAdapter.swift; sourceTree = "<group>"; };
 		0161F8D02CFF3BFE00C270EB /* WaterfallRewardedAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallRewardedAdapter.swift; sourceTree = "<group>"; };
 		0161F8D22CFF42BA00C270EB /* BidMachineAdProvider+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BidMachineAdProvider+Factory.swift"; sourceTree = "<group>"; };
+		01A9B0702EB8DE7F00F3FCAC /* BidMachine.AdFormat+BannerSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BidMachine.AdFormat+BannerSize.swift"; sourceTree = "<group>"; };
 		01B23CF72D0B1994007C6E36 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3021870A57561ACD9F44B3ED /* Pods_BidMachineAdMobAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BidMachineAdMobAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F1AED9889CB84B56EECCD22 /* Pods-BidMachineAdMobAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachineAdMobAdapter.debug.xcconfig"; path = "Target Support Files/Pods-BidMachineAdMobAdapter/Pods-BidMachineAdMobAdapter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		0112853A2E213EFC00A33478 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				01A9B0702EB8DE7F00F3FCAC /* BidMachine.AdFormat+BannerSize.swift */,
 				0112853B2E21401600A33478 /* AppLogger.swift */,
 			);
 			path = Utils;
@@ -381,6 +384,7 @@
 				65AD7DBB295213B600469668 /* InterstitialAd.swift in Sources */,
 				0161F8B82CFF0DC100C270EB /* BidMachineAdProvider.swift in Sources */,
 				65AD7DB72952132400469668 /* MediationAdapter.swift in Sources */,
+				01A9B0712EB8DE7F00F3FCAC /* BidMachine.AdFormat+BannerSize.swift in Sources */,
 				0161F8BD2CFF14C900C270EB /* AdMediationStrategy.swift in Sources */,
 				0161F8C72CFF3B7300C270EB /* PrebidBannerAdapter.swift in Sources */,
 				0161F8BF2CFF150B00C270EB /* WaterfallMediationStrategy.swift in Sources */,

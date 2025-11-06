@@ -105,3 +105,22 @@ extension BidMachineAdProvider {
         }
     }
 }
+
+extension BidMachineAdProvider {
+    static func bannerOrFail(
+        googleSize: GoogleMobileAds.AdSize,
+        strategy: MediationStrategy,
+        completionHandler: @escaping GADMediationBannerLoadCompletionHandler
+    ) -> BidMachineAdProvider<BidMachineBanner>? {
+        guard let bannerFormat = BidMachine.AdFormat.bannerFromGoogleSize(googleSize) else {
+            _ = completionHandler(nil, ErrorProvider.admob.withDescription("Unsupported banner ad size"))
+            return nil
+        }
+        let provider = BidMachineAdProvider.banner(
+            format: bannerFormat,
+            strategy: strategy,
+            completionHandler: completionHandler
+        )
+        return provider
+    }
+}
